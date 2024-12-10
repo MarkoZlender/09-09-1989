@@ -1,0 +1,110 @@
+[gd_scene load_steps=21 format=3 uid="uid://bml51umf76aq0"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://b8wsips5ayqn4" path="res://scenes/cynthia.tscn" id="2_g2els"]
+[ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="3_qlg0r"]
+[ext_resource type="Script" path="res://scripts/state_machine/player_states/idle.gd" id="4_tuyoq"]
+[ext_resource type="Script" path="res://scripts/state_machine/player_states/walking.gd" id="5_fjrip"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
+radius = 0.684997
+height = 4.72182
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vyb7"]
+shading_mode = 2
+albedo_color = Color(1.54018e-06, 0.946563, 0.165257, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
+material = SubResource("StandardMaterial3D_3vyb7")
+
+[sub_resource type="BoxMesh" id="BoxMesh_u8vuu"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g2els"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qhqgy"]
+animation = &"Walk"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dqkch"]
+animation = &"Walk"
+play_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dqkch"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qlg0r"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "direction > 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_tuyoq"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "direction == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fjrip"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "direction < 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_smehm"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "direction == 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g2els"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "direction > 0"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qhqgy"]
+xfade_time = 0.1
+advance_mode = 2
+advance_expression = "direction < 0"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_smehm"]
+states/Idle/node = SubResource("AnimationNodeAnimation_g2els")
+states/Idle/position = Vector2(336, 81.3333)
+states/Run/node = SubResource("AnimationNodeAnimation_qhqgy")
+states/Run/position = Vector2(541.333, 82.6667)
+states/Start/position = Vector2(212, 81.7531)
+states/Walk/node = SubResource("AnimationNodeAnimation_dqkch")
+states/Walk/position = Vector2(422, 179.333)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_dqkch"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_qlg0r"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_tuyoq"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_fjrip"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_smehm"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_g2els"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_qhqgy")]
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 3
+script = ExtResource("1_3vyb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.513417, 0, 0, 0, 0.72555, 0, -1.77636e-15, 0, 0.581152, 2.61249e-10, 1.70444, 0.00597668)
+shape = SubResource("CapsuleShape3D_u8vuu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.6519, 0, 0, 0, 1, 0, 1.57195, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_u8vuu")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -2.1163e-08, 0, 0.256284, 0, 8.74228e-08, 0, -0.242076, -0.576535, 0.390326, -0.0608716)
+visible = false
+mesh = SubResource("BoxMesh_u8vuu")
+
+[node name="Cynthia" parent="." instance=ExtResource("2_g2els")]
+transform = Transform3D(1.50996e-07, 0, 2, 0, 2, 0, -2, 0, 1.50996e-07, 0, 0, 0)
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+root_node = NodePath("../Cynthia")
+tree_root = SubResource("AnimationNodeStateMachine_smehm")
+advance_expression_base_node = NodePath("..")
+anim_player = NodePath("../Cynthia/AnimationPlayer")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_qlg0r")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_tuyoq")
+
+[node name="Walking" type="Node" parent="StateMachine"]
+script = ExtResource("5_fjrip")

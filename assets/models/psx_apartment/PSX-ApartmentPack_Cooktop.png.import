@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cgdh7p3u68o5g"
+path.s3tc="res://.godot/imported/PSX-ApartmentPack_Cooktop.png-792a8ea03ba10a16f834cf464df42fd9.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "a77896ef35766764c1a507c189c85877"
+}
+
+[deps]
+
+source_file="res://assets/models/psx_apartment/PSX-ApartmentPack_Cooktop.png"
+dest_files=["res://.godot/imported/PSX-ApartmentPack_Cooktop.png-792a8ea03ba10a16f834cf464df42fd9.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://pfrlin6rnx1l"]
+
+[ext_resource type="PackedScene" uid="uid://b8rtwryepqr5w" path="res://scenes/interaction/interact_component.tscn" id="1_bf4sv"]
+[ext_resource type="Script" path="res://scripts/test_cube.gd" id="1_fxgoe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fxgoe"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nvumc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bf4sv"]
+
+[node name="TestCube" type="Node3D"]
+script = ExtResource("1_fxgoe")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_fxgoe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_nvumc")
+
+[node name="InteractComponent" parent="." instance=ExtResource("1_bf4sv")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractComponent"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_bf4sv")

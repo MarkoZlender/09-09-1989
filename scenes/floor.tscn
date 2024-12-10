@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfh7nrai6vtmh"]
+
+[ext_resource type="Texture2D" uid="uid://seljnt2ryyev" path="res://assets/models/psx_apartment/PSX-ApartmentPack_WoodFloor.png" id="1_ukw5w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lvm4"]
+resource_name = "Floor"
+cull_mode = 2
+albedo_texture = ExtResource("1_ukw5w")
+texture_filter = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_kuqtn"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1e-05, 1),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "Floor",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5sefe"]
+resource_name = "PSX-ApartmentPack_Plane_002"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 1e-05, 1),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_8lvm4"),
+"name": "Floor",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_kuqtn")
+
+[node name="Floor" type="MeshInstance3D"]
+mesh = SubResource("ArrayMesh_5sefe")
+skeleton = NodePath("")
