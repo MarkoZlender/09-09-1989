@@ -9,7 +9,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o44qq"]
 albedo_texture = ExtResource("2_32186")
 
-[sub_resource type="BoxMesh" id="BoxMesh_nvumc"]
+[sub_resource type="BoxMesh" id="BoxMesh_76smg"]
 material = SubResource("StandardMaterial3D_o44qq")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bf4sv"]
@@ -24,7 +24,8 @@ script = ExtResource("1_fxgoe")
 shape = SubResource("BoxShape3D_fxgoe")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("BoxMesh_nvumc")
+cast_shadow = 0
+mesh = SubResource("BoxMesh_76smg")
 
 [node name="InteractComponent" parent="." instance=ExtResource("1_bf4sv")]
 

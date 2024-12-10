@@ -284,4 +284,5 @@ material = SubResource("StandardMaterial3D_fgjv8")
 
 [node name="LightmapGI" type="LightmapGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.992529, 0)
+interior = true
 light_data = ExtResource("8_q3r71")
