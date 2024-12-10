@@ -13,6 +13,7 @@ albedo_texture = ExtResource("2_32186")
 material = SubResource("StandardMaterial3D_o44qq")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bf4sv"]
+size = Vector3(1, 0.748535, 1)
 
 [node name="TestCube" type="Node3D"]
 script = ExtResource("1_fxgoe")
@@ -28,5 +29,5 @@ mesh = SubResource("BoxMesh_nvumc")
 [node name="InteractComponent" parent="." instance=ExtResource("1_bf4sv")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractComponent"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.251465, 0)
 shape = SubResource("BoxShape3D_bf4sv")

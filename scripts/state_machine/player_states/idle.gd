@@ -9,5 +9,5 @@ func physics_update(delta: float) -> void:
 	player.direction = Input.get_axis("move_back", "move_forward")
 	if player.direction != 0:
 		finished.emit(WALKING)
-	if player.velocity.length() > 0:
-		finished.emit(WALKING)
+	# if player.velocity.length() > 0:
+	# 	finished.emit(WALKING)

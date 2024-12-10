@@ -44,5 +44,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7043, 0.0971883, 0)
 text = "Interact with cube 1"
 
 [node name="TestCube2" parent="." instance=ExtResource("3_pq1bs")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70416, 0.112798, 2.2973)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70416, 0.107178, 2.2973)
 text = "Interact with cube 2"
