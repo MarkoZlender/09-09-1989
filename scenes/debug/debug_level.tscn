@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bk1pmdrrjhnuw"]
+[gd_scene load_steps=9 format=3 uid="uid://bk1pmdrrjhnuw"]
 
 [ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/player.tscn" id="1_4oo0h"]
 [ext_resource type="Texture2D" uid="uid://c6pyep1cusmnn" path="res://assets/textures/prototype_textures/Dark/texture_01.png" id="1_ahgry"]
 [ext_resource type="PackedScene" uid="uid://pfrlin6rnx1l" path="res://scenes/test_cube.tscn" id="3_pq1bs"]
+[ext_resource type="PackedScene" uid="uid://cftivtsqiijgj" path="res://scenes/post_process_effects.tscn" id="4_2urj6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c87d4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -17,6 +18,8 @@ ambient_light_source = 2
 ambient_light_color = Color(0.903598, 0.903598, 0.903598, 1)
 tonemap_mode = 2
 glow_enabled = true
+adjustment_enabled = true
+adjustment_saturation = 0.01
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0aj7"]
 albedo_texture = ExtResource("1_ahgry")
@@ -46,3 +49,6 @@ text = "Interact with cube 1"
 [node name="TestCube2" parent="." instance=ExtResource("3_pq1bs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70416, 0.107178, 2.2973)
 text = "Interact with cube 2"
+
+[node name="PostProcessEffects" parent="." instance=ExtResource("4_2urj6")]
+script = null

@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cptisqjqacpax"]
+
+[ext_resource type="Shader" path="res://shaders/film_grain_shader.gdshader" id="1_dhror"]
+
+[resource]
+shader = ExtResource("1_dhror")
+shader_parameter/noiseStrength = 6.0

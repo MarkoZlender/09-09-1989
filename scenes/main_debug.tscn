@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bllvspggpetvu"]
+[gd_scene load_steps=28 format=4 uid="uid://bllvspggpetvu"]
 
 [ext_resource type="Script" path="res://scripts/main_debug.gd" id="1_r7pns"]
 [ext_resource type="Texture2D" uid="uid://seljnt2ryyev" path="res://assets/models/psx_apartment/PSX-ApartmentPack_WoodFloor.png" id="3_2jdy8"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/player.tscn" id="6_xo0e3"]
 [ext_resource type="PackedScene" uid="uid://pfrlin6rnx1l" path="res://scenes/test_cube.tscn" id="7_fqe63"]
 [ext_resource type="LightmapGIData" uid="uid://b6d1wje8sirme" path="res://lightmaps/main_debug.lmbake" id="8_q3r71"]
+[ext_resource type="Material" uid="uid://cptisqjqacpax" path="res://shaders/film_grain_shader_material.tres" id="9_0ltlj"]
 
 [sub_resource type="Environment" id="Environment_r7pns"]
 background_mode = 1
@@ -181,6 +182,8 @@ shadow_mesh = SubResource("ArrayMesh_1fyfq")
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6i18p"]
 points = PackedVector3Array(-3.04702, -0.0476193, -0.127591, 3.04702, 2.61905, 0.158067, 3.04702, 2.61905, -0.127591, -3.04702, 2.61905, 0.158067, 3.04702, -0.0476193, 0.158067, 3.04702, -0.0476193, -0.127591, -3.04702, 2.61905, -0.127591, -3.04702, -0.0476193, 0.158067)
 
+[sub_resource type="Environment" id="Environment_t4pa7"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fgjv8"]
 albedo_texture = ExtResource("3_2jdy8")
 uv1_scale = Vector3(9, 9, 9)
@@ -257,7 +260,9 @@ transform = Transform3D(6.63995, 9.31323e-10, 8.9407e-08, 0, 1.61418, -0.363592,
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.151261, 0.098177, -0.983606, 0, 0.995056, 0.0993197, 0.988494, -0.0150232, 0.150513, -4.10442, 1.46485, 3.52586)
+environment = SubResource("Environment_t4pa7")
 current = true
+fov = 37.8493
 
 [node name="ActivateCamComponent" parent="Camera3D" instance=ExtResource("6_fqe63")]
 transform = Transform3D(4.68037, -9.31323e-10, 0, 0, 0.870957, -0.507244, 0, 0.123537, 3.57616, -0.711158, -1.87847, 0.0308399)
@@ -286,3 +291,11 @@ material = SubResource("StandardMaterial3D_fgjv8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.992529, 0)
 interior = true
 light_data = ExtResource("8_q3r71")
+
+[node name="NoiseFilterShader" type="ColorRect" parent="."]
+material = ExtResource("9_0ltlj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
