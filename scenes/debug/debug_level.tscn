@@ -19,7 +19,7 @@ ambient_light_color = Color(0.903598, 0.903598, 0.903598, 1)
 tonemap_mode = 2
 glow_enabled = true
 adjustment_enabled = true
-adjustment_saturation = 0.01
+adjustment_saturation = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0aj7"]
 albedo_texture = ExtResource("1_ahgry")
@@ -27,11 +27,11 @@ uv1_triplanar = true
 
 [node name="DebugLevel" type="Node3D"]
 
-[node name="Player" parent="." instance=ExtResource("1_4oo0h")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ip54w")
+
+[node name="Player" parent="." instance=ExtResource("1_4oo0h")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.392822, 0)
@@ -51,4 +51,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70416, 0.107178, 2.2973)
 text = "Interact with cube 2"
 
 [node name="PostProcessEffects" parent="." instance=ExtResource("4_2urj6")]
-script = null

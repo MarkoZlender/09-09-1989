@@ -4,4 +4,4 @@
 
 [resource]
 shader = ExtResource("1_dhror")
-shader_parameter/noiseStrength = 6.0
+shader_parameter/noiseStrength = 4.0
