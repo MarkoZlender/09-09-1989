@@ -1,14 +1,13 @@
-[gd_scene load_steps=28 format=4 uid="uid://bllvspggpetvu"]
+[gd_scene load_steps=27 format=4 uid="uid://bllvspggpetvu"]
 
-[ext_resource type="Script" path="res://scripts/main_debug.gd" id="1_r7pns"]
-[ext_resource type="Texture2D" uid="uid://seljnt2ryyev" path="res://assets/models/psx_apartment/PSX-ApartmentPack_WoodFloor.png" id="3_2jdy8"]
-[ext_resource type="Texture2D" uid="uid://cfpeer2mnwq5c" path="res://assets/models/psx_apartment/PSX-ApartmentPack_WallLong.png" id="4_r7pns"]
-[ext_resource type="Texture2D" uid="uid://cji4lehlyhw3r" path="res://assets/models/psx_apartment/PSX-ApartmentPack_Couch.png" id="5_2jdy8"]
-[ext_resource type="PackedScene" uid="uid://dnfwsg67dx105" path="res://scenes/activate_cam_component.tscn" id="6_fqe63"]
-[ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/player.tscn" id="6_xo0e3"]
-[ext_resource type="PackedScene" uid="uid://pfrlin6rnx1l" path="res://scenes/test_cube.tscn" id="7_fqe63"]
-[ext_resource type="LightmapGIData" uid="uid://b6d1wje8sirme" path="res://lightmaps/main_debug.lmbake" id="8_q3r71"]
-[ext_resource type="Material" uid="uid://cptisqjqacpax" path="res://shaders/film_grain_shader_material.tres" id="9_0ltlj"]
+[ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/entities/player.tscn" id="1_vajqb"]
+[ext_resource type="Texture2D" uid="uid://cji4lehlyhw3r" path="res://assets/models/psx_apartment/PSX-ApartmentPack_Couch.png" id="2_a0v6o"]
+[ext_resource type="Texture2D" uid="uid://cfpeer2mnwq5c" path="res://assets/models/psx_apartment/PSX-ApartmentPack_WallLong.png" id="3_7adpt"]
+[ext_resource type="PackedScene" uid="uid://dnfwsg67dx105" path="res://scenes/components/activate_cam_component.tscn" id="4_qjf0v"]
+[ext_resource type="PackedScene" uid="uid://pfrlin6rnx1l" path="res://scenes/interaction/interactables/test_cube.tscn" id="5_sesmo"]
+[ext_resource type="Texture2D" uid="uid://seljnt2ryyev" path="res://assets/models/psx_apartment/PSX-ApartmentPack_WoodFloor.png" id="6_otbb8"]
+[ext_resource type="LightmapGIData" uid="uid://b6d1wje8sirme" path="res://lightmaps/main_debug.lmbake" id="7_gqoc4"]
+[ext_resource type="Material" uid="uid://cptisqjqacpax" path="res://shaders/film_grain_shader_material.tres" id="8_k1a3q"]
 
 [sub_resource type="Environment" id="Environment_r7pns"]
 background_mode = 1
@@ -20,7 +19,7 @@ glow_enabled = true
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0v5n"]
 resource_name = "Couch"
 cull_mode = 2
-albedo_texture = ExtResource("5_2jdy8")
+albedo_texture = ExtResource("2_a0v6o")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_wd5je"]
@@ -62,7 +61,7 @@ data = PackedVector3Array(-0.2197, 0.4689, 0.3872, 0.5133, 0.4563, 0, 0.542, 0.4
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_njavu"]
 resource_name = "Wall"
 cull_mode = 2
-albedo_texture = ExtResource("4_r7pns")
+albedo_texture = ExtResource("3_7adpt")
 texture_filter = 2
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1fyfq"]
@@ -184,16 +183,15 @@ points = PackedVector3Array(-3.04702, -0.0476193, -0.127591, 3.04702, 2.61905, 0
 [sub_resource type="Environment" id="Environment_t4pa7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fgjv8"]
-albedo_texture = ExtResource("3_2jdy8")
+albedo_texture = ExtResource("6_otbb8")
 uv1_scale = Vector3(9, 9, 9)
 
 [node name="Node3D" type="Node3D"]
-script = ExtResource("1_r7pns")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r7pns")
 
-[node name="Player" parent="." instance=ExtResource("6_xo0e3")]
+[node name="Player" parent="." instance=ExtResource("1_vajqb")]
 transform = Transform3D(-0.0394731, 0, 0.498439, 0, 0.5, 0, -0.498439, 0, -0.0394731, -1.75143, -0.25578, -3.83444)
 
 [node name="Couch" type="MeshInstance3D" parent="."]
@@ -254,7 +252,7 @@ shape = SubResource("ConvexPolygonShape3D_6i18p")
 [node name="Camera3D2" type="Camera3D" parent="."]
 transform = Transform3D(0.151261, 0.098177, -0.983606, 0, 0.995056, 0.0993197, 0.988494, -0.0150232, 0.150513, -3.94593, 1.62188, -3.57987)
 
-[node name="ActivateCamComponent" parent="Camera3D2" instance=ExtResource("6_fqe63")]
+[node name="ActivateCamComponent" parent="Camera3D2" instance=ExtResource("4_qjf0v")]
 transform = Transform3D(6.63995, 9.31323e-10, 8.9407e-08, 0, 1.61418, -0.363592, 1.19209e-07, 0.182886, 3.20913, -4.76837e-07, -2.57097, -0.0595288)
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -263,7 +261,7 @@ environment = SubResource("Environment_t4pa7")
 current = true
 fov = 37.8493
 
-[node name="ActivateCamComponent" parent="Camera3D" instance=ExtResource("6_fqe63")]
+[node name="ActivateCamComponent" parent="Camera3D" instance=ExtResource("4_qjf0v")]
 transform = Transform3D(4.68037, -9.31323e-10, 0, 0, 0.870957, -0.507244, 0, 0.123537, 3.57616, -0.711158, -1.87847, 0.0308399)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
@@ -272,11 +270,11 @@ light_energy = 0.756
 light_bake_mode = 1
 omni_range = 55.778
 
-[node name="TestCube" parent="." instance=ExtResource("7_fqe63")]
+[node name="TestCube" parent="." instance=ExtResource("5_sesmo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.12294, 0.231446, 0)
 text = "Interact with cube 1"
 
-[node name="TestCube2" parent="." instance=ExtResource("7_fqe63")]
+[node name="TestCube2" parent="." instance=ExtResource("5_sesmo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.12294, 0.231445, 2.42984)
 text = "Interact with cube 2"
 
@@ -289,10 +287,10 @@ material = SubResource("StandardMaterial3D_fgjv8")
 [node name="LightmapGI" type="LightmapGI" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.992529, 0)
 interior = true
-light_data = ExtResource("8_q3r71")
+light_data = ExtResource("7_gqoc4")
 
 [node name="NoiseFilterShader" type="ColorRect" parent="."]
-material = ExtResource("9_0ltlj")
+material = ExtResource("8_k1a3q")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

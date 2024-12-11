@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://bml51umf76aq0"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_3vyb7"]
-[ext_resource type="PackedScene" uid="uid://b8wsips5ayqn4" path="res://scenes/cynthia.tscn" id="2_g2els"]
+[ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_3vyb7"]
+[ext_resource type="PackedScene" uid="uid://b8wsips5ayqn4" path="res://scenes/models/cynthia.tscn" id="2_g2els"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="3_qlg0r"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/idle.gd" id="4_tuyoq"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/walking.gd" id="5_fjrip"]

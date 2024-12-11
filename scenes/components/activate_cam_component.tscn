@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dnfwsg67dx105"]
 
-[ext_resource type="Script" path="res://scripts/activate_cam_component.gd" id="1_fdg77"]
+[ext_resource type="Script" path="res://scripts/components/activate_cam_component.gd" id="1_fdg77"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6x7qt"]
 size = Vector3(1, 1, 2.64185)

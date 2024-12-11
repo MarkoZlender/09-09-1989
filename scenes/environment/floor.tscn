@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://bfh7nrai6vtmh"]
 
-[ext_resource type="Texture2D" uid="uid://seljnt2ryyev" path="res://assets/models/psx_apartment/PSX-ApartmentPack_WoodFloor.png" id="1_ukw5w"]
+[ext_resource type="Texture2D" uid="uid://seljnt2ryyev" path="res://assets/models/psx_apartment/PSX-ApartmentPack_WoodFloor.png" id="1_mv0xe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lvm4"]
 resource_name = "Floor"
 cull_mode = 2
-albedo_texture = ExtResource("1_ukw5w")
+albedo_texture = ExtResource("1_mv0xe")
 texture_filter = 0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_kuqtn"]

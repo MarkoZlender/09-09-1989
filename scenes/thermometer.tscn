@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://bmt282m1o4tpr"]
+[gd_scene load_steps=6 format=4 uid="uid://16vthv7sym6u"]
 
 [ext_resource type="PackedScene" uid="uid://ch4ikensnhjwe" path="res://assets/models/thermometer/Thermometer.fbx" id="1_lg720"]
 [ext_resource type="Texture2D" uid="uid://cnw2oiccjshb2" path="res://assets/models/thermometer/Thermometer.png" id="2_vxnqj"]

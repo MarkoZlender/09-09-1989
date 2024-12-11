@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bk1pmdrrjhnuw"]
 
-[ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/player.tscn" id="1_4oo0h"]
-[ext_resource type="Texture2D" uid="uid://c6pyep1cusmnn" path="res://assets/textures/prototype_textures/Dark/texture_01.png" id="1_ahgry"]
-[ext_resource type="PackedScene" uid="uid://pfrlin6rnx1l" path="res://scenes/test_cube.tscn" id="3_pq1bs"]
-[ext_resource type="PackedScene" uid="uid://cftivtsqiijgj" path="res://scenes/post_process_effects.tscn" id="4_2urj6"]
+[ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/entities/player.tscn" id="1_cvbuw"]
+[ext_resource type="Texture2D" uid="uid://c6pyep1cusmnn" path="res://assets/textures/prototype_textures/Dark/texture_01.png" id="2_1jke0"]
+[ext_resource type="PackedScene" uid="uid://pfrlin6rnx1l" path="res://scenes/interaction/interactables/test_cube.tscn" id="3_50my6"]
+[ext_resource type="PackedScene" uid="uid://cftivtsqiijgj" path="res://scenes/effects/post_process_effects.tscn" id="4_0s487"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c87d4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -22,7 +22,7 @@ adjustment_enabled = true
 adjustment_saturation = 0.5
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0aj7"]
-albedo_texture = ExtResource("1_ahgry")
+albedo_texture = ExtResource("2_1jke0")
 uv1_triplanar = true
 
 [node name="DebugLevel" type="Node3D"]
@@ -30,7 +30,7 @@ uv1_triplanar = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ip54w")
 
-[node name="Player" parent="." instance=ExtResource("1_4oo0h")]
+[node name="Player" parent="." instance=ExtResource("1_cvbuw")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
@@ -42,12 +42,12 @@ material = SubResource("StandardMaterial3D_t0aj7")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.900197, 0.435483, 0, -0.435483, 0.900197, 0, 2.59931, 5.7555)
 
-[node name="TestCube" parent="." instance=ExtResource("3_pq1bs")]
+[node name="TestCube" parent="." instance=ExtResource("3_50my6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7043, 0.0971883, 0)
 text = "Interact with cube 1"
 
-[node name="TestCube2" parent="." instance=ExtResource("3_pq1bs")]
+[node name="TestCube2" parent="." instance=ExtResource("3_50my6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70416, 0.107178, 2.2973)
 text = "Interact with cube 2"
 
-[node name="PostProcessEffects" parent="." instance=ExtResource("4_2urj6")]
+[node name="PostProcessEffects" parent="." instance=ExtResource("4_0s487")]

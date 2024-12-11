@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://byn4tlnha6vn8"]
+[gd_scene load_steps=7 format=4 uid="uid://o3qse25ewd1i"]
 
 [ext_resource type="PackedScene" uid="uid://lo3llj5xy36w" path="res://assets/models/EMF_Detector/EMF_Detector.fbx" id="1_pt24g"]
 [ext_resource type="Texture2D" uid="uid://bt2to3vb7kor0" path="res://assets/models/EMF_Detector/EMF_Detector.png" id="2_pfpgh"]
