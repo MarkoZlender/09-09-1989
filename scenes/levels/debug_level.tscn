@@ -32,6 +32,7 @@ environment = SubResource("Environment_ip54w")
 
 [node name="Player" parent="." instance=ExtResource("1_cvbuw")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+data = null
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.392822, 0)
