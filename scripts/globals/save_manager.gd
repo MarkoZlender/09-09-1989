@@ -14,7 +14,7 @@ func _ready() -> void:
 func _verify_save_directory(path: String):
 	DirAccess.make_dir_absolute(path)
 
-func save_data(path: String, player_data_custom: PlayerData = player_data):
+func save_data(path: String, data_custom: PlayerData = player_data):
 	var file: FileAccess = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
 	if file == null:
 		printerr(FileAccess.get_open_error())
@@ -22,13 +22,13 @@ func save_data(path: String, player_data_custom: PlayerData = player_data):
 	
 	var data: Dictionary = {
 		"player_data": {
-			#"health": player_data_custom.health,
+			#"health": data_custom.health,
 			"map_position":{
-				"x": player_data_custom.map_position.x,
-				"y": player_data_custom.map_position.y,
-				"z": player_data_custom.map_position.z
+				"x": data_custom.map_position.x,
+				"y": data_custom.map_position.y,
+				"z": data_custom.map_position.z
 			},
-			#"gold": player_data_custom.gold
+			#"gold": data_custom.gold
 		}
 	}
 
