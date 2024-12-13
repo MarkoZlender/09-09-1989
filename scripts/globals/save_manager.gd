@@ -16,7 +16,8 @@ func _ready() -> void:
 func _verify_save_directory(path: String):
 	DirAccess.make_dir_absolute(path)
 
-func save_data(slot: int, level_scene_path: NodePath, data_to_save: Array[Resource]):
+func save_data(slot: int, level_scene_path: NodePath, data_to_save: Array):
+	print(data_to_save)
 	var save_file_path = func():
 		match slot:
 			1:
@@ -26,39 +27,32 @@ func save_data(slot: int, level_scene_path: NodePath, data_to_save: Array[Resour
 			3:
 				return SAVE_DIR + SAVE_FILE_NAME_3
 
-	var file: FileAccess = FileAccess.open_encrypted_with_pass(save_file_path, FileAccess.WRITE, SECURITY_KEY)
+	#var file: FileAccess = FileAccess.open_encrypted_with_pass(save_file_path, FileAccess.WRITE, SECURITY_KEY)
+	var file: FileAccess = FileAccess.open(save_file_path.call(), FileAccess.WRITE)
 	if file == null:
 		printerr(FileAccess.get_open_error())
 		return
-	
-	# var data: Dictionary = {
-	# 	"player_data": {
-	# 		#"health": data_to_save.health,
-	# 		"map_position":{
-	# 			"x": data_to_save.map_position.x,
-	# 			"y": data_to_save.map_position.y,
-	# 			"z": data_to_save.map_position.z
-	# 		},
-	# 		#"gold": data_to_save.gold
-	# 	}
-	# }
 
 	
 	var formated_data: Dictionary = {}
+	var rid = 0
 
 	for data_resource in data_to_save:
+		rid = data_resource.resource_scene_unique_id
+		print(rid)
+		formated_data[rid] = {}
 		for property in data_resource.get_property_list():
 			# 4102 is the usage flag for resource script properties
 			if property.usage == 4102 && property.type != TYPE_OBJECT:
 				match property.type:
 					TYPE_VECTOR3:
-						formated_data[property.name] = {
+						formated_data[data_resource.get_rid()][property.name] = {
 							"x": data_resource.get(property.name).x,
 							"y": data_resource.get(property.name).y,
 							"z": data_resource.get(property.name).z
 						}
 					_:
-						formated_data[property.name] = data_resource.get(property.name)
+						formated_data[rid][property.name] = data_resource.get(property.name)
 
 	var data: Dictionary = {
 		level_scene_path: formated_data

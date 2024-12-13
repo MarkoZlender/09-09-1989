@@ -1,5 +1,6 @@
 extends Node3D
 
+@export var item_data: ItemData
 @export var text: String = "Interact"
 @onready var interact_component: InteractComponent = $InteractComponent
 # Called when the node enters the scene tree for the first time.

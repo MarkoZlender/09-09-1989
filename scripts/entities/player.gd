@@ -23,17 +23,19 @@ var data: PlayerData
 var direction: float = 0
 
 func _ready():
-	SaveManager.load_data(SaveManager.SAVE_DIR + SaveManager.SAVE_FILE_NAME)
-	data = SaveManager.player_data
-	position = data.map_position
+	pass
+	# SaveManager.load_data(SaveManager.SAVE_DIR + SaveManager.SAVE_FILE_NAME)
+	# data = SaveManager.player_data
+	# position = data.map_position
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("save"):
-		data.map_position = position
-		SaveManager.save_data(SaveManager.SAVE_DIR + SaveManager.SAVE_FILE_NAME, data)
-	elif event.is_action_pressed("load"):
-		SaveManager.load_data(SaveManager.SAVE_DIR + SaveManager.SAVE_FILE_NAME)
-		position = data.map_position
+	pass
+	# if event.is_action_pressed("save"):
+	# 	data.map_position = position
+	# 	SaveManager.save_data(SaveManager.SAVE_DIR + SaveManager.SAVE_FILE_NAME, data)
+	# elif event.is_action_pressed("load"):
+	# 	SaveManager.load_data(SaveManager.SAVE_DIR + SaveManager.SAVE_FILE_NAME)
+	# 	position = data.map_position
 
 func move(delta: float):
 	rotate_player(delta)
