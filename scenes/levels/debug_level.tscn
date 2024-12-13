@@ -30,7 +30,7 @@ uv1_triplanar = true
 
 [sub_resource type="Resource" id="Resource_2twhq"]
 script = ExtResource("6_tn5mt")
-name = "Cube 1"
+name = "Item"
 description = "An item"
 
 [sub_resource type="Resource" id="Resource_pljev"]
