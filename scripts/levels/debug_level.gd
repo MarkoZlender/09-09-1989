@@ -4,22 +4,33 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# var saveable_objects = get_tree().get_nodes_in_group("saveable")
-	# # get resources from saveable objects
-	# var resources = []
-	# for obj in saveable_objects:
-	# 	var properties = obj.get_property_list()
-	# 	for property in properties:
-	# 		if property.class_name == &"ItemData":
-	# 			#print(property)
-	# 			var resource = obj.get(property.name)
-	# 			resources.append(resource)
-	# 	# var resource = obj.get("item_data")
-	# 	# resources.append(resource)
-	# # save resources
-	# #print(resources)
-	# #SaveManager.save_data(1, get_path(), resources)
-	SaveManager.load_data(1, get_path())
+	var saveable_objects = get_tree().get_nodes_in_group("saveable")
+	# get resources from saveable objects
+	var resources = []
+	for obj in saveable_objects:
+		var properties = obj.get_property_list()
+		for property in properties:
+			if property.class_name == &"ItemData":
+				#print(property)
+				var resource = obj.get(property.name)
+				resources.append(resource)
+		# var resource = obj.get("item_data")
+		# resources.append(resource)
+	# save resources
+	#print(resources)
+	#SaveManager.save_data(1, get_path(), resources)
+	var reconstructed_data: Dictionary = SaveManager.load_data(1)
+	print(reconstructed_data)
+	# for property in saveable_objects[0].get_property_list():
+	# 	if property.class_name == &"ItemData":
+	# 		saveable_objects[1].set(property.name, ItemData.new())
+	for obj in saveable_objects:
+		var properties = obj.get_property_list()
+		for property in properties:
+			if property.class_name == &"ItemData":
+				print(reconstructed_data[get_path() as String][obj.get(property.name).resource_scene_unique_id])
+				print(obj.get(property.name).resource_scene_unique_id)
+				obj.set(property.name, reconstructed_data[get_path() as String][obj.get(property.name).resource_scene_unique_id as String])
 
 
 

@@ -2,7 +2,9 @@ class_name ItemData
 extends Resource
 
 # unique item id
-@export var name: String = "Item"
+@export var name: String = "Item":
+    set(value):
+        name = value
 @export var description: String = "An item"
 
 func set_property(property, value):

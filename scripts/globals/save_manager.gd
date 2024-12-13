@@ -63,8 +63,11 @@ func save_data(slot: int, level_scene_path: NodePath, data_to_save: Array[Varian
 	file.close()
 	file = null
 
+######################################################################################################
 
-func load_data(slot: int, level_scene_path: NodePath):
+
+
+func load_data(slot: int) -> Dictionary:
 	var save_file_path = func():
 		match slot:
 			1:
@@ -73,49 +76,105 @@ func load_data(slot: int, level_scene_path: NodePath):
 				return SAVE_DIR + SAVE_FILE_NAME_2
 			3:
 				return SAVE_DIR + SAVE_FILE_NAME_3
-	if FileAccess.file_exists(save_file_path.call()):
-		#var file: FileAccess = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, SECURITY_KEY)
-		var file: FileAccess = FileAccess.open(save_file_path.call(), FileAccess.READ)
-		if file == null:
-			printerr(FileAccess.get_open_error())
-			return
-		
-		var content: String = file.get_as_text()
-		file.close()
 
-		var data = Dictionary(JSON.parse_string(content))
-		if data == null:
-			printerr("Cannot parse %s as a json_string: (%s)" % [save_file_path.call(), content])
-			return
+	# Open the file for reading
+	var file: FileAccess = FileAccess.open(save_file_path.call(), FileAccess.READ)
+	if file == null:
+		printerr(FileAccess.get_open_error())
+		return {}
+
+	if file.eof_reached():
+		printerr("Save file is empty or corrupt.")
+		file.close()
+		return {}
+
+	# Load and parse the JSON data
+	var json_string: String = file.get_as_text()
+	file.close()
+	file = null
+
+	var error: int
+	var data: Dictionary = JSON.parse_string(json_string) as Dictionary
+
+	# Reconstruct the data
+	var reconstructed_data: Dictionary = {}
+
+	for level_scene_path in data.keys():
+		reconstructed_data[level_scene_path] = {}
+		var formated_data: Dictionary = data[level_scene_path]
+
+		for rid in formated_data.keys():
+			var resource_data: Dictionary = formated_data[rid]
+			var resource_instance = Resource.new()
+
+			for property_name in resource_data.keys():
+				var value = resource_data[property_name]
+				if value is Dictionary and value.has("x") and value.has("y") and value.has("z"):
+					# It's a Vector3
+					resource_instance.set(property_name, Vector3(value["x"], value["y"], value["z"]))
+				else:
+					resource_instance.set(property_name, value)
+
+			reconstructed_data[level_scene_path][rid] = resource_instance
+	
+	#print(reconstructed_data)
+
+	return reconstructed_data
+
+
+
+# func load_data(slot: int, level_scene_path: NodePath):
+# 	var save_file_path = func():
+# 		match slot:
+# 			1:
+# 				return SAVE_DIR + SAVE_FILE_NAME_1
+# 			2:
+# 				return SAVE_DIR + SAVE_FILE_NAME_2
+# 			3:
+# 				return SAVE_DIR + SAVE_FILE_NAME_3
+# 	if FileAccess.file_exists(save_file_path.call()):
+# 		#var file: FileAccess = FileAccess.open_encrypted_with_pass(path, FileAccess.READ, SECURITY_KEY)
+# 		var file: FileAccess = FileAccess.open(save_file_path.call(), FileAccess.READ)
+# 		if file == null:
+# 			printerr(FileAccess.get_open_error())
+# 			return
 		
-		var saveable_objects = get_tree().get_nodes_in_group("saveable")
-		print(saveable_objects)
-		for obj in saveable_objects:
-			var properties = obj.get_property_list()
-			for property in properties:
-				if property.class_name == "ItemData":
-					var resource = obj.get(property.name)
-					var rid = resource.resource_scene_unique_id
-					print(rid)
+# 		var content: String = file.get_as_text()
+# 		file.close()
+
+# 		var data = Dictionary(JSON.parse_string(content))
+# 		if data == null:
+# 			printerr("Cannot parse %s as a json_string: (%s)" % [save_file_path.call(), content])
+# 			return
+		
+# 		var saveable_objects = get_tree().get_nodes_in_group("saveable")
+# 		print(saveable_objects)
+# 		for obj in saveable_objects:
+# 			var properties = obj.get_property_list()
+# 			for property in properties:
+# 				if property.class_name == "ItemData":
+# 					var resource = obj.get(property.name)
+# 					var rid = resource.resource_scene_unique_id
+# 					print(rid)
 					
-					if data.has(level_scene_path as String):
-						for key in data[level_scene_path as String][rid]:
-							for prop in resource.get_property_list():
-								if prop.name == key:
-									if prop.type == TYPE_VECTOR3:
-										resource.set(prop.name, Vector3(data[level_scene_path as String][rid][key].x, data[level_scene_path as String][rid][key].y, data[level_scene_path as String][rid][key].z))
-									else:
-										#resource.set(prop.name, data[level_scene_path as String][rid][key])
-										resource.set_property(prop.name, data[level_scene_path as String][rid][key])
-										item_data = resource
+# 					if data.has(level_scene_path as String):
+# 						for key in data[level_scene_path as String][rid]:
+# 							for prop in resource.get_property_list():
+# 								if prop.name == key:
+# 									if prop.type == TYPE_VECTOR3:
+# 										resource.set(prop.name, Vector3(data[level_scene_path as String][rid][key].x, data[level_scene_path as String][rid][key].y, data[level_scene_path as String][rid][key].z))
+# 									else:
+# 										#resource.set(prop.name, data[level_scene_path as String][rid][key])
+# 										resource.set_property(prop.name, data[level_scene_path as String][rid][key])
+# 										item_data = resource
 										
-										print(resource.get(prop.name))
+# 										print(resource.get(prop.name))
 
 												
-					else:
-						printerr("No data found for %s" % [level_scene_path])
-	else:
-		printerr("Cannot open non-existent file at %s" % [save_file_path.call()])
+# 					else:
+# 						printerr("No data found for %s" % [level_scene_path])
+# 	else:
+# 		printerr("Cannot open non-existent file at %s" % [save_file_path.call()])
 
 
 # func load_data(path: String):
