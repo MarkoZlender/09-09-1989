@@ -3,7 +3,9 @@ extends Node
 #@export var data: PlayerData = PlayerData.new()
 
 const SAVE_DIR: String = "user://saves/"
-const SAVE_FILE_NAME: String = "save.json"
+const SAVE_FILE_NAME_1: String = "save_slot_1.json"
+const SAVE_FILE_NAME_2: String = "save_slot_2.json"
+const SAVE_FILE_NAME_3: String = "save_slot_3.json"
 const SECURITY_KEY: String = "P!rTsVAHNGwT5YWh"
 
 var player_data: PlayerData = PlayerData.new()
@@ -14,22 +16,52 @@ func _ready() -> void:
 func _verify_save_directory(path: String):
 	DirAccess.make_dir_absolute(path)
 
-func save_data(path: String, data_custom: PlayerData = player_data):
-	var file: FileAccess = FileAccess.open_encrypted_with_pass(path, FileAccess.WRITE, SECURITY_KEY)
+func save_data(slot: int, level_scene_path: NodePath, data_to_save: Array[Resource]):
+	var save_file_path = func():
+		match slot:
+			1:
+				return SAVE_DIR + SAVE_FILE_NAME_1
+			2:
+				return SAVE_DIR + SAVE_FILE_NAME_2
+			3:
+				return SAVE_DIR + SAVE_FILE_NAME_3
+
+	var file: FileAccess = FileAccess.open_encrypted_with_pass(save_file_path, FileAccess.WRITE, SECURITY_KEY)
 	if file == null:
 		printerr(FileAccess.get_open_error())
 		return
 	
+	# var data: Dictionary = {
+	# 	"player_data": {
+	# 		#"health": data_to_save.health,
+	# 		"map_position":{
+	# 			"x": data_to_save.map_position.x,
+	# 			"y": data_to_save.map_position.y,
+	# 			"z": data_to_save.map_position.z
+	# 		},
+	# 		#"gold": data_to_save.gold
+	# 	}
+	# }
+
+	
+	var formated_data: Dictionary = {}
+
+	for data_resource in data_to_save:
+		for property in data_resource.get_property_list():
+			# 4102 is the usage flag for resource script properties
+			if property.usage == 4102 && property.type != TYPE_OBJECT:
+				match property.type:
+					TYPE_VECTOR3:
+						formated_data[property.name] = {
+							"x": data_resource.get(property.name).x,
+							"y": data_resource.get(property.name).y,
+							"z": data_resource.get(property.name).z
+						}
+					_:
+						formated_data[property.name] = data_resource.get(property.name)
+
 	var data: Dictionary = {
-		"player_data": {
-			#"health": data_custom.health,
-			"map_position":{
-				"x": data_custom.map_position.x,
-				"y": data_custom.map_position.y,
-				"z": data_custom.map_position.z
-			},
-			#"gold": data_custom.gold
-		}
+		level_scene_path: formated_data
 	}
 
 	var json_string: String = JSON.stringify(data, "\t")
@@ -53,7 +85,7 @@ func load_data(path: String):
 			return
 
 		#TODO - Create either a separate function for this or create a function inside
-		#       each object that needs to be saved that get the list aof all the properties
+		#       each object that needs to be saved that get the list of all the properties
 		#       that need to be saved, so that we can iterate through all of the objects that need
 		#       to be saved and load them or save them all at once.
 
