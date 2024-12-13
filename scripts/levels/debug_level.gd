@@ -8,8 +8,14 @@ func _ready() -> void:
 	# get resources from saveable objects
 	var resources = []
 	for obj in saveable_objects:
-		var resource = obj.get("item_data")
-		resources.append(resource)
+		var properties = obj.get_property_list()
+		for property in properties:
+			if property.class_name == &"ItemData":
+				print(property)
+				var resource = obj.get(property.name)
+				resources.append(resource)
+		# var resource = obj.get("item_data")
+		# resources.append(resource)
 	# save resources
 	print(resources)
 	SaveManager.save_data(1, get_path(), resources)

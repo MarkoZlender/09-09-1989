@@ -16,7 +16,7 @@ func _ready() -> void:
 func _verify_save_directory(path: String):
 	DirAccess.make_dir_absolute(path)
 
-func save_data(slot: int, level_scene_path: NodePath, data_to_save: Array):
+func save_data(slot: int, level_scene_path: NodePath, data_to_save: Array[Variant]):
 	print(data_to_save)
 	var save_file_path = func():
 		match slot:
@@ -46,7 +46,7 @@ func save_data(slot: int, level_scene_path: NodePath, data_to_save: Array):
 			if property.usage == 4102 && property.type != TYPE_OBJECT:
 				match property.type:
 					TYPE_VECTOR3:
-						formated_data[data_resource.get_rid()][property.name] = {
+						formated_data[rid][property.name] = {
 							"x": data_resource.get(property.name).x,
 							"y": data_resource.get(property.name).y,
 							"z": data_resource.get(property.name).z
