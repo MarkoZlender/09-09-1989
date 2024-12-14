@@ -105,19 +105,23 @@ func load_data(slot: int) -> Dictionary:
 
 		for rid in formated_data.keys():
 			var resource_data: Dictionary = formated_data[rid]
-			var resource_instance = Resource.new()
+			var reconstructed_resource: Dictionary = {}
 
 			for property_name in resource_data.keys():
 				var value = resource_data[property_name]
 				if value is Dictionary and value.has("x") and value.has("y") and value.has("z"):
-					# It's a Vector3
-					resource_instance.set(property_name, Vector3(value["x"], value["y"], value["z"]))
+					# It's a Vector3, reconstruct as a dictionary
+					reconstructed_resource[property_name] = {
+						"x": value["x"],
+						"y": value["y"],
+						"z": value["z"]
+					}
 				else:
-					resource_instance.set(property_name, value)
+					reconstructed_resource[property_name] = value
 
-			reconstructed_data[level_scene_path][rid] = resource_instance
+			reconstructed_data[level_scene_path][rid] = reconstructed_resource
 	
-	#print(reconstructed_data)
+	print(reconstructed_data)
 
 	return reconstructed_data
 
