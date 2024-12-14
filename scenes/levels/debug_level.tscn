@@ -30,18 +30,18 @@ uv1_triplanar = true
 
 [sub_resource type="Resource" id="Resource_2twhq"]
 script = ExtResource("6_tn5mt")
-name = "Item"
-description = "An item"
+name = "Cube 1"
+description = "Cube 1 desc"
 
 [sub_resource type="Resource" id="Resource_pljev"]
 script = ExtResource("6_tn5mt")
 name = "Cube 2"
-description = "An item"
+description = "Cube 2 desc"
 
 [sub_resource type="Resource" id="Resource_fs8rn"]
 script = ExtResource("6_tn5mt")
 name = "Cube 3"
-description = "An item"
+description = "Cube 3 desc"
 
 [node name="DebugLevel" type="Node3D"]
 script = ExtResource("1_qs4br")

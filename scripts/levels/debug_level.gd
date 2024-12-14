@@ -50,6 +50,7 @@ func _ready() -> void:
 					#if obj.get(property.name).resource_scene_unique_id == rid:
 					if property.class_name == "ItemData" && obj.get(property.name).resource_scene_unique_id == rid:
 						obj.set(property.name, reconstructed_resource)
+						break
 
 
 
