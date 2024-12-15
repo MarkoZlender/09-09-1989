@@ -18,7 +18,14 @@ func _ready() -> void:
 
 
 func _on_load_button_pressed() -> void:
-	var selected_slot: BaseButton = vslot_container.get_selected_button()
+	var selected_slot: BaseButton = vslot_container.get_children()[0].button_group.get_pressed_button()
+	if selected_slot == null:
+		printerr("No slot selected")
+		return
+	else:
+		var save_file = save_button_file_pairs[selected_slot]
+		#print(SaveManager.load_data(save_file))
+		get_tree().change_scene_to_file(SaveManager.get_current_level(save_file))
 
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file(main_menu_scene)

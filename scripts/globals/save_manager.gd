@@ -55,6 +55,7 @@ func save_data(slot: int, level_scene_path: NodePath, data_to_save: Array[Varian
 						formated_data[rid][property.name] = data_resource.get(property.name)
 
 	var data: Dictionary = {
+		"current_level_scene_path": level_scene_path,
 		level_scene_path: formated_data
 	}
 
@@ -67,18 +68,11 @@ func save_data(slot: int, level_scene_path: NodePath, data_to_save: Array[Varian
 
 
 
-func load_data(slot: int) -> Dictionary:
-	var save_file_path = func():
-		match slot:
-			1:
-				return SAVE_DIR + SAVE_FILE_NAME_1
-			2:
-				return SAVE_DIR + SAVE_FILE_NAME_2
-			3:
-				return SAVE_DIR + SAVE_FILE_NAME_3
+func load_data(slot: String) -> Dictionary:
+	var save_file_path = SAVE_DIR + slot
 
 	# Open the file for reading
-	var file: FileAccess = FileAccess.open(save_file_path.call(), FileAccess.READ)
+	var file: FileAccess = FileAccess.open(save_file_path, FileAccess.READ)
 	if file == null:
 		printerr(FileAccess.get_open_error())
 		return {}
@@ -142,3 +136,26 @@ func get_save_files() -> Array:
 	else:
 		printerr("An error occurred when trying to access the path.")
 	return save_files
+
+func get_current_level(slot: String) -> NodePath:
+	var save_file_path = SAVE_DIR + slot
+
+	# Open the file for reading
+	var file: FileAccess = FileAccess.open(save_file_path, FileAccess.READ)
+	if file == null:
+		printerr(FileAccess.get_open_error())
+		return ""
+
+	if file.eof_reached():
+		printerr("Save file is empty or corrupt.")
+		file.close()
+		return ""
+
+	# Load and parse the JSON data
+	var json_string: String = file.get_as_text()
+	file.close()
+	file = null
+
+	var data: Dictionary = JSON.parse_string(json_string) as Dictionary
+	
+	return data["current_level_scene_path"]
