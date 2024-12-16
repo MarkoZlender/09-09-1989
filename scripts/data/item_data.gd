@@ -7,6 +7,13 @@ extends Resource
         name = value
 @export var description: String = "An item"
 
+# func _init() -> void:
+#     # set the unique id of the resource to be unique but always the same
+#     set_scene_unique_id(get_parent().get_instance_id())
+
+    
+
+
 func set_property(property, value):
     for prop in get_property_list():
         if prop.name == property:

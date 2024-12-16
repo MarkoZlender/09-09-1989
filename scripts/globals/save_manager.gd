@@ -38,7 +38,7 @@ func save_data(slot: int, level_scene_path: NodePath, data_to_save: Array[Varian
 	var rid = 0
 
 	for data_resource in data_to_save:
-		rid = data_resource.resource_scene_unique_id
+		rid = data_resource.get_scene_unique_id()
 		print(rid)
 		formated_data[rid] = {}
 		for property in data_resource.get_property_list():
@@ -69,7 +69,7 @@ func save_data(slot: int, level_scene_path: NodePath, data_to_save: Array[Varian
 
 
 func load_data(slot: String) -> Dictionary:
-	var save_file_path = SAVE_DIR + slot
+	var save_file_path: String = SAVE_DIR + slot
 
 	# Open the file for reading
 	var file: FileAccess = FileAccess.open(save_file_path, FileAccess.READ)
@@ -87,34 +87,33 @@ func load_data(slot: String) -> Dictionary:
 	file.close()
 	file = null
 
-	var error: int
 	var data: Dictionary = JSON.parse_string(json_string) as Dictionary
 
 	# Reconstruct the data
 	var reconstructed_data: Dictionary = {}
 
-	for level_scene_path in data.keys():
-		reconstructed_data[level_scene_path] = {}
-		var formated_data: Dictionary = data[level_scene_path]
-
-		for rid in formated_data.keys():
-			var resource_data: Dictionary = formated_data[rid]
-			var reconstructed_resource: Dictionary = {}
-
-			for property_name in resource_data.keys():
-				var value = resource_data[property_name]
-				if value is Dictionary and value.has("x") and value.has("y") and value.has("z"):
-					# It's a Vector3, reconstruct as a dictionary
-					reconstructed_resource[property_name] = {
-						"x": value["x"],
-						"y": value["y"],
-						"z": value["z"]
-					}
-				else:
-					reconstructed_resource[property_name] = value
-
-			reconstructed_data[level_scene_path][rid] = reconstructed_resource
 	
+	reconstructed_data[get_current_level(slot)] = {}
+	var formated_data: Dictionary = data[str(get_current_level(slot))]
+
+	for rid in formated_data.keys():
+		var resource_data: Dictionary = formated_data[rid]
+		var reconstructed_resource: Dictionary = {}
+
+		for property_name in resource_data.keys():
+			var value = resource_data[property_name]
+			if value is Dictionary and value.has("x") and value.has("y") and value.has("z"):
+				# It's a Vector3, reconstruct as a dictionary
+				reconstructed_resource[property_name] = {
+					"x": value["x"],
+					"y": value["y"],
+					"z": value["z"]
+				}
+			else:
+				reconstructed_resource[property_name] = value
+
+		reconstructed_data[get_current_level(slot)][rid] = reconstructed_resource
+
 	print(reconstructed_data)
 
 	return reconstructed_data
