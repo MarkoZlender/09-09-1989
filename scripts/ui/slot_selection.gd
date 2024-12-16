@@ -1,5 +1,7 @@
 extends Control
 
+signal slot_selected(slot: int)
+
 const slot_button_scene: String = "res://scenes/ui/slot_button.tscn"
 
 @onready var main_menu_scene: String = "res://scenes/ui/main_menu.tscn"
@@ -24,6 +26,7 @@ func _on_load_button_pressed() -> void:
 		return
 	else:
 		var save_file = save_button_file_pairs[selected_slot]
+		slot_selected.emit(SaveManager.get_current_level(save_file))
 		get_tree().change_scene_to_file(SaveManager.get_current_level(save_file))
 
 func _on_back_button_pressed() -> void:
