@@ -4,4 +4,4 @@ extends Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	SaveManager.load_data(2)
+	SaveManager.load_data(1)
