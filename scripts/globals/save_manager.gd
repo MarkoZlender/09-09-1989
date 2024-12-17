@@ -17,19 +17,13 @@ func _ready() -> void:
 func _verify_save_directory(path: String):
 	DirAccess.make_dir_absolute(path)
 
-func save_data(slot: int, level_scene_path: NodePath, data_to_save: Array[Variant]):
-	print(data_to_save)
-	var save_file_path = func():
-		match slot:
-			1:
-				return SAVE_DIR + SAVE_FILE_NAME_1
-			2:
-				return SAVE_DIR + SAVE_FILE_NAME_2
-			3:
-				return SAVE_DIR + SAVE_FILE_NAME_3
-
+func save_data(slot: int) -> void:
+	var level_scene_path: NodePath = get_tree().current_scene.scene_file_path
+	var saveable_objects = get_tree().get_nodes_in_group("saveable")
+	var resources_to_save = get_saveable_resources(saveable_objects)
+	var save_file_path = get_save_file_path(slot)
 	#var file: FileAccess = FileAccess.open_encrypted_with_pass(save_file_path, FileAccess.WRITE, SECURITY_KEY)
-	var file: FileAccess = FileAccess.open(save_file_path.call(), FileAccess.WRITE)
+	var file: FileAccess = FileAccess.open(save_file_path, FileAccess.WRITE)
 	if file == null:
 		printerr(FileAccess.get_open_error())
 		return
@@ -37,9 +31,8 @@ func save_data(slot: int, level_scene_path: NodePath, data_to_save: Array[Varian
 	var formated_data: Dictionary = {}
 	var rid = 0
 
-	for data_resource in data_to_save:
+	for data_resource in resources_to_save:
 		rid = data_resource.get_scene_unique_id()
-		print(rid)
 		formated_data[rid] = {}
 		for property in data_resource.get_property_list():
 			# 4102 is the usage flag for resource script properties
@@ -64,12 +57,48 @@ func save_data(slot: int, level_scene_path: NodePath, data_to_save: Array[Varian
 	file.close()
 	file = null
 
-######################################################################################################
+func load_data(slot: int):
+# # load resources
+	var saveable_objects = get_tree().get_nodes_in_group("saveable")
+	var reconstructed_data: Dictionary = reconstruct(slot)
+
+	# Iterate over the reconstructed data
+	for level_scene_path in reconstructed_data.keys():
+		var resources_reconstructed = reconstructed_data[level_scene_path]
+
+		# Iterate over each resource in the scene path
+		for rid in resources_reconstructed.keys():
+			var resource_data: Dictionary = resources_reconstructed[rid]
+
+			# Create a new resource instance for each resource
+			var reconstructed_resource = ItemData.new()
+			reconstructed_resource.set_scene_unique_id(rid)
+
+			# Set properties on the new resource instance
+			for property_name in resource_data.keys():
+				var value = resource_data[property_name]
+
+				# Check if the value is a Vector3 stored as a dictionary
+				if value is Dictionary and value.has("x") and value.has("y") and value.has("z"):
+					reconstructed_resource.set(property_name, Vector3(value["x"], value["y"], value["z"]))
+				else:
+					reconstructed_resource.set(property_name, value)
+					print(value)
+
+			# Assign the reconstructed resource to the corresponding object
+			# Use the `rid` to identify which object to assign to
+			for obj in saveable_objects: # Match the object using its unique ID
+				for property in obj.get_property_list():
+					#if obj.get(property.name).resource_scene_unique_id == rid:
+					if property.class_name == "ItemData" && obj.get(property.name).resource_scene_unique_id == rid:
+						obj.set(property.name, reconstructed_resource)
+						break
 
 
+########################################################################################################################################################
 
-func load_data(slot: String) -> Dictionary:
-	var save_file_path: String = SAVE_DIR + slot
+func reconstruct(slot: int) -> Dictionary:
+	var save_file_path: String = get_save_file_path(slot)
 
 	# Open the file for reading
 	var file: FileAccess = FileAccess.open(save_file_path, FileAccess.READ)
@@ -93,8 +122,9 @@ func load_data(slot: String) -> Dictionary:
 	var reconstructed_data: Dictionary = {}
 
 	
-	reconstructed_data[get_current_level(slot)] = {}
-	var formated_data: Dictionary = data[str(get_current_level(slot))]
+	reconstructed_data[get_current_level(save_file_path)] = {}
+	print(str(get_current_level(save_file_path)))
+	var formated_data: Dictionary = data[str(get_current_level(save_file_path))]
 
 	for rid in formated_data.keys():
 		var resource_data: Dictionary = formated_data[rid]
@@ -112,12 +142,16 @@ func load_data(slot: String) -> Dictionary:
 			else:
 				reconstructed_resource[property_name] = value
 
-		reconstructed_data[get_current_level(slot)][rid] = reconstructed_resource
+		reconstructed_data[get_current_level(save_file_path)][rid] = reconstructed_resource
 
 	print(reconstructed_data)
 
 	return reconstructed_data
 
+
+
+
+########################################################################################################################################################
 
 func get_save_files() -> Array:
 	var dir = DirAccess.open(SAVE_DIR)
@@ -137,10 +171,10 @@ func get_save_files() -> Array:
 	return save_files
 
 func get_current_level(slot: String) -> NodePath:
-	var save_file_path = SAVE_DIR + slot
+	var save_file_path = slot
 
 	# Open the file for reading
-	var file: FileAccess = FileAccess.open(save_file_path, FileAccess.READ)
+	var file: FileAccess = FileAccess.open(str(save_file_path), FileAccess.READ)
 	if file == null:
 		printerr(FileAccess.get_open_error())
 		return ""
@@ -158,3 +192,24 @@ func get_current_level(slot: String) -> NodePath:
 	var data: Dictionary = JSON.parse_string(json_string) as Dictionary
 	
 	return data["current_level_scene_path"]
+
+
+func get_saveable_resources(objects: Array[Node]) -> Array[Variant]:
+	var resources = []
+	for obj in objects:
+		var properties = obj.get_property_list()
+		for property in properties:
+			if property.class_name == &"ItemData":
+				var resource = obj.get(property.name)
+				resources.append(resource)
+	return resources
+
+func get_save_file_path(slot: int) -> String:
+	match slot:
+		1:
+			return SAVE_DIR + SAVE_FILE_NAME_1
+		2:
+			return SAVE_DIR + SAVE_FILE_NAME_2
+		3:
+			return SAVE_DIR + SAVE_FILE_NAME_3
+	return ""

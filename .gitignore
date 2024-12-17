@@ -2,3 +2,4 @@
 .godot/
 /android/
 *.crocotile
+assets/models/crocotile_test/*.crocotile
