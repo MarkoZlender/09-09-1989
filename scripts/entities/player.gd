@@ -8,7 +8,7 @@ signal hurt(damage: float)
 # @export var TURN_SPEED = 0.025
 # @export var RUN_SPEED = 4.0
 # @export var BACK_RUN_SPEED = 3.0
-
+@export var player_data: PlayerData = PlayerData.new()
 @export var MOVE_SPEED: float = 2.0
 @export var ROTATION_SPEED: float = 3.0
 

@@ -58,7 +58,6 @@ func save_data(slot: int) -> void:
 	file = null
 
 func load_data(slot: int):
-# # load resources
 	var saveable_objects = get_tree().get_nodes_in_group("saveable")
 	var reconstructed_data: Dictionary = reconstruct(slot)
 
