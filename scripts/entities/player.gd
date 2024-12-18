@@ -1,7 +1,7 @@
 class_name Player extends CharacterBody3D
 
-signal pick_up_item(item: Node)
-signal hurt(damage: float)
+#signal pick_up_item(item: Node)
+#signal hurt(damage: float)
 
 # @export var FORWARD_SPEED = 2.0
 # @export var BACK_SPEED = 5.0

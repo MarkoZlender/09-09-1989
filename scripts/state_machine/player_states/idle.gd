@@ -1,5 +1,6 @@
 extends PlayerState
 
+@warning_ignore("unused_parameter")
 func enter(previous_state_path: String, data := {}) -> void:
 	print("Entering idle state")
 	player.velocity = Vector3.ZERO
