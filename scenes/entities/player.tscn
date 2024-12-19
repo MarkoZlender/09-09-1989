@@ -1,17 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://bml51umf76aq0"]
+[gd_scene load_steps=21 format=3 uid="uid://bml51umf76aq0"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_3vyb7"]
-[ext_resource type="Script" path="res://scripts/data/player_data.gd" id="2_2jnu7"]
 [ext_resource type="PackedScene" uid="uid://b8wsips5ayqn4" path="res://scenes/models/cynthia.tscn" id="2_g2els"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="3_qlg0r"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/idle.gd" id="4_tuyoq"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/walking.gd" id="5_fjrip"]
-
-[sub_resource type="Resource" id="Resource_wg41u"]
-script = ExtResource("2_2jnu7")
-map_position = Vector3(0, 0, 0)
-health = 100
-mana = 50
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 radius = 0.259522
@@ -83,7 +76,6 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 collision_layer = 3
 script = ExtResource("1_3vyb7")
-player_data = SubResource("Resource_wg41u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 2.61249e-10, 0.859425, 0.00597668)

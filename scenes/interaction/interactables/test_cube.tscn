@@ -21,7 +21,7 @@ material = SubResource("StandardMaterial3D_o44qq")
 [sub_resource type="BoxShape3D" id="BoxShape3D_bf4sv"]
 size = Vector3(1, 0.748535, 1)
 
-[node name="TestCube" type="Node3D" groups=["saveable"]]
+[node name="TestCube" type="Node3D"]
 script = ExtResource("1_fxgoe")
 item_data_for_cube = SubResource("Resource_jqwm2")
 

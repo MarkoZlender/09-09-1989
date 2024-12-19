@@ -35,7 +35,7 @@ enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg")
 
 [global_group]
 
-saveable=""
+player=""
 
 [input]
 

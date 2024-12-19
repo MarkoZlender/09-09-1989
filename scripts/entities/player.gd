@@ -8,7 +8,7 @@ class_name Player extends CharacterBody3D
 # @export var TURN_SPEED = 0.025
 # @export var RUN_SPEED = 4.0
 # @export var BACK_RUN_SPEED = 3.0
-@export var player_data: PlayerData = PlayerData.new()
+@export var player_data: PlayerData
 @export var MOVE_SPEED: float = 2.0
 @export var ROTATION_SPEED: float = 3.0
 
@@ -18,21 +18,21 @@ class_name Player extends CharacterBody3D
 
 @export var move_speed_hurt = 1.0
 
-var data: PlayerData
-
 var direction: float = 0
 
 func _ready():
-	pass
-	# SaveManager.load_data(SaveManager.SAVE_DIR + SaveManager.SAVE_FILE_NAME)
-	# data = SaveManager.player_data
-	# position = data.map_position
+	SaveManager.connect("save_game", _on_save)
+
+func _on_save():
+	player_data.map_position = self.position
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("save"):
 		SaveManager.save_data(1)
+		print("Saved game")
 	elif event.is_action_pressed("load"):
 		SaveManager.load_data(1)
+		print("Loaded game")
 
 func move(delta: float):
 	rotate_player(delta)

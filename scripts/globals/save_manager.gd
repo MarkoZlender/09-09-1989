@@ -1,15 +1,12 @@
 extends Node
 
-#@export var data: PlayerData = PlayerData.new()
+signal save_game
 
 const SAVE_DIR: String = "user://saves/"
 const SAVE_FILE_NAME_1: String = "save_slot_1.json"
 const SAVE_FILE_NAME_2: String = "save_slot_2.json"
 const SAVE_FILE_NAME_3: String = "save_slot_3.json"
 const SECURITY_KEY: String = "P!rTsVAHNGwT5YWh"
-
-var player_data: PlayerData = PlayerData.new()
-var item_data: ItemData = ItemData.new()
 
 func _ready() -> void:
 	_verify_save_directory(SAVE_DIR)
@@ -18,9 +15,12 @@ func _verify_save_directory(path: String):
 	DirAccess.make_dir_absolute(path)
 
 func save_data(slot: int) -> void:
+	save_game.emit()
 	var level_scene_path: NodePath = get_tree().current_scene.scene_file_path
 	var saveable_objects = get_tree().get_nodes_in_group("saveable")
+	print("Saveable objects: ", saveable_objects)
 	var resources_to_save = get_saveable_resources(saveable_objects)
+	print("Resources to save: ", resources_to_save)
 	var save_file_path = get_save_file_path(slot)
 	#var file: FileAccess = FileAccess.open_encrypted_with_pass(save_file_path, FileAccess.WRITE, SECURITY_KEY)
 	var file: FileAccess = FileAccess.open(save_file_path, FileAccess.WRITE)
@@ -69,8 +69,13 @@ func load_data(slot: int):
 		for rid in resources_reconstructed.keys():
 			var resource_data: Dictionary = resources_reconstructed[rid]
 
-			# Create a new resource instance for each resource
-			var reconstructed_resource = ItemData.new()
+			# Create a new resource instance for each resource and set its unique ID to rid of the original resource
+			var reconstructed_resource = null
+			if reconstructed_resource is ItemData:
+				reconstructed_resource = ItemData.new()
+			elif reconstructed_resource is PlayerData:
+				reconstructed_resource = PlayerData.new()
+			
 			reconstructed_resource.set_scene_unique_id(rid)
 
 			# Set properties on the new resource instance
@@ -82,14 +87,12 @@ func load_data(slot: int):
 					reconstructed_resource.set(property_name, Vector3(value["x"], value["y"], value["z"]))
 				else:
 					reconstructed_resource.set(property_name, value)
-					print(value)
 
 			# Assign the reconstructed resource to the corresponding object
 			# Use the `rid` to identify which object to assign to
 			for obj in saveable_objects: # Match the object using its unique ID
 				for property in obj.get_property_list():
-					#if obj.get(property.name).resource_scene_unique_id == rid:
-					if property.class_name == "ItemData" && obj.get(property.name).resource_scene_unique_id == rid:
+					if (property.class_name == "ItemData" || property.class_name == "PlayerData") && obj.get(property.name).get_scene_unique_id() == rid:
 						obj.set(property.name, reconstructed_resource)
 						break
 
@@ -120,9 +123,7 @@ func reconstruct(slot: int) -> Dictionary:
 	# Reconstruct the data
 	var reconstructed_data: Dictionary = {}
 
-	
 	reconstructed_data[get_current_level(save_file_path)] = {}
-	print(str(get_current_level(save_file_path)))
 	var formated_data: Dictionary = data[str(get_current_level(save_file_path))]
 
 	for rid in formated_data.keys():
@@ -143,12 +144,7 @@ func reconstruct(slot: int) -> Dictionary:
 
 		reconstructed_data[get_current_level(save_file_path)][rid] = reconstructed_resource
 
-	print(reconstructed_data)
-
 	return reconstructed_data
-
-
-
 
 ########################################################################################################################################################
 
@@ -198,7 +194,7 @@ func get_saveable_resources(objects: Array[Node]) -> Array[Variant]:
 	for obj in objects:
 		var properties = obj.get_property_list()
 		for property in properties:
-			if property.class_name == &"ItemData":
+			if property.class_name == &"ItemData" || property.class_name == &"PlayerData":
 				var resource = obj.get(property.name)
 				resources.append(resource)
 	return resources
