@@ -26,9 +26,8 @@ func _on_load_button_pressed() -> void:
 		return
 	else:
 		var save_file = save_button_file_pairs[selected_slot]
-		slot_selected.emit(SaveManager.get_current_level(save_file))
-		get_tree().change_scene_to_file(SaveManager.get_current_level(save_file))
+		#slot_selected.emit(SaveManager.get_current_level(save_file))
+		get_tree().change_scene_to_file(SaveManager.get_current_level(1))
 
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file(main_menu_scene)
-

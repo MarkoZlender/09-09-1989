@@ -8,7 +8,9 @@ class_name Player extends CharacterBody3D
 # @export var TURN_SPEED = 0.025
 # @export var RUN_SPEED = 4.0
 # @export var BACK_RUN_SPEED = 3.0
+
 @export var player_data: PlayerData
+
 @export var MOVE_SPEED: float = 2.0
 @export var ROTATION_SPEED: float = 3.0
 
@@ -18,20 +20,19 @@ class_name Player extends CharacterBody3D
 
 @export var move_speed_hurt = 1.0
 
+@export var health: int = 100
+
 var direction: float = 0
 
 func _ready():
-	SaveManager.connect("save_game", _on_save)
-
-func _on_save():
-	player_data.map_position = self.position
+	pass
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("save"):
-		SaveManager.save_data(1)
+		SaveManager.save_game(1)
 		print("Saved game")
 	elif event.is_action_pressed("load"):
-		SaveManager.load_data(1)
+		SaveManager.load_game(1)
 		print("Loaded game")
 
 func move(delta: float):
@@ -49,3 +50,19 @@ func rotate_player(delta: float) -> void:
 	else:
 		ROTATION_SPEED = rotation_speed_moving
 	rotation += Vector3(0, rotation_direction * ROTATION_SPEED * delta, 0)
+
+func save() -> Dictionary:
+	var save_data = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"pos_x" : position.x, # Vector2 is not supported by JSON
+		"pos_y" : position.y,
+		"pos_z" : position.z,
+		"rot_x" : rotation.x,
+		"rot_y" : rotation.y,
+		"rot_z" : rotation.z,
+		"current_level" : get_tree().current_scene.get_scene_file_path(),
+		"health" : health,
+		#"mana" : player_data.mana
+	}
+	return save_data

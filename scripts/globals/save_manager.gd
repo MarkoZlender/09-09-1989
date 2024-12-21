@@ -1,12 +1,12 @@
 extends Node
 
-signal save_game
+signal saving
 
 const SAVE_DIR: String = "user://saves/"
-const SAVE_FILE_NAME_1: String = "save_slot_1.json"
-const SAVE_FILE_NAME_2: String = "save_slot_2.json"
-const SAVE_FILE_NAME_3: String = "save_slot_3.json"
-const SECURITY_KEY: String = "P!rTsVAHNGwT5YWh"
+# IMPORTANT: change to .res for relesase
+const SAVE_FILE_NAME_1: String = "save_slot_1.tres"
+const SAVE_FILE_NAME_2: String = "save_slot_2.tres"
+const SAVE_FILE_NAME_3: String = "save_slot_3.tres"
 
 func _ready() -> void:
 	_verify_save_directory(SAVE_DIR)
@@ -14,137 +14,126 @@ func _ready() -> void:
 func _verify_save_directory(path: String):
 	DirAccess.make_dir_absolute(path)
 
-func save_data(slot: int) -> void:
-	save_game.emit()
-	var level_scene_path: NodePath = get_tree().current_scene.scene_file_path
-	var saveable_objects = get_tree().get_nodes_in_group("saveable")
-	print("Saveable objects: ", saveable_objects)
-	var resources_to_save = get_saveable_resources(saveable_objects)
-	print("Resources to save: ", resources_to_save)
-	var save_file_path = get_save_file_path(slot)
-	#var file: FileAccess = FileAccess.open_encrypted_with_pass(save_file_path, FileAccess.WRITE, SECURITY_KEY)
-	var file: FileAccess = FileAccess.open(save_file_path, FileAccess.WRITE)
-	if file == null:
-		printerr(FileAccess.get_open_error())
-		return
+func save_game(slot: int) -> void:
+	saving.emit()
+	var save_file = FileAccess.open(get_save_file_path(slot), FileAccess.WRITE)
+	var save_nodes = get_tree().get_nodes_in_group("savable")
+	for node in save_nodes:
+		# Check the node is an instanced scene so it can be instanced again during load.
+		if node.scene_file_path.is_empty():
+			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
+			continue
 
-	var formated_data: Dictionary = {}
-	var rid = 0
+		# Check the node has a save function.
+		if !node.has_method("save"):
+			print("persistent node '%s' is missing a save() function, skipped" % node.name)
+			continue
 
-	for data_resource in resources_to_save:
-		rid = data_resource.get_scene_unique_id()
-		formated_data[rid] = {}
-		for property in data_resource.get_property_list():
-			# 4102 is the usage flag for resource script properties
-			if property.usage == 4102 && property.type != TYPE_OBJECT:
-				match property.type:
-					TYPE_VECTOR3:
-						formated_data[rid][property.name] = {
-							"x": data_resource.get(property.name).x,
-							"y": data_resource.get(property.name).y,
-							"z": data_resource.get(property.name).z
-						}
-					_:
-						formated_data[rid][property.name] = data_resource.get(property.name)
+		# Call the node's save function.
+		var node_data = node.call("save")
 
-	var data: Dictionary = {
-		"current_level_scene_path": level_scene_path,
-		level_scene_path: formated_data
-	}
+		# JSON provides a static method to serialized JSON string.
+		var json_string = JSON.stringify(node_data)
 
-	var json_string: String = JSON.stringify(data, "\t")
-	file.store_string(json_string)
-	file.close()
-	file = null
+		# Store the save dictionary as a new line in the save file.
+		save_file.store_line(json_string)
+	
 
-func load_data(slot: int):
-	var saveable_objects = get_tree().get_nodes_in_group("saveable")
-	var reconstructed_data: Dictionary = reconstruct(slot)
+func load_game(slot: int):
+	if not FileAccess.file_exists(get_save_file_path(slot)):
+		printerr("Save file does not exist.")
+		return # Error! We don't have a save to load.
 
-	# Iterate over the reconstructed data
-	for level_scene_path in reconstructed_data.keys():
-		var resources_reconstructed = reconstructed_data[level_scene_path]
+	# We need to revert the game state so we're not cloning objects
+	# during loading. This will vary wildly depending on the needs of a
+	# project, so take care with this step.
+	# For our example, we will accomplish this by deleting saveable objects.
+	var save_nodes = get_tree().get_nodes_in_group("savable")
+	for i in save_nodes:
+		print("Deleting node: ", i)
+		i.queue_free()
 
-		# Iterate over each resource in the scene path
-		for rid in resources_reconstructed.keys():
-			var resource_data: Dictionary = resources_reconstructed[rid]
+	# Load the file line by line and process that dictionary to restore
+	# the object it represents.
+	var save_file = FileAccess.open(get_save_file_path(slot), FileAccess.READ)
+	while save_file.get_position() < save_file.get_length():
+		var json_string = save_file.get_line()
 
-			# Create a new resource instance for each resource and set its unique ID to rid of the original resource
-			var reconstructed_resource = null
-			if reconstructed_resource is ItemData:
-				reconstructed_resource = ItemData.new()
-			elif reconstructed_resource is PlayerData:
-				reconstructed_resource = PlayerData.new()
-			
-			reconstructed_resource.set_scene_unique_id(rid)
+		# Creates the helper class to interact with JSON.
+		var json = JSON.new()
 
-			# Set properties on the new resource instance
-			for property_name in resource_data.keys():
-				var value = resource_data[property_name]
+		# Check if there is any error while parsing the JSON string, skip in case of failure.
+		var parse_result = json.parse(json_string)
+		if not parse_result == OK:
+			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+			continue
 
-				# Check if the value is a Vector3 stored as a dictionary
-				if value is Dictionary and value.has("x") and value.has("y") and value.has("z"):
-					reconstructed_resource.set(property_name, Vector3(value["x"], value["y"], value["z"]))
-				else:
-					reconstructed_resource.set(property_name, value)
+		# Get the data from the JSON object.
+		var node_data = json.data
 
-			# Assign the reconstructed resource to the corresponding object
-			# Use the `rid` to identify which object to assign to
-			for obj in saveable_objects: # Match the object using its unique ID
-				for property in obj.get_property_list():
-					if (property.class_name == "ItemData" || property.class_name == "PlayerData") && obj.get(property.name).get_scene_unique_id() == rid:
-						obj.set(property.name, reconstructed_resource)
-						break
+		# Firstly, we need to create the object and add it to the tree and set its position.
+		var new_object = load(node_data["filename"]).instantiate()
+		print(node_data["parent"])
+		get_node(node_data["parent"]).add_child(new_object)
+		new_object.position = Vector3(node_data["pos_x"], node_data["pos_y"], node_data["pos_z"])
+		new_object.rotation = Vector3(node_data["rot_x"], node_data["rot_y"], node_data["rot_z"])
+
+		# Now we set the remaining variables.
+		for i in node_data.keys():
+			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y" or i == "pos_z" or i == "rot_x" or i == "rot_y" or i == "rot_z":
+				continue
+			new_object.set(i, node_data[i])
+	
 
 
 ########################################################################################################################################################
 
-func reconstruct(slot: int) -> Dictionary:
-	var save_file_path: String = get_save_file_path(slot)
+# func reconstruct(slot: int) -> Dictionary:
+# 	var save_file_path: String = get_save_file_path(slot)
 
-	# Open the file for reading
-	var file: FileAccess = FileAccess.open(save_file_path, FileAccess.READ)
-	if file == null:
-		printerr(FileAccess.get_open_error())
-		return {}
+# 	# Open the file for reading
+# 	var file: FileAccess = FileAccess.open(save_file_path, FileAccess.READ)
+# 	if file == null:
+# 		printerr(FileAccess.get_open_error())
+# 		return {}
 
-	if file.eof_reached():
-		printerr("Save file is empty or corrupt.")
-		file.close()
-		return {}
+# 	if file.eof_reached():
+# 		printerr("Save file is empty or corrupt.")
+# 		file.close()
+# 		return {}
 
-	# Load and parse the JSON data
-	var json_string: String = file.get_as_text()
-	file.close()
-	file = null
+# 	# Load and parse the JSON data
+# 	var json_string: String = file.get_as_text()
+# 	file.close()
+# 	file = null
 
-	var data: Dictionary = JSON.parse_string(json_string) as Dictionary
+# 	var data: Dictionary = JSON.parse_string(json_string) as Dictionary
 
-	# Reconstruct the data
-	var reconstructed_data: Dictionary = {}
+# 	# Reconstruct the data
+# 	var reconstructed_data: Dictionary = {}
 
-	reconstructed_data[get_current_level(save_file_path)] = {}
-	var formated_data: Dictionary = data[str(get_current_level(save_file_path))]
+# 	reconstructed_data[get_current_level(save_file_path)] = {}
+# 	var formated_data: Dictionary = data[str(get_current_level(save_file_path))]
 
-	for rid in formated_data.keys():
-		var resource_data: Dictionary = formated_data[rid]
-		var reconstructed_resource: Dictionary = {}
+# 	for rid in formated_data.keys():
+# 		var resource_data: Dictionary = formated_data[rid]
+# 		var reconstructed_resource: Dictionary = {}
 
-		for property_name in resource_data.keys():
-			var value = resource_data[property_name]
-			if value is Dictionary and value.has("x") and value.has("y") and value.has("z"):
-				# It's a Vector3, reconstruct as a dictionary
-				reconstructed_resource[property_name] = {
-					"x": value["x"],
-					"y": value["y"],
-					"z": value["z"]
-				}
-			else:
-				reconstructed_resource[property_name] = value
+# 		for property_name in resource_data.keys():
+# 			var value = resource_data[property_name]
+# 			if value is Dictionary and value.has("x") and value.has("y") and value.has("z"):
+# 				# It's a Vector3, reconstruct as a dictionary
+# 				reconstructed_resource[property_name] = {
+# 					"x": value["x"],
+# 					"y": value["y"],
+# 					"z": value["z"]
+# 				}
+# 			else:
+# 				reconstructed_resource[property_name] = value
 
-		reconstructed_data[get_current_level(save_file_path)][rid] = reconstructed_resource
+# 		reconstructed_data[get_current_level(save_file_path)][rid] = reconstructed_resource
 
-	return reconstructed_data
+# 	return reconstructed_data
 
 ########################################################################################################################################################
 
@@ -165,38 +154,41 @@ func get_save_files() -> Array:
 		printerr("An error occurred when trying to access the path.")
 	return save_files
 
-func get_current_level(slot: String) -> NodePath:
-	var save_file_path = slot
-
-	# Open the file for reading
-	var file: FileAccess = FileAccess.open(str(save_file_path), FileAccess.READ)
-	if file == null:
-		printerr(FileAccess.get_open_error())
+func get_current_level(slot: int) -> NodePath:
+	var save_file_path = get_save_file_path(slot)
+	if not FileAccess.file_exists(save_file_path):
+		printerr("Save file does not exist.")
 		return ""
-
-	if file.eof_reached():
-		printerr("Save file is empty or corrupt.")
-		file.close()
-		return ""
-
-	# Load and parse the JSON data
-	var json_string: String = file.get_as_text()
-	file.close()
-	file = null
-
-	var data: Dictionary = JSON.parse_string(json_string) as Dictionary
 	
-	return data["current_level_scene_path"]
+	var save_file = FileAccess.open(save_file_path, FileAccess.READ)
+	if save_file == null:
+		printerr("Failed to open save file: ", save_file_path)
+		return ""
+	
+	var json_string = save_file.get_line() # Read the first line to get the current level
+	save_file.close()
+	
+	var json = JSON.new()
+	var parse_result = json.parse(json_string)
+	if parse_result != OK:
+		printerr("JSON Parse Error: ", json.get_error_message())
+		return ""
+	
+	var save_data = json.data
+	if "current_level" in save_data:
+		return save_data["current_level"]
+	else:
+		printerr("Current level not found in save data.")
+		return ""
 
 
-func get_saveable_resources(objects: Array[Node]) -> Array[Variant]:
+func get_saveable_resources(objects: Array[Node]) -> Array:
 	var resources = []
 	for obj in objects:
-		var properties = obj.get_property_list()
-		for property in properties:
-			if property.class_name == &"ItemData" || property.class_name == &"PlayerData":
-				var resource = obj.get(property.name)
-				resources.append(resource)
+		if obj.has_method("get_save_data"):
+			resources.append(obj.get_save_data())
+		else:
+			push_warning("Object does not have a get_save_data method: " + str(obj.get_path()))
 	return resources
 
 func get_save_file_path(slot: int) -> String:

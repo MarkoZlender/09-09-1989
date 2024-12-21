@@ -25,9 +25,8 @@ glow_enabled = true
 adjustment_enabled = true
 adjustment_saturation = 0.5
 
-[sub_resource type="Resource" id="Resource_ai4h2"]
+[sub_resource type="Resource" id="Resource_bj8ob"]
 script = ExtResource("4_hbjxf")
-map_position = Vector3(0, 0, 0)
 health = 100
 mana = 50
 
@@ -57,9 +56,9 @@ player_data = ExtResource("2_ribc5")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ip54w")
 
-[node name="Player" parent="." groups=["saveable"] instance=ExtResource("1_cvbuw")]
+[node name="Player" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_ai4h2")
+player_data = SubResource("Resource_bj8ob")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.392822, 0)
@@ -70,18 +69,21 @@ material = SubResource("StandardMaterial3D_t0aj7")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.900197, 0.435483, 0, -0.435483, 0.900197, 0, 2.59931, 5.7555)
 
-[node name="TestCube" parent="." groups=["saveable"] instance=ExtResource("3_50my6")]
+[node name="TestCube" parent="." groups=["savable"] instance=ExtResource("3_50my6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7043, 0.0971883, 0)
 item_data_for_cube = SubResource("Resource_2twhq")
 text = "Interact with cube 1"
+cube_name = "Cube 1"
 
-[node name="TestCube2" parent="." groups=["saveable"] instance=ExtResource("3_50my6")]
+[node name="TestCube2" parent="." groups=["savable"] instance=ExtResource("3_50my6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70416, 0.107178, 2.2973)
 item_data_for_cube = SubResource("Resource_pljev")
 text = "Interact with cube 2"
+cube_name = "Cube 2"
 
-[node name="TestCube3" parent="." groups=["saveable"] instance=ExtResource("3_50my6")]
+[node name="TestCube3" parent="." groups=["savable"] instance=ExtResource("3_50my6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7043, 0.0971883, 0)
 item_data_for_cube = SubResource("Resource_fs8rn")
+cube_name = "Cube 3"
 
 [node name="PostProcessEffects" parent="." instance=ExtResource("4_0s487")]
