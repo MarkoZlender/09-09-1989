@@ -9,6 +9,7 @@ func _ready() -> void:
 
 func _on_interact() -> void:
 	print(text)
+	queue_free()
 	# await dialog finished, animation finished, etc.
 
 func save() -> Dictionary:

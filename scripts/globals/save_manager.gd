@@ -52,6 +52,8 @@ func load_game(slot: int):
 	var save_nodes = get_tree().get_nodes_in_group("savable")
 	for i in save_nodes:
 		print("Deleting node: ", i)
+		for group in i.get_groups():
+			i.remove_from_group(group)
 		i.queue_free()
 
 	# Load the file line by line and process that dictionary to restore
@@ -75,14 +77,17 @@ func load_game(slot: int):
 		# Firstly, we need to create the object and add it to the tree and set its position.
 		var new_object = load(node_data["filename"]).instantiate()
 		print(node_data["parent"])
-		get_node(node_data["parent"]).add_child(new_object)
-		new_object.add_to_group("savable")
+		get_node(node_data["parent"]).add_child(new_object, true)
 		
 		if !new_object.has_method("load"):
 			print("persistent node '%s' is missing a save() function, skipped" % new_object.name)
 			continue
 		
 		new_object.call("load", node_data)
+
+		new_object.add_to_group("savable")
+		if new_object is Player:
+			new_object.add_to_group("player")
 		# new_object.position = Vector3(node_data["pos_x"], node_data["pos_y"], node_data["pos_z"])
 		# new_object.rotation = Vector3(node_data["rot_x"], node_data["rot_y"], node_data["rot_z"])
 

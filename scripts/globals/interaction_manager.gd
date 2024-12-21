@@ -1,6 +1,6 @@
 extends Node
 # https://www.youtube.com/watch?v=ajCraxGAeYU
-@onready var player = get_tree().get_first_node_in_group("player")
+@onready var player: Player = get_tree().get_first_node_in_group("player")
 
 var active_areas: Array[InteractComponent] = []
 var can_interact: bool = true
