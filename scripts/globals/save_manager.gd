@@ -132,9 +132,12 @@ func load_game(slot: int):
 		printerr("Failed to open save file: ", get_save_file_path(slot))
 		return
 
-	var json_string = ""
-	while save_file.get_position() < save_file.get_length():
-		json_string += save_file.get_line()
+	# var json_string = ""
+	# while save_file.get_position() < save_file.get_length():
+	# 	json_string += save_file.get_line()
+	# save_file.close()
+
+	var json_string = save_file.get_as_text()
 	save_file.close()
 
 	# Parse the JSON string.

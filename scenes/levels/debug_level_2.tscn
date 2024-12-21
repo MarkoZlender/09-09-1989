@@ -1,0 +1,75 @@
+[gd_scene load_steps=16 format=3 uid="uid://boiiijulkllqb"]
+
+[ext_resource type="Script" path="res://scripts/levels/debug_level.gd" id="1_ds4hp"]
+[ext_resource type="Resource" uid="uid://ch5ohx5cvmym6" path="res://resources/player_data_test.tres" id="2_mf1mw"]
+[ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/entities/player.tscn" id="3_cina5"]
+[ext_resource type="Script" path="res://scripts/data/player_data.gd" id="4_trtfv"]
+[ext_resource type="Texture2D" uid="uid://c6pyep1cusmnn" path="res://assets/textures/prototype_textures/Dark/texture_01.png" id="5_g1ucc"]
+[ext_resource type="PackedScene" uid="uid://pfrlin6rnx1l" path="res://scenes/interaction/interactables/test_cube.tscn" id="6_5c0pr"]
+[ext_resource type="Script" path="res://scripts/data/item_data.gd" id="7_7jh18"]
+[ext_resource type="PackedScene" uid="uid://cftivtsqiijgj" path="res://scenes/effects/post_process_effects.tscn" id="8_lk631"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c87d4"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_nnm2s"]
+sky_material = SubResource("ProceduralSkyMaterial_c87d4")
+
+[sub_resource type="Environment" id="Environment_ip54w"]
+sky = SubResource("Sky_nnm2s")
+ambient_light_source = 2
+ambient_light_color = Color(0.903598, 0.903598, 0.903598, 1)
+tonemap_mode = 2
+glow_enabled = true
+adjustment_enabled = true
+adjustment_saturation = 0.5
+
+[sub_resource type="Resource" id="Resource_ljvgv"]
+script = ExtResource("4_trtfv")
+health = 100
+mana = 50
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0aj7"]
+albedo_texture = ExtResource("5_g1ucc")
+uv1_triplanar = true
+
+[sub_resource type="Resource" id="Resource_sk1pg"]
+script = ExtResource("7_7jh18")
+name = "Cube 1"
+description = "An item"
+
+[sub_resource type="Resource" id="Resource_0h4dv"]
+script = ExtResource("7_7jh18")
+name = "Cube 2"
+description = "An item"
+
+[node name="DebugLevel2" type="Node3D"]
+script = ExtResource("1_ds4hp")
+player_data = ExtResource("2_mf1mw")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ip54w")
+
+[node name="Player" parent="." groups=["savable"] instance=ExtResource("3_cina5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.392822, 0)
+use_collision = true
+size = Vector3(50, 0, 50)
+material = SubResource("StandardMaterial3D_t0aj7")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.900197, 0.435483, 0, -0.435483, 0.900197, 0, 2.59931, 5.7555)
+
+[node name="TestCube" parent="." groups=["savable"] instance=ExtResource("6_5c0pr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68522, 0.107178, -0.409076)
+item_data_for_cube = SubResource("Resource_sk1pg")
+
+[node name="TestCube2" parent="." groups=["savable"] instance=ExtResource("6_5c0pr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68522, 0.107178, 2.33119)
+item_data_for_cube = SubResource("Resource_0h4dv")
+
+[node name="PostProcessEffects" parent="." instance=ExtResource("8_lk631")]
