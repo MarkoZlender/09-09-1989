@@ -68,7 +68,7 @@ func load_game(slot: int):
 		# Check if there is any error while parsing the JSON string, skip in case of failure.
 		var parse_result = json.parse(json_string)
 		if not parse_result == OK:
-			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+			printerr("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
 			continue
 
 		# Get the data from the JSON object.
@@ -78,9 +78,10 @@ func load_game(slot: int):
 		var new_object = load(node_data["filename"]).instantiate()
 		print(node_data["parent"])
 		get_node(node_data["parent"]).add_child(new_object, true)
+		#new_object.name = new_object.name + str(randi())
 		
 		if !new_object.has_method("load"):
-			print("persistent node '%s' is missing a save() function, skipped" % new_object.name)
+			printerr("persistent node '%s' is missing a save() function, skipped" % new_object.name)
 			continue
 		
 		new_object.call("load", node_data)
@@ -88,66 +89,10 @@ func load_game(slot: int):
 		new_object.add_to_group("savable")
 		if new_object is Player:
 			new_object.add_to_group("player")
-		# new_object.position = Vector3(node_data["pos_x"], node_data["pos_y"], node_data["pos_z"])
-		# new_object.rotation = Vector3(node_data["rot_x"], node_data["rot_y"], node_data["rot_z"])
-
-		# # Now we set the remaining variables.
-		# for i in node_data.keys():
-		# 	if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y" or i == "pos_z" or i == "rot_x" or i == "rot_y" or i == "rot_z":
-		# 		continue
-		# 	new_object.set(i, node_data[i])
 	
 
 
 ########################################################################################################################################################
-
-# func reconstruct(slot: int) -> Dictionary:
-# 	var save_file_path: String = get_save_file_path(slot)
-
-# 	# Open the file for reading
-# 	var file: FileAccess = FileAccess.open(save_file_path, FileAccess.READ)
-# 	if file == null:
-# 		printerr(FileAccess.get_open_error())
-# 		return {}
-
-# 	if file.eof_reached():
-# 		printerr("Save file is empty or corrupt.")
-# 		file.close()
-# 		return {}
-
-# 	# Load and parse the JSON data
-# 	var json_string: String = file.get_as_text()
-# 	file.close()
-# 	file = null
-
-# 	var data: Dictionary = JSON.parse_string(json_string) as Dictionary
-
-# 	# Reconstruct the data
-# 	var reconstructed_data: Dictionary = {}
-
-# 	reconstructed_data[get_current_level(save_file_path)] = {}
-# 	var formated_data: Dictionary = data[str(get_current_level(save_file_path))]
-
-# 	for rid in formated_data.keys():
-# 		var resource_data: Dictionary = formated_data[rid]
-# 		var reconstructed_resource: Dictionary = {}
-
-# 		for property_name in resource_data.keys():
-# 			var value = resource_data[property_name]
-# 			if value is Dictionary and value.has("x") and value.has("y") and value.has("z"):
-# 				# It's a Vector3, reconstruct as a dictionary
-# 				reconstructed_resource[property_name] = {
-# 					"x": value["x"],
-# 					"y": value["y"],
-# 					"z": value["z"]
-# 				}
-# 			else:
-# 				reconstructed_resource[property_name] = value
-
-# 		reconstructed_data[get_current_level(save_file_path)][rid] = reconstructed_resource
-
-# 	return reconstructed_data
-
 ########################################################################################################################################################
 
 func get_save_files() -> Array:
@@ -194,15 +139,6 @@ func get_current_level(slot: int) -> NodePath:
 		printerr("Current level not found in save data.")
 		return ""
 
-
-func get_saveable_resources(objects: Array[Node]) -> Array:
-	var resources = []
-	for obj in objects:
-		if obj.has_method("get_save_data"):
-			resources.append(obj.get_save_data())
-		else:
-			push_warning("Object does not have a get_save_data method: " + str(obj.get_path()))
-	return resources
 
 func get_save_file_path(slot: int) -> String:
 	match slot:
