@@ -31,6 +31,7 @@ func save_game(slot: int) -> void:
 
 		# Call the node's save function.
 		var node_data = node.call("save")
+		print(node_data)
 
 		# JSON provides a static method to serialized JSON string.
 		var json_string = JSON.stringify(node_data)
@@ -75,14 +76,21 @@ func load_game(slot: int):
 		var new_object = load(node_data["filename"]).instantiate()
 		print(node_data["parent"])
 		get_node(node_data["parent"]).add_child(new_object)
-		new_object.position = Vector3(node_data["pos_x"], node_data["pos_y"], node_data["pos_z"])
-		new_object.rotation = Vector3(node_data["rot_x"], node_data["rot_y"], node_data["rot_z"])
+		new_object.add_to_group("savable")
+		
+		if !new_object.has_method("load"):
+			print("persistent node '%s' is missing a save() function, skipped" % new_object.name)
+			continue
+		
+		new_object.call("load", node_data)
+		# new_object.position = Vector3(node_data["pos_x"], node_data["pos_y"], node_data["pos_z"])
+		# new_object.rotation = Vector3(node_data["rot_x"], node_data["rot_y"], node_data["rot_z"])
 
-		# Now we set the remaining variables.
-		for i in node_data.keys():
-			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y" or i == "pos_z" or i == "rot_x" or i == "rot_y" or i == "rot_z":
-				continue
-			new_object.set(i, node_data[i])
+		# # Now we set the remaining variables.
+		# for i in node_data.keys():
+		# 	if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y" or i == "pos_z" or i == "rot_x" or i == "rot_y" or i == "rot_z":
+		# 		continue
+		# 	new_object.set(i, node_data[i])
 	
 
 

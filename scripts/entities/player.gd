@@ -62,7 +62,14 @@ func save() -> Dictionary:
 		"rot_y" : rotation.y,
 		"rot_z" : rotation.z,
 		"current_level" : get_tree().current_scene.get_scene_file_path(),
-		"health" : health,
-		#"mana" : player_data.mana
+		"health" : player_data.health,
+		"mana" : player_data.mana
 	}
 	return save_data
+
+func load(data: Dictionary) -> void:
+	position = Vector3(data["pos_x"], data["pos_y"], data["pos_z"])
+	rotation = Vector3(data["rot_x"], data["rot_y"], data["rot_z"])
+	player_data = PlayerData.new()
+	player_data.health = data["health"]
+	player_data.mana = data["mana"]
