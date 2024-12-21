@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dcjlc87qrm3qu"]
+[gd_scene load_steps=16 format=3 uid="uid://dcjlc87qrm3qu"]
 
 [ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/entities/player.tscn" id="1_cvbuw"]
 [ext_resource type="Script" path="res://scripts/levels/debug_level.gd" id="1_qs4br"]
@@ -34,9 +34,14 @@ mana = 50
 albedo_texture = ExtResource("2_1jke0")
 uv1_triplanar = true
 
-[sub_resource type="Resource" id="Resource_0h4dv"]
+[sub_resource type="Resource" id="Resource_sk1pg"]
 script = ExtResource("6_tn5mt")
 name = "Cube 1"
+description = "An item"
+
+[sub_resource type="Resource" id="Resource_0h4dv"]
+script = ExtResource("6_tn5mt")
+name = "Cube 2"
 description = "An item"
 
 [node name="DebugLevel" type="Node3D"]
@@ -61,6 +66,10 @@ transform = Transform3D(1, 0, 0, 0, 0.900197, 0.435483, 0, -0.435483, 0.900197, 
 
 [node name="TestCube" parent="." groups=["savable"] instance=ExtResource("3_50my6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68522, 0.107178, -0.409076)
+item_data_for_cube = SubResource("Resource_sk1pg")
+
+[node name="TestCube2" parent="." groups=["savable"] instance=ExtResource("3_50my6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68522, 0.107178, 2.33119)
 item_data_for_cube = SubResource("Resource_0h4dv")
 
 [node name="PostProcessEffects" parent="." instance=ExtResource("4_0s487")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cdsskmx0amc0q"]
 
-[ext_resource type="Script" path="res://scripts/ui/slot_selection.gd" id="1_gbwgu"]
+[ext_resource type="Script" path="res://scripts/ui/ld_slot_selection.gd" id="1_gbwgu"]
 
 [node name="SlotSelection" type="Control"]
 layout_mode = 3

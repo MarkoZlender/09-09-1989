@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://jjjb8m4rx37m"]
+
+[ext_resource type="Script" path="res://scripts/ui/ng_slot_selection.gd" id="1_n4jta"]
+
+[node name="SlotSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n4jta")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.738715
+anchor_top = 0.783951
+anchor_right = 0.845486
+anchor_bottom = 0.902778
+offset_top = -3.05176e-05
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Back"
+metadata/_edit_use_anchors_ = true
+
+[node name="SelectButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1875
+anchor_top = 0.783951
+anchor_right = 0.318576
+anchor_bottom = 0.902778
+offset_right = -25.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Select
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="VSlotContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.100694
+anchor_top = 0.157407
+anchor_right = 0.927951
+anchor_bottom = 0.677469
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="SelectButton" to="." method="_on_select_button_pressed"]

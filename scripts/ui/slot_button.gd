@@ -1,5 +1,6 @@
 class_name SlotButton extends Button
 
+@export var slot: int = 0
 @onready var slot_button_group: ButtonGroup = preload("res://scenes/ui/slot_selection_button_group.tres")
 
 func _ready() -> void:
