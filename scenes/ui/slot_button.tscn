@@ -10,3 +10,5 @@ toggle_mode = true
 button_group = ExtResource("1_5bqp8")
 text = "Slot"
 script = ExtResource("2_w7kmr")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

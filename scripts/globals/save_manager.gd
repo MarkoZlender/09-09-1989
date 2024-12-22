@@ -4,9 +4,9 @@ signal saving
 
 const SAVE_DIR: String = "user://saves/"
 # IMPORTANT: change to .res for relesase
-const SAVE_FILE_NAME_1: String = "save_slot_0.json"
-const SAVE_FILE_NAME_2: String = "save_slot_1.json"
-const SAVE_FILE_NAME_3: String = "save_slot_2.json"
+const SAVE_FILE_NAME_0: String = "save_slot_0.json"
+const SAVE_FILE_NAME_1: String = "save_slot_1.json"
+const SAVE_FILE_NAME_2: String = "save_slot_2.json"
 
 func _ready() -> void:
 	_verify_save_directory(SAVE_DIR)
@@ -227,7 +227,7 @@ func get_current_level(slot: int) -> NodePath:
 		printerr("Failed to open save file: ", save_file_path)
 		return ""
 	
-	var json_string = save_file.get_line() # Read the first line to get the current level
+	var json_string = save_file.get_as_text() # Read the first line to get the current level
 	save_file.close()
 	
 	var json = JSON.new()
@@ -246,10 +246,10 @@ func get_current_level(slot: int) -> NodePath:
 
 func get_save_file_path(slot: int) -> String:
 	match slot:
+		0:
+			return SAVE_DIR + SAVE_FILE_NAME_0
 		1:
 			return SAVE_DIR + SAVE_FILE_NAME_1
 		2:
 			return SAVE_DIR + SAVE_FILE_NAME_2
-		3:
-			return SAVE_DIR + SAVE_FILE_NAME_3
 	return ""
