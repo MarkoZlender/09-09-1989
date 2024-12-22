@@ -4,9 +4,9 @@ signal saving
 
 const SAVE_DIR: String = "user://saves/"
 # IMPORTANT: change to .res for relesase
-const SAVE_FILE_NAME_1: String = "save_slot_1.tres"
-const SAVE_FILE_NAME_2: String = "save_slot_2.tres"
-const SAVE_FILE_NAME_3: String = "save_slot_3.tres"
+const SAVE_FILE_NAME_1: String = "save_slot_0.json"
+const SAVE_FILE_NAME_2: String = "save_slot_1.json"
+const SAVE_FILE_NAME_3: String = "save_slot_2.json"
 
 func _ready() -> void:
 	_verify_save_directory(SAVE_DIR)
@@ -63,6 +63,7 @@ func save_game(slot: int) -> void:
 	saving.emit()
 	var save_file_path = get_save_file_path(slot)
 	var save_data = {
+		"current_level": get_tree().current_scene.get_scene_file_path(),
 		"player_data": {},
 		"level_data": {}
 	}
@@ -92,11 +93,10 @@ func save_game(slot: int) -> void:
 	var save_nodes = get_tree().get_nodes_in_group("savable")
 	#if not save_data["level_data"].has(current_level_name):
 	save_data["level_data"][current_level_name] = {}
+	save_data["current_level"] = get_tree().current_scene.get_scene_file_path()
 
 	for node in save_nodes:
 		# Call the node's save function.
-		# if node is Player:
-		# 	continue
 		var node_data: Dictionary = node.call("save")
 		save_data["level_data"][current_level_name][node.name] = node_data
 
@@ -111,60 +111,12 @@ func save_game(slot: int) -> void:
 	else:
 		printerr("Failed to open save file: ", save_file_path)
 
-# func load_game(slot: int):
-# 	if not FileAccess.file_exists(get_save_file_path(slot)):
-# 		printerr("Save file does not exist.")
-# 		return # Error! We don't have a save to load.
-
-# 	# We need to revert the game state so we're not cloning objects
-# 	# during loading. This will vary wildly depending on the needs of a
-# 	# project, so take care with this step.
-# 	# For our example, we will accomplish this by deleting saveable objects.
-# 	var save_nodes = get_tree().get_nodes_in_group("savable")
-# 	for i in save_nodes:
-# 		print("Deleting node: ", i)
-# 		for group in i.get_groups():
-# 			i.remove_from_group(group)
-# 		i.queue_free()
-
-# 	# Load the file line by line and process that dictionary to restore
-# 	# the object it represents.
-# 	var save_file = FileAccess.open(get_save_file_path(slot), FileAccess.READ)
-# 	while save_file.get_position() < save_file.get_length():
-# 		var json_string = save_file.get_line()
-
-# 		# Creates the helper class to interact with JSON.
-# 		var json = JSON.new()
-
-# 		# Check if there is any error while parsing the JSON string, skip in case of failure.
-# 		var parse_result = json.parse(json_string)
-# 		if not parse_result == OK:
-# 			printerr("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
-# 			continue
-
-# 		# Get the data from the JSON object.
-# 		var node_data = json.data
-
-# 		# Firstly, we need to create the object and add it to the tree and set its position.
-# 		var new_object = load(node_data["filename"]).instantiate()
-# 		print(node_data["parent"])
-# 		get_node(node_data["parent"]).add_child(new_object, true)
-# 		#new_object.name = new_object.name + str(randi())
-		
-# 		if !new_object.has_method("load"):
-# 			printerr("persistent node '%s' is missing a save() function, skipped" % new_object.name)
-# 			continue
-		
-# 		new_object.call("load", node_data)
-
-# 		new_object.add_to_group("savable")
-# 		if new_object is Player:
-# 			new_object.add_to_group("player")
 
 
 func load_game(slot: int):
 	if not FileAccess.file_exists(get_save_file_path(slot)):
-		printerr("Save file does not exist.")
+		printerr("Save file does not exist, creating new save file.")
+		save_game(slot)
 		return # Error! We don't have a save to load.
 
 	# Load the file line by line and accumulate the JSON string.

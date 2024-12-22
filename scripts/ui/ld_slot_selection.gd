@@ -10,9 +10,7 @@ const slot_button_scene: String = "res://scenes/ui/slot_button.tscn"
 
 func _ready() -> void:
 	var save_files = SaveManager.get_save_files()
-	#print(save_files)
 	for save_file in save_files:
-		#print(save_file)
 		var save_button = preload(slot_button_scene).instantiate()
 		save_button.text = save_file
 		save_button_file_pairs[save_button] = save_file

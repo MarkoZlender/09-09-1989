@@ -61,7 +61,6 @@ func save() -> Dictionary:
 		"rot_x" : rotation.x,
 		"rot_y" : rotation.y,
 		"rot_z" : rotation.z,
-		"current_level" : get_tree().current_scene.get_scene_file_path(),
 		"health" : player_data.health,
 		"mana" : player_data.mana
 	}
