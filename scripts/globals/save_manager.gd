@@ -14,50 +14,102 @@ func _ready() -> void:
 func _verify_save_directory(path: String):
 	DirAccess.make_dir_absolute(path)
 
+# func save_game(slot: int) -> void:
+# 	saving.emit()
+# 	var save_file = FileAccess.open(get_save_file_path(slot), FileAccess.WRITE)
+# 	if save_file == null:
+# 		printerr("Failed to open save file: ", get_save_file_path(slot))
+# 		return
+
+# 	var save_nodes = get_tree().get_nodes_in_group("savable")
+# 	var save_data = {
+# 		"player_data": {},
+# 		"level_data": {}
+# 	}
+
+# 	for node in save_nodes:
+# 		# Check the node is an instanced scene so it can be instanced again during load.
+# 		if node.scene_file_path.is_empty():
+# 			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
+# 			continue
+
+# 		# Check the node has a save function.
+# 		if !node.has_method("save"):
+# 			print("persistent node '%s' is missing a save() function, skipped" % node.name)
+# 			continue
+
+# 		# Call the node's save function.
+# 		var node_data: Dictionary = node.call("save")
+# 		print(node_data)
+
+# 		# Categorize the data into player data or level data.
+# 		if node is Player:
+# 			save_data["player_data"] = node_data
+# 		else:
+# 			var level_name = node.get_parent().name
+# 			if not save_data["level_data"].has(level_name):
+# 				save_data["level_data"][level_name] = {}
+# 			save_data["level_data"][level_name][node.name] = node_data
+
+# 	# Convert the save data dictionary to a JSON string with indents.
+# 	var json_string = JSON.stringify(save_data, "\t")
+
+# 	# Store the formatted JSON string in the save file.
+# 	save_file.store_line(json_string)
+# 	save_file.close()
+
+
 func save_game(slot: int) -> void:
 	saving.emit()
-	var save_file = FileAccess.open(get_save_file_path(slot), FileAccess.WRITE)
-	if save_file == null:
-		printerr("Failed to open save file: ", get_save_file_path(slot))
-		return
-
-	var save_nodes = get_tree().get_nodes_in_group("savable")
+	var save_file_path = get_save_file_path(slot)
 	var save_data = {
 		"player_data": {},
 		"level_data": {}
 	}
 
+	# Load existing save data if it exists
+	if FileAccess.file_exists(save_file_path):
+		var save_file_check = FileAccess.open(save_file_path, FileAccess.READ)
+		if save_file_check != null:
+			var json_string_parse = save_file_check.get_as_text()
+			save_file_check.close()
+
+			var json = JSON.new()
+			var parse_result = json.parse(json_string_parse)
+			if parse_result == OK:
+				save_data = json.data
+			else:
+				printerr("JSON Parse Error: ", json.get_error_message())
+
+	# Update player data
+	# var player = get_tree().get_nodes_in_group("player")[0]
+	# if player:
+	# 	var player_data = player.call("save")
+	# 	save_data["player_data"] = player_data
+
+	# Update level data for the current level
+	var current_level_name = get_tree().current_scene.name
+	var save_nodes = get_tree().get_nodes_in_group("savable")
+	#if not save_data["level_data"].has(current_level_name):
+	save_data["level_data"][current_level_name] = {}
+
 	for node in save_nodes:
-		# Check the node is an instanced scene so it can be instanced again during load.
-		if node.scene_file_path.is_empty():
-			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
-			continue
-
-		# Check the node has a save function.
-		if !node.has_method("save"):
-			print("persistent node '%s' is missing a save() function, skipped" % node.name)
-			continue
-
 		# Call the node's save function.
+		# if node is Player:
+		# 	continue
 		var node_data: Dictionary = node.call("save")
-		print(node_data)
-
-		# Categorize the data into player data or level data.
-		if node is Player:
-			save_data["player_data"] = node_data
-		else:
-			var level_name = node.get_parent().name
-			if not save_data["level_data"].has(level_name):
-				save_data["level_data"][level_name] = {}
-			save_data["level_data"][level_name][node.name] = node_data
+		save_data["level_data"][current_level_name][node.name] = node_data
 
 	# Convert the save data dictionary to a JSON string with indents.
 	var json_string = JSON.stringify(save_data, "\t")
 
 	# Store the formatted JSON string in the save file.
-	save_file.store_line(json_string)
-	save_file.close()
-	
+	var save_file = FileAccess.open(save_file_path, FileAccess.WRITE)
+	if save_file != null:
+		save_file.store_line(json_string)
+		save_file.close()
+	else:
+		printerr("Failed to open save file: ", save_file_path)
 
 # func load_game(slot: int):
 # 	if not FileAccess.file_exists(get_save_file_path(slot)):
@@ -115,27 +167,11 @@ func load_game(slot: int):
 		printerr("Save file does not exist.")
 		return # Error! We don't have a save to load.
 
-	# We need to revert the game state so we're not cloning objects
-	# during loading. This will vary wildly depending on the needs of a
-	# project, so take care with this step.
-	# For our example, we will accomplish this by deleting saveable objects.
-	var save_nodes = get_tree().get_nodes_in_group("savable")
-	for i in save_nodes:
-		print("Deleting node: ", i)
-		for group in i.get_groups():
-			i.remove_from_group(group)
-		i.queue_free()
-
 	# Load the file line by line and accumulate the JSON string.
 	var save_file = FileAccess.open(get_save_file_path(slot), FileAccess.READ)
 	if save_file == null:
 		printerr("Failed to open save file: ", get_save_file_path(slot))
 		return
-
-	# var json_string = ""
-	# while save_file.get_position() < save_file.get_length():
-	# 	json_string += save_file.get_line()
-	# save_file.close()
 
 	var json_string = save_file.get_as_text()
 	save_file.close()
@@ -150,24 +186,50 @@ func load_game(slot: int):
 	# Get the data from the JSON object.
 	var save_data = json.data
 
+	# Check if there is save data for the player or the current level.
+	#var player_data_exists = save_data.has("player_data")
+	var current_level_name = get_tree().current_scene.name
+	var level_data_exists = save_data.has("level_data") and save_data["level_data"].has(current_level_name)
+
+	# If there is no save data for the player or the current level, save the current state and return.
+	# if not player_data_exists or not level_data_exists:
+	# 	print("No save data for player or current level. Saving current state.")
+	# 	save_game(slot)
+	# 	return
+
+	if not level_data_exists:
+		print("No save data for player or current level. Saving current state.")
+		save_game(slot)
+		return
+
+
+	# We need to revert the game state so we're not cloning objects
+	# during loading. This will vary wildly depending on the needs of a
+	# project, so take care with this step.
+	# For our example, we will accomplish this by deleting saveable objects.
+	var save_nodes = get_tree().get_nodes_in_group("savable")
+	for i in save_nodes:
+		for group in i.get_groups():
+			i.remove_from_group(group)
+		i.queue_free()
+
 	# Reconstruct the player data.
-	if save_data.has("player_data"):
-		var player_data = save_data["player_data"]
-		var player_scene = load(player_data["filename"])
-		if player_scene:
-			var player = player_scene.instantiate()
-			get_node(player_data["parent"]).add_child(player, true)
+	# if player_data_exists:
+	# 	var player_data = save_data["player_data"]
+	# 	var player_scene = load(player_data["filename"])
+	# 	if player_scene:
+	# 		var player = player_scene.instantiate()
+	# 		get_node(get_tree().current_scene.get_path()).add_child(player, true)
 			
-			if player.has_method("load"):
-				player.call("load", player_data)
-				player.add_to_group("savable")
-				player.add_to_group("player")
-			else:
-				printerr("Player node is missing a load() function, skipped")
+	# 		if player.has_method("load"):
+	# 			player.call("load", player_data)
+	# 			player.add_to_group("savable")
+	# 			player.add_to_group("player")
+	# 		else:
+	# 			printerr("Player node is missing a load() function, skipped")
 
 	# Reconstruct the level data for the current level.
-	var current_level_name = get_tree().current_scene.name
-	if save_data.has("level_data") and save_data["level_data"].has(current_level_name):
+	if level_data_exists:
 		var level_data = save_data["level_data"][current_level_name]
 		for node_name in level_data.keys():
 			var node_data = level_data[node_name]
