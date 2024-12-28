@@ -1,12 +1,17 @@
 class_name SaveManager extends Node
 
-signal saving
-
 const SAVE_DIR: String = "user://saves/"
 # IMPORTANT: change to .res for relesase
 const SAVE_FILE_NAME_0: String = "save_slot_0.json"
 const SAVE_FILE_NAME_1: String = "save_slot_1.json"
 const SAVE_FILE_NAME_2: String = "save_slot_2.json"
+const SAVE_FILE_NAME_3: String = "save_slot_3.json"
+const SAVE_FILE_NAME_4: String = "save_slot_4.json"
+const SAVE_FILE_NAME_5: String = "save_slot_5.json"
+const SAVE_FILE_NAME_6: String = "save_slot_6.json"
+const SAVE_FILE_NAME_7: String = "save_slot_7.json"
+const SAVE_FILE_NAME_8: String = "save_slot_8.json"
+const SAVE_FILE_NAME_9: String = "save_slot_9.json"
 
 func _ready() -> void:
 	Global.save_manager = self
@@ -61,10 +66,9 @@ func _verify_save_directory(path: String):
 
 
 func save_game(slot: int) -> void:
-	saving.emit()
 	var save_file_path = get_save_file_path(slot)
 	var save_data = {
-		"current_level": get_tree().current_scene.get_node("World3D").get_children()[0].get_scene_file_path(),
+		"current_level":{}, #get_tree().current_scene.get_node("World3D").get_children()[0].get_scene_file_path(),
 		"player_data": {},
 		"level_data": {}
 	}
@@ -97,6 +101,15 @@ func save_game(slot: int) -> void:
 	save_data["current_level"] = get_tree().current_scene.get_node("World3D").get_children()[0].get_scene_file_path()
 
 	for node in save_nodes:
+		if node.scene_file_path.is_empty():
+			printerr("persistent node '%s' is not an instanced scene, skipped" % node.name)
+			continue
+
+		# Check the node has a save function.
+		if !node.has_method("save"):
+			printerr("persistent node '%s' is missing a save() function, skipped" % node.name)
+			continue
+
 		# Call the node's save function.
 		var node_data: Dictionary = node.call("save")
 		save_data["level_data"][current_level_name][node.name] = node_data
@@ -118,7 +131,7 @@ func load_game(slot: int):
 	if not FileAccess.file_exists(get_save_file_path(slot)):
 		printerr("Save file does not exist, creating new save file.")
 		save_game(slot)
-		return # Error! We don't have a save to load.
+		return
 
 	# Load the file line by line and accumulate the JSON string.
 	var save_file = FileAccess.open(get_save_file_path(slot), FileAccess.READ)
@@ -143,12 +156,6 @@ func load_game(slot: int):
 	#var player_data_exists = save_data.has("player_data")
 	var current_level_name = get_tree().current_scene.get_node("World3D").get_children()[0].name
 	var level_data_exists = save_data.has("level_data") and save_data["level_data"].has(current_level_name)
-
-	# If there is no save data for the player or the current level, save the current state and return.
-	# if not player_data_exists or not level_data_exists:
-	# 	print("No save data for player or current level. Saving current state.")
-	# 	save_game(slot)
-	# 	return
 
 	if not level_data_exists:
 		printerr("No save data for current level. Saving current state.")
@@ -253,4 +260,18 @@ func get_save_file_path(slot: int) -> String:
 			return SAVE_DIR + SAVE_FILE_NAME_1
 		2:
 			return SAVE_DIR + SAVE_FILE_NAME_2
+		3:
+			return SAVE_DIR + SAVE_FILE_NAME_3
+		4:
+			return SAVE_DIR + SAVE_FILE_NAME_4
+		5:
+			return SAVE_DIR + SAVE_FILE_NAME_5
+		6:
+			return SAVE_DIR + SAVE_FILE_NAME_6
+		7:
+			return SAVE_DIR + SAVE_FILE_NAME_7
+		8:
+			return SAVE_DIR + SAVE_FILE_NAME_8
+		9:
+			return SAVE_DIR + SAVE_FILE_NAME_9
 	return ""
