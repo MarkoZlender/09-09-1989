@@ -25,29 +25,25 @@ theme_override_font_sizes/font_size = 50
 text = "Back"
 metadata/_edit_use_anchors_ = true
 
-[node name="SelectButton" type="Button" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1875
-anchor_top = 0.783951
-anchor_right = 0.318576
-anchor_bottom = 0.902778
-offset_right = -25.0
-grow_vertical = 0
-theme_override_font_sizes/font_size = 50
-text = "Select
-"
-metadata/_edit_use_anchors_ = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -487.0
+offset_top = -324.0
+offset_right = 487.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
 
-[node name="VSlotContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.100694
-anchor_top = 0.157407
-anchor_right = 0.927951
-anchor_bottom = 0.677469
+[node name="VSlotContainer" type="VBoxContainer" parent="ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
-[connection signal="pressed" from="SelectButton" to="." method="_on_select_button_pressed"]

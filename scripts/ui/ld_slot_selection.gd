@@ -1,11 +1,9 @@
 extends Control
 
-signal slot_selected(slot: int)
-
 const slot_button_scene: String = "res://scenes/ui/slot_button.tscn"
 
 @onready var main_menu_scene: String = "res://scenes/ui/main_menu.tscn"
-@onready var vslot_container: VBoxContainer = $VSlotContainer
+@onready var vslot_container: VBoxContainer = %VSlotContainer
 @onready var save_buttons: Array = []
 
 func _ready() -> void:
