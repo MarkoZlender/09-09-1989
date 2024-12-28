@@ -6,8 +6,8 @@ var interact: Callable = func():
 
 
 func _on_body_entered(_body:Node3D) -> void:
-	InteractionManager.register_area(self)
+	Global.interaction_manager.register_area(self)
 
 
 func _on_body_exited(_body:Node3D) -> void:
-	InteractionManager.unregister_area(self)
+	Global.interaction_manager.unregister_area(self)

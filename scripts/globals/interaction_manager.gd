@@ -1,9 +1,12 @@
-extends Node
+class_name InteractionManager extends Node
 # https://www.youtube.com/watch?v=ajCraxGAeYU
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 
 var active_areas: Array[InteractComponent] = []
 var can_interact: bool = true
+
+func _ready() -> void:
+	Global.interaction_manager = self
 
 func register_area(area: InteractComponent) -> void:
 	active_areas.push_back(area)

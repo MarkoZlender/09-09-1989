@@ -11,15 +11,14 @@ config_version=5
 [application]
 
 config/name="fixed_cam"
-run/main_scene="res://scenes/levels/debug_level.tscn"
+run/main_scene="res://scenes/game_controller/game_controller.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]
 
-InteractionManager="*res://scenes/globals/interaction_manager.tscn"
-SaveManager="*res://scripts/globals/save_manager.gd"
+Global="*res://scenes/globals/Global.tscn"
 
 [display]
 

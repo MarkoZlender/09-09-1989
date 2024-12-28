@@ -29,10 +29,10 @@ func _ready():
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("save"):
-		SaveManager.save_game(1)
+		Global.save_manager.save_game(1)
 		print("Saved game")
 	elif event.is_action_pressed("load"):
-		SaveManager.load_game(1)
+		Global.save_manager.load_game(1)
 		print("Loaded game")
 
 func move(delta: float):

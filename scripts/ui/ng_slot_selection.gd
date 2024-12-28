@@ -9,7 +9,7 @@ const slot_button_scene: String = "res://scenes/ui/slot_button.tscn"
 @onready var save_button_file_pairs: Dictionary = {}
 
 func _ready() -> void:
-	var save_files = SaveManager.get_save_files()
+	var save_files = Global.save_manager.get_save_files()
 	#print(save_files)
 	for save_file in save_files:
 		#print(save_file)
@@ -26,8 +26,8 @@ func _on_select_button_pressed() -> void:
 		return
 	else:
 		var save_file = save_button_file_pairs[selected_slot]
-		#slot_selected.emit(SaveManager.get_current_level(save_file))
-		get_tree().change_scene_to_file(SaveManager.get_current_level(1))
+		#slot_selected.emit(Global.save_manager.get_current_level(save_file))
+		get_tree().change_scene_to_file(Global.save_manager.get_current_level(1))
 
 func _on_back_button_pressed() -> void:
-	get_tree().change_scene_to_file(main_menu_scene)
+	Global.game_controller.change_gui_scene(main_menu_scene)

@@ -1,4 +1,4 @@
-extends Node
+class_name SaveManager extends Node
 
 signal saving
 
@@ -9,6 +9,7 @@ const SAVE_FILE_NAME_1: String = "save_slot_1.json"
 const SAVE_FILE_NAME_2: String = "save_slot_2.json"
 
 func _ready() -> void:
+	Global.save_manager = self
 	_verify_save_directory(SAVE_DIR)
 
 func _verify_save_directory(path: String):
@@ -63,7 +64,7 @@ func save_game(slot: int) -> void:
 	saving.emit()
 	var save_file_path = get_save_file_path(slot)
 	var save_data = {
-		"current_level": get_tree().current_scene.get_scene_file_path(),
+		"current_level": get_tree().current_scene.get_node("World3D").get_children()[0].get_scene_file_path(),
 		"player_data": {},
 		"level_data": {}
 	}
@@ -89,11 +90,11 @@ func save_game(slot: int) -> void:
 	# 	save_data["player_data"] = player_data
 
 	# Update level data for the current level
-	var current_level_name = get_tree().current_scene.name
+	var current_level_name = get_tree().current_scene.get_node("World3D").get_children()[0].name
 	var save_nodes = get_tree().get_nodes_in_group("savable")
 	#if not save_data["level_data"].has(current_level_name):
 	save_data["level_data"][current_level_name] = {}
-	save_data["current_level"] = get_tree().current_scene.get_scene_file_path()
+	save_data["current_level"] = get_tree().current_scene.get_node("World3D").get_children()[0].get_scene_file_path()
 
 	for node in save_nodes:
 		# Call the node's save function.
@@ -140,7 +141,7 @@ func load_game(slot: int):
 
 	# Check if there is save data for the player or the current level.
 	#var player_data_exists = save_data.has("player_data")
-	var current_level_name = get_tree().current_scene.name
+	var current_level_name = get_tree().current_scene.get_node("World3D").get_children()[0].name
 	var level_data_exists = save_data.has("level_data") and save_data["level_data"].has(current_level_name)
 
 	# If there is no save data for the player or the current level, save the current state and return.
@@ -150,7 +151,7 @@ func load_game(slot: int):
 	# 	return
 
 	if not level_data_exists:
-		print("No save data for player or current level. Saving current state.")
+		printerr("No save data for current level. Saving current state.")
 		save_game(slot)
 		return
 

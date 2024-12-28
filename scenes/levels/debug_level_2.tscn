@@ -1,7 +1,6 @@
-[gd_scene load_steps=16 format=3 uid="uid://boiiijulkllqb"]
+[gd_scene load_steps=15 format=3 uid="uid://boiiijulkllqb"]
 
-[ext_resource type="Script" path="res://scripts/levels/debug_level.gd" id="1_ds4hp"]
-[ext_resource type="Resource" uid="uid://ch5ohx5cvmym6" path="res://resources/player_data_test.tres" id="2_mf1mw"]
+[ext_resource type="Script" path="res://scripts/levels/debug_level_2.gd" id="1_vnnkb"]
 [ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/entities/player.tscn" id="3_cina5"]
 [ext_resource type="Script" path="res://scripts/data/player_data.gd" id="4_trtfv"]
 [ext_resource type="Texture2D" uid="uid://c6pyep1cusmnn" path="res://assets/textures/prototype_textures/Dark/texture_01.png" id="5_g1ucc"]
@@ -45,8 +44,7 @@ health = 100
 mana = 50
 
 [node name="DebugLevel2" type="Node3D"]
-script = ExtResource("1_ds4hp")
-player_data = ExtResource("2_mf1mw")
+script = ExtResource("1_vnnkb")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ip54w")
