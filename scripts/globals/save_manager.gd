@@ -13,6 +13,8 @@ const SAVE_FILE_NAME_7: String = "save_slot_7.json"
 const SAVE_FILE_NAME_8: String = "save_slot_8.json"
 const SAVE_FILE_NAME_9: String = "save_slot_9.json"
 
+var current_save_slot: int = 0
+
 func _ready() -> void:
 	Global.save_manager = self
 	_verify_save_directory(SAVE_DIR)
@@ -251,6 +253,11 @@ func get_current_level(slot: int) -> NodePath:
 		printerr("Current level not found in save data.")
 		return ""
 
+func get_current_save_slot() -> int:
+	return current_save_slot
+
+func set_current_save_slot(slot: int) -> void:
+	current_save_slot = slot
 
 func get_save_file_path(slot: int) -> String:
 	match slot:

@@ -25,6 +25,7 @@ func _ready() -> void:
 
 func _on_slot_button_pressed(slot: int) -> void:
 	print("Slot button pressed: ", slot)
+	Global.save_manager.set_current_save_slot(slot)
 	Global.game_controller.change_3d_scene(Global.save_manager.get_current_level(slot))
 	Global.game_controller.change_gui_scene("", false, true)
 
