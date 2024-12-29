@@ -14,7 +14,6 @@ func _ready() -> void:
 	var n_save_files = save_files.size()
 	var n_slots = 10
 	for save_file_index in range(n_slots):
-		print("Save file index: ", save_file_index)
 		var save_button = preload(slot_button_scene).instantiate()
 		if save_file_index < n_save_files:
 			save_button.text = Global.save_manager.get_current_level(save_file_index) + "\n" + save_files[save_file_index]

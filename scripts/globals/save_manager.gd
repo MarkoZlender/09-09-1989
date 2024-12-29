@@ -83,7 +83,7 @@ func save_game(slot: int) -> void:
 			save_file_check.close()
 
 			var json = JSON.new()
-			print(json_string_parse)
+			#print(json_string_parse)
 			var parse_result = json.parse(json_string_parse)
 			if parse_result == OK:
 				save_data = json.data
@@ -135,6 +135,14 @@ func load_game(slot: int):
 		printerr("Save file does not exist, creating new save file.")
 		save_game(slot)
 		return
+	elif FileAccess.file_exists(get_save_file_path(slot)):
+		var save_file = FileAccess.open(get_save_file_path(slot), FileAccess.READ)
+		var json_string = save_file.get_as_text()
+		save_file.close()
+		if json_string == "":
+			printerr("Save file is empty, creating new save file.")
+			save_game(slot)
+			return
 
 	# Load the file line by line and accumulate the JSON string.
 	var save_file = FileAccess.open(get_save_file_path(slot), FileAccess.READ)
@@ -223,8 +231,9 @@ func delete_save_file(slot: int) -> void:
 		return
 
 	# delete the file
-	var dir = DirAccess.open(SAVE_DIR)
-	dir.remove(get_save_file_path(slot))
+	#var dir = DirAccess.open(SAVE_DIR)
+	print("Deleting save file: ", save_file_path)
+	DirAccess.remove_absolute(save_file_path)
 
 func get_save_files() -> Array:
 	var dir = DirAccess.open(SAVE_DIR)
