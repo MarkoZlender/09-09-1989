@@ -13,7 +13,7 @@ func _ready() -> void:
 	for save_file_index in range(n_save_files):
 		print("Save file index: ", save_file_index)
 		var save_button = preload(slot_button_scene).instantiate()
-		save_button.text = str(Global.save_manager.get_current_level(save_file_index)) + "\n" + save_files[save_file_index]
+		save_button.text = Global.save_manager.get_current_level(save_file_index) + "\n" + save_files[save_file_index]
 		save_button.slot = save_file_index
 		save_buttons.append(save_button)
 		vslot_container.add_child(save_button)

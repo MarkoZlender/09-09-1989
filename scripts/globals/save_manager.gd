@@ -83,11 +83,12 @@ func save_game(slot: int) -> void:
 			save_file_check.close()
 
 			var json = JSON.new()
+			print(json_string_parse)
 			var parse_result = json.parse(json_string_parse)
 			if parse_result == OK:
 				save_data = json.data
 			else:
-				printerr("JSON Parse Error: ", json.get_error_message())
+				printerr("save_game: JSON Parse Error: ", json.get_error_message())
 
 	# Update player data
 	# var player = get_tree().get_nodes_in_group("player")[0]
@@ -148,7 +149,7 @@ func load_game(slot: int):
 	var json = JSON.new()
 	var parse_result = json.parse(json_string)
 	if parse_result != OK:
-		printerr("JSON Parse Error: ", json.get_error_message())
+		printerr("load_game: JSON Parse Error: ", json.get_error_message())
 		return
 
 	# Get the data from the JSON object.
@@ -209,6 +210,22 @@ func load_game(slot: int):
 ########################################################################################################################################################
 ########################################################################################################################################################
 
+
+func delete_save_file(slot: int) -> void:
+	var save_file_path = get_save_file_path(slot)
+	if not FileAccess.file_exists(save_file_path):
+		printerr("Cannot delete save file. Save file does not exist.")
+		return
+
+	var save_file = FileAccess.open(save_file_path, FileAccess.WRITE)
+	if save_file == null:
+		printerr("Failed to open save file: ", save_file_path)
+		return
+
+	# delete the file
+	var dir = DirAccess.open(SAVE_DIR)
+	dir.remove(get_save_file_path(slot))
+
 func get_save_files() -> Array:
 	var dir = DirAccess.open(SAVE_DIR)
 	var save_files: Array = []
@@ -226,10 +243,10 @@ func get_save_files() -> Array:
 		printerr("An error occurred when trying to access the path.")
 	return save_files
 
-func get_current_level(slot: int) -> NodePath:
+func get_current_level(slot: int) -> String:
 	var save_file_path = get_save_file_path(slot)
 	if not FileAccess.file_exists(save_file_path):
-		printerr("Save file does not exist.")
+		printerr("get_current_level: Save file does not exist.")
 		return ""
 	
 	var save_file = FileAccess.open(save_file_path, FileAccess.READ)
@@ -243,7 +260,7 @@ func get_current_level(slot: int) -> NodePath:
 	var json = JSON.new()
 	var parse_result = json.parse(json_string)
 	if parse_result != OK:
-		printerr("JSON Parse Error: ", json.get_error_message())
+		printerr("get_current_level: JSON Parse Error: ", json.get_error_message())
 		return ""
 	
 	var save_data = json.data

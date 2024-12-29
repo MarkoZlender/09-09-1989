@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://jjjb8m4rx37m"]
+[gd_scene load_steps=3 format=3 uid="uid://jjjb8m4rx37m"]
 
 [ext_resource type="Script" path="res://scripts/ui/ng_slot_selection.gd" id="1_n4jta"]
+[ext_resource type="PackedScene" uid="uid://b5wsbousnpwq4" path="res://scenes/ui/warning_dialog.tscn" id="2_4hadv"]
 
 [node name="SlotSelection" type="Control"]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n4jta")
+starting_level = "res://scenes/levels/debug_level.tscn"
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 1
@@ -45,5 +47,9 @@ unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="WarningDialog" parent="." instance=ExtResource("2_4hadv")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
