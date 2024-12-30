@@ -22,84 +22,35 @@ func _ready() -> void:
 func _verify_save_directory(path: String):
 	DirAccess.make_dir_absolute(path)
 
-# func save_game(slot: int) -> void:
-# 	saving.emit()
-# 	var save_file = FileAccess.open(get_save_file_path(slot), FileAccess.WRITE)
-# 	if save_file == null:
-# 		printerr("Failed to open save file: ", get_save_file_path(slot))
-# 		return
-
-# 	var save_nodes = get_tree().get_nodes_in_group("savable")
-# 	var save_data = {
-# 		"player_data": {},
-# 		"level_data": {}
-# 	}
-
-# 	for node in save_nodes:
-# 		# Check the node is an instanced scene so it can be instanced again during load.
-# 		if node.scene_file_path.is_empty():
-# 			print("persistent node '%s' is not an instanced scene, skipped" % node.name)
-# 			continue
-
-# 		# Check the node has a save function.
-# 		if !node.has_method("save"):
-# 			print("persistent node '%s' is missing a save() function, skipped" % node.name)
-# 			continue
-
-# 		# Call the node's save function.
-# 		var node_data: Dictionary = node.call("save")
-# 		print(node_data)
-
-# 		# Categorize the data into player data or level data.
-# 		if node is Player:
-# 			save_data["player_data"] = node_data
-# 		else:
-# 			var level_name = node.get_parent().name
-# 			if not save_data["level_data"].has(level_name):
-# 				save_data["level_data"][level_name] = {}
-# 			save_data["level_data"][level_name][node.name] = node_data
-
-# 	# Convert the save data dictionary to a JSON string with indents.
-# 	var json_string = JSON.stringify(save_data, "\t")
-
-# 	# Store the formatted JSON string in the save file.
-# 	save_file.store_line(json_string)
-# 	save_file.close()
-
-
 func save_game(slot: int) -> void:
 	var save_file_path = get_save_file_path(slot)
 	var save_data = {
-		"current_level":{}, #get_tree().current_scene.get_node("World3D").get_children()[0].get_scene_file_path(),
+		"current_level":{},
 		"player_data": {},
 		"level_data": {}
 	}
 
 	# Load existing save data if it exists
 	if FileAccess.file_exists(save_file_path):
-		var save_file_check = FileAccess.open(save_file_path, FileAccess.READ)
-		if save_file_check != null:
-			var json_string_parse = save_file_check.get_as_text()
-			save_file_check.close()
+		var existing_save_file: FileAccess = FileAccess.open(save_file_path, FileAccess.READ)
+		if existing_save_file != null:
+			var json_string_parse = existing_save_file.get_as_text()
+			existing_save_file.close()
 
-			var json = JSON.new()
-			#print(json_string_parse)
-			var parse_result = json.parse(json_string_parse)
+			var json: JSON = JSON.new()
+			var parse_result: int = json.parse(json_string_parse)
 			if parse_result == OK:
+				# set the save data to the existing save data, prevents overwriting
 				save_data = json.data
 			else:
 				printerr("save_game: JSON Parse Error: ", json.get_error_message())
+		else:
+			printerr("save_game: Failed to open existing save file: ", save_file_path)
 
-	# Update player data
-	# var player = get_tree().get_nodes_in_group("player")[0]
-	# if player:
-	# 	var player_data = player.call("save")
-	# 	save_data["player_data"] = player_data
 
 	# Update level data for the current level
-	var current_level_name = get_tree().current_scene.get_node("World3D").get_children()[0].name
-	var save_nodes = get_tree().get_nodes_in_group("savable")
-	#if not save_data["level_data"].has(current_level_name):
+	var current_level_name: StringName = get_tree().current_scene.get_node("World3D").get_children()[0].name
+	var save_nodes: Array[Node] = get_tree().get_nodes_in_group("savable")
 	save_data["level_data"][current_level_name] = {}
 	save_data["current_level"] = get_tree().current_scene.get_node("World3D").get_children()[0].get_scene_file_path()
 
@@ -130,7 +81,7 @@ func save_game(slot: int) -> void:
 
 
 
-func load_game(slot: int):
+func load_game(slot: int) -> void:
 	if not FileAccess.file_exists(get_save_file_path(slot)):
 		printerr("Save file does not exist, creating new save file.")
 		save_game(slot)
@@ -225,42 +176,36 @@ func delete_save_file(slot: int) -> void:
 		printerr("Cannot delete save file. Save file does not exist.")
 		return
 
-	var save_file = FileAccess.open(save_file_path, FileAccess.WRITE)
-	if save_file == null:
-		printerr("Failed to open save file: ", save_file_path)
-		return
-
-	# delete the file
-	#var dir = DirAccess.open(SAVE_DIR)
-	print("Deleting save file: ", save_file_path)
 	DirAccess.remove_absolute(save_file_path)
 
 func get_save_files() -> Array:
-	var dir = DirAccess.open(SAVE_DIR)
+	var dir: DirAccess = DirAccess.open(SAVE_DIR)
 	var save_files: Array = []
-	if dir:
+	if dir != null:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir():
 				push_warning("This is a directory. not a file: " + file_name)
-				#save_files.append(file_name)
 			else:
 				save_files.append(file_name)
 			file_name = dir.get_next()
+		return save_files
 	else:
-		printerr("An error occurred when trying to access the path.")
-	return save_files
+		printerr("An error occurred when trying to access the path: %s\nDirAcess error: %s" % 
+				[SAVE_DIR, DirAccess.get_open_error()])
+		return []
+	
 
 func get_current_level(slot: int) -> String:
-	var save_file_path = get_save_file_path(slot)
+	var save_file_path: String = get_save_file_path(slot)
 	if not FileAccess.file_exists(save_file_path):
 		printerr("get_current_level: Save file does not exist.")
 		return ""
 	
-	var save_file = FileAccess.open(save_file_path, FileAccess.READ)
+	var save_file: FileAccess = FileAccess.open(save_file_path, FileAccess.READ)
 	if save_file == null:
-		printerr("Failed to open save file: ", save_file_path)
+		printerr("Failed to open save file: " + save_file_path)
 		return ""
 	
 	var json_string = save_file.get_as_text() # Read the first line to get the current level
