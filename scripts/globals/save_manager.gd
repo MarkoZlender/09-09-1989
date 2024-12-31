@@ -30,7 +30,7 @@ func save_game(slot: int) -> void:
 		"level_data": {}
 	}
 
-	# Load existing save data if it exists
+	# Load existing save data if it exists, prevents overwriting
 	if FileAccess.file_exists(save_file_path):
 		var existing_save_file: FileAccess = FileAccess.open(save_file_path, FileAccess.READ)
 		if existing_save_file != null:
@@ -40,7 +40,7 @@ func save_game(slot: int) -> void:
 			var json: JSON = JSON.new()
 			var parse_result: int = json.parse(json_string_parse)
 			if parse_result == OK:
-				# set the save data to the existing save data, prevents overwriting
+				# set the save data to the existing save data
 				save_data = json.data
 			else:
 				printerr("save_game: JSON Parse Error: ", json.get_error_message())
@@ -82,21 +82,23 @@ func save_game(slot: int) -> void:
 
 
 func load_game(slot: int) -> void:
+	var save_file: FileAccess
+	# check for non-existent or empty save file
 	if not FileAccess.file_exists(get_save_file_path(slot)):
 		printerr("Save file does not exist, creating new save file.")
 		save_game(slot)
 		return
 	elif FileAccess.file_exists(get_save_file_path(slot)):
-		var save_file = FileAccess.open(get_save_file_path(slot), FileAccess.READ)
-		var json_string = save_file.get_as_text()
+		save_file = FileAccess.open(get_save_file_path(slot), FileAccess.READ)
+		var test_json_string: String = save_file.get_as_text()
 		save_file.close()
-		if json_string == "":
+		if test_json_string == "":
 			printerr("Save file is empty, creating new save file.")
 			save_game(slot)
 			return
 
 	# Load the file line by line and accumulate the JSON string.
-	var save_file = FileAccess.open(get_save_file_path(slot), FileAccess.READ)
+	save_file = FileAccess.open(get_save_file_path(slot), FileAccess.READ)
 	if save_file == null:
 		printerr("Failed to open save file: ", get_save_file_path(slot))
 		return
@@ -104,7 +106,7 @@ func load_game(slot: int) -> void:
 	var json_string = save_file.get_as_text()
 	save_file.close()
 
-	# Parse the JSON string.
+	# Parse the JSON string. (JSON has to be instanced because parse is not a static method)
 	var json = JSON.new()
 	var parse_result = json.parse(json_string)
 	if parse_result != OK:
@@ -119,6 +121,7 @@ func load_game(slot: int) -> void:
 	var current_level_name = get_tree().current_scene.get_node("World3D").get_children()[0].name
 	var level_data_exists = save_data.has("level_data") and save_data["level_data"].has(current_level_name)
 
+	# If there is no save data for the current level, save the current state of the level
 	if not level_data_exists:
 		printerr("No save data for current level. Saving current state.")
 		save_game(slot)
@@ -126,11 +129,11 @@ func load_game(slot: int) -> void:
 
 
 	# We need to revert the game state so we're not cloning objects
-	# during loading. This will vary wildly depending on the needs of a
-	# project, so take care with this step.
-	# For our example, we will accomplish this by deleting saveable objects.
-	var save_nodes = get_tree().get_nodes_in_group("savable")
+	# during loading.
+	# This is accomplished by deleting saveable objects.
+	var save_nodes: Array[Node] = get_tree().get_nodes_in_group("savable")
 	for i in save_nodes:
+		# Remove the node from all groups and queue it for deletion.
 		for group in i.get_groups():
 			i.remove_from_group(group)
 		i.queue_free()
@@ -152,10 +155,10 @@ func load_game(slot: int) -> void:
 
 	# Reconstruct the level data for the current level.
 	if level_data_exists:
-		var level_data = save_data["level_data"][current_level_name]
+		var level_data: Dictionary = save_data["level_data"][current_level_name]
 		for node_name in level_data.keys():
-			var node_data = level_data[node_name]
-			var new_object = load(node_data["filename"]).instantiate()
+			var node_data: Dictionary = level_data[node_name]
+			var new_object: Node = load(node_data["filename"]).instantiate()
 			get_node(node_data["parent"]).add_child(new_object, true)
 
 			if !new_object.has_method("load"):
@@ -223,12 +226,6 @@ func get_current_level(slot: int) -> String:
 	else:
 		printerr("Current level not found in save data.")
 		return ""
-
-func get_current_save_slot() -> int:
-	return current_save_slot
-
-func set_current_save_slot(slot: int) -> void:
-	current_save_slot = slot
 
 func get_save_file_path(slot: int) -> String:
 	match slot:

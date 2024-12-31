@@ -69,7 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68522, 0.107178, -0.409076
 item_data_for_cube = SubResource("Resource_sk1pg")
 
 [node name="TestCube2" parent="." groups=["savable"] instance=ExtResource("3_50my6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68522, 0.107178, 2.33119)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68522, 0.107178, 3.20928)
 item_data_for_cube = SubResource("Resource_0h4dv")
 
 [node name="PostProcessEffects" parent="." instance=ExtResource("4_0s487")]
