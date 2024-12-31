@@ -23,8 +23,8 @@ func _verify_save_directory(path: String):
 	DirAccess.make_dir_absolute(path)
 
 func save_game(slot: int) -> void:
-	var save_file_path = get_save_file_path(slot)
-	var save_data = {
+	var save_file_path: String = get_save_file_path(slot)
+	var save_data: Dictionary = {
 		"current_level":{},
 		"player_data": {},
 		"level_data": {}
