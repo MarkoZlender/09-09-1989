@@ -23,4 +23,5 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TransitionController" parent="GUI" instance=ExtResource("2_bddcm")]
+visible = false
 layout_mode = 1

@@ -1,5 +1,7 @@
 class_name GameController extends Node
 
+signal scene_loaded
+
 @export var world_3d: Node3D
 @export var world_2d: Node2D
 @export var gui: Control
@@ -39,11 +41,61 @@ func change_gui_scene(
 		gui.add_child(new)
 		gui.move_child(new, 0)
 		current_gui_scene = new
-		transition_controller.transition(transition_in, seconds)
-		await transition_controller.animation_player.animation_finished
+		if transition:
+			transition_controller.transition(transition_in, seconds)
+			await transition_controller.animation_player.animation_finished
 		transition_controller.hide()
 	else:
+		if transition:
+			transition_controller.transition(transition_in, seconds)
+			await transition_controller.animation_player.animation_finished
+		transition_controller.hide()
 		return
+
+
+
+# same as change_2d_scene, but for 3D scenes
+func change_3d_scene(
+		new_scene: String,
+		delete: bool = true,
+		keep_running: bool = false,
+		transition: bool = true,
+		transition_in: String = "fade_in",
+		transition_out: String = "fade_out",
+		seconds: float = 1.0
+	) -> void:
+	change_gui_scene("", true, false, true)
+	if transition:
+		transition_controller.transition(transition_out, seconds)
+		await transition_controller.animation_player.animation_finished
+
+	if current_3d_scene != null:
+		if delete:
+			current_3d_scene.queue_free() # Removes node entirely
+		elif keep_running:
+			current_3d_scene.visible = false # Keeps node in memory and running
+		else:
+			world_3d.remove_child(current_3d_scene) # Keeps node in memory, does not run
+	
+	change_gui_scene("res://scenes/ui/loading_screen.tscn", true, false, false)
+	await get_tree().create_timer(5).timeout
+	_load_scene_threaded(new_scene)
+	await scene_loaded
+	var new = ResourceLoader.load_threaded_get(new_scene).instantiate()
+	world_3d.add_child(new)
+	current_3d_scene = new
+	transition_controller.transition(transition_in, seconds)
+	await transition_controller.animation_player.animation_finished
+	change_gui_scene("", true, false, true)
+
+func _load_scene_threaded(scene_path: String) -> void:
+	ResourceLoader.load_threaded_request(scene_path)
+	while true:
+		var status = ResourceLoader.load_threaded_get_status(scene_path)
+		if status == ResourceLoader.THREAD_LOAD_LOADED:
+			break
+		await get_tree().create_timer(0.1).timeout
+	scene_loaded.emit()
 
 func change_2d_scene(
 		new_scene: String,
@@ -69,31 +121,4 @@ func change_2d_scene(
 	var new = load(new_scene).instantiate()
 	world_2d.add_child(new)
 	current_2d_scene = new
-	transition_controller.transition(transition_in, seconds)
-
-# same as change_2d_scene, but for 3D scenes
-func change_3d_scene(
-		new_scene: String,
-		delete: bool = true,
-		keep_running: bool = false,
-		transition: bool = true,
-		transition_in: String = "fade_in",
-		transition_out: String = "fade_out",
-		seconds: float = 1.0
-	) -> void:
-	
-	if transition:
-		transition_controller.transition(transition_out, seconds)
-		await transition_controller.animation_player.animation_finished
-
-	if current_3d_scene != null:
-		if delete:
-			current_3d_scene.queue_free() # Removes node entirely
-		elif keep_running:
-			current_3d_scene.visible = false # Keeps node in memory and running
-		else:
-			world_3d.remove_child(current_3d_scene) # Keeps node in memory, does not run
-	var new = load(new_scene).instantiate()
-	world_3d.add_child(new)
-	current_3d_scene = new
 	transition_controller.transition(transition_in, seconds)

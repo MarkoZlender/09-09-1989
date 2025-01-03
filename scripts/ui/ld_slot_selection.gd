@@ -22,7 +22,7 @@ func _ready() -> void:
 func _on_slot_button_pressed(slot: int) -> void:
 	Global.save_manager.current_save_slot = slot
 	Global.game_controller.change_3d_scene(Global.save_manager.get_current_level(slot))
-	Global.game_controller.change_gui_scene("", false, true)
+	#Global.game_controller.change_gui_scene("", false, false)
 
 
 func _on_back_button_pressed() -> void:
