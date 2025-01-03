@@ -55,6 +55,298 @@ environment = SubResource("Environment_ip54w")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
 player_data = SubResource("Resource_ljvgv")
 
+[node name="Player2" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player3" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player4" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player5" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player6" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player7" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player8" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player9" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player10" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player11" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player12" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player13" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player14" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player15" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player16" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player17" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player18" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player19" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player20" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player21" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player22" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player23" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player24" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player25" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player26" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player27" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player28" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player29" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player30" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player31" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player32" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player33" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player34" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player35" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player36" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player37" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player38" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player39" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player40" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player41" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player42" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player43" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player44" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player45" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player46" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player47" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player48" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player49" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player50" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player51" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player52" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player53" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player54" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player55" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player56" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player57" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player58" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player59" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player60" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player61" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player62" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player63" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player64" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player65" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player66" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player67" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player68" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player69" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player70" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player71" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player72" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player73" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
+[node name="Player74" parent="." groups=["savable"] instance=ExtResource("1_cvbuw")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
+player_data = SubResource("Resource_ljvgv")
+
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.392822, 0)
 use_collision = true

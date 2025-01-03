@@ -11,7 +11,10 @@ var current_3d_scene
 var current_2d_scene
 var current_gui_scene
 
+var new_3d_scene
+
 func _ready() -> void:
+	set_process(false)
 	Global.game_controller = self
 	change_gui_scene("res://scenes/ui/main_menu.tscn")
 
@@ -78,24 +81,25 @@ func change_3d_scene(
 			world_3d.remove_child(current_3d_scene) # Keeps node in memory, does not run
 	
 	change_gui_scene("res://scenes/ui/loading_screen.tscn", true, false, false)
-	await get_tree().create_timer(5).timeout
-	_load_scene_threaded(new_scene)
+	new_3d_scene = new_scene
+	set_process(true)
+	ResourceLoader.load_threaded_request(new_scene, "", true)
 	await scene_loaded
-	var new = ResourceLoader.load_threaded_get(new_scene).instantiate()
-	world_3d.add_child(new)
-	current_3d_scene = new
+	set_process(false)
+	var new = ResourceLoader.load_threaded_get(new_scene)
+	var instance = new.instantiate()
+	world_3d.add_child(instance)
+	current_3d_scene = instance
 	transition_controller.transition(transition_in, seconds)
 	await transition_controller.animation_player.animation_finished
 	change_gui_scene("", true, false, true)
 
 func _load_scene_threaded(scene_path: String) -> void:
-	ResourceLoader.load_threaded_request(scene_path)
-	while true:
-		var status = ResourceLoader.load_threaded_get_status(scene_path)
-		if status == ResourceLoader.THREAD_LOAD_LOADED:
-			break
-		await get_tree().create_timer(0.1).timeout
-	scene_loaded.emit()
+	var progress = []
+	var status = ResourceLoader.load_threaded_get_status(scene_path, progress)
+	print(str(floor(progress[0] * 100)) + "%")
+	if status == ResourceLoader.THREAD_LOAD_LOADED:
+		scene_loaded.emit()
 
 func change_2d_scene(
 		new_scene: String,
@@ -122,3 +126,6 @@ func change_2d_scene(
 	world_2d.add_child(new)
 	current_2d_scene = new
 	transition_controller.transition(transition_in, seconds)
+
+func _process(_delta: float) -> void:
+	_load_scene_threaded(new_3d_scene)

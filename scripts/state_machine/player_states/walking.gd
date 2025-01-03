@@ -2,7 +2,8 @@ extends PlayerState
 
 @warning_ignore("unused_parameter")
 func enter(previous_state_path: String, data := {}) -> void:
-	print("Entering walking state")
+	#print("Entering walking state")
+	pass
 
 func physics_update(delta: float) -> void:
 	player.move(delta)
