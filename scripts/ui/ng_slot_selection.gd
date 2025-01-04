@@ -16,7 +16,7 @@ func _ready() -> void:
 	for save_file_index in range(n_slots):
 		var slot_button: Node = preload(_slot_button_scene).instantiate()
 		if save_file_index < n_save_files:
-			slot_button.text = Global.save_manager.get_current_level(save_file_index) + "\n" + save_files[save_file_index]
+			slot_button.text = str(save_file_index + 1) + ". " + Global.save_manager.get_current_level_name(save_file_index)
 		else:
 			slot_button.text = "Empty"
 		slot_button.slot = save_file_index

@@ -227,6 +227,35 @@ func get_current_level(slot: int) -> String:
 		printerr("Current level not found in save data.")
 		return ""
 
+func get_current_level_name(slot: int) -> String:
+	var save_file_path: String = get_save_file_path(slot)
+	if not FileAccess.file_exists(save_file_path):
+		printerr("get_current_level_name: Save file does not exist.")
+		return ""
+	
+	var save_file: FileAccess = FileAccess.open(save_file_path, FileAccess.READ)
+	if save_file == null:
+		printerr("Failed to open save file: " + save_file_path)
+		return ""
+	
+	var json_string = save_file.get_as_text() # Read the first line to get the current level
+	save_file.close()
+	
+	var json = JSON.new()
+	var parse_result = json.parse(json_string)
+	if parse_result != OK:
+		printerr("get_current_level_name: JSON Parse Error: ", json.get_error_message())
+		return ""
+	
+	var save_data = json.data
+	if "current_level" in save_data:
+		var current_level_path: String = save_data["current_level"]
+		var current_level_name: String = current_level_path.get_file().get_basename()
+		return current_level_name.capitalize()
+	else:
+		printerr("Current level not found in save data.")
+		return ""
+
 func get_save_file_path(slot: int) -> String:
 	match slot:
 		0:

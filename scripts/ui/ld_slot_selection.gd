@@ -11,13 +11,13 @@ func _ready() -> void:
 	var n_save_files: int = save_files.size()
 	for save_file_index in range(n_save_files):
 		var slot_button: SlotButton = preload(_slot_button_scene).instantiate()
-		slot_button.text = Global.save_manager.get_current_level(save_file_index) + "\n" + save_files[save_file_index]
+		slot_button.text = str(save_file_index + 1) + ". " + Global.save_manager.get_current_level_name(save_file_index)
 		slot_button.slot = save_file_index
 		_slot_buttons.append(slot_button)
 		_vslot_container.add_child(slot_button)
 	for slot_button in _slot_buttons:
 		slot_button.connect("slot_button_pressed", _on_slot_button_pressed)
-	
+
 	%GrabFocusComponent.element_to_focus = _slot_buttons[0]
 
 
