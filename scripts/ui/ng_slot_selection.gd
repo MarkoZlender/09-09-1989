@@ -25,6 +25,8 @@ func _ready() -> void:
 
 	for slot_button in _slot_buttons:
 		slot_button.connect("slot_button_pressed", _on_slot_button_pressed)
+	
+	%GrabFocusComponent.element_to_focus = _slot_buttons[0]
 
 
 func _on_slot_button_pressed(slot: int) -> void:
@@ -33,12 +35,9 @@ func _on_slot_button_pressed(slot: int) -> void:
 		Global.game_controller.change_3d_scene(_starting_level)
 	elif Global.save_manager.get_current_level(slot) != "":
 		_warning_dialog.show()
+		_warning_dialog.no_button.grab_focus()
 	else:
 		Global.game_controller.change_3d_scene(Global.save_manager.get_current_level(slot))
-		
-
-func _on_back_button_pressed() -> void:
-	Global.game_controller.change_gui_scene(_main_menu_scene)
 
 func _on_confirm_overwrite(overwrite: bool) -> void:
 	if overwrite:
@@ -46,4 +45,5 @@ func _on_confirm_overwrite(overwrite: bool) -> void:
 		Global.game_controller.change_3d_scene(_starting_level)
 	else:
 		_warning_dialog.hide()
+		_slot_buttons[0].grab_focus()
 		

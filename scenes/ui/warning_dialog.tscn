@@ -40,6 +40,12 @@ offset_top = -96.0
 offset_right = 287.0
 offset_bottom = -24.0
 grow_vertical = 0
+focus_neighbor_left = NodePath("../NoButton")
+focus_neighbor_top = NodePath("../NoButton")
+focus_neighbor_right = NodePath("../NoButton")
+focus_neighbor_bottom = NodePath("../NoButton")
+focus_next = NodePath("../NoButton")
+focus_previous = NodePath("../NoButton")
 theme_override_font_sizes/font_size = 40
 text = "Yes"
 
@@ -49,6 +55,12 @@ offset_left = 500.0
 offset_top = 209.0
 offset_right = 735.0
 offset_bottom = 272.0
+focus_neighbor_left = NodePath("../YesButton")
+focus_neighbor_top = NodePath("../YesButton")
+focus_neighbor_right = NodePath("../YesButton")
+focus_neighbor_bottom = NodePath("../YesButton")
+focus_next = NodePath("../YesButton")
+focus_previous = NodePath("../YesButton")
 theme_override_font_sizes/font_size = 40
 text = "No"
 

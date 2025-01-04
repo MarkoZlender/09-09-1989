@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://7ttjcnsru146"]
+[gd_scene load_steps=3 format=3 uid="uid://7ttjcnsru146"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_lnxuf"]
+[ext_resource type="PackedScene" uid="uid://d3p2xch5rcrft" path="res://scenes/components/grab_focus_component.tscn" id="2_odmjp"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -28,20 +29,36 @@ theme_override_constants/separation = 50
 alignment = 1
 
 [node name="NewGameButton" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../LoadGameButton")
+focus_next = NodePath("../LoadGameButton")
+focus_previous = NodePath("../QuitButton")
 theme_override_font_sizes/font_size = 100
 text = "New Game
 "
 
 [node name="LoadGameButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../NewGameButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../NewGameButton")
 theme_override_font_sizes/font_size = 100
 text = "Load Game"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+focus_neighbor_top = NodePath("../LoadGameButton")
+focus_neighbor_bottom = NodePath("../NewGameButton")
+focus_next = NodePath("../NewGameButton")
+focus_previous = NodePath("../LoadGameButton")
 theme_override_font_sizes/font_size = 100
 text = "Quit"
+
+[node name="GrabFocusComponent" parent="." node_paths=PackedStringArray("element_to_focus") instance=ExtResource("2_odmjp")]
+element_to_focus = NodePath("../VBoxContainer/NewGameButton")
 
 [connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/LoadGameButton" to="." method="_on_load_game_button_pressed"]

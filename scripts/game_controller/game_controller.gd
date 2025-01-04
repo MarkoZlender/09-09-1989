@@ -18,7 +18,7 @@ var new_3d_scene
 func _ready() -> void:
 	set_process(false)
 	Global.game_controller = self
-	change_gui_scene("res://scenes/ui/main_menu.tscn")
+	change_gui_scene("res://scenes/ui/main_menu.tscn", false, false, false)
 
 func change_gui_scene(
 		new_scene: String,

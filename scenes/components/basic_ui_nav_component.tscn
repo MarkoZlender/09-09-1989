@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd62cxexqucln"]
+
+[ext_resource type="Script" path="res://scripts/components/basic_ui_nav_component.gd" id="1_ei6wp"]
+
+[node name="BasicUiInputComponent" type="Node"]
+script = ExtResource("1_ei6wp")
