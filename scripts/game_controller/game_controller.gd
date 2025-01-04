@@ -7,6 +7,8 @@ signal scene_loaded
 @export var gui: Control
 @export var transition_controller: TransitionController
 
+const _loading_screen: String = "res://scenes/ui/loading_screen.tscn"
+
 var current_3d_scene
 var current_2d_scene
 var current_gui_scene
@@ -67,6 +69,7 @@ func change_3d_scene(
 		transition_out: String = "fade_out",
 		seconds: float = 1.0
 	) -> void:
+	# empty transition in to new scene
 	change_gui_scene("", true, false, true)
 	if transition:
 		transition_controller.transition(transition_out, seconds)
@@ -79,8 +82,8 @@ func change_3d_scene(
 			current_3d_scene.visible = false # Keeps node in memory and running
 		else:
 			world_3d.remove_child(current_3d_scene) # Keeps node in memory, does not run
-	
-	change_gui_scene("res://scenes/ui/loading_screen.tscn", true, false, false)
+	# change scene to loading screen, delete previous ui scene, don't keep running, don't transition
+	change_gui_scene(_loading_screen, true, false, false)
 	new_3d_scene = new_scene
 	set_process(true)
 	ResourceLoader.load_threaded_request(new_scene, "", true)

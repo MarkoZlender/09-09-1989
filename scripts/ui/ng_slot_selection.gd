@@ -31,12 +31,11 @@ func _on_slot_button_pressed(slot: int) -> void:
 	Global.save_manager.current_save_slot = slot
 	if Global.save_manager.get_current_level(slot) == "":
 		Global.game_controller.change_3d_scene(_starting_level)
-		Global.game_controller.change_gui_scene("")
 	elif Global.save_manager.get_current_level(slot) != "":
 		_warning_dialog.show()
 	else:
 		Global.game_controller.change_3d_scene(Global.save_manager.get_current_level(slot))
-		Global.game_controller.change_gui_scene("")
+		
 
 func _on_back_button_pressed() -> void:
 	Global.game_controller.change_gui_scene(_main_menu_scene)
@@ -45,7 +44,6 @@ func _on_confirm_overwrite(overwrite: bool) -> void:
 	if overwrite:
 		Global.save_manager.delete_save_file(Global.save_manager.current_save_slot)
 		Global.game_controller.change_3d_scene(_starting_level)
-		Global.game_controller.change_gui_scene("")
 	else:
 		_warning_dialog.hide()
 		
