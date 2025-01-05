@@ -15,7 +15,6 @@ grow_vertical = 2
 script = ExtResource("1_kin3q")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,8 +24,9 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.147672, 0.147672, 0.147672, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 1
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -40,15 +40,15 @@ grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
 
-[node name="VSlotContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="VSlotContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="WarningDialog" parent="." instance=ExtResource("2_epwjk")]
+[node name="WarningDialog" parent="CanvasLayer" instance=ExtResource("2_epwjk")]
+unique_name_in_owner = true
 visible = false
-layout_mode = 1
 
 [node name="BasicUiInputComponent" parent="." instance=ExtResource("3_1671k")]
 

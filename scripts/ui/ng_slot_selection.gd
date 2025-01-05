@@ -6,7 +6,7 @@ const _starting_level: String = "res://scenes/levels/debug_level.tscn"
 
 @onready var _vslot_container: VBoxContainer = %VSlotContainer
 @onready var _slot_buttons: Array[Node] = []
-@onready var _warning_dialog: Panel = $WarningDialog
+@onready var _warning_dialog: Panel = %WarningDialog
 
 func _ready() -> void:
 	_warning_dialog.confirm_overwrite.connect(_on_confirm_overwrite)
