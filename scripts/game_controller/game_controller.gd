@@ -89,12 +89,8 @@ func change_3d_scene(
 			world_3d.remove_child(current_3d_scene) # Keeps node in memory, does not run
 	# change scene to loading screen, delete previous ui scene, don't keep running, don't transition
 	change_gui_scene(_loading_screen, true, false, false)
-	#new_3d_scene = new_scene
-	#set_process(true)
-	#ResourceLoader.load_threaded_request(new_scene, "", true)
 	call_deferred("_load_scene_threaded", new_scene)
 	await scene_loaded
-	#set_process(false)
 	var new = ResourceLoader.load_threaded_get(new_scene)
 	var instance = new.instantiate()
 	world_3d.add_child(instance)
@@ -137,6 +133,3 @@ func change_2d_scene(
 	world_2d.add_child(new)
 	current_2d_scene = new
 	transition_controller.transition(transition_in, seconds)
-
-# func _process(_delta: float) -> void:
-# 	call_deferred("_load_scene_threaded", new_3d_scene)
