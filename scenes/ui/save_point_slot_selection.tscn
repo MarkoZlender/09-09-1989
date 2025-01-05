@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://wd71p4hllmok"]
+
+[ext_resource type="Script" path="res://scripts/ui/save_point_slot_selection.gd" id="1_kin3q"]
+[ext_resource type="PackedScene" uid="uid://b5wsbousnpwq4" path="res://scenes/ui/warning_dialog.tscn" id="2_epwjk"]
+[ext_resource type="PackedScene" uid="uid://cd62cxexqucln" path="res://scenes/components/basic_ui_nav_component.tscn" id="3_1671k"]
+[ext_resource type="PackedScene" uid="uid://d3p2xch5rcrft" path="res://scenes/components/grab_focus_component.tscn" id="4_u3rxc"]
+
+[node name="SavePointSlotSelection" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kin3q")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.147672, 0.147672, 0.147672, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -487.0
+offset_top = -324.0
+offset_right = 487.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+follow_focus = true
+
+[node name="VSlotContainer" type="VBoxContainer" parent="ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="WarningDialog" parent="." instance=ExtResource("2_epwjk")]
+visible = false
+layout_mode = 1
+
+[node name="BasicUiInputComponent" parent="." instance=ExtResource("3_1671k")]
+
+[node name="GrabFocusComponent" parent="." instance=ExtResource("4_u3rxc")]
+unique_name_in_owner = true

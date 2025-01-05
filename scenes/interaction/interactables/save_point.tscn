@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://bm3l5td4ucfyf"]
+
+[ext_resource type="Script" path="res://scripts/interaction/interactables/save_point.gd" id="1_x2xn3"]
+[ext_resource type="PackedScene" uid="uid://b8rtwryepqr5w" path="res://scenes/components/interact_component.tscn" id="2_h20tt"]
+[ext_resource type="Texture2D" uid="uid://cgwx50d3vpt27" path="res://assets/textures/prototype_textures/Green/texture_04.png" id="2_rxin1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjpdj"]
+albedo_texture = ExtResource("2_rxin1")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_5osxu"]
+material = SubResource("StandardMaterial3D_bjpdj")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xbdst"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kpqvy"]
+size = Vector3(1, 0.755615, 1)
+
+[node name="SavePoint" type="Node3D"]
+script = ExtResource("1_x2xn3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1.20315, 0, 0, 0, 2.49205, 0, 0, 0, 1, 0, 1.26506, 0)
+mesh = SubResource("BoxMesh_5osxu")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1.20315, 0, 0, 0, 2.49205, 0, 0, 0, 1, 0, 1.26506, 0)
+shape = SubResource("BoxShape3D_xbdst")
+
+[node name="InteractComponent" parent="." instance=ExtResource("2_h20tt")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractComponent"]
+transform = Transform3D(2.4063, 0, 0, 0, 4.9841, 0, 0, 0, 2, 0, 1.87408, 0)
+shape = SubResource("BoxShape3D_kpqvy")

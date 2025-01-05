@@ -4,4 +4,8 @@ extends Node
 
 func _input(event: InputEvent) -> void:
     if event.is_action_pressed("ui_cancel"):
-        Global.game_controller.change_gui_scene(previous_scene)
+        if previous_scene != "":
+            Global.game_controller.change_gui_scene(previous_scene)
+        else:
+            Global.game_controller.change_gui_scene("", true, false, false)
+            get_tree().paused = false

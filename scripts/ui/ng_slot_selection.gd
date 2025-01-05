@@ -1,4 +1,4 @@
-extends Control
+class_name NGSlotSelection extends Control
 
 const _slot_button_scene: String = "res://scenes/ui/slot_button.tscn"
 const _main_menu_scene: String = "res://scenes/ui/main_menu.tscn"
@@ -37,7 +37,7 @@ func _on_slot_button_pressed(slot: int) -> void:
 		_warning_dialog.show()
 		_warning_dialog.no_button.grab_focus()
 	else:
-		Global.game_controller.change_3d_scene(Global.save_manager.get_current_level(slot))
+		printerr("NGSlotSelection: _on_slot_button_pressed: invalid save file")
 
 func _on_confirm_overwrite(overwrite: bool) -> void:
 	if overwrite:

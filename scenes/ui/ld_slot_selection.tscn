@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cd62cxexqucln" path="res://scenes/components/basic_ui_nav_component.tscn" id="2_eaq1o"]
 [ext_resource type="PackedScene" uid="uid://d3p2xch5rcrft" path="res://scenes/components/grab_focus_component.tscn" id="3_w2n3o"]
 
-[node name="SlotSelection" type="Control"]
+[node name="LdSlotSelection" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

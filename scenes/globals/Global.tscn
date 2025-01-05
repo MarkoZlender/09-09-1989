@@ -4,10 +4,8 @@
 [ext_resource type="Script" path="res://scripts/globals/global.gd" id="1_vdjef"]
 [ext_resource type="PackedScene" uid="uid://buvpd7nh1gtu7" path="res://scenes/globals/InteractionManager.tscn" id="2_qjcfw"]
 
-[node name="Global" type="Node" node_paths=PackedStringArray("save_manager", "interaction_manager")]
+[node name="Global" type="Node"]
 script = ExtResource("1_vdjef")
-save_manager = NodePath("SaveManager")
-interaction_manager = NodePath("InteractionManager")
 
 [node name="SaveManager" parent="." instance=ExtResource("1_pehcs")]
 
