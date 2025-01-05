@@ -102,7 +102,7 @@ func change_3d_scene(
 
 func _load_scene_threaded(scene_path: String) -> void:
 	var progress = []
-	ResourceLoader.load_threaded_request(scene_path)
+	ResourceLoader.load_threaded_request(scene_path, "", true)
 	while true:
 		var status = ResourceLoader.load_threaded_get_status(scene_path, progress)
 		#print status in percent
