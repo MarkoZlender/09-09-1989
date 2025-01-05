@@ -1,6 +1,7 @@
 class_name GameController extends Node
 
 signal scene_loaded
+signal load_progress(percent: String)
 
 @export var world_3d: Node3D
 @export var world_2d: Node2D
@@ -100,9 +101,13 @@ func change_3d_scene(
 	change_gui_scene("", true, false, true)
 
 func _load_scene_threaded(scene_path: String) -> void:
+	var progress = []
 	ResourceLoader.load_threaded_request(scene_path)
 	while true:
-		var status = ResourceLoader.load_threaded_get_status(scene_path)
+		var status = ResourceLoader.load_threaded_get_status(scene_path, progress)
+		#print status in percent
+		print(str(floor(progress[0] * 100)) + "%")
+		load_progress.emit(str(floor(progress[0] * 100)) + "%")
 		if status == ResourceLoader.THREAD_LOAD_LOADED:
 			break
 		await get_tree().create_timer(1.0 / 60.0).timeout
