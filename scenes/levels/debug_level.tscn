@@ -48,7 +48,6 @@ description = "An item"
 [node name="DebugLevel" type="Node3D"]
 script = ExtResource("1_qs4br")
 player_data = ExtResource("2_ribc5")
-debug_mode = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ip54w")

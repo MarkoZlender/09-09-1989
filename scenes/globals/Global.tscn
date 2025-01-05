@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cd3fm13s6uxk6"]
+[gd_scene load_steps=5 format=3 uid="uid://cd3fm13s6uxk6"]
 
-[ext_resource type="PackedScene" uid="uid://jlpql0vbg6mg" path="res://scenes/globals/SaveManager.tscn" id="1_pehcs"]
-[ext_resource type="Script" path="res://scripts/globals/global.gd" id="1_vdjef"]
-[ext_resource type="PackedScene" uid="uid://buvpd7nh1gtu7" path="res://scenes/globals/InteractionManager.tscn" id="2_qjcfw"]
+[ext_resource type="Script" path="res://scripts/globals/global.gd" id="1_ef01j"]
+[ext_resource type="PackedScene" uid="uid://jlpql0vbg6mg" path="res://scenes/globals/save_manager.tscn" id="2_2r8wd"]
+[ext_resource type="PackedScene" uid="uid://buvpd7nh1gtu7" path="res://scenes/globals/interaction_manager.tscn" id="3_lysjt"]
+[ext_resource type="PackedScene" uid="uid://k80pext0c5gt" path="res://scenes/globals/utils.tscn" id="4_5bla8"]
 
 [node name="Global" type="Node"]
-script = ExtResource("1_vdjef")
+script = ExtResource("1_ef01j")
 
-[node name="SaveManager" parent="." instance=ExtResource("1_pehcs")]
+[node name="SaveManager" parent="." instance=ExtResource("2_2r8wd")]
 
-[node name="InteractionManager" parent="." instance=ExtResource("2_qjcfw")]
+[node name="InteractionManager" parent="." instance=ExtResource("3_lysjt")]
+
+[node name="Utils" parent="." instance=ExtResource("4_5bla8")]
