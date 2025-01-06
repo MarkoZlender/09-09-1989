@@ -90,7 +90,7 @@ func change_3d_scene(
 			world_3d.remove_child(current_3d_scene) # Keeps node in memory, does not run
 	# change scene to loading screen, delete previous ui scene, don't keep running, don't transition
 	change_gui_scene(_loading_screen, true, false, false)
-	call_deferred("_load_scene_threaded", new_scene)
+	_load_scene_threaded(new_scene)
 	await scene_loaded
 	var new = ResourceLoader.load_threaded_get(new_scene)
 	var instance = new.instantiate()
@@ -101,16 +101,19 @@ func change_3d_scene(
 	change_gui_scene("", true, false, true)
 
 func _load_scene_threaded(scene_path: String) -> void:
+	call_deferred("_deferred_load_scene_threaded", scene_path)
+
+func _deferred_load_scene_threaded(scene_path: String) -> void:
 	var progress = []
-	ResourceLoader.load_threaded_request(scene_path, "", true)
+	ResourceLoader.load_threaded_request(scene_path)
 	while true:
 		var status = ResourceLoader.load_threaded_get_status(scene_path, progress)
-		#print status in percent
 		print(str(floor(progress[0] * 100)) + "%")
 		load_progress.emit(str(floor(progress[0] * 100)) + "%")
 		if status == ResourceLoader.THREAD_LOAD_LOADED:
 			break
-		await get_tree().create_timer(1.0 / 60.0).timeout
+		await get_tree().create_timer(2).timeout
+		#await Engine.get_main_loop().process_frame
 	scene_loaded.emit()
 
 func change_2d_scene(
