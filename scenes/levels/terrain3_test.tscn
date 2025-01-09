@@ -74,9 +74,13 @@ collision_mode = 1
 top_level = true
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." instance=ExtResource("1_d4a1v")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.53464, 0.083716, -18.204)
+[node name="Player" parent="." node_paths=PackedStringArray("spawn_point") instance=ExtResource("1_d4a1v")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.53464, 6.8491, -18.204)
 player_data = SubResource("Resource_qryd0")
+spawn_point = NodePath("../Marker3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.914699, 0.404136, 0, -0.404136, 0.914699, -8.36738, 9.5761, 13.9908)
+transform = Transform3D(1, 0, 0, 0, 0.624657, 0.780899, 0, -0.780899, 0.624657, -8.36738, 4.86197, -14.5471)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.67345, 0.0193037, -20.4454)
