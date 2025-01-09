@@ -7,8 +7,8 @@
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/walking.gd" id="5_fjrip"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
-radius = 0.259522
-height = 1.7022
+radius = 0.351607
+height = 1.81195
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vyb7"]
 shading_mode = 2
@@ -78,7 +78,7 @@ collision_layer = 3
 script = ExtResource("1_3vyb7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 2.61249e-10, 0.859425, 0.00597668)
+transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 2.61249e-10, 0.822259, 0.00597668)
 shape = SubResource("CapsuleShape3D_u8vuu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

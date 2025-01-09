@@ -35,11 +35,23 @@ func _input(event: InputEvent) -> void:
 		Global.save_manager.load_game(Global.save_manager.current_save_slot)
 		print("Loaded game")
 
+# func move(delta: float):
+# 	rotate_player(delta)
+# 	direction = Input.get_axis("move_back", "move_forward")
+# 	velocity = direction * MOVE_SPEED * global_transform.basis.x
+
+# 	move_and_slide()
+
 func move(delta: float):
+	print(is_on_floor())
 	rotate_player(delta)
 	direction = Input.get_axis("move_back", "move_forward")
 	velocity = direction * MOVE_SPEED * global_transform.basis.x
+	if !is_on_floor():
+		# check if delta is already applied by the move_and_slide function or physics_process()
+		velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity")
 
+	# Move the player
 	move_and_slide()
 
 func rotate_player(delta: float) -> void:
