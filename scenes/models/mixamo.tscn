@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwf5ia51xoelk"]
+
+[ext_resource type="PackedScene" uid="uid://bdjn101iqaqd6" path="res://assets/mixamo_rig/mixamo.glb" id="1_lvbuo"]
+
+[node name="mixamo" instance=ExtResource("1_lvbuo")]

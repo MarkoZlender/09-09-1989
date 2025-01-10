@@ -75,8 +75,8 @@ func change_3d_scene(
 		transition_out: String = "fade_out",
 		seconds: float = 1.0
 	) -> void:
-	# empty transition in to new scene
-	change_gui_scene("", true, false, true)
+
+	change_gui_scene(_loading_screen, true, false, true)
 	if transition:
 		transition_controller.transition(transition_out, seconds)
 		await transition_controller.animation_player.animation_finished
@@ -89,7 +89,7 @@ func change_3d_scene(
 		else:
 			world_3d.remove_child(current_3d_scene) # Keeps node in memory, does not run
 	# change scene to loading screen, delete previous ui scene, don't keep running, don't transition
-	change_gui_scene(_loading_screen, true, false, false)
+	
 	_load_scene_threaded(new_scene)
 	await scene_loaded
 	var new = ResourceLoader.load_threaded_get(new_scene)

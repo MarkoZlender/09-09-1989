@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bml51umf76aq0"]
+[gd_scene load_steps=22 format=3 uid="uid://bml51umf76aq0"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://b8wsips5ayqn4" path="res://scenes/models/cynthia.tscn" id="2_g2els"]
@@ -6,9 +6,8 @@
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/idle.gd" id="4_tuyoq"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/walking.gd" id="5_fjrip"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
-radius = 0.351607
-height = 1.81195
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gj4c5"]
+radius = 0.280617
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vyb7"]
 shading_mode = 2
@@ -72,14 +71,18 @@ states/Walk/node = SubResource("AnimationNodeAnimation_dqkch")
 states/Walk/position = Vector2(422, 179.333)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_dqkch"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_qlg0r"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_tuyoq"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_fjrip"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_smehm"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_g2els"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_qhqgy")]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_clego"]
+radius = 0.106154
+height = 0.270843
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 collision_layer = 3
 script = ExtResource("1_3vyb7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 2.61249e-10, 0.822259, 0.00597668)
-shape = SubResource("CapsuleShape3D_u8vuu")
+transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0.00450778, 1.00909, 0.00597668)
+shape = SubResource("CapsuleShape3D_gj4c5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1.6519, 0, 0, 0, 1, 0, 1.57195, 0)
@@ -92,7 +95,7 @@ visible = false
 mesh = SubResource("BoxMesh_u8vuu")
 
 [node name="Cynthia" parent="." instance=ExtResource("2_g2els")]
-transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 0, 0, 0)
+transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 4.30015e-09, 0, 0.098376)
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 root_node = NodePath("../Cynthia")
@@ -113,5 +116,6 @@ script = ExtResource("5_fjrip")
 transform = Transform3D(4.37114e-08, 0, -1, 0, 1, 0, 1, 0, 4.37114e-08, 0.113985, 1.26465, -4.98245e-09)
 visible = false
 
-[node name="GroundRayCast" type="RayCast3D" parent="."]
-target_position = Vector3(0, -2, 0)
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 0.130552, 0.109429, -0.0704203)
+shape = SubResource("CapsuleShape3D_clego")

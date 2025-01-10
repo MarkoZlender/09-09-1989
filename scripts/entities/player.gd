@@ -26,11 +26,11 @@ class_name Player extends CharacterBody3D
 
 var direction: float = 0
 
-@onready var ground_check: RayCast3D = $GroundRayCast
-
 func _ready():
-	#ground_check.enabled = true
-	position = spawn_point.position + Vector3(0, 0.1, 0)
+	if spawn_point != null:
+		position = spawn_point.position + Vector3(0, 0.1, 0)
+	else:
+		pass
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("save"):
