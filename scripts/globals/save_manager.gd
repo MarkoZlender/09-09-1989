@@ -54,6 +54,10 @@ func save_game(slot: int) -> void:
 	save_data["level_data"][current_level_name] = {}
 	save_data["current_level"] = get_tree().current_scene.get_node("World3D").get_children()[0].get_scene_file_path()
 
+	if save_nodes.size() == 0:
+		printerr("No savable nodes found in the current scene.")
+		return
+
 	for node in save_nodes:
 		if node.scene_file_path.is_empty():
 			printerr("persistent node '%s' is not an instanced scene, skipped" % node.name)
