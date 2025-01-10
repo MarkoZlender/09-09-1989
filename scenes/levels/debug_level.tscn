@@ -72,9 +72,9 @@ item_data_for_cube = SubResource("Resource_sk1pg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68522, 0.107178, 3.20928)
 item_data_for_cube = SubResource("Resource_0h4dv")
 
-[node name="PostProcessEffects" parent="." instance=ExtResource("4_0s487")]
-
 [node name="SavePoint" parent="." instance=ExtResource("9_mioeh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.383871, -1.80668)
 
 [node name="LoadLevelComponent" parent="." instance=ExtResource("10_yth56")]
+
+[node name="PostProcessEffects" parent="." instance=ExtResource("4_0s487")]
