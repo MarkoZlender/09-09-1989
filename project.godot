@@ -97,7 +97,3 @@ load={
 [physics]
 
 3d/physics_engine="JoltPhysics3D"
-
-[rendering]
-
-environment/volumetric_fog/volume_size=256
