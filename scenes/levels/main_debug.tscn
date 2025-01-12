@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://bllvspggpetvu"]
+[gd_scene load_steps=27 format=4 uid="uid://dqsbs3416itnp"]
 
 [ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/entities/player.tscn" id="1_vajqb"]
 [ext_resource type="Texture2D" uid="uid://cji4lehlyhw3r" path="res://assets/models/psx_apartment/PSX-ApartmentPack_Couch.png" id="2_a0v6o"]

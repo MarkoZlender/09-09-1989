@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dcjlc87qrm3qu"]
+[gd_scene load_steps=15 format=3 uid="uid://dcjlc87qrm3qu"]
 
 [ext_resource type="Script" path="res://scripts/levels/debug_level.gd" id="1_qs4br"]
 [ext_resource type="Texture2D" uid="uid://c6pyep1cusmnn" path="res://assets/textures/prototype_textures/Dark/texture_01.png" id="2_1jke0"]
@@ -10,21 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://bm3l5td4ucfyf" path="res://scenes/interaction/interactables/save_point.tscn" id="9_mioeh"]
 [ext_resource type="PackedScene" uid="uid://47b6ywwy1olr" path="res://scenes/components/load_level_component.tscn" id="10_yth56"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c87d4"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_nnm2s"]
-sky_material = SubResource("ProceduralSkyMaterial_c87d4")
-
-[sub_resource type="Environment" id="Environment_ip54w"]
-sky = SubResource("Sky_nnm2s")
+[sub_resource type="Environment" id="Environment_8v1jl"]
+background_mode = 1
+background_color = Color(0.489622, 0.489622, 0.489622, 1)
+background_energy_multiplier = 0.88
 ambient_light_source = 2
-ambient_light_color = Color(0.903598, 0.903598, 0.903598, 1)
-tonemap_mode = 2
-glow_enabled = true
-adjustment_enabled = true
-adjustment_saturation = 0.5
+ambient_light_color = Color(0.560955, 0.560955, 0.560955, 1)
+ambient_light_energy = 3.45
 
 [sub_resource type="Resource" id="Resource_1mbi4"]
 script = ExtResource("4_d4s1l")
@@ -49,7 +41,7 @@ description = "An item"
 script = ExtResource("1_qs4br")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ip54w")
+environment = SubResource("Environment_8v1jl")
 
 [node name="Player" parent="." groups=["savable"] instance=ExtResource("8_p7r6i")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
@@ -76,5 +68,6 @@ item_data_for_cube = SubResource("Resource_0h4dv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.383871, -1.80668)
 
 [node name="LoadLevelComponent" parent="." instance=ExtResource("10_yth56")]
+debug_mode = true
 
 [node name="PostProcessEffects" parent="." instance=ExtResource("4_0s487")]

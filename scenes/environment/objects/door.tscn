@@ -1,0 +1,34 @@
+[gd_scene load_steps=7 format=3 uid="uid://b065twii5uo1m"]
+
+[ext_resource type="PackedScene" uid="uid://b8rtwryepqr5w" path="res://scenes/components/interact_component.tscn" id="1_60wk5"]
+[ext_resource type="Script" path="res://scripts/environment/objects/door.gd" id="1_iud2t"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i4spc"]
+size = Vector3(2, 3, 0.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pjpf"]
+albedo_color = Color(0.44776, 0.276217, 0.005818, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wvnq5"]
+material = SubResource("StandardMaterial3D_1pjpf")
+size = Vector3(2, 3, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u7gy0"]
+size = Vector3(2, 3, 0.5)
+
+[node name="Door" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("1_iud2t")
+
+[node name="DoorCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_i4spc")
+
+[node name="DoorMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_wvnq5")
+skeleton = NodePath("../..")
+
+[node name="InteractComponent" parent="." instance=ExtResource("1_60wk5")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25)
+shape = SubResource("BoxShape3D_u7gy0")

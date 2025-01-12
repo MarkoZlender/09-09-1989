@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://scenes/globals/global.tscn"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 
@@ -30,7 +31,7 @@ project/assembly_name="fixed_cam"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/sky_3d/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
 
 [global_group]
 
@@ -96,3 +97,7 @@ load={
 [physics]
 
 3d/physics_engine="JoltPhysics3D"
+
+[rendering]
+
+environment/volumetric_fog/volume_size=256

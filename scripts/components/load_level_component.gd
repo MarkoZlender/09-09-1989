@@ -9,4 +9,4 @@ func _ready() -> void:
 		Global.save_manager.load_game(Global.save_manager.current_save_slot)
 		Global.interaction_manager.player = get_tree().get_first_node_in_group("player")
 	else:
-		pass
+		Global.interaction_manager.player = get_tree().get_first_node_in_group("player")

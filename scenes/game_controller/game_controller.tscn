@@ -9,6 +9,7 @@ world_3d = NodePath("World3D")
 world_2d = NodePath("World2D")
 gui = NodePath("GUI")
 transition_controller = NodePath("GUI/CanvasLayer/TransitionController")
+start_scene = "res://scenes/levels/room.tscn"
 
 [node name="World3D" type="Node3D" parent="."]
 
