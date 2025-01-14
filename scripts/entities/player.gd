@@ -48,7 +48,6 @@ func _input(event: InputEvent) -> void:
 # 	move_and_slide()
 
 func move(delta: float):
-	print(is_on_floor())
 	rotate_player(delta)
 	direction = Input.get_axis("move_back", "move_forward")
 	velocity = direction * MOVE_SPEED * global_transform.basis.x

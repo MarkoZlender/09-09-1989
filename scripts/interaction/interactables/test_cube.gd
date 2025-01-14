@@ -1,6 +1,6 @@
-extends Node3D
+class_name TestCube extends Collectible
 
-signal collected(item_path: String)
+signal collected(item)
 
 @export var item_data_for_cube: ItemData
 @export var text: String = "Interact"
@@ -10,7 +10,7 @@ func _ready() -> void:
 	interact_component.interact = Callable(self, "_on_interact")
 
 func _on_interact() -> void:
-	collected.emit()
+	collected.emit(self)
 	queue_free()
 	# await dialog finished, animation finished, etc.
 

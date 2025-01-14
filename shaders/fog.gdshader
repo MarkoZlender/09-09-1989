@@ -3,10 +3,10 @@ shader_type fog;
 uniform float noise_scale = 1.0;
 uniform float flatness = 1.0;
 uniform float density = 1.0;
-uniform sampler2D noise_tex:repeat_enable; 
+uniform sampler2D noise_tex:repeat_enable;
 
 void fog() {
-	
+
 	vec2 move_uv = vec2(0.2, 0.0) * TIME;
 	float detail_noise = texture(noise_tex, WORLD_POSITION.xz*noise_scale + move_uv*0.5).r;
 	detail_noise *= 0.2;

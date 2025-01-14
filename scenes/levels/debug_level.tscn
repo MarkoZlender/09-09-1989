@@ -56,11 +56,11 @@ material = SubResource("StandardMaterial3D_t0aj7")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.900197, 0.435483, 0, -0.435483, 0.900197, 0, 2.59931, 5.7555)
 
-[node name="TestCube" parent="." groups=["quest_items", "savable"] instance=ExtResource("3_50my6")]
+[node name="TestCube" parent="." groups=["quest_objects", "savable"] instance=ExtResource("3_50my6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68522, 0.107178, -0.409076)
 item_data_for_cube = SubResource("Resource_sk1pg")
 
-[node name="TestCube2" parent="." groups=["quest_items", "savable"] instance=ExtResource("3_50my6")]
+[node name="TestCube2" parent="." groups=["quest_objects", "savable"] instance=ExtResource("3_50my6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68522, 0.107178, 3.20928)
 item_data_for_cube = SubResource("Resource_0h4dv")
 
