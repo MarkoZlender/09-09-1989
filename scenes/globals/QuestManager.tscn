@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://be6ikd0pxgjxs"]
+
+[ext_resource type="Script" path="res://scripts/globals/quest_manager.gd" id="1_4i4ne"]
+[ext_resource type="Script" path="res://resources/quest.gd" id="2_ch4pn"]
+[ext_resource type="Resource" uid="uid://c60dkbyx7bmpc" path="res://resources/collect_quest.tres" id="3_02lhn"]
+
+[node name="QuestManager" type="Node"]
+script = ExtResource("1_4i4ne")
+quests = Array[ExtResource("2_ch4pn")]([ExtResource("3_02lhn")])

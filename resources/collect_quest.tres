@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CollectQuest" load_steps=2 format=3 uid="uid://c60dkbyx7bmpc"]
+
+[ext_resource type="Script" path="res://resources/quest_collect.gd" id="1_rj0h1"]
+
+[resource]
+script = ExtResource("1_rj0h1")
+item = "res://scenes/interaction/interactables/test_cube.tscn"
+quantity_to_collect = 2
+name = "kbh"
+quest_state = 1

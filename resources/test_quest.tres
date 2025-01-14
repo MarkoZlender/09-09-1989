@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=2 format=3 uid="uid://cbrqhll3ryvcb"]
+
+[ext_resource type="Script" path="res://resources/quest.gd" id="1_4gun7"]
+
+[resource]
+script = ExtResource("1_4gun7")
+name = ""
+quest_state = 0
+quest_type = 0

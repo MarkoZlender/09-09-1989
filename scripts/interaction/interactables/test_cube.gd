@@ -1,5 +1,7 @@
 extends Node3D
 
+signal collected(item_path: String)
+
 @export var item_data_for_cube: ItemData
 @export var text: String = "Interact"
 @onready var interact_component: InteractComponent = $InteractComponent
@@ -8,7 +10,7 @@ func _ready() -> void:
 	interact_component.interact = Callable(self, "_on_interact")
 
 func _on_interact() -> void:
-	print(text)
+	collected.emit()
 	queue_free()
 	# await dialog finished, animation finished, etc.
 

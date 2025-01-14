@@ -41,7 +41,7 @@ player_data = SubResource("Resource_shn7u")
 environment = SubResource("Environment_300yn")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.736199, -0.329468, 0.591153, 2.98023e-08, 0.873498, 0.486827, -0.676765, -0.358401, 0.643069, 4.26342, 3.55774, 2.87321)
+transform = Transform3D(0.736199, -0.329467, 0.591153, 2.98023e-08, 0.873499, 0.486827, -0.676765, -0.358401, 0.643069, 4.26342, 3.55774, 2.87321)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 process_priority = 300
