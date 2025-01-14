@@ -7,5 +7,5 @@
 script = ExtResource("1_rj0h1")
 quantity_to_collect = 2
 collectible_type = ExtResource("1_har35")
-name = "kbh"
+name = "Test Collect Quest"
 quest_state = 1

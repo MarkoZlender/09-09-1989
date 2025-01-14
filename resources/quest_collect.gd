@@ -20,6 +20,6 @@ func update_collected(collectible: Collectible) -> void:
     print("Collected: ", collected)
     if collected >= quantity_to_collect:
         Global.quest_manager.complete(self)
-        collected = 0
+        #collected = 0
     instance.queue_free()
 

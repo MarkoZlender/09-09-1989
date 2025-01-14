@@ -9,7 +9,9 @@ func _ready() -> void:
 	await parent.ready
 	for quest_object in quest_objects:
 		if quest_object is Collectible:
-			quest_object.connect("collected", Global.quest_manager.quests[0].update_collected)
+			for quest in Global.quest_manager.quests:
+				if quest is CollectQuest:
+					quest_object.collected.connect(quest.update_collected)
 
 	if !debug_mode:
 		Global.save_manager.load_game(Global.save_manager.current_save_slot)
