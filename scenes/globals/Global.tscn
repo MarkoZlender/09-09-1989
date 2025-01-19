@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd3fm13s6uxk6"]
+[gd_scene load_steps=9 format=3 uid="uid://cd3fm13s6uxk6"]
 
 [ext_resource type="Script" path="res://scripts/globals/global.gd" id="1_ef01j"]
 [ext_resource type="PackedScene" uid="uid://jlpql0vbg6mg" path="res://scenes/globals/save_manager.tscn" id="2_2r8wd"]
 [ext_resource type="PackedScene" uid="uid://buvpd7nh1gtu7" path="res://scenes/globals/interaction_manager.tscn" id="3_lysjt"]
 [ext_resource type="PackedScene" uid="uid://k80pext0c5gt" path="res://scenes/globals/utils.tscn" id="4_5bla8"]
 [ext_resource type="PackedScene" uid="uid://be6ikd0pxgjxs" path="res://scenes/globals/QuestManager.tscn" id="4_mlqme"]
+[ext_resource type="Script" path="res://addons/gloot/core/inventory.gd" id="6_fmdso"]
+[ext_resource type="JSON" path="res://resources/prototree.json" id="7_flclb"]
+[ext_resource type="Script" path="res://addons/gloot/core/item_slot.gd" id="8_0734y"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_ef01j")
@@ -16,3 +19,19 @@ script = ExtResource("1_ef01j")
 [node name="QuestManager" parent="." instance=ExtResource("4_mlqme")]
 
 [node name="Utils" parent="." instance=ExtResource("4_5bla8")]
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("6_fmdso")
+protoset = ExtResource("7_flclb")
+_serialized_format = {
+"items": [{
+"protoset": "res://resources/prototree.json",
+"prototype_id": "sword"
+}],
+"node_name": "Inventory",
+"protoset": "res://resources/prototree.json"
+}
+
+[node name="WeaponSlot" type="Node" parent="Inventory"]
+script = ExtResource("8_0734y")
+protoset = ExtResource("7_flclb")

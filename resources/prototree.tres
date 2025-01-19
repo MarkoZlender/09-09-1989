@@ -1,0 +1,22 @@
+[gd_resource type="JSON" format=3 uid="uid://bassqqmr0ycj2"]
+
+[resource]
+data = {
+"collectible": {
+"name": "Collectible",
+"stack_size": 1.0
+},
+"health_collectible": {
+"health": 10.0,
+"inherits": "collectible"
+},
+"ranged_weapon": {
+"inherits": "weapon",
+"range": 5.0
+},
+"weapon": {
+"damage": 0.0,
+"name": "Weapon",
+"stack_size": 1.0
+}
+}

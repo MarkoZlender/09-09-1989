@@ -1,0 +1,91 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://c3kktbst6f3sn"]
+
+[ext_resource type="FontFile" uid="uid://bl2u0kwtuo2g7" path="res://assets/fonts/Tiny5-Regular.ttf" id="1_48oqq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhixt"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hff6x"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.07)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="Gradient" id="Gradient_jw8s0"]
+colors = PackedColorArray(0.105882, 0, 0.411765, 1, 0.227451, 0, 0.870588, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ijd4q"]
+gradient = SubResource("Gradient_jw8s0")
+fill_from = Vector2(0.011396, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_100gv"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = SubResource("GradientTexture2D_ijd4q")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m5n74"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7s5xb"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[resource]
+ItemList/colors/font_color = Color(1, 1, 1, 1)
+ItemList/colors/font_hovered_color = Color(0.95, 0.95, 0.95, 1)
+ItemList/colors/font_outline_color = Color(0, 0, 0, 1)
+ItemList/colors/font_selected_color = Color(1, 1, 1, 1)
+ItemList/colors/guide_color = Color(0.7, 0.7, 0.7, 0.25)
+ItemList/font_sizes/font_size = 30
+ItemList/fonts/font = ExtResource("1_48oqq")
+ItemList/styles/cursor = SubResource("StyleBoxFlat_vhixt")
+ItemList/styles/cursor_unfocused = SubResource("StyleBoxFlat_vhixt")
+ItemList/styles/focus = SubResource("StyleBoxFlat_vhixt")
+ItemList/styles/hovered = SubResource("StyleBoxFlat_hff6x")
+ItemList/styles/panel = SubResource("StyleBoxTexture_100gv")
+ItemList/styles/selected = SubResource("StyleBoxFlat_m5n74")
+ItemList/styles/selected_focus = SubResource("StyleBoxFlat_7s5xb")

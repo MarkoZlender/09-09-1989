@@ -21,6 +21,8 @@ func _ready() -> void:
 	set_process(false)
 	Global.game_controller = self
 	# check if start scene is in res://scenes/ui or not and change scene accordingly
+	%CtrlInventory.inventory = Global.inventory
+	
 	if start_scene.find("res://scenes/ui") == -1:
 		change_3d_scene(start_scene)
 	else:

@@ -1,0 +1,38 @@
+{
+	"weapon": {
+		"id": "weapon",
+		"name": "Weapon",
+		"damage": 0,
+		"stack_size": 1
+	},
+	"ranged_weapon": {
+		"id": "ranged_weapon",
+		"inherits": "weapon",
+		"range": 5
+	},
+	"collectible": {
+		"id": "collectible",
+		"name": "Collectible",
+		"stack_size": 1
+	},
+	"health_collectible": {
+		"id": "health_collectible",
+		"inherits": "collectible",
+		"health": 10
+	},
+	"sword": {
+		"id": "sword",
+		"image": "res://assets/sprites/sword.png",
+		"name": "Sword",
+		"inherits": "weapon",
+		"damage": 10,
+		"stack_size": 5
+	},
+	"potion": {
+		"id": "potion",
+		"name": "Potion",
+		"inherits": "health_collectible",
+		"health": 50,
+		"stack_size": 5
+	}
+}
