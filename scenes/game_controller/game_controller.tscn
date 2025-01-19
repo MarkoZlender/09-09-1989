@@ -24,8 +24,8 @@ noise = SubResource("FastNoiseLite_xjfcy")
 [sub_resource type="Gradient" id="Gradient_ymkw2"]
 interpolation_mode = 2
 interpolation_color_space = 2
-offsets = PackedFloat32Array(0.324561, 1)
-colors = PackedColorArray(0, 0, 0, 0.486275, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.47807)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.47451)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8a7a1"]
 gradient = SubResource("Gradient_ymkw2")
@@ -87,12 +87,14 @@ patch_margin_bottom = 21
 
 [node name="InventoryUI" type="Control" parent="GUI/CanvasLayer"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.18316
+anchor_top = 0.186728
+anchor_right = 0.799479
+anchor_bottom = 0.790123
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_j2xkq")
+metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="TextureRect" parent="GUI/CanvasLayer/InventoryUI"]
 layout_mode = 1
@@ -102,6 +104,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("NoiseTexture2D_tr88e")
+expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="GUI/CanvasLayer/InventoryUI"]
 layout_mode = 1
@@ -123,18 +126,16 @@ grow_vertical = 2
 [node name="ItemSlotContainer" parent="GUI/CanvasLayer/InventoryUI/VContainer" instance=ExtResource("7_5ndu1")]
 layout_mode = 2
 
-[node name="QuantityLabel" parent="GUI/CanvasLayer/InventoryUI/VContainer/ItemSlotContainer/ItemButton" index="0"]
+[node name="NinePatchRect" type="NinePatchRect" parent="GUI/CanvasLayer/InventoryUI"]
 layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
+anchors_preset = 15
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -28.5
-offset_right = 0.0
-offset_bottom = 28.5
-grow_horizontal = 0
+anchor_bottom = 1.0
+grow_horizontal = 2
 grow_vertical = 2
-
-[editable path="GUI/CanvasLayer/InventoryUI/VContainer/ItemSlotContainer"]
+texture = ExtResource("5_dkh5m")
+region_rect = Rect2(162, 18, 92, 92)
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 22
+patch_margin_bottom = 21
