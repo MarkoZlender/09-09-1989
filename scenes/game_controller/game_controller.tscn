@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="6_j2xkq"]
 
 [sub_resource type="Gradient" id="Gradient_cdktf"]
+interpolation_mode = 1
 colors = PackedColorArray(0, 0, 0.588235, 1, 0, 0.181581, 0.910716, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xjfcy"]
@@ -16,6 +17,8 @@ seed = 3
 frequency = 0.0596
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tr88e"]
+width = 1920
+height = 1080
 seamless = true
 color_ramp = SubResource("Gradient_cdktf")
 noise = SubResource("FastNoiseLite_xjfcy")
