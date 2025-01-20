@@ -63,10 +63,19 @@ func _on_item_manipulated(item: InventoryItem) -> void:
 	_refresh()
 
 func _ready() -> void:
+	hide()
 	for item in items:
 		item.item_clicked.connect(_on_list_item_clicked)
 		#item_selected.connect(_on_list_item_selected)
 	_refresh()
+
+func _input(event):
+	if event.is_action_pressed("inventory"):
+		if is_visible():
+			hide()
+		else:
+			_refresh()
+			show()
 
 
 func _on_list_item_activated(index: int) -> void:
@@ -105,12 +114,14 @@ func _get_inventory_item(index: int) -> InventoryItem:
 
 
 func _refresh() -> void:
-	#_clear()
+	_clear()
 	_populate()
 
 
-# func _clear() -> void:
-# 	clear()
+func _clear() -> void:
+	for item in items:
+		item.queue_free()
+	items.clear()
 
 
 func _populate() -> void:

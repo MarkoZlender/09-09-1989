@@ -11,6 +11,7 @@ func _ready() -> void:
 
 func _on_interact() -> void:
 	collected.emit(self)
+	Global.inventory.create_and_add_item("potion")
 	queue_free()
 	# await dialog finished, animation finished, etc.
 
