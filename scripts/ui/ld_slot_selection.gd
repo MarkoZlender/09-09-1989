@@ -1,6 +1,6 @@
 extends Control
 
-const _slot_button_scene: String = "res://scenes/ui/slot_button.tscn"
+const _slot_button_scene: String = "res://scenes/ui/save_system/slot_button.tscn"
 const _main_menu_scene: String = "res://scenes/ui/main_menu.tscn"
 
 @onready var _vslot_container: VBoxContainer = %VSlotContainer

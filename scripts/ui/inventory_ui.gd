@@ -1,6 +1,5 @@
 extends Control
 
-
 signal inventory_item_activated(item: InventoryItem) ## Emitted when an inventory item has been double-clicked.
 signal inventory_item_clicked(item: InventoryItem, at_position: Vector2, mouse_button_index: int) ## Emitted when an inventory item has been clicked.
 signal inventory_item_selected(item: InventoryItem) ## Emitted when an inventory item has been selected.
@@ -169,7 +168,7 @@ func set_item_icon(index: int, texture: Texture) -> void:
 		print("Index out of bounds: ", index)
 
 func add_item(text: String, quantity: int, texture: Texture) -> void:
-	var scene = preload("res://scenes/ui/item_slot_container.tscn")
+	var scene = preload("res://scenes/ui/inventory/item_slot_container.tscn")
 	var item = scene.instantiate()
 	v_container.add_child(item)
 	items.append(item)  # Add the new item to the items array

@@ -68,6 +68,5 @@ item_data_for_cube = SubResource("Resource_0h4dv")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.383871, -1.80668)
 
 [node name="LoadLevelComponent" parent="." instance=ExtResource("10_yth56")]
-debug_mode = true
 
 [node name="PostProcessEffects" parent="." instance=ExtResource("4_0s487")]

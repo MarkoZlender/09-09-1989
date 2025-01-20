@@ -1,37 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://b742kfgwr8sh"]
+[gd_scene load_steps=7 format=3 uid="uid://b742kfgwr8sh"]
 
 [ext_resource type="Script" path="res://scripts/game_controller/game_controller.gd" id="1_ca7gh"]
-[ext_resource type="PackedScene" uid="uid://c62u2p3f0l7wg" path="res://scenes/game_controller/TransitionController.tscn" id="2_bddcm"]
+[ext_resource type="PackedScene" uid="uid://c62u2p3f0l7wg" path="res://scenes/game_controller/transition_controller.tscn" id="2_bddcm"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory.gd" id="3_iq4s1"]
 [ext_resource type="Theme" uid="uid://c3kktbst6f3sn" path="res://assets/themes/ui_theme.tres" id="3_vqt1t"]
 [ext_resource type="Texture2D" uid="uid://di51xfxmegdok" path="res://assets/sprites/Pxiel Art UI borders.png" id="5_dkh5m"]
-[ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="6_j2xkq"]
-
-[sub_resource type="Gradient" id="Gradient_cdktf"]
-interpolation_mode = 1
-colors = PackedColorArray(0, 0, 0.588235, 1, 0, 0.181581, 0.910716, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xjfcy"]
-noise_type = 0
-seed = 3
-frequency = 0.0596
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tr88e"]
-width = 1920
-height = 1080
-seamless = true
-color_ramp = SubResource("Gradient_cdktf")
-noise = SubResource("FastNoiseLite_xjfcy")
-
-[sub_resource type="Gradient" id="Gradient_ymkw2"]
-interpolation_mode = 2
-interpolation_color_space = 2
-offsets = PackedFloat32Array(0, 0.47807)
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.47451)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8a7a1"]
-gradient = SubResource("Gradient_ymkw2")
-fill_to = Vector2(0, 1)
+[ext_resource type="PackedScene" uid="uid://dgk04fuja3ay2" path="res://scenes/ui/inventory/inventory_item_list.tscn" id="6_t4wkb"]
 
 [node name="GameController" type="Node" node_paths=PackedStringArray("world_3d", "world_2d", "gui", "transition_controller")]
 script = ExtResource("1_ca7gh")
@@ -39,7 +13,6 @@ world_3d = NodePath("World3D")
 world_2d = NodePath("World2D")
 gui = NodePath("GUI")
 transition_controller = NodePath("GUI/CanvasLayer/TransitionController")
-start_scene = "res://scenes/levels/debug_level.tscn"
 
 [node name="World3D" type="Node3D" parent="."]
 
@@ -87,56 +60,6 @@ patch_margin_top = 20
 patch_margin_right = 22
 patch_margin_bottom = 21
 
-[node name="InventoryUI" type="Control" parent="GUI/CanvasLayer"]
+[node name="InventoryItemList" parent="GUI/CanvasLayer" instance=ExtResource("6_t4wkb")]
 unique_name_in_owner = true
-layout_mode = 3
-anchor_left = 0.18316
-anchor_top = 0.186728
-anchor_right = 0.799479
-anchor_bottom = 0.790123
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("6_j2xkq")
-metadata/_edit_use_anchors_ = true
-
-[node name="Background" type="TextureRect" parent="GUI/CanvasLayer/InventoryUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("NoiseTexture2D_tr88e")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="GUI/CanvasLayer/InventoryUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_8a7a1")
-
-[node name="VContainer" type="VBoxContainer" parent="GUI/CanvasLayer/InventoryUI"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="GUI/CanvasLayer/InventoryUI"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_dkh5m")
-region_rect = Rect2(162, 18, 92, 92)
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 22
-patch_margin_bottom = 21
+visible = false

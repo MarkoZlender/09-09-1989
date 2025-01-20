@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b657lysfraeak"]
 
-[ext_resource type="ButtonGroup" uid="uid://chgaopo2emhti" path="res://scenes/ui/slot_selection_button_group.tres" id="1_5bqp8"]
+[ext_resource type="ButtonGroup" uid="uid://chgaopo2emhti" path="res://scenes/ui/save_system/slot_selection_button_group.tres" id="1_5bqp8"]
 [ext_resource type="Script" path="res://scripts/ui/slot_button.gd" id="2_w7kmr"]
 
 [node name="SlotButton" type="Button"]

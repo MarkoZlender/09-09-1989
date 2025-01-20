@@ -9,7 +9,7 @@ signal load_progress(percent: String)
 @export var transition_controller: TransitionController
 @export_file("*.tscn") var start_scene: String = "res://scenes/ui/main_menu.tscn"
 
-const _loading_screen: String = "res://scenes/ui/loading_screen.tscn"
+const _loading_screen: String = "res://scenes/ui/save_system/loading_screen.tscn"
 
 var current_3d_scene
 var current_2d_scene
@@ -22,7 +22,7 @@ func _ready() -> void:
 	Global.game_controller = self
 	# check if start scene is in res://scenes/ui or not and change scene accordingly
 	%CtrlInventory.inventory = Global.inventory
-	%InventoryUI.inventory = Global.inventory
+	%InventoryItemList.inventory = Global.inventory
 	
 	if start_scene.find("res://scenes/ui") == -1:
 		change_3d_scene(start_scene)

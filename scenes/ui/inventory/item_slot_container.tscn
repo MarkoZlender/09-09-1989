@@ -1,18 +1,18 @@
 [gd_scene load_steps=4 format=3 uid="uid://bqx4csbfucq3m"]
 
-[ext_resource type="Script" path="res://scripts/ui/item_slot_container.gd" id="1_iiybh"]
-[ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/inventory_theme.tres" id="1_mta2r"]
-[ext_resource type="Texture2D" uid="uid://0b3v6vfacdwv" path="res://assets/sprites/sword.png" id="2_wenya"]
+[ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/inventory_theme.tres" id="1_qopkv"]
+[ext_resource type="Script" path="res://scripts/ui/item_slot_container.gd" id="2_so6ge"]
+[ext_resource type="Texture2D" uid="uid://0b3v6vfacdwv" path="res://assets/sprites/sword.png" id="3_ixuqm"]
 
 [node name="ItemSlotContainer" type="HBoxContainer"]
-theme = ExtResource("1_mta2r")
-script = ExtResource("1_iiybh")
+theme = ExtResource("1_qopkv")
+script = ExtResource("2_so6ge")
 
 [node name="ItemButton" type="Button" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("1_mta2r")
+theme = ExtResource("1_qopkv")
 text = "Sword"
 flat = true
 alignment = 0
@@ -35,7 +35,7 @@ unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("2_wenya")
+texture = ExtResource("3_ixuqm")
 
 [node name="QuantityLabel" type="Label" parent="ItemButton"]
 unique_name_in_owner = true
@@ -53,7 +53,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 size_flags_stretch_ratio = 0.05
-theme = ExtResource("1_mta2r")
+theme = ExtResource("1_qopkv")
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1

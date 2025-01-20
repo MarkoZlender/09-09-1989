@@ -1,7 +1,7 @@
 extends Control
 
-@onready var ng_slot_selection_scene: String = "res://scenes/ui/ng_slot_selection.tscn"
-@onready var ld_slot_selection_scene: String = "res://scenes/ui/ld_slot_selection.tscn"
+@onready var ng_slot_selection_scene: String = "res://scenes/ui/save_system/ng_slot_selection.tscn"
+@onready var ld_slot_selection_scene: String = "res://scenes/ui/save_system/ld_slot_selection.tscn"
 # @onready var _new_game_button: Button = %NewGameButton
 
 # func _ready() -> void:
