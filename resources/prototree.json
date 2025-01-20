@@ -30,6 +30,7 @@
 	},
 	"potion": {
 		"id": "potion",
+		"image": "res://assets/sprites/potion.png",
 		"name": "Potion",
 		"inherits": "health_collectible",
 		"health": 50,

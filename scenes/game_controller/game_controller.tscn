@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b742kfgwr8sh"]
+[gd_scene load_steps=12 format=3 uid="uid://b742kfgwr8sh"]
 
 [ext_resource type="Script" path="res://scripts/game_controller/game_controller.gd" id="1_ca7gh"]
 [ext_resource type="PackedScene" uid="uid://c62u2p3f0l7wg" path="res://scenes/game_controller/TransitionController.tscn" id="2_bddcm"]
@@ -6,7 +6,6 @@
 [ext_resource type="Theme" uid="uid://c3kktbst6f3sn" path="res://assets/themes/ui_theme.tres" id="3_vqt1t"]
 [ext_resource type="Texture2D" uid="uid://di51xfxmegdok" path="res://assets/sprites/Pxiel Art UI borders.png" id="5_dkh5m"]
 [ext_resource type="Script" path="res://scripts/ui/inventory_ui.gd" id="6_j2xkq"]
-[ext_resource type="PackedScene" uid="uid://bqx4csbfucq3m" path="res://scenes/ui/item_slot_container.tscn" id="7_5ndu1"]
 
 [sub_resource type="Gradient" id="Gradient_cdktf"]
 colors = PackedColorArray(0, 0, 0.588235, 1, 0, 0.181581, 0.910716, 1)
@@ -86,6 +85,7 @@ patch_margin_right = 22
 patch_margin_bottom = 21
 
 [node name="InventoryUI" type="Control" parent="GUI/CanvasLayer"]
+unique_name_in_owner = true
 layout_mode = 3
 anchor_left = 0.18316
 anchor_top = 0.186728
@@ -116,15 +116,13 @@ grow_vertical = 2
 texture = SubResource("GradientTexture2D_8a7a1")
 
 [node name="VContainer" type="VBoxContainer" parent="GUI/CanvasLayer/InventoryUI"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="ItemSlotContainer" parent="GUI/CanvasLayer/InventoryUI/VContainer" instance=ExtResource("7_5ndu1")]
-layout_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="GUI/CanvasLayer/InventoryUI"]
 layout_mode = 1
