@@ -27,6 +27,12 @@ _serialized_format = {
 "items": [{
 "protoset": "res://resources/prototree.json",
 "prototype_id": "sword"
+}, {
+"protoset": "res://resources/prototree.json",
+"prototype_id": "ranged_weapon"
+}, {
+"protoset": "res://resources/prototree.json",
+"prototype_id": "potion"
 }],
 "node_name": "Inventory",
 "protoset": "res://resources/prototree.json"

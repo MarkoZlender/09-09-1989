@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhmc8wfngr5kq"
-path="res://.godot/imported/potion.png-b4eba4672cf1266239901bf46417818c.ctex"
+uid="uid://b0a21hbqv8kma"
+path="res://.godot/imported/pouch.png-8ede7ee3b300182be0d17a2382806ba9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/potion.png"
-dest_files=["res://.godot/imported/potion.png-b4eba4672cf1266239901bf46417818c.ctex"]
+source_file="res://assets/sprites/pouch.png"
+dest_files=["res://.godot/imported/pouch.png-8ede7ee3b300182be0d17a2382806ba9.ctex"]
 
 [params]
 

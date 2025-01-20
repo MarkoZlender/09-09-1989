@@ -5,13 +5,22 @@
 		"damage": 0,
 		"stack_size": 1
 	},
+	"melee_weapon": {
+		"id": "melee_weapon",
+		"image": "res://assets/sprites/sword.png",
+		"name": "Melee Weapon",
+		"inherits": "weapon",
+		"range": 1
+	},
 	"ranged_weapon": {
 		"id": "ranged_weapon",
+		"image": "res://assets/sprites/bow.png",
 		"inherits": "weapon",
 		"range": 5
 	},
 	"collectible": {
 		"id": "collectible",
+		"image": "res://assets/sprites/pouch.png",
 		"name": "Collectible",
 		"stack_size": 1
 	},
@@ -22,15 +31,13 @@
 	},
 	"sword": {
 		"id": "sword",
-		"image": "res://assets/sprites/sword.png",
 		"name": "Sword",
-		"inherits": "weapon",
+		"inherits": "melee_weapon",
 		"damage": 10,
 		"stack_size": 5
 	},
 	"potion": {
 		"id": "potion",
-		"image": "res://assets/sprites/potion.png",
 		"name": "Potion",
 		"inherits": "health_collectible",
 		"health": 50,
