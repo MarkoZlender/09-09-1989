@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgk04fuja3ay2"]
+[gd_scene load_steps=9 format=3 uid="uid://dgk04fuja3ay2"]
 
 [ext_resource type="Script" path="res://scripts/ui/inventory/inventory_item_list.gd" id="1_rjo4w"]
 [ext_resource type="Texture2D" uid="uid://di51xfxmegdok" path="res://assets/sprites/Pxiel Art UI borders.png" id="2_x77er"]
+[ext_resource type="PackedScene" uid="uid://b4goedwokmaph" path="res://scenes/ui/menu_cursor.tscn" id="3_84ha7"]
 
 [sub_resource type="Gradient" id="Gradient_a7n0e"]
 interpolation_mode = 1
@@ -81,3 +82,7 @@ patch_margin_left = 20
 patch_margin_top = 20
 patch_margin_right = 22
 patch_margin_bottom = 21
+
+[node name="MenuCursor" parent="." instance=ExtResource("3_84ha7")]
+layout_mode = 0
+menu_parent_path = NodePath("../VContainer")

@@ -190,4 +190,3 @@ element_to_focus = NodePath("../ActionSelection/VContainer/UseButton")
 [node name="MenuCursor" parent="GUI/CanvasLayer/InventoryScreen" instance=ExtResource("10_58xo7")]
 layout_mode = 0
 menu_parent_path = NodePath("../ActionSelection/VContainer")
-cursor_offset = Vector2(80, -2)
