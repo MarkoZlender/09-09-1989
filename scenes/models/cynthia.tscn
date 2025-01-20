@@ -1,14 +1,14 @@
 [gd_scene load_steps=39 format=4 uid="uid://b8wsips5ayqn4"]
 
-[ext_resource type="Texture2D" uid="uid://bkwo8o8ak7o1k" path="res://assets/cynthia/animatedglb_cynhk_1_1_0_0.png" id="1_gl2ou"]
-[ext_resource type="Texture2D" uid="uid://5ngyhmawhi82" path="res://assets/cynthia/animatedglb_cynhk_1_7_0_0.png" id="2_gp7cl"]
-[ext_resource type="Texture2D" uid="uid://da56fjp74flt5" path="res://assets/cynthia/animatedglb_cynhk_1_8_0_0.png" id="3_enict"]
-[ext_resource type="Texture2D" uid="uid://did3024n1kuge" path="res://assets/cynthia/animatedglb_cynhk_1_4_0_0.png" id="4_d6wgs"]
-[ext_resource type="Texture2D" uid="uid://ds55b7cbwbonb" path="res://assets/cynthia/animatedglb_cynhk.png" id="5_n3ltk"]
-[ext_resource type="Texture2D" uid="uid://bp5fp03p0pr8p" path="res://assets/cynthia/animatedglb_cynhk_1_6_0_0.png" id="6_0fhpa"]
-[ext_resource type="Texture2D" uid="uid://c2kwmki65v127" path="res://assets/cynthia/animatedglb_cynhk_1_2_0_0.png" id="7_sa17j"]
-[ext_resource type="Texture2D" uid="uid://b7khk5fcmvmw1" path="res://assets/cynthia/animatedglb_cynhk_1_5_0_0.png" id="8_ebdxi"]
-[ext_resource type="Texture2D" uid="uid://cxtgh7ixt7n2p" path="res://assets/cynthia/animatedglb_cynhk_1_3_0_0.png" id="9_myhmk"]
+[ext_resource type="Texture2D" uid="uid://bkwo8o8ak7o1k" path="res://assets/models/cynthia/animatedglb_cynhk_1_1_0_0.png" id="1_gl2ou"]
+[ext_resource type="Texture2D" uid="uid://5ngyhmawhi82" path="res://assets/models/cynthia/animatedglb_cynhk_1_7_0_0.png" id="2_gp7cl"]
+[ext_resource type="Texture2D" uid="uid://da56fjp74flt5" path="res://assets/models/cynthia/animatedglb_cynhk_1_8_0_0.png" id="3_enict"]
+[ext_resource type="Texture2D" uid="uid://did3024n1kuge" path="res://assets/models/cynthia/animatedglb_cynhk_1_4_0_0.png" id="4_d6wgs"]
+[ext_resource type="Texture2D" uid="uid://ds55b7cbwbonb" path="res://assets/models/cynthia/animatedglb_cynhk.png" id="5_n3ltk"]
+[ext_resource type="Texture2D" uid="uid://bp5fp03p0pr8p" path="res://assets/models/cynthia/animatedglb_cynhk_1_6_0_0.png" id="6_0fhpa"]
+[ext_resource type="Texture2D" uid="uid://c2kwmki65v127" path="res://assets/models/cynthia/animatedglb_cynhk_1_2_0_0.png" id="7_sa17j"]
+[ext_resource type="Texture2D" uid="uid://b7khk5fcmvmw1" path="res://assets/models/cynthia/animatedglb_cynhk_1_5_0_0.png" id="8_ebdxi"]
+[ext_resource type="Texture2D" uid="uid://cxtgh7ixt7n2p" path="res://assets/models/cynthia/animatedglb_cynhk_1_3_0_0.png" id="9_myhmk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rarrx"]
 resource_name = "Eyes"
