@@ -1,6 +1,6 @@
 class_name ItemSlotContainer extends HBoxContainer
 
-signal item_clicked(item_slot: ItemSlotContainer)
+signal item_clicked(index: int)
 
 @onready var item_icon: TextureRect = %ItemIcon
 @onready var quantity_label: Label = %QuantityLabel
@@ -8,7 +8,7 @@ signal item_clicked(item_slot: ItemSlotContainer)
 
 
 func _on_item_button_pressed() -> void:
-	item_clicked.emit(self)
+	item_clicked.emit(get_item_index())
 
 func set_item_text(text: String) -> void:
 	item_button.text = text
@@ -27,3 +27,6 @@ func set_item_metadata(metadata: Object) -> void:
 
 func get_item_metadata() -> Object:
 	return self.metadata
+
+func get_item_index() -> int:
+	return get_parent().get_children().find(self)

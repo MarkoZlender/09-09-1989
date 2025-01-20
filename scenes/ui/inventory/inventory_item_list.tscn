@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://scripts/ui/inventory/inventory_item_list.gd" id="1_rjo4w"]
 [ext_resource type="Texture2D" uid="uid://di51xfxmegdok" path="res://assets/sprites/Pxiel Art UI borders.png" id="2_x77er"]
 
-[sub_resource type="Gradient" id="Gradient_cdktf"]
+[sub_resource type="Gradient" id="Gradient_a7n0e"]
 interpolation_mode = 1
 colors = PackedColorArray(0, 0, 0.588235, 1, 0, 0.181581, 0.910716, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xjfcy"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_s33cm"]
 noise_type = 0
 seed = 3
 frequency = 0.0596
@@ -16,17 +16,17 @@ frequency = 0.0596
 width = 1920
 height = 1080
 seamless = true
-color_ramp = SubResource("Gradient_cdktf")
-noise = SubResource("FastNoiseLite_xjfcy")
+color_ramp = SubResource("Gradient_a7n0e")
+noise = SubResource("FastNoiseLite_s33cm")
 
-[sub_resource type="Gradient" id="Gradient_ymkw2"]
+[sub_resource type="Gradient" id="Gradient_wisiu"]
 interpolation_mode = 2
 interpolation_color_space = 2
 offsets = PackedFloat32Array(0, 0.47807)
 colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.47451)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8a7a1"]
-gradient = SubResource("Gradient_ymkw2")
+gradient = SubResource("Gradient_wisiu")
 fill_to = Vector2(0, 1)
 
 [node name="InventoryItemList" type="Control"]

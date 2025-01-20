@@ -1,7 +1,7 @@
 extends Control
 
 signal inventory_item_activated(item: InventoryItem) ## Emitted when an inventory item has been double-clicked.
-signal inventory_item_clicked(item: InventoryItem, at_position: Vector2, mouse_button_index: int) ## Emitted when an inventory item has been clicked.
+signal inventory_item_clicked(item: InventoryItem) ## Emitted when an inventory item has been clicked.
 signal inventory_item_selected(item: InventoryItem) ## Emitted when an inventory item has been selected.
 
 const _Utils = preload("res://addons/gloot/core/utils.gd")
@@ -63,27 +63,21 @@ func _on_item_manipulated(item: InventoryItem) -> void:
 	_refresh()
 
 func _ready() -> void:
-	hide()
 	for item in items:
 		item.item_clicked.connect(_on_list_item_clicked)
 		#item_selected.connect(_on_list_item_selected)
 	_refresh()
-
-func _input(event):
-	if event.is_action_pressed("inventory"):
-		if is_visible():
-			hide()
-		else:
-			_refresh()
-			show()
 
 
 func _on_list_item_activated(index: int) -> void:
 	inventory_item_activated.emit(_get_inventory_item(index))
 
 
-func _on_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
-	inventory_item_clicked.emit(_get_inventory_item(index), at_position, mouse_button_index)
+# func _on_list_item_clicked(index: int, at_position: Vector2, mouse_button_index: int) -> void:
+# 	inventory_item_clicked.emit(_get_inventory_item(index), at_position, mouse_button_index)
+
+func _on_list_item_clicked(index: int) -> void:
+	inventory_item_clicked.emit(_get_inventory_item(index))
 
 
 func _on_list_item_selected(index: int) -> void:
@@ -110,7 +104,9 @@ func _on_list_item_selected(index: int) -> void:
 func _get_inventory_item(index: int) -> InventoryItem:
 	assert(index >= 0)
 	assert(index < inventory.get_item_count())
-	return items[index].get_item_metadata()
+	# return items[index].get_item_metadata()
+	print(inventory.get_items()[index].get_property("name"))
+	return inventory.get_items()[index]
 
 
 func _refresh() -> void:
