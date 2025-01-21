@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dgk04fuja3ay2"]
 
 [ext_resource type="Script" path="res://scripts/ui/inventory/inventory_item_list.gd" id="1_rjo4w"]
-[ext_resource type="Texture2D" uid="uid://di51xfxmegdok" path="res://assets/sprites/Pxiel Art UI borders.png" id="2_x77er"]
+[ext_resource type="Texture2D" uid="uid://cldj1s1dtql0" path="res://assets/sprites/panel-border-015.png" id="2_aewui"]
 [ext_resource type="PackedScene" uid="uid://b4goedwokmaph" path="res://scenes/ui/menu_cursor.tscn" id="3_84ha7"]
 
 [sub_resource type="Gradient" id="Gradient_a7n0e"]
@@ -76,12 +76,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_x77er")
+texture = ExtResource("2_aewui")
+draw_center = false
 region_rect = Rect2(162, 18, 92, 92)
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 22
-patch_margin_bottom = 21
+patch_margin_left = 6
+patch_margin_top = 6
+patch_margin_right = 6
+patch_margin_bottom = 6
 
 [node name="MenuCursor" parent="." instance=ExtResource("3_84ha7")]
 layout_mode = 0
