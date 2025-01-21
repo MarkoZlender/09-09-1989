@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://jjjb8m4rx37m"]
+[gd_scene load_steps=7 format=3 uid="uid://jjjb8m4rx37m"]
 
 [ext_resource type="Script" path="res://scripts/ui/save_system/ng_slot_selection.gd" id="1_n4jta"]
+[ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/inventory_theme.tres" id="1_oo3p5"]
 [ext_resource type="PackedScene" uid="uid://b5wsbousnpwq4" path="res://scenes/ui/save_system/warning_dialog.tscn" id="2_4hadv"]
 [ext_resource type="PackedScene" uid="uid://cd62cxexqucln" path="res://scenes/components/basic_ui_nav_component.tscn" id="3_75cwk"]
-[ext_resource type="PackedScene" uid="uid://d3p2xch5rcrft" path="res://scenes/components/grab_focus_component.tscn" id="4_15y5i"]
+[ext_resource type="PackedScene" uid="uid://cfwctomig6xhw" path="res://scenes/ui/ui_background.tscn" id="3_q3ghl"]
+[ext_resource type="PackedScene" uid="uid://b4goedwokmaph" path="res://scenes/ui/menu_cursor.tscn" id="4_87sqd"]
 
 [node name="NgSlotSelection" type="Control"]
 layout_mode = 3
@@ -12,28 +14,57 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_oo3p5")
 script = ExtResource("1_n4jta")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -487.0
-offset_top = -324.0
-offset_right = 487.0
-offset_bottom = 183.0
+offset_left = -509.0
+offset_top = -251.5
+offset_right = 509.0
+offset_bottom = 251.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UIBackground" parent="Control" instance=ExtResource("3_q3ghl")]
+layout_mode = 1
+offset_bottom = 18.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
 
-[node name="VSlotContainer" type="VBoxContainer" parent="ScrollContainer"]
+[node name="VSlotContainer" type="VBoxContainer" parent="Control/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="MenuCursor" parent="." instance=ExtResource("4_87sqd")]
+layout_mode = 0
+offset_top = 3.0
+offset_right = 96.0
+offset_bottom = 99.0
+menu_parent_path = NodePath("../Control/ScrollContainer/VSlotContainer")
 
 [node name="WarningDialog" parent="." instance=ExtResource("2_4hadv")]
 unique_name_in_owner = true
@@ -42,6 +73,3 @@ layout_mode = 1
 
 [node name="BasicUiInputComponent" parent="." instance=ExtResource("3_75cwk")]
 previous_scene = "res://scenes/ui/main_menu.tscn"
-
-[node name="GrabFocusComponent" parent="." instance=ExtResource("4_15y5i")]
-unique_name_in_owner = true

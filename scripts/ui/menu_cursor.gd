@@ -7,46 +7,77 @@ extends TextureRect
 
 @onready var menu_parent := get_node(menu_parent_path)
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
+var current_focused_control: Control = null
 
 var cursor_index : int = 0
 
-func _process(_delta):
-	var input := Vector2.ZERO
-	
-	if Input.is_action_just_pressed("ui_up"):
-		input.y -= 1
-	if Input.is_action_just_pressed("ui_down"):
-		input.y += 1
-	if Input.is_action_just_pressed("ui_left"):
-		input.x -= 1
-	if Input.is_action_just_pressed("ui_right"):
-		input.x += 1
-	
-	if menu_parent is VBoxContainer:
-		set_cursor_from_index(cursor_index + input.y)
-	elif menu_parent is HBoxContainer:
-		set_cursor_from_index(cursor_index + input.x)
-	elif menu_parent is GridContainer:
-		set_cursor_from_index(cursor_index + input.x + input.y * menu_parent.columns)
-	
-	if Input.is_action_just_pressed("ui_select"):
-		var current_menu_item := get_menu_item_at_index(cursor_index)
+func _ready() -> void:
+	await get_parent().ready
+	# Check if anim_player is valid
+	for menu_item in menu_parent.get_children():
+		menu_item.focus_mode = FOCUS_NONE
+	menu_parent.get_child(cursor_index).focus_mode = FOCUS_ALL
+	current_focused_control = menu_parent.get_child(cursor_index)
+	current_focused_control.grab_focus()
+	set_cursor()
+
+# func _input(event: InputEvent) -> void:
+# 	if event.is_action_pressed("ui_up") || event.is_action_pressed("ui_down") || event.is_action_pressed("ui_left") || event.is_action_pressed("ui_right"):
+# 		if event.is_action_pressed("ui_up") && cursor_index == 0:
+# 			cursor_index = menu_parent.get_child_count() - 2
+# 		current_focused_control.focus_mode = FOCUS_NONE
+# 		cursor_index += 1
+# 		if cursor_index >= menu_parent.get_child_count() && event.is_action_pressed("ui_down"):
+# 			cursor_index = 0
+# 		elif cursor_index >= menu_parent.get_child_count() && event.is_action_pressed("ui_up"):
+# 			cursor_index -= 1
+# 		current_focused_control = menu_parent.get_child(cursor_index)
+# 		current_focused_control.focus_mode = FOCUS_ALL
+# 		menu_parent.get_child(cursor_index).grab_focus()
+# 		set_cursor()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down") or event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):
+		var child_count = menu_parent.get_child_count()
 		
-		if current_menu_item != null:
-			if current_menu_item.has_method("cursor_select"):
-				current_menu_item.cursor_select()
+		if event.is_action_pressed("ui_up"):
+			cursor_index -= 1
+			if cursor_index < 0:
+				cursor_index = child_count - 1
+		elif event.is_action_pressed("ui_down"):
+			cursor_index += 1
+			if cursor_index >= child_count:
+				cursor_index = 0
+		
+		current_focused_control.focus_mode = FOCUS_NONE
+		current_focused_control = menu_parent.get_child(cursor_index)
+		current_focused_control.focus_mode = FOCUS_ALL
+		current_focused_control.grab_focus()
+		set_cursor()
 
-func get_menu_item_at_index(index : int) -> Control:
-	if menu_parent == null:
-		return null
-	
-	if index >= menu_parent.get_child_count() or index < 0:
-		return null
-	
-	return menu_parent.get_child(index) as Control
+func _process(delta: float) -> void:
+	set_cursor()
+	# if Input.is_action_just_pressed("ui_up") or Input.is_action_just_pressed("ui_down") or Input.is_action_just_pressed("ui_left") or Input.is_action_just_pressed("ui_right"):
+	# 	var child_count = menu_parent.get_child_count()
+		
+	# 	if Input.is_action_just_pressed("ui_up"):
+	# 		cursor_index -= 1
+	# 		if cursor_index < 0:
+	# 			cursor_index = child_count - 1
+	# 	elif Input.is_action_just_pressed("ui_down"):
+	# 		cursor_index += 1
+	# 		if cursor_index >= child_count:
+	# 			cursor_index = 0
+		
+	# 	current_focused_control.focus_mode = FOCUS_NONE
+	# 	current_focused_control = menu_parent.get_child(cursor_index)
+	# 	current_focused_control.focus_mode = FOCUS_ALL
+	# 	current_focused_control.grab_focus()
+	# 	set_cursor()
 
-func set_cursor_from_index(index : int) -> void:
-	var menu_item := get_menu_item_at_index(index)
+
+func set_cursor() -> void:
+	var menu_item := current_focused_control
 	
 	if menu_item == null:
 		return
@@ -55,5 +86,3 @@ func set_cursor_from_index(index : int) -> void:
 	var menu_item_size = menu_item.size
 	
 	global_position = Vector2(menu_item_position.x, menu_item_position.y + menu_item_size.y / 2.0) - (size / 2.0) - cursor_offset
-	
-	cursor_index = index

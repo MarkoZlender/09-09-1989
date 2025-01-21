@@ -2,10 +2,14 @@ class_name ItemSlotContainer extends HBoxContainer
 
 signal item_clicked(index: int)
 
+@onready var item_button: Button = %ItemButton
 @onready var item_icon: TextureRect = %ItemIcon
 @onready var quantity_label: Label = %QuantityLabel
-@onready var item_button: Button = %ItemButton
 
+func _ready() -> void:
+	if item_button.disabled:
+		quantity_label.modulate = get_theme_color("font_disabled_color", "Button")
+		item_icon.modulate = get_theme_color("font_disabled_color", "Button")
 
 func _on_item_button_pressed() -> void:
 	item_clicked.emit(get_item_index())

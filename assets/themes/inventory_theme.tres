@@ -1,28 +1,19 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://cuognvkm850tx"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://cuognvkm850tx"]
 
 [ext_resource type="FontFile" uid="uid://bl2u0kwtuo2g7" path="res://assets/fonts/Tiny5-Regular.ttf" id="1_r5f7a"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xx1im"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nxla3"]
+content_margin_left = 0.0
+content_margin_top = 20.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3qx4m"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_we2u6"]
-texture_margin_left = 80.0
-texture_margin_top = 10.0
-texture_margin_right = 10.0
-texture_margin_bottom = 20.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_twph1"]
-texture_margin_top = 20.0
-texture_margin_right = 10.0
-texture_margin_bottom = 10.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oclgf"]
-texture_margin_left = 100.0
-texture_margin_top = 10.0
-texture_margin_right = 10.0
-texture_margin_bottom = 10.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m08bj"]
+content_margin_left = 0.0
+content_margin_top = 20.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.984314, 0.360784, 0.290196, 0.419608)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vijfk"]
 content_margin_left = 10.0
@@ -30,16 +21,27 @@ content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d12y4"]
+
 [resource]
 default_font = ExtResource("1_r5f7a")
+default_font_size = 50
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/constants/icon_max_width = 50
 Button/font_sizes/font_size = 50
 Button/fonts/font = ExtResource("1_r5f7a")
-Button/styles/disabled = SubResource("StyleBoxFlat_xx1im")
-Button/styles/focus = SubResource("StyleBoxEmpty_3qx4m")
-Button/styles/hover = SubResource("StyleBoxTexture_we2u6")
-Button/styles/normal = SubResource("StyleBoxTexture_twph1")
-Button/styles/pressed = SubResource("StyleBoxTexture_oclgf")
+Button/styles/disabled = SubResource("StyleBoxEmpty_nxla3")
+Button/styles/focus = SubResource("StyleBoxFlat_m08bj")
+Button/styles/hover = SubResource("StyleBoxEmpty_nxla3")
+Button/styles/normal = SubResource("StyleBoxEmpty_nxla3")
+Button/styles/pressed = SubResource("StyleBoxEmpty_nxla3")
+Label/colors/font_color = Color(1, 1, 1, 1)
 Label/font_sizes/font_size = 50
 Label/fonts/font = ExtResource("1_r5f7a")
 Label/styles/normal = SubResource("StyleBoxEmpty_vijfk")
+VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_d12y4")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_d12y4")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_d12y4")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_d12y4")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_d12y4")

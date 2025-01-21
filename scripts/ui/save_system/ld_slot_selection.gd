@@ -18,9 +18,6 @@ func _ready() -> void:
 	for slot_button in _slot_buttons:
 		slot_button.connect("slot_button_pressed", _on_slot_button_pressed)
 
-	%GrabFocusComponent.element_to_focus = _slot_buttons[0]
-
-
 func _on_slot_button_pressed(slot: int) -> void:
 	Global.save_manager.current_save_slot = slot
 	Global.game_controller.change_3d_scene(Global.save_manager.get_current_level(slot))

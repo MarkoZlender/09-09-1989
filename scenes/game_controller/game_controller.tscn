@@ -1,13 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b742kfgwr8sh"]
+[gd_scene load_steps=3 format=3 uid="uid://b742kfgwr8sh"]
 
 [ext_resource type="Script" path="res://scripts/game_controller/game_controller.gd" id="1_ca7gh"]
 [ext_resource type="PackedScene" uid="uid://c62u2p3f0l7wg" path="res://scenes/game_controller/transition_controller.tscn" id="2_bddcm"]
-[ext_resource type="PackedScene" uid="uid://cfwctomig6xhw" path="res://scenes/ui/ui_background.tscn" id="6_o0gtb"]
-[ext_resource type="Script" path="res://scripts/ui/inventory/inventory_screen.gd" id="6_o6ahj"]
-[ext_resource type="PackedScene" uid="uid://dgk04fuja3ay2" path="res://scenes/ui/inventory/inventory_item_list.tscn" id="6_t4wkb"]
-[ext_resource type="Theme" uid="uid://2h8yii2sy175" path="res://assets/themes/action_selection_theme.tres" id="7_qklwl"]
-[ext_resource type="PackedScene" uid="uid://d3p2xch5rcrft" path="res://scenes/components/grab_focus_component.tscn" id="9_phs86"]
-[ext_resource type="PackedScene" uid="uid://b4goedwokmaph" path="res://scenes/ui/menu_cursor.tscn" id="10_58xo7"]
 
 [node name="GameController" type="Node" node_paths=PackedStringArray("world_3d", "world_2d", "gui", "transition_controller")]
 script = ExtResource("1_ca7gh")
@@ -34,72 +28,3 @@ layer = 2
 
 [node name="TransitionController" parent="GUI/CanvasLayer" instance=ExtResource("2_bddcm")]
 visible = false
-
-[node name="InventoryScreen" type="Control" parent="GUI/CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("6_o6ahj")
-
-[node name="Background" type="ColorRect" parent="GUI/CanvasLayer/InventoryScreen"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="InventoryItemList" parent="GUI/CanvasLayer/InventoryScreen" instance=ExtResource("6_t4wkb")]
-unique_name_in_owner = true
-layout_mode = 1
-anchor_left = 0.648438
-anchor_top = 0.0987654
-anchor_right = 0.949653
-anchor_bottom = 0.898148
-offset_right = 6.10352e-05
-
-[node name="ActionSelection" type="Control" parent="GUI/CanvasLayer/InventoryScreen"]
-layout_mode = 1
-anchor_left = 0.136458
-anchor_top = 0.0990741
-anchor_right = 0.434896
-anchor_bottom = 0.336111
-theme = ExtResource("7_qklwl")
-metadata/_edit_use_anchors_ = true
-
-[node name="UIBackground" parent="GUI/CanvasLayer/InventoryScreen/ActionSelection" instance=ExtResource("6_o0gtb")]
-layout_mode = 1
-
-[node name="VContainer" type="VBoxContainer" parent="GUI/CanvasLayer/InventoryScreen/ActionSelection"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="UseButton" type="Button" parent="GUI/CanvasLayer/InventoryScreen/ActionSelection/VContainer"]
-layout_mode = 2
-text = "Use"
-alignment = 0
-
-[node name="ThrowOutButton" type="Button" parent="GUI/CanvasLayer/InventoryScreen/ActionSelection/VContainer"]
-layout_mode = 2
-text = "Throw Out"
-alignment = 0
-
-[node name="Button" type="Button" parent="GUI/CanvasLayer/InventoryScreen/ActionSelection/VContainer"]
-layout_mode = 2
-text = "Arrange"
-alignment = 0
-
-[node name="GrabFocusComponent" parent="GUI/CanvasLayer/InventoryScreen" node_paths=PackedStringArray("element_to_focus") instance=ExtResource("9_phs86")]
-element_to_focus = NodePath("../ActionSelection/VContainer/UseButton")
-
-[node name="MenuCursor" parent="GUI/CanvasLayer/InventoryScreen" instance=ExtResource("10_58xo7")]
-layout_mode = 0
-menu_parent_path = NodePath("../ActionSelection/VContainer")
