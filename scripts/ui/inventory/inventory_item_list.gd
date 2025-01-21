@@ -63,10 +63,14 @@ func _on_item_manipulated(item: InventoryItem) -> void:
 	_refresh()
 
 func _ready() -> void:
+	#set_process(true)
 	for item in items:
 		item.item_clicked.connect(_on_list_item_clicked)
 		#item_selected.connect(_on_list_item_selected)
+	inventory = Global.inventory
 	_refresh()
+	# for item in v_container.get_children():
+	# 	item.focus_mode = FOCUS_NONE
 
 
 func _on_list_item_activated(index: int) -> void:
@@ -105,7 +109,7 @@ func _get_inventory_item(index: int) -> InventoryItem:
 	assert(index >= 0)
 	assert(index < inventory.get_item_count())
 	# return items[index].get_item_metadata()
-	print(inventory.get_items()[index].get_property("name"))
+	print(inventory.get_items()[index].get_property("name") + " " + str(index))
 	return inventory.get_items()[index]
 
 

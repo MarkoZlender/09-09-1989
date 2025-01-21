@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://wd71p4hllmok"]
+[gd_scene load_steps=6 format=3 uid="uid://wd71p4hllmok"]
 
 [ext_resource type="Script" path="res://scripts/ui/save_system/save_point_slot_selection.gd" id="1_kin3q"]
 [ext_resource type="PackedScene" uid="uid://b5wsbousnpwq4" path="res://scenes/ui/save_system/warning_dialog.tscn" id="2_epwjk"]
 [ext_resource type="PackedScene" uid="uid://cd62cxexqucln" path="res://scenes/components/basic_ui_nav_component.tscn" id="3_1671k"]
 [ext_resource type="PackedScene" uid="uid://d3p2xch5rcrft" path="res://scenes/components/grab_focus_component.tscn" id="4_u3rxc"]
+[ext_resource type="PackedScene" uid="uid://b4goedwokmaph" path="res://scenes/ui/menu_cursor.tscn" id="5_c58c5"]
 
 [node name="SavePointSlotSelection" type="Control"]
 layout_mode = 3
@@ -54,3 +55,7 @@ visible = false
 
 [node name="GrabFocusComponent" parent="." instance=ExtResource("4_u3rxc")]
 unique_name_in_owner = true
+
+[node name="MenuCursor" parent="." instance=ExtResource("5_c58c5")]
+layout_mode = 0
+menu_parent_path = NodePath("../CanvasLayer/ScrollContainer/VSlotContainer")

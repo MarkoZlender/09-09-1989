@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1yyevudxsvgs"]
+
+[ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/inventory_theme.tres" id="1_32ugw"]
+[ext_resource type="Script" path="res://scripts/ui/inventory/action_selection.gd" id="2_f3k7b"]
+[ext_resource type="PackedScene" uid="uid://cfwctomig6xhw" path="res://scenes/ui/ui_background.tscn" id="2_vncbw"]
+[ext_resource type="PackedScene" uid="uid://b4goedwokmaph" path="res://scenes/ui/menu_cursor.tscn" id="3_ful4d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nakrs"]
+content_margin_left = 116.0
+content_margin_top = 10.0
+
+[node name="ActionSelection" type="Control"]
+layout_mode = 3
+anchor_left = 0.136458
+anchor_top = 0.0990741
+anchor_right = 0.434896
+anchor_bottom = 0.336111
+theme = ExtResource("1_32ugw")
+script = ExtResource("2_f3k7b")
+metadata/_edit_use_anchors_ = true
+
+[node name="UIBackground" parent="." instance=ExtResource("2_vncbw")]
+layout_mode = 1
+
+[node name="VContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UseButton" type="Button" parent="VContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nakrs")
+text = "Use"
+alignment = 0
+
+[node name="ThrowOutButton" type="Button" parent="VContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nakrs")
+text = "Throw Out"
+alignment = 0
+
+[node name="ArrangeButton" type="Button" parent="VContainer"]
+layout_mode = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_nakrs")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nakrs")
+text = "Arrange"
+alignment = 0
+
+[node name="MenuCursor" parent="." instance=ExtResource("3_ful4d")]
+layout_mode = 0
+menu_parent_path = NodePath("../VContainer")
+
+[connection signal="pressed" from="VContainer/UseButton" to="." method="_on_use_button_pressed"]
+[connection signal="pressed" from="VContainer/ThrowOutButton" to="." method="_on_throw_out_button_pressed"]
+[connection signal="pressed" from="VContainer/ArrangeButton" to="." method="_on_arrange_button_pressed"]

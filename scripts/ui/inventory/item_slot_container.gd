@@ -1,4 +1,4 @@
-class_name ItemSlotContainer extends HBoxContainer
+class_name ItemSlotContainer extends Control
 
 signal item_clicked(index: int)
 

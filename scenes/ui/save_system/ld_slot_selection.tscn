@@ -55,7 +55,6 @@ follow_focus = true
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="MenuCursor" parent="." instance=ExtResource("4_tec0f")]
 layout_mode = 0

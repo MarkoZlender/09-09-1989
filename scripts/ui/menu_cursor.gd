@@ -39,6 +39,11 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down") or event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):
 		var child_count = menu_parent.get_child_count()
+		# Check if current_focused_control is still valid
+		if is_instance_valid(current_focused_control):
+			current_focused_control.focus_mode = FOCUS_NONE
+		else:
+			current_focused_control = menu_parent.get_child(0)
 		
 		if event.is_action_pressed("ui_up"):
 			cursor_index -= 1
