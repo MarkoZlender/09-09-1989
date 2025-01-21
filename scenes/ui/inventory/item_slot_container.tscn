@@ -1,8 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqx4csbfucq3m"]
+[gd_scene load_steps=5 format=3 uid="uid://bqx4csbfucq3m"]
 
 [ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/inventory_theme.tres" id="1_qopkv"]
 [ext_resource type="Script" path="res://scripts/ui/inventory/item_slot_container.gd" id="2_so6ge"]
 [ext_resource type="Texture2D" uid="uid://0b3v6vfacdwv" path="res://assets/sprites/sword.png" id="3_ixuqm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rt5be"]
+content_margin_left = 226.0
+content_margin_top = 20.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
 
 [node name="ItemSlotContainer" type="HBoxContainer"]
 theme = ExtResource("1_qopkv")
@@ -13,6 +19,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_qopkv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rt5be")
 text = "Sword"
 flat = true
 alignment = 0
@@ -27,7 +34,7 @@ offset_top = -16.0
 offset_right = 32.0
 offset_bottom = 16.0
 grow_vertical = 2
-theme_override_constants/margin_left = 20
+theme_override_constants/margin_left = 116
 theme_override_constants/margin_top = 5
 
 [node name="ItemIcon" type="TextureRect" parent="ItemButton/MarginContainer"]

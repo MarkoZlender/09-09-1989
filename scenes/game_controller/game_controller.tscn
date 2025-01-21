@@ -1,42 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://b742kfgwr8sh"]
+[gd_scene load_steps=9 format=3 uid="uid://b742kfgwr8sh"]
 
 [ext_resource type="Script" path="res://scripts/game_controller/game_controller.gd" id="1_ca7gh"]
 [ext_resource type="PackedScene" uid="uid://c62u2p3f0l7wg" path="res://scenes/game_controller/transition_controller.tscn" id="2_bddcm"]
-[ext_resource type="Script" path="res://addons/gloot/ui/ctrl_inventory.gd" id="3_iq4s1"]
-[ext_resource type="Theme" uid="uid://c3kktbst6f3sn" path="res://assets/themes/ui_theme.tres" id="3_vqt1t"]
-[ext_resource type="Texture2D" uid="uid://di51xfxmegdok" path="res://assets/sprites/Pxiel Art UI borders.png" id="5_dkh5m"]
+[ext_resource type="PackedScene" uid="uid://cfwctomig6xhw" path="res://scenes/ui/ui_background.tscn" id="6_o0gtb"]
 [ext_resource type="Script" path="res://scripts/ui/inventory/inventory_screen.gd" id="6_o6ahj"]
 [ext_resource type="PackedScene" uid="uid://dgk04fuja3ay2" path="res://scenes/ui/inventory/inventory_item_list.tscn" id="6_t4wkb"]
 [ext_resource type="Theme" uid="uid://2h8yii2sy175" path="res://assets/themes/action_selection_theme.tres" id="7_qklwl"]
-[ext_resource type="Texture2D" uid="uid://cldj1s1dtql0" path="res://assets/sprites/panel-border-015.png" id="9_p4v73"]
 [ext_resource type="PackedScene" uid="uid://d3p2xch5rcrft" path="res://scenes/components/grab_focus_component.tscn" id="9_phs86"]
 [ext_resource type="PackedScene" uid="uid://b4goedwokmaph" path="res://scenes/ui/menu_cursor.tscn" id="10_58xo7"]
-
-[sub_resource type="Gradient" id="Gradient_cdktf"]
-interpolation_mode = 1
-colors = PackedColorArray(0, 0, 0.588235, 1, 0, 0.181581, 0.910716, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xjfcy"]
-noise_type = 0
-seed = 3
-frequency = 0.0596
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_df1lp"]
-width = 1920
-height = 1080
-seamless = true
-color_ramp = SubResource("Gradient_cdktf")
-noise = SubResource("FastNoiseLite_xjfcy")
-
-[sub_resource type="Gradient" id="Gradient_ymkw2"]
-interpolation_mode = 2
-interpolation_color_space = 2
-offsets = PackedFloat32Array(0, 0.47807)
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.47451)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_m5ofi"]
-gradient = SubResource("Gradient_ymkw2")
-fill_to = Vector2(0, 1)
 
 [node name="GameController" type="Node" node_paths=PackedStringArray("world_3d", "world_2d", "gui", "transition_controller")]
 script = ExtResource("1_ca7gh")
@@ -44,7 +15,6 @@ world_3d = NodePath("World3D")
 world_2d = NodePath("World2D")
 gui = NodePath("GUI")
 transition_controller = NodePath("GUI/CanvasLayer/TransitionController")
-start_scene = "res://scenes/levels/debug_level.tscn"
 
 [node name="World3D" type="Node3D" parent="."]
 
@@ -65,33 +35,6 @@ layer = 2
 [node name="TransitionController" parent="GUI/CanvasLayer" instance=ExtResource("2_bddcm")]
 visible = false
 
-[node name="CtrlInventory" type="ItemList" parent="GUI/CanvasLayer"]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("3_vqt1t")
-allow_search = false
-icon_scale = 2.0
-script = ExtResource("3_iq4s1")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="GUI/CanvasLayer/CtrlInventory"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_dkh5m")
-region_rect = Rect2(162, 18, 92, 92)
-patch_margin_left = 20
-patch_margin_top = 20
-patch_margin_right = 22
-patch_margin_bottom = 21
-
 [node name="InventoryScreen" type="Control" parent="GUI/CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
@@ -101,7 +44,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_o6ahj")
 
-[node name="ColorRect" type="ColorRect" parent="GUI/CanvasLayer/InventoryScreen"]
+[node name="Background" type="ColorRect" parent="GUI/CanvasLayer/InventoryScreen"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -128,25 +71,8 @@ anchor_bottom = 0.336111
 theme = ExtResource("7_qklwl")
 metadata/_edit_use_anchors_ = true
 
-[node name="Background" type="TextureRect" parent="GUI/CanvasLayer/InventoryScreen/ActionSelection"]
+[node name="UIBackground" parent="GUI/CanvasLayer/InventoryScreen/ActionSelection" instance=ExtResource("6_o0gtb")]
 layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("NoiseTexture2D_df1lp")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="GUI/CanvasLayer/InventoryScreen/ActionSelection"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_m5ofi")
 
 [node name="VContainer" type="VBoxContainer" parent="GUI/CanvasLayer/InventoryScreen/ActionSelection"]
 layout_mode = 1
@@ -170,21 +96,6 @@ alignment = 0
 layout_mode = 2
 text = "Arrange"
 alignment = 0
-
-[node name="NinePatchRect" type="NinePatchRect" parent="GUI/CanvasLayer/InventoryScreen/ActionSelection"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_p4v73")
-draw_center = false
-region_rect = Rect2(162, 18, 92, 92)
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
 
 [node name="GrabFocusComponent" parent="GUI/CanvasLayer/InventoryScreen" node_paths=PackedStringArray("element_to_focus") instance=ExtResource("9_phs86")]
 element_to_focus = NodePath("../ActionSelection/VContainer/UseButton")

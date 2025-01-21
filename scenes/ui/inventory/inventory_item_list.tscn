@@ -1,34 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgk04fuja3ay2"]
+[gd_scene load_steps=5 format=3 uid="uid://dgk04fuja3ay2"]
 
+[ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/inventory_theme.tres" id="1_ohycj"]
 [ext_resource type="Script" path="res://scripts/ui/inventory/inventory_item_list.gd" id="1_rjo4w"]
-[ext_resource type="Texture2D" uid="uid://cldj1s1dtql0" path="res://assets/sprites/panel-border-015.png" id="2_aewui"]
+[ext_resource type="PackedScene" uid="uid://cfwctomig6xhw" path="res://scenes/ui/ui_background.tscn" id="2_1jpgl"]
 [ext_resource type="PackedScene" uid="uid://b4goedwokmaph" path="res://scenes/ui/menu_cursor.tscn" id="3_84ha7"]
-
-[sub_resource type="Gradient" id="Gradient_a7n0e"]
-interpolation_mode = 1
-colors = PackedColorArray(0, 0, 0.588235, 1, 0, 0.181581, 0.910716, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_s33cm"]
-noise_type = 0
-seed = 3
-frequency = 0.0596
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tr88e"]
-width = 1920
-height = 1080
-seamless = true
-color_ramp = SubResource("Gradient_a7n0e")
-noise = SubResource("FastNoiseLite_s33cm")
-
-[sub_resource type="Gradient" id="Gradient_wisiu"]
-interpolation_mode = 2
-interpolation_color_space = 2
-offsets = PackedFloat32Array(0, 0.47807)
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.47451)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_8a7a1"]
-gradient = SubResource("Gradient_wisiu")
-fill_to = Vector2(0, 1)
 
 [node name="InventoryItemList" type="Control"]
 layout_mode = 3
@@ -38,27 +13,12 @@ anchor_right = 0.799479
 anchor_bottom = 0.790123
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ohycj")
 script = ExtResource("1_rjo4w")
 metadata/_edit_use_anchors_ = true
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="UIBackground" parent="." instance=ExtResource("2_1jpgl")]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("NoiseTexture2D_tr88e")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_8a7a1")
 
 [node name="VContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -68,21 +28,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_aewui")
-draw_center = false
-region_rect = Rect2(162, 18, 92, 92)
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
 
 [node name="MenuCursor" parent="." instance=ExtResource("3_84ha7")]
 layout_mode = 0

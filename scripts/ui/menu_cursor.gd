@@ -6,6 +6,7 @@ extends TextureRect
 @export var cursor_offset: Vector2
 
 @onready var menu_parent := get_node(menu_parent_path)
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 var cursor_index : int = 0
 
