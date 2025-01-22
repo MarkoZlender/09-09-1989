@@ -15,11 +15,11 @@ func _ready() -> void:
 func _on_item_slot_button_pressed() -> void:
 	item_clicked.emit(get_item_index())
 
-func set_item_text(text: String) -> void:
-	item_name_label.text = text
+func set_item_text(custom_text: String) -> void:
+	item_name_label.text = custom_text
 
-func set_quantity_text(text: String) -> void:
-	quantity_label.text = text
+func set_quantity_text(quantity: String) -> void:
+	quantity_label.text = quantity
 
 func set_icon(texture: Texture) -> void:
 	item_icon.texture = texture
