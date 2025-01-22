@@ -3,6 +3,7 @@ extends Control
 signal inventory_item_activated(item: InventoryItem) ## Emitted when an inventory item has been double-clicked.
 signal inventory_item_clicked(item: InventoryItem) ## Emitted when an inventory item has been clicked.
 signal inventory_item_selected(item: InventoryItem) ## Emitted when an inventory item has been selected.
+signal finished_loading() ## Emitted when the inventory has finished loading.
 
 const _Utils = preload("res://addons/gloot/core/utils.gd")
 
@@ -69,6 +70,11 @@ func _ready() -> void:
 		#item_selected.connect(_on_list_item_selected)
 	inventory = Global.inventory
 	_refresh()
+	finished_loading.emit()
+	# var loaded = preload("res://scenes/ui/menu_cursor.tscn")
+	# var instance = loaded.instantiate()
+	# add_child(instance)
+	# instance.menu_parent_path = NodePath(%VContainer.get_path())
 	# for item in v_container.get_children():
 	# 	item.focus_mode = FOCUS_NONE
 
@@ -82,6 +88,7 @@ func _on_list_item_activated(index: int) -> void:
 
 func _on_list_item_clicked(index: int) -> void:
 	inventory_item_clicked.emit(_get_inventory_item(index))
+
 
 
 func _on_list_item_selected(index: int) -> void:

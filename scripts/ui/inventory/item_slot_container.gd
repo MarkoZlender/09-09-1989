@@ -1,4 +1,4 @@
-class_name ItemSlotContainer extends Control
+class_name ItemSlotContainer extends Button
 
 signal item_clicked(index: int)
 
@@ -34,3 +34,7 @@ func get_item_metadata() -> Object:
 
 func get_item_index() -> int:
 	return get_parent().get_children().find(self)
+
+
+func _on_pressed() -> void:
+	item_button.pressed.emit()

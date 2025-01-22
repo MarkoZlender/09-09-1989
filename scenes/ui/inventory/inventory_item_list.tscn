@@ -28,10 +28,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
 
 [node name="MenuCursor" parent="." instance=ExtResource("3_84ha7")]
 layout_mode = 0
-offset_top = 5.0
-offset_right = 96.0
-offset_bottom = 101.0
 menu_parent_path = NodePath("../VContainer")

@@ -32,7 +32,13 @@ _serialized_format = {
 "prototype_id": "ranged_weapon"
 }, {
 "protoset": "res://resources/prototree.json",
-"prototype_id": "potion"
+"prototype_id": "sword"
+}, {
+"protoset": "res://resources/prototree.json",
+"prototype_id": "sword"
+}, {
+"protoset": "res://resources/prototree.json",
+"prototype_id": "sword"
 }],
 "node_name": "Inventory",
 "protoset": "res://resources/prototree.json"
