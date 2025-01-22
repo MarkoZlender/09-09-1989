@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b657lysfraeak"]
 
-[ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/inventory_theme.tres" id="1_1kaml"]
+[ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/ui_theme.tres" id="1_1kaml"]
 [ext_resource type="ButtonGroup" uid="uid://chgaopo2emhti" path="res://scenes/ui/save_system/slot_selection_button_group.tres" id="1_5bqp8"]
 [ext_resource type="Script" path="res://scripts/ui/save_system/slot_button.gd" id="2_w7kmr"]
 

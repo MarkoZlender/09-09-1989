@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bqx4csbfucq3m"]
 
-[ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/inventory_theme.tres" id="1_qopkv"]
+[ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/ui_theme.tres" id="1_qopkv"]
 [ext_resource type="Script" path="res://scripts/ui/inventory/item_slot_container.gd" id="2_so6ge"]
 [ext_resource type="Texture2D" uid="uid://0b3v6vfacdwv" path="res://assets/sprites/sword.png" id="3_ixuqm"]
 
