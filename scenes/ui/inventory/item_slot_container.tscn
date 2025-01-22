@@ -15,6 +15,7 @@ offset_right = 374.0
 offset_bottom = 87.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_qopkv")
 script = ExtResource("2_so6ge")
 
 [node name="ItemSlotContainer" type="HBoxContainer" parent="."]
@@ -24,13 +25,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_qopkv")
 
 [node name="ItemNameLabel" type="Label" parent="ItemSlotContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme = ExtResource("1_qopkv")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rt5be")
 text = "Sword"
 
@@ -55,6 +54,7 @@ texture = ExtResource("3_ixuqm")
 
 [node name="QuantityLabel" type="Label" parent="ItemSlotContainer/ItemNameLabel"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(116, 0)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -69,7 +69,6 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 size_flags_stretch_ratio = 0.05
-theme = ExtResource("1_qopkv")
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
