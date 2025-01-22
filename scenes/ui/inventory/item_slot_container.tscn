@@ -10,7 +10,7 @@ content_margin_top = 20.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
 
-[node name="Button" type="Button"]
+[node name="ItemSlotButton" type="Button"]
 offset_right = 374.0
 offset_bottom = 87.0
 size_flags_horizontal = 3
@@ -26,19 +26,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_qopkv")
 
-[node name="ItemButton" type="Button" parent="ItemSlotContainer"]
+[node name="ItemNameLabel" type="Label" parent="ItemSlotContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_qopkv")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_rt5be")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rt5be")
 text = "Sword"
-flat = true
-alignment = 0
-expand_icon = true
 
-[node name="MarginContainer" type="MarginContainer" parent="ItemSlotContainer/ItemButton"]
+[node name="MarginContainer" type="MarginContainer" parent="ItemSlotContainer/ItemNameLabel"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -50,14 +46,14 @@ grow_vertical = 2
 theme_override_constants/margin_left = 116
 theme_override_constants/margin_top = 5
 
-[node name="ItemIcon" type="TextureRect" parent="ItemSlotContainer/ItemButton/MarginContainer"]
+[node name="ItemIcon" type="TextureRect" parent="ItemSlotContainer/ItemNameLabel/MarginContainer"]
 unique_name_in_owner = true
 texture_filter = 1
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("3_ixuqm")
 
-[node name="QuantityLabel" type="Label" parent="ItemSlotContainer/ItemButton"]
+[node name="QuantityLabel" type="Label" parent="ItemSlotContainer/ItemNameLabel"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 6
@@ -78,5 +74,4 @@ text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
-[connection signal="pressed" from="ItemSlotContainer/ItemButton" to="." method="_on_item_button_pressed"]
+[connection signal="pressed" from="." to="." method="_on_item_slot_button_pressed"]

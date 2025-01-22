@@ -7,10 +7,10 @@
 
 [node name="InventoryItemList" type="Control"]
 layout_mode = 3
-anchor_left = 0.18316
-anchor_top = 0.186728
-anchor_right = 0.799479
-anchor_bottom = 0.790123
+anchor_left = 0.183333
+anchor_top = 0.187037
+anchor_right = 0.64375
+anchor_bottom = 0.790741
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ohycj")

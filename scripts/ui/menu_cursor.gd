@@ -22,7 +22,6 @@ func _ready() -> void:
 	current_focused_control = menu_parent.get_child(cursor_index)
 	current_focused_control.grab_focus()
 	set_cursor()
-	print(menu_parent.get_children())
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down") or event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):
