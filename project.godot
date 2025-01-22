@@ -41,6 +41,10 @@ enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "r
 
 player=""
 
+[gui]
+
+theme/custom="res://assets/themes/ui_theme.tres"
+
 [input]
 
 ui_accept={

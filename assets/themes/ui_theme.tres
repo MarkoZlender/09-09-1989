@@ -1262,3 +1262,4 @@ VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_d12y4")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_d12y4")
 VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_d12y4")
 VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_d12y4")
+test_theme_variation/base_type = &"Button"
