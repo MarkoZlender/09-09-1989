@@ -3,12 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://cldj1s1dtql0" path="res://assets/sprites/panel-border-015.png" id="1_je0wx"]
 
 [sub_resource type="Gradient" id="Gradient_jgm2g"]
-offsets = PackedFloat32Array(0, 0.394886)
-colors = PackedColorArray(0, 0, 0.305882, 1, 0, 0, 0.576471, 1)
+interpolation_mode = 2
+interpolation_color_space = 2
+offsets = PackedFloat32Array(0.644886, 1)
+colors = PackedColorArray(0.00392157, 0, 0.0627451, 1, 0, 0, 0.972549, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5v7ny"]
 gradient = SubResource("Gradient_jgm2g")
-fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 1)
 
 [sub_resource type="Gradient" id="Gradient_ymkw2"]
 interpolation_mode = 2
@@ -39,6 +41,7 @@ texture = SubResource("GradientTexture2D_5v7ny")
 expand_mode = 1
 
 [node name="DarkenOverlay" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
