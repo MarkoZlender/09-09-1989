@@ -11,11 +11,11 @@ signal load_progress(percent: String)
 
 const _loading_screen: String = "res://scenes/ui/save_system/loading_screen.tscn"
 
-var current_3d_scene
-var current_2d_scene
-var current_gui_scene
+var current_3d_scene: Node3D
+var current_2d_scene: Node2D
+var current_gui_scene: Control
 
-var new_3d_scene
+var new_3d_scene: Node3D
 
 func _ready() -> void:
 	set_process(false)
@@ -51,7 +51,7 @@ func change_gui_scene(
 		else:
 			gui.remove_child(current_gui_scene) # Keeps node in memory, does not run
 	if new_scene != "":
-		var new = load(new_scene).instantiate()
+		var new: Node = load(new_scene).instantiate()
 		gui.add_child(new)
 		gui.move_child(new, 0)
 		current_gui_scene = new
@@ -95,8 +95,8 @@ func change_3d_scene(
 	
 	_load_scene_threaded(new_scene)
 	await scene_loaded
-	var new = ResourceLoader.load_threaded_get(new_scene)
-	var instance = new.instantiate()
+	var new: Resource = ResourceLoader.load_threaded_get(new_scene)
+	var instance: Node = new.instantiate()
 	world_3d.add_child(instance)
 	current_3d_scene = instance
 	transition_controller.transition(transition_in, seconds)
@@ -107,10 +107,10 @@ func _load_scene_threaded(scene_path: String) -> void:
 	call_deferred("_deferred_load_scene_threaded", scene_path)
 
 func _deferred_load_scene_threaded(scene_path: String) -> void:
-	var progress = []
+	var progress: Array = []
 	ResourceLoader.load_threaded_request(scene_path)
 	while true:
-		var status = ResourceLoader.load_threaded_get_status(scene_path, progress)
+		var status: int = ResourceLoader.load_threaded_get_status(scene_path, progress)
 		print(str(floor(progress[0] * 100)) + "%")
 		load_progress.emit(str(floor(progress[0] * 100)) + "%")
 		if status == ResourceLoader.THREAD_LOAD_LOADED:
@@ -140,7 +140,7 @@ func change_2d_scene(
 			current_2d_scene.visible = false # Keeps node in memory and running
 		else:
 			world_2d.remove_child(current_2d_scene) # Keeps node in memory, does not run
-	var new = load(new_scene).instantiate()
+	var new: Node = load(new_scene).instantiate()
 	world_2d.add_child(new)
 	current_2d_scene = new
 	transition_controller.transition(transition_in, seconds)

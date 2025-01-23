@@ -5,7 +5,7 @@ extends TextureRect
 @export var menu_parent_path: NodePath
 @export var cursor_offset: Vector2
 
-@onready var menu_parent := get_node(menu_parent_path)
+@onready var menu_parent: Node = get_node(menu_parent_path)
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 var current_focused_control: Control = null
 
@@ -16,7 +16,7 @@ func _ready() -> void:
 	if menu_parent.has_signal("finished_loading"):
 		await menu_parent.finished_loading
 	# Check if anim_player is valid
-	for menu_item in menu_parent.get_children():
+	for menu_item: Node in menu_parent.get_children():
 		menu_item.focus_mode = FOCUS_NONE
 	menu_parent.get_child(cursor_index).focus_mode = FOCUS_ALL
 	current_focused_control = menu_parent.get_child(cursor_index)
@@ -25,7 +25,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down") or event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):
-		var child_count = menu_parent.get_child_count()
+		var child_count: int = menu_parent.get_child_count()
 		# Check if current_focused_control is still valid
 		
 		if event.is_action_pressed("ui_up"):
@@ -57,12 +57,12 @@ func _process(_delta: float) -> void:
 
 
 func set_cursor() -> void:
-	var menu_item := current_focused_control
+	var menu_item: Control = current_focused_control
 	
 	if menu_item == null:
 		return
 	
-	var menu_item_position = menu_item.global_position
-	var menu_item_size = menu_item.size
+	var menu_item_position: Vector2 = menu_item.global_position
+	var menu_item_size: Vector2 = menu_item.size
 	
 	global_position = Vector2(menu_item_position.x, menu_item_position.y + menu_item_size.y / 2.0) - (size / 2.0) - cursor_offset

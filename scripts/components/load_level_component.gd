@@ -2,14 +2,14 @@ extends Node
 
 @export var debug_mode: bool = false
 @onready var parent: Node = get_parent()
-@onready var quest_objects = get_tree().get_nodes_in_group("quest_objects")
+@onready var quest_objects: Array[Node] = get_tree().get_nodes_in_group("quest_objects")
 
 
 func _ready() -> void:
 	await parent.ready
-	for quest_object in quest_objects:
+	for quest_object: Node in quest_objects:
 		if quest_object is Collectible:
-			for quest in Global.quest_manager.quests:
+			for quest: Quest in Global.quest_manager.quests:
 				if quest is CollectQuest:
 					quest_object.collected.connect(quest.update_collected)
 

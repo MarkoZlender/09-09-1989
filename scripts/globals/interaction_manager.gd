@@ -19,8 +19,8 @@ func _process(_delta: float) -> void:
 		active_areas.sort_custom(_sort_by_distance_to_player)
 	
 func _sort_by_distance_to_player(area1: InteractComponent, area2: InteractComponent) -> bool:
-	var area1_distance = player.global_position.distance_to(area1.global_position)
-	var area2_distance = player.global_position.distance_to(area2.global_position)
+	var area1_distance: float = player.global_position.distance_to(area1.global_position)
+	var area2_distance: float = player.global_position.distance_to(area2.global_position)
 	return area1_distance < area2_distance
 
 func _input(event: InputEvent) -> void:

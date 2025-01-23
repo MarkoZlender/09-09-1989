@@ -1,6 +1,5 @@
 class_name InteractComponent extends Area3D
 
-
 var interact: Callable = func():
 	pass
 

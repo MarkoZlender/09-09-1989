@@ -1,7 +1,7 @@
 extends PlayerState
 
 @warning_ignore("unused_parameter")
-func enter(previous_state_path: String, data := {}) -> void:
+func enter(previous_state_path: String, data: Dictionary= {}) -> void:
 	#print("Entering walking state")
 	pass
 

@@ -1,6 +1,6 @@
 class_name TestCube extends Collectible
 
-signal collected(item)
+signal collected(item: TestCube)
 
 @export var item_data_for_cube: ItemData
 @export var text: String = "Interact"
@@ -16,7 +16,7 @@ func _on_interact() -> void:
 	# await dialog finished, animation finished, etc.
 
 func save() -> Dictionary:
-	var save_data = {
+	var save_data: Dictionary = {
 		"filename" : get_scene_file_path(),
 		"parent" : get_parent().get_path(),
 		"pos_x" : position.x,

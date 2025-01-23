@@ -24,7 +24,7 @@ func set_quantity_text(quantity: String) -> void:
 func set_icon(texture: Texture) -> void:
 	item_icon.texture = texture
 
-func get_icon():
+func get_icon() -> Texture2D:
 	return item_icon.texture
 
 func set_item_metadata(metadata: Object) -> void:

@@ -18,7 +18,7 @@ class_name Player extends CharacterBody3D
 @export var rotation_speed_moving: float = 2.0
 @export var rotation_speed_aiming: float = 2.0
 
-@export var move_speed_hurt = 1.0
+@export var move_speed_hurt: float = 1.0
 
 @export var health: int = 100
 
@@ -26,7 +26,7 @@ class_name Player extends CharacterBody3D
 
 var direction: float = 0
 
-func _ready():
+func _ready() -> void:
 	if spawn_point != null:
 		position = spawn_point.position + Vector3(0, 0.1, 0)
 	else:
@@ -59,7 +59,7 @@ func move(delta: float):
 	move_and_slide()
 
 func rotate_player(delta: float) -> void:
-	var rotation_direction = Input.get_axis("turn_right", "turn_left")
+	var rotation_direction: float = Input.get_axis("turn_right", "turn_left")
 	#print("Rotation speed: ", ROTATION_SPEED)
 	if velocity.length() == 0:
 		ROTATION_SPEED = rotation_speed_idle
@@ -68,7 +68,7 @@ func rotate_player(delta: float) -> void:
 	rotation += Vector3(0, rotation_direction * ROTATION_SPEED * delta, 0)
 
 func save() -> Dictionary:
-	var save_data = {
+	var save_data: Dictionary = {
 		"filename" : get_scene_file_path(),
 		"parent" : get_parent().get_path(),
 		"pos_x" : position.x, # Vector2 is not supported by JSON

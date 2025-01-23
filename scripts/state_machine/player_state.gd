@@ -1,7 +1,7 @@
 class_name PlayerState extends State
 
-const IDLE = "Idle"
-const WALKING = "Walking"
+const IDLE: String = "Idle"
+const WALKING: String = "Walking"
 
 var player: Player
 

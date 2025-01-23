@@ -13,7 +13,7 @@ func _ready() -> void:
 	var save_files: Array = Global.save_manager.get_save_files()
 	var n_save_files: int = save_files.size()
 	var n_slots: int = 10
-	for save_file_index in range(n_slots):
+	for save_file_index: int in range(n_slots):
 		var slot_button: Node = preload(_slot_button_scene).instantiate()
 		if save_file_index < n_save_files:
 			slot_button.text = str(save_file_index + 1) + ". " + Global.save_manager.get_current_level_name(save_file_index)
@@ -23,7 +23,7 @@ func _ready() -> void:
 		_slot_buttons.append(slot_button)
 		_vslot_container.add_child(slot_button)
 
-	for slot_button in _slot_buttons:
+	for slot_button: Node in _slot_buttons:
 		slot_button.connect("slot_button_pressed", _on_slot_button_pressed)
 
 

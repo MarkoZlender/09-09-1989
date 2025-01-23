@@ -65,7 +65,7 @@ func _on_item_manipulated(item: InventoryItem) -> void:
 
 func _ready() -> void:
 	#set_process(true)
-	for item in items:
+	for item: Node in items:
 		item.item_clicked.connect(_on_list_item_clicked)
 		#item_selected.connect(_on_list_item_selected)
 	inventory = Global.inventory
@@ -126,7 +126,7 @@ func _refresh() -> void:
 
 
 func _clear() -> void:
-	for item in items:
+	for item: Node in items:
 		item.queue_free()
 	items.clear()
 
@@ -135,8 +135,8 @@ func _populate() -> void:
 	if inventory == null:
 		return
 
-	for item in inventory.get_items():
-		var texture := item.get_texture()
+	for item: InventoryItem in inventory.get_items():
+		var texture: Texture2D = item.get_texture()
 		add_item(_get_item_title(item), item.get_stack_size(), texture)
 		#item.set_item_metadata(inventory.get_item_count() - 1)
 
@@ -145,8 +145,8 @@ func _get_item_title(item: InventoryItem) -> String:
 	if item == null:
 		return ""
 
-	var title = item.get_title()
-	var stack_size := item.get_stack_size()
+	var title: String = item.get_title()
+	var stack_size: int = item.get_stack_size()
 	if stack_size > 1:
 		title = "%s" % title
 
@@ -186,12 +186,12 @@ func set_item_icon(index: int, texture: Texture) -> void:
 		print("Index out of bounds: ", index)
 
 func add_item(text: String, quantity: int, texture: Texture) -> void:
-	var scene = preload("res://scenes/ui/inventory/item_slot_container.tscn")
-	var item = scene.instantiate()
+	var scene: Resource = preload("res://scenes/ui/inventory/item_slot_container.tscn")
+	var item: Node = scene.instantiate()
 	v_container.add_child(item)
 	items.append(item)  # Add the new item to the items array
 
-	var index = items.size() - 1  # Get the index of the newly added item
+	var index: int = items.size() - 1  # Get the index of the newly added item
 	set_item_text(index, text)
 	set_item_quantity(index, quantity)
 	set_item_icon(index, texture)

@@ -19,7 +19,7 @@ func _ready() -> void:
 	Global.save_manager = self
 	_verify_save_directory(SAVE_DIR)
 
-func _verify_save_directory(path: String):
+func _verify_save_directory(path: String) -> void:
 	DirAccess.make_dir_absolute(path)
 
 func save_game(slot: int) -> void:
@@ -34,7 +34,7 @@ func save_game(slot: int) -> void:
 	if FileAccess.file_exists(save_file_path):
 		var existing_save_file: FileAccess = FileAccess.open(save_file_path, FileAccess.READ)
 		if existing_save_file != null:
-			var json_string_parse = existing_save_file.get_as_text()
+			var json_string_parse: String = existing_save_file.get_as_text()
 			existing_save_file.close()
 
 			var json: JSON = JSON.new()
@@ -58,7 +58,7 @@ func save_game(slot: int) -> void:
 		printerr("No savable nodes found in the current scene.")
 		return
 
-	for node in save_nodes:
+	for node: Node in save_nodes:
 		if node.scene_file_path.is_empty():
 			printerr("persistent node '%s' is not an instanced scene, skipped" % node.name)
 			continue
@@ -73,10 +73,10 @@ func save_game(slot: int) -> void:
 		save_data["level_data"][current_level_name][node.name] = node_data
 
 	# Convert the save data dictionary to a JSON string with indents.
-	var json_string = JSON.stringify(save_data, "\t")
+	var json_string: String = JSON.stringify(save_data, "\t")
 
 	# Store the formatted JSON string in the save file.
-	var save_file = FileAccess.open(save_file_path, FileAccess.WRITE)
+	var save_file: FileAccess = FileAccess.open(save_file_path, FileAccess.WRITE)
 	if save_file != null:
 		save_file.store_line(json_string)
 		save_file.close()
@@ -107,23 +107,23 @@ func load_game(slot: int) -> void:
 		printerr("Failed to open save file: ", get_save_file_path(slot))
 		return
 
-	var json_string = save_file.get_as_text()
+	var json_string: String = save_file.get_as_text()
 	save_file.close()
 
 	# Parse the JSON string. (JSON has to be instanced because parse is not a static method)
-	var json = JSON.new()
-	var parse_result = json.parse(json_string)
+	var json: Resource = JSON.new()
+	var parse_result: int = json.parse(json_string)
 	if parse_result != OK:
 		printerr("load_game: JSON Parse Error: ", json.get_error_message())
 		return
 
 	# Get the data from the JSON object.
-	var save_data = json.data
+	var save_data: Variant = json.data
 
 	# Check if there is save data for the player or the current level.
 	#var player_data_exists = save_data.has("player_data")
-	var current_level_name = get_tree().current_scene.get_node("World3D").get_children()[0].name
-	var level_data_exists = save_data.has("level_data") and save_data["level_data"].has(current_level_name)
+	var current_level_name: StringName = get_tree().current_scene.get_node("World3D").get_children()[0].name
+	var level_data_exists: bool = save_data.has("level_data") and save_data["level_data"].has(current_level_name)
 
 	# If there is no save data for the current level, save the current state of the level
 	if not level_data_exists:
@@ -136,9 +136,9 @@ func load_game(slot: int) -> void:
 	# during loading.
 	# This is accomplished by deleting saveable objects.
 	var save_nodes: Array[Node] = get_tree().get_nodes_in_group("savable")
-	for i in save_nodes:
+	for i: Node in save_nodes:
 		# Remove the node from all groups and queue it for deletion.
-		for group in i.get_groups():
+		for group: StringName in i.get_groups():
 			i.remove_from_group(group)
 		i.queue_free()
 
@@ -160,7 +160,7 @@ func load_game(slot: int) -> void:
 	# Reconstruct the level data for the current level.
 	if level_data_exists:
 		var level_data: Dictionary = save_data["level_data"][current_level_name]
-		for node_name in level_data.keys():
+		for node_name: String in level_data.keys():
 			var node_data: Dictionary = level_data[node_name]
 			var new_object: Node = load(node_data["filename"]).instantiate()
 			get_node(node_data["parent"]).add_child(new_object, true)
@@ -178,7 +178,7 @@ func load_game(slot: int) -> void:
 
 
 func delete_save_file(slot: int) -> void:
-	var save_file_path = get_save_file_path(slot)
+	var save_file_path: String = get_save_file_path(slot)
 	if not FileAccess.file_exists(save_file_path):
 		printerr("Cannot delete save file. Save file does not exist.")
 		return
@@ -190,7 +190,7 @@ func get_save_files() -> Array:
 	var save_files: Array = []
 	if dir != null:
 		dir.list_dir_begin()
-		var file_name = dir.get_next()
+		var file_name: String = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir():
 				push_warning("This is a directory. not a file: " + file_name)
@@ -215,16 +215,16 @@ func get_current_level(slot: int) -> String:
 		printerr("Failed to open save file: " + save_file_path)
 		return ""
 	
-	var json_string = save_file.get_as_text() # Read the first line to get the current level
+	var json_string: String = save_file.get_as_text() # Read the first line to get the current level
 	save_file.close()
 	
-	var json = JSON.new()
-	var parse_result = json.parse(json_string)
+	var json: Resource = JSON.new()
+	var parse_result: int = json.parse(json_string)
 	if parse_result != OK:
 		printerr("get_current_level: JSON Parse Error: ", json.get_error_message())
 		return ""
 	
-	var save_data = json.data
+	var save_data: Variant = json.data
 	if "current_level" in save_data:
 		return save_data["current_level"]
 	else:
@@ -242,16 +242,16 @@ func get_current_level_name(slot: int) -> String:
 		printerr("Failed to open save file: " + save_file_path)
 		return ""
 	
-	var json_string = save_file.get_as_text() # Read the first line to get the current level
+	var json_string: String = save_file.get_as_text() # Read the first line to get the current level
 	save_file.close()
 	
-	var json = JSON.new()
-	var parse_result = json.parse(json_string)
+	var json: Resource = JSON.new()
+	var parse_result: int = json.parse(json_string)
 	if parse_result != OK:
 		printerr("get_current_level_name: JSON Parse Error: ", json.get_error_message())
 		return ""
 	
-	var save_data = json.data
+	var save_data: Variant = json.data
 	if "current_level" in save_data:
 		var current_level_path: String = save_data["current_level"]
 		var current_level_name: String = current_level_path.get_file().get_basename()

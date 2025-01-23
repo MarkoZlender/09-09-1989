@@ -10,7 +10,7 @@ func update_collected(collectible: Collectible) -> void:
     print("update_collected")
     if quest_state != QuestState.IN_PROGRESS:
         return
-    var instance = collectible_type.instantiate()
+    var instance: Node = collectible_type.instantiate()
     if !collectible.name.contains(instance.name):
         print(instance.name + " != " + collectible.name)
         print("Not the right collectible")
