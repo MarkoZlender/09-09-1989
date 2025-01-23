@@ -4,7 +4,7 @@ extends Control
 @onready var ld_slot_selection_scene: String = "res://scenes/ui/save_system/ld_slot_selection.tscn"
 # @onready var _new_game_button: Button = %NewGameButton
 
-# test credential manager
+# test credential
 func _on_new_game_button_pressed() -> void:
 	Global.game_controller.change_gui_scene(ng_slot_selection_scene)
 
