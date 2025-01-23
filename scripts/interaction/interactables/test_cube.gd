@@ -19,9 +19,9 @@ func save() -> Dictionary:
 	var save_data: Dictionary = {
 		"filename" : get_scene_file_path(),
 		"parent" : get_parent().get_path(),
-		"pos_x" : position.x,
-		"pos_y" : position.y,
-		"pos_z" : position.z,
+		"pos_x" : global_position.x,
+		"pos_y" : global_position.y,
+		"pos_z" : global_position.z,
 		"rot_x" : rotation.x,
 		"rot_y" : rotation.y,
 		"rot_z" : rotation.z,
@@ -30,7 +30,7 @@ func save() -> Dictionary:
 	return save_data
 
 func load(data: Dictionary) -> void:
-	position = Vector3(data["pos_x"], data["pos_y"], data["pos_z"])
+	global_position = Vector3(data["pos_x"], data["pos_y"], data["pos_z"])
 	rotation = Vector3(data["rot_x"], data["rot_y"], data["rot_z"])
 	item_data_for_cube = ItemData.new()
 	item_data_for_cube.name = data["name"]
