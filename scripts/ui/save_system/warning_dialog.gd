@@ -1,6 +1,6 @@
 extends Panel
 
-signal confirm_overwrite(bool)
+signal confirm_overwrite(overwrite: bool)
 
 @onready var yes_button: Button = $YesButton
 @onready var no_button: Button = $NoButton

@@ -65,5 +65,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94887, 0, 0)
 item_data_for_cube = SubResource("Resource_xe8in")
 
 [node name="TestCube2" parent="TestCube" groups=["quest_objects", "savable"] instance=ExtResource("3_50my6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0216165, 0, 1.79966)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0216165, 0, 2.47955)
 item_data_for_cube = SubResource("Resource_2f1uy")

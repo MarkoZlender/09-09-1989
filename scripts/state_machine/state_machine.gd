@@ -33,7 +33,7 @@ func _transition_to_next_state(target_state_path: String, data: Dictionary = {})
 		printerr(owner.name + ": Trying to transition to state " + target_state_path + " but it does not exist.")
 		return
 
-	var previous_state_path := state.name
+	var previous_state_path: StringName = state.name
 	state.exit()
 	state = get_node(target_state_path)
 	state.enter(previous_state_path, data)

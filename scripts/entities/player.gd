@@ -28,7 +28,7 @@ var direction: float = 0
 
 func _ready() -> void:
 	if spawn_point != null:
-		position = spawn_point.position + Vector3(0, 0.1, 0)
+		global_position = spawn_point.global_position + Vector3(0, 0.1, 0)
 	else:
 		pass
 
@@ -47,7 +47,7 @@ func _input(event: InputEvent) -> void:
 
 # 	move_and_slide()
 
-func move(delta: float):
+func move(delta: float) -> void:
 	rotate_player(delta)
 	direction = Input.get_axis("move_back", "move_forward")
 	velocity = direction * MOVE_SPEED * global_transform.basis.x
@@ -71,9 +71,9 @@ func save() -> Dictionary:
 	var save_data: Dictionary = {
 		"filename" : get_scene_file_path(),
 		"parent" : get_parent().get_path(),
-		"pos_x" : position.x, # Vector2 is not supported by JSON
-		"pos_y" : position.y,
-		"pos_z" : position.z,
+		"pos_x" : global_position.x, # Vector2 is not supported by JSON
+		"pos_y" : global_position.y,
+		"pos_z" : global_position.z,
 		"rot_x" : rotation.x,
 		"rot_y" : rotation.y,
 		"rot_z" : rotation.z,
@@ -83,7 +83,7 @@ func save() -> Dictionary:
 	return save_data
 
 func load(data: Dictionary) -> void:
-	position = Vector3(data["pos_x"], data["pos_y"], data["pos_z"])
+	global_position = Vector3(data["pos_x"], data["pos_y"], data["pos_z"])
 	rotation = Vector3(data["rot_x"], data["rot_y"], data["rot_z"])
 	player_data = PlayerData.new()
 	player_data.health = data["health"]
