@@ -30,11 +30,9 @@ func _populate_slots() -> void:
 		_vslot_container.add_child(slot_button)
 	
 	_menu_cursor.refresh_focus()
-
+	
 	for slot_button: Node in _slot_buttons:
 		slot_button.connect("slot_button_pressed", _on_slot_button_pressed)
-	
-	
 
 func _refresh_slots() -> void:
 	for slot_button: Node in _slot_buttons:
