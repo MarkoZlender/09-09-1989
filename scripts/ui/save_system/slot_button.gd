@@ -10,3 +10,4 @@ func _ready() -> void:
 
 func _on_pressed() -> void:
 	slot_button_pressed.emit(slot)
+	print("SlotButton: slot_button_pressed emitted with slot: ", slot)

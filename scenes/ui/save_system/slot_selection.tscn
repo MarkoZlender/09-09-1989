@@ -1,21 +1,22 @@
 [gd_scene load_steps=7 format=3 uid="uid://jjjb8m4rx37m"]
 
-[ext_resource type="Script" path="res://scripts/ui/save_system/slot_selection.gd" id="1_n4jta"]
-[ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/ui_theme.tres" id="1_oo3p5"]
-[ext_resource type="PackedScene" uid="uid://b5wsbousnpwq4" path="res://scenes/ui/save_system/warning_dialog.tscn" id="2_4hadv"]
-[ext_resource type="PackedScene" uid="uid://cd62cxexqucln" path="res://scenes/components/basic_ui_nav_component.tscn" id="3_75cwk"]
-[ext_resource type="PackedScene" uid="uid://cfwctomig6xhw" path="res://scenes/ui/ui_background.tscn" id="3_q3ghl"]
-[ext_resource type="PackedScene" uid="uid://b4goedwokmaph" path="res://scenes/ui/menu_cursor.tscn" id="4_87sqd"]
+[ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/ui_theme.tres" id="1_gjayl"]
+[ext_resource type="Script" path="res://scripts/ui/save_system/slot_selection.gd" id="2_ds3mf"]
+[ext_resource type="PackedScene" uid="uid://cfwctomig6xhw" path="res://scenes/ui/ui_background.tscn" id="3_s2noc"]
+[ext_resource type="PackedScene" uid="uid://b4goedwokmaph" path="res://scenes/ui/menu_cursor.tscn" id="4_0i80v"]
+[ext_resource type="PackedScene" uid="uid://b5wsbousnpwq4" path="res://scenes/ui/save_system/warning_dialog.tscn" id="5_xhaur"]
+[ext_resource type="PackedScene" uid="uid://cd62cxexqucln" path="res://scenes/components/basic_ui_nav_component.tscn" id="6_njv8q"]
 
-[node name="NgSlotSelection" type="Control"]
+[node name="SlotSelection" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_oo3p5")
-script = ExtResource("1_n4jta")
+theme = ExtResource("1_gjayl")
+script = ExtResource("2_ds3mf")
+show_empty_slots = null
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
@@ -40,7 +41,7 @@ offset_bottom = 251.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UIBackground" parent="Control" instance=ExtResource("3_q3ghl")]
+[node name="UIBackground" parent="Control" instance=ExtResource("3_s2noc")]
 layout_mode = 1
 offset_bottom = 41.0
 
@@ -59,18 +60,18 @@ layout_mode = 2
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="MenuCursor" parent="." instance=ExtResource("4_87sqd")]
+[node name="WarningDialog" parent="." instance=ExtResource("5_xhaur")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[node name="BasicUiInputComponent" parent="." instance=ExtResource("6_njv8q")]
+previous_scene = "res://scenes/ui/main_menu.tscn"
+
+[node name="MenuCursor" parent="." instance=ExtResource("4_0i80v")]
 unique_name_in_owner = true
 layout_mode = 0
 offset_top = 3.0
 offset_right = 96.0
 offset_bottom = 99.0
 menu_parent_path = NodePath("../Control/ScrollContainer/VSlotContainer")
-
-[node name="WarningDialog" parent="." instance=ExtResource("2_4hadv")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1
-
-[node name="BasicUiInputComponent" parent="." instance=ExtResource("3_75cwk")]
-previous_scene = "res://scenes/ui/main_menu.tscn"
