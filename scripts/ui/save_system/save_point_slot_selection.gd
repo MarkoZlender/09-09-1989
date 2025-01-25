@@ -1,6 +1,5 @@
 extends NGSlotSelection
 
-
 func _on_slot_button_pressed(slot: int) -> void:
 	Global.save_manager.current_save_slot = slot
 	if Global.save_manager.get_current_level(slot) == "":

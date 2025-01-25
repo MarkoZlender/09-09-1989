@@ -58,7 +58,8 @@ transform = Transform3D(1, 0, 0, 0, 0.900197, 0.435483, 0, -0.435483, 0.900197, 
 [node name="SavePoint" parent="." instance=ExtResource("9_mioeh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.383871, -1.80668)
 
-[node name="LoadLevelComponent" parent="." instance=ExtResource("10_yth56")]
+[node name="LoadLevelComponent" parent="." node_paths=PackedStringArray("scene_root") instance=ExtResource("10_yth56")]
+scene_root = NodePath("..")
 
 [node name="TestCube" parent="." groups=["quest_objects", "savable"] instance=ExtResource("3_50my6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94887, 0, 0)

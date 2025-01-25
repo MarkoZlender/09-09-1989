@@ -1,12 +1,12 @@
 extends Node
 
+@export var scene_root: Node
 @export var debug_mode: bool = false
-@onready var parent: Node = get_parent()
+
 @onready var quest_objects: Array[Node] = get_tree().get_nodes_in_group("quest_objects")
 
-
 func _ready() -> void:
-	await parent.ready
+	await scene_root.ready
 	for quest_object: Node in quest_objects:
 		if quest_object is Collectible:
 			for quest: Quest in Global.quest_manager.quests:

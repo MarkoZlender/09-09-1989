@@ -82,7 +82,8 @@ offset_right = 96.0
 offset_bottom = 96.0
 menu_parent_path = NodePath("../MenuButtons/VBoxContainer")
 
-[node name="GrabFocusComponent" parent="." node_paths=PackedStringArray("element_to_focus") instance=ExtResource("2_odmjp")]
+[node name="GrabFocusComponent" parent="." node_paths=PackedStringArray("scene_root", "element_to_focus") instance=ExtResource("2_odmjp")]
+scene_root = NodePath("..")
 element_to_focus = NodePath("../MenuButtons/VBoxContainer/NewGameButton")
 
 [connection signal="pressed" from="MenuButtons/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
