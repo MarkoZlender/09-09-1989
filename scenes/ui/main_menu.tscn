@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://7ttjcnsru146"]
+[gd_scene load_steps=4 format=3 uid="uid://7ttjcnsru146"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_lnxuf"]
-[ext_resource type="PackedScene" uid="uid://d3p2xch5rcrft" path="res://scenes/components/grab_focus_component.tscn" id="2_odmjp"]
 [ext_resource type="PackedScene" uid="uid://b4goedwokmaph" path="res://scenes/ui/menu_cursor.tscn" id="3_fvgf0"]
 [ext_resource type="PackedScene" uid="uid://cfwctomig6xhw" path="res://scenes/ui/ui_background.tscn" id="5_t57by"]
 
@@ -82,10 +81,6 @@ offset_right = 96.0
 offset_bottom = 96.0
 menu_parent_path = NodePath("../MenuButtons/VBoxContainer")
 focus_node = NodePath("../MenuButtons/VBoxContainer/NewGameButton")
-
-[node name="GrabFocusComponent" parent="." node_paths=PackedStringArray("scene_root", "element_to_focus") instance=ExtResource("2_odmjp")]
-scene_root = NodePath("..")
-element_to_focus = NodePath("../MenuButtons/VBoxContainer/NewGameButton")
 
 [connection signal="pressed" from="MenuButtons/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="MenuButtons/VBoxContainer/LoadGameButton" to="." method="_on_load_game_button_pressed"]
