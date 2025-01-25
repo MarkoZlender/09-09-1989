@@ -50,8 +50,11 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[node name="BasicUiInputComponent" parent="." instance=ExtResource("3_1671k")]
-
 [node name="MenuCursor" parent="." instance=ExtResource("5_c58c5")]
+unique_name_in_owner = true
 layout_mode = 0
+offset_right = 96.0
+offset_bottom = 96.0
 menu_parent_path = NodePath("../ScrollContainer/VSlotContainer")
+
+[node name="BasicUiInputComponent" parent="." instance=ExtResource("3_1671k")]

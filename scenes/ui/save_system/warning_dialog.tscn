@@ -1,9 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5wsbousnpwq4"]
+[gd_scene load_steps=5 format=3 uid="uid://b5wsbousnpwq4"]
 
 [ext_resource type="Script" path="res://scripts/ui/save_system/warning_dialog.gd" id="1_nfg2l"]
+[ext_resource type="PackedScene" uid="uid://cfwctomig6xhw" path="res://scenes/ui/ui_background.tscn" id="2_wuld7"]
+[ext_resource type="PackedScene" uid="uid://b4goedwokmaph" path="res://scenes/ui/menu_cursor.tscn" id="3_oprwr"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnawb"]
-bg_color = Color(0.184314, 0.184314, 0.607843, 1)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cykyo"]
 
 [node name="WarningDialog" type="Panel"]
 anchors_preset = 8
@@ -17,8 +18,11 @@ offset_right = 395.0
 offset_bottom = 152.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qnawb")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cykyo")
 script = ExtResource("1_nfg2l")
+
+[node name="UIBackground" parent="." instance=ExtResource("2_wuld7")]
+layout_mode = 1
 
 [node name="WarningText" type="Label" parent="."]
 layout_mode = 0
@@ -30,16 +34,20 @@ text = "Overwrite this save slot?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="YesButton" type="Button" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 12
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 52.0
-offset_top = -96.0
-offset_right = 287.0
-offset_bottom = -24.0
+offset_top = -89.0
+grow_horizontal = 2
 grow_vertical = 0
+
+[node name="YesButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 focus_neighbor_left = NodePath("../NoButton")
 focus_neighbor_top = NodePath("../NoButton")
 focus_neighbor_right = NodePath("../NoButton")
@@ -49,12 +57,10 @@ focus_previous = NodePath("../NoButton")
 theme_override_font_sizes/font_size = 40
 text = "Yes"
 
-[node name="NoButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 500.0
-offset_top = 209.0
-offset_right = 735.0
-offset_bottom = 272.0
+[node name="NoButton" type="Button" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
 focus_neighbor_left = NodePath("../YesButton")
 focus_neighbor_top = NodePath("../YesButton")
 focus_neighbor_right = NodePath("../YesButton")
@@ -64,5 +70,11 @@ focus_previous = NodePath("../YesButton")
 theme_override_font_sizes/font_size = 40
 text = "No"
 
-[connection signal="pressed" from="YesButton" to="." method="_on_yes_button_pressed"]
-[connection signal="pressed" from="NoButton" to="." method="_on_no_button_pressed"]
+[node name="MenuCursor" parent="." node_paths=PackedStringArray("focus_node") instance=ExtResource("3_oprwr")]
+unique_name_in_owner = true
+layout_mode = 0
+menu_parent_path = NodePath("../HBoxContainer")
+focus_node = NodePath("../HBoxContainer/NoButton")
+
+[connection signal="pressed" from="HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]

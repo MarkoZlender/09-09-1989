@@ -47,6 +47,7 @@ func _on_slot_button_pressed(slot: int) -> void:
 	elif Global.save_manager.get_current_level(slot) != "" && show_empty_slots:
 		# overwrite game for new game
 		_warning_dialog.show()
+		_warning_dialog.menu_cursor.unfreeze()
 		_warning_dialog.no_button.grab_focus()
 	elif Global.save_manager.get_current_level(slot) != "" && !show_empty_slots:
 		# load game
@@ -59,6 +60,7 @@ func _on_confirm_overwrite(overwrite: bool) -> void:
 		Global.save_manager.delete_save_file(Global.save_manager.current_save_slot)
 		Global.game_controller.change_3d_scene(_starting_level)
 	else:
+		_warning_dialog.menu_cursor.freeze()
 		_warning_dialog.hide()
 		_menu_cursor.unfreeze()
 		

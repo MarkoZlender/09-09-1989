@@ -76,11 +76,12 @@ focus_next = NodePath("../NewGameButton")
 focus_previous = NodePath("../LoadGameButton")
 text = "Quit"
 
-[node name="MenuCursor" parent="." instance=ExtResource("3_fvgf0")]
+[node name="MenuCursor" parent="." node_paths=PackedStringArray("focus_node") instance=ExtResource("3_fvgf0")]
 layout_mode = 0
 offset_right = 96.0
 offset_bottom = 96.0
 menu_parent_path = NodePath("../MenuButtons/VBoxContainer")
+focus_node = NodePath("../MenuButtons/VBoxContainer/NewGameButton")
 
 [node name="GrabFocusComponent" parent="." node_paths=PackedStringArray("scene_root", "element_to_focus") instance=ExtResource("2_odmjp")]
 scene_root = NodePath("..")
