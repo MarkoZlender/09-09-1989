@@ -16,16 +16,19 @@ func _ready() -> void:
 	_populate_slots()
 
 func _populate_slots() -> void:
-	var save_files: Array = Global.save_manager.get_save_files()
-	var n_save_files: int = save_files.size()
 	var n_slots: int = 3
-	for save_file_index: int in range(n_slots):
-		var slot_button: Node = preload(_slot_button_scene).instantiate()
-		if save_file_index < n_save_files:
-			slot_button.text = str(save_file_index + 1) + ". " + Global.save_manager.get_current_level_name(save_file_index)
+	for slot_index: int in range(n_slots):
+		var slot_button: Button = preload(_slot_button_scene).instantiate()
+		var save_file_path: String = Global.save_manager.get_save_file_path(slot_index)
+		if FileAccess.file_exists(save_file_path):
+			var save_data: Dictionary = Global.save_manager.load_existing_save_data(save_file_path, {})
+			if save_data.has("current_level"):
+				slot_button.text = str(slot_index + 1) + ". " + save_data["current_level"]
+			else:
+				slot_button.text = str(slot_index + 1) + ". Empty"
 		else:
-			slot_button.text = "Empty"
-		slot_button.slot = save_file_index
+			slot_button.text = str(slot_index + 1) + ". Empty"
+		slot_button.slot = slot_index
 		_slot_buttons.append(slot_button)
 		_vslot_container.add_child(slot_button)
 	

@@ -16,7 +16,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_gjayl")
 script = ExtResource("2_ds3mf")
-show_empty_slots = null
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
