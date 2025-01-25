@@ -1,4 +1,4 @@
-extends NGSlotSelection
+extends SlotSelection
 
 func _on_slot_button_pressed(slot: int) -> void:
 	Global.save_manager.current_save_slot = slot

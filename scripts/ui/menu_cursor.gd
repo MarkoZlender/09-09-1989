@@ -26,7 +26,6 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down") or event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):
 		var child_count: int = menu_parent.get_child_count()
-		# Check if current_focused_control is still valid
 		
 		if event.is_action_pressed("ui_up"):
 			cursor_index -= 1
@@ -66,3 +65,13 @@ func set_cursor() -> void:
 	var menu_item_size: Vector2 = menu_item.size
 	
 	global_position = Vector2(menu_item_position.x, menu_item_position.y + menu_item_size.y / 2.0) - (size / 2.0) - cursor_offset
+
+func freeze() -> void:
+	anim_player.stop()
+	set_process_input(false)
+	set_process(false)
+
+func unfreeze() -> void:
+	anim_player.play("eyecandy")
+	set_process_input(true)
+	set_process(true)
