@@ -5,4 +5,3 @@ class_name TransitionController extends Control
 
 func transition(animation: String, seconds: float) -> void:
 	animation_player.play(animation, -1.0, 1 / seconds)
-	

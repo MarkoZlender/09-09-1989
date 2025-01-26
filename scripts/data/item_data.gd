@@ -1,4 +1,4 @@
-class_name ItemData 
+class_name ItemData
 extends Resource
 
 # unique item id

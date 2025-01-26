@@ -9,8 +9,6 @@ signal load_progress(percent: String)
 @export var transition_controller: TransitionController
 @export_file("*.tscn") var start_scene: String = "res://scenes/ui/main_menu.tscn"
 
-const _loading_screen: String = "res://scenes/ui/save_system/loading_screen.tscn"
-
 var current_3d_scene: Node3D
 var current_2d_scene: Node2D
 var current_gui_scene: Control
@@ -79,7 +77,7 @@ func change_3d_scene(
 		seconds: float = 1.0
 	) -> void:
 
-	change_gui_scene(_loading_screen, true, false, true)
+	change_gui_scene(Global.LOADING_SCREEN, true, false, true)
 	if transition:
 		transition_controller.transition(transition_out, seconds)
 		await transition_controller.animation_player.animation_finished
@@ -92,7 +90,7 @@ func change_3d_scene(
 		else:
 			world_3d.remove_child(current_3d_scene) # Keeps node in memory, does not run
 	# change scene to loading screen, delete previous ui scene, don't keep running, don't transition
-	
+
 	_load_scene_threaded(new_scene)
 	await scene_loaded
 	var new: Resource = ResourceLoader.load_threaded_get(new_scene)
@@ -128,7 +126,7 @@ func change_2d_scene(
 		transition_out: String = "fade_out",
 		seconds: float = 1.0
 	) -> void:
-	
+
 	if transition:
 		transition_controller.transition(transition_out, seconds)
 		await transition_controller.animation_player.animation_finished

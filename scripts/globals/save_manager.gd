@@ -2,11 +2,7 @@ class_name SaveManager extends Node
 
 const SAVE_DIR: String = "user://saves/"
 # IMPORTANT: change to .res for release
-const SAVE_FILE_NAMES: Array = [
-	"save_slot_0.json", "save_slot_1.json", "save_slot_2.json", "save_slot_3.json",
-	"save_slot_4.json", "save_slot_5.json", "save_slot_6.json", "save_slot_7.json",
-	"save_slot_8.json", "save_slot_9.json"
-]
+const SAVE_FILE_NAMES: Array = ["save_slot_0.json", "save_slot_1.json", "save_slot_2.json"]
 
 var current_save_slot: int = 0
 

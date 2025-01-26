@@ -1,9 +1,5 @@
 class_name SlotSelection extends Control
 
-const _slot_button_scene: String = "res://scenes/ui/save_system/slot_button.tscn"
-const _main_menu_scene: String = "res://scenes/ui/main_menu.tscn"
-const _starting_level: String = "res://scenes/levels/debug_level.tscn"
-
 @export var show_empty_slots: bool = true
 
 @onready var _vslot_container: VBoxContainer = %VSlotContainer
@@ -15,10 +11,17 @@ func _ready() -> void:
 	_warning_dialog.confirm_delete.connect(_on_confirm_delete)
 	_populate_slots()
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_delete"):
+		Global.save_manager.current_save_slot = _menu_cursor.cursor_index
+		_menu_cursor.freeze()
+		_warning_dialog.show()
+		_warning_dialog.menu_cursor.unfreeze()
+
 func _populate_slots() -> void:
 	var n_slots: int = 3
 	for slot_index: int in range(n_slots):
-		var slot_button: Button = preload(_slot_button_scene).instantiate()
+		var slot_button: Button = preload(Global.SLOT_BUTTON_SCENE).instantiate()
 		var save_file_path: String = Global.save_manager.get_save_file_path(slot_index)
 		if FileAccess.file_exists(save_file_path):
 			var save_data: Dictionary = Global.save_manager.load_existing_save_data(save_file_path, {})
@@ -31,9 +34,9 @@ func _populate_slots() -> void:
 		slot_button.slot = slot_index
 		_slot_buttons.append(slot_button)
 		_vslot_container.add_child(slot_button)
-	
+
 	_menu_cursor.refresh_focus()
-	
+
 	for slot_button: Node in _slot_buttons:
 		slot_button.connect("slot_button_pressed", _on_slot_button_pressed)
 
@@ -43,19 +46,13 @@ func _refresh_slots() -> void:
 	_slot_buttons.clear()
 	_populate_slots()
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_delete"):
-		Global.save_manager.current_save_slot = _menu_cursor.cursor_index
-		_menu_cursor.freeze()
-		_warning_dialog.show()
-		_warning_dialog.menu_cursor.unfreeze()
 
 func _on_slot_button_pressed(slot: int) -> void:
 	_menu_cursor.freeze()
 	Global.save_manager.current_save_slot = slot
 	if Global.save_manager.get_current_level(slot) == "":
 		# start new game in empty slot
-		Global.game_controller.change_3d_scene(_starting_level)
+		Global.game_controller.change_3d_scene(Global.STARTING_LEVEL)
 	elif Global.save_manager.get_current_level(slot) != "":
 		# load game
 		Global.game_controller.change_3d_scene(Global.save_manager.get_current_level(slot))
@@ -70,4 +67,3 @@ func _on_confirm_delete(delete: bool) -> void:
 	else:
 		_warning_dialog.hide()
 		_menu_cursor.unfreeze()
-		

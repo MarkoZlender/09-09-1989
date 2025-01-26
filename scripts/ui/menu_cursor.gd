@@ -6,12 +6,11 @@ class_name MenuCursor extends TextureRect
 @export var focus_node: Control
 @export var cursor_offset: Vector2
 
-
-@onready var menu_parent: Node = get_node(menu_parent_path)
-@onready var anim_player: AnimationPlayer = $AnimationPlayer
 var current_focused_control: Control = null
 var cursor_index : int = 0
 
+@onready var menu_parent: Node = get_node(menu_parent_path)
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	await get_parent().ready
@@ -50,7 +49,7 @@ func _input(event: InputEvent) -> void:
 				cursor_index += 1
 				if cursor_index >= child_count:
 					cursor_index = 0
-		
+
 		current_focused_control.set_focus_mode(FOCUS_NONE)
 		current_focused_control = menu_parent.get_child(cursor_index)
 		current_focused_control.set_focus_mode(FOCUS_ALL)
@@ -86,13 +85,13 @@ func _process(_delta: float) -> void:
 
 func set_cursor() -> void:
 	var menu_item: Control = current_focused_control
-	
+
 	if menu_item == null:
 		return
-	
+
 	var menu_item_position: Vector2 = menu_item.global_position
 	var menu_item_size: Vector2 = menu_item.size
-	
+
 	global_position = Vector2(menu_item_position.x, menu_item_position.y + menu_item_size.y / 2.0) - (size / 2.0) - cursor_offset
 
 func freeze() -> void:
