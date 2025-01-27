@@ -62,23 +62,43 @@ func save_savable_nodes(save_nodes: Array, level_data: Dictionary) -> void:
 				object_array.append(child)
 				save_savable_nodes(object_array, level_data)
 
-func revert_and_reload_savable_nodes(save_nodes: Array, level_data: Dictionary, parent: Node) -> void:
-	for node: Node in save_nodes:
-		for group: StringName in node.get_groups():
-			node.remove_from_group(group)
-		node.queue_free()
+# func revert_and_reload_savable_nodes(save_nodes: Array, level_data: Dictionary, parent: Node) -> void:
+# 	for node: Node in save_nodes:
+# 		for group: StringName in node.get_groups():
+# 			node.remove_from_group(group)
+# 		node.queue_free()
 
-	for node_name: String in level_data.keys():
-		var node_data: Dictionary = level_data[node_name]
-		var new_object: Node = load(node_data["filename"]).instantiate()
-		parent.add_child(new_object, true)
+# 	for node_name: String in level_data.keys():
+# 		var node_data: Dictionary = level_data[node_name]
+# 		var new_object: Node = load(node_data["filename"]).instantiate()
+# 		parent.add_child(new_object, true)
 
-		if !new_object.has_method("load"):
-			printerr("persistent node '%s' is missing a load() function, skipped" % new_object.name)
-			continue
+# 		if !new_object.has_method("load"):
+# 			printerr("persistent node '%s' is missing a load() function, skipped" % new_object.name)
+# 			continue
 
-		new_object.call("load", node_data)
-		new_object.add_to_group("savable")
+# 		new_object.call("load", node_data)
+# 		new_object.add_to_group("savable")
+
+func revert_and_reload_savable_nodes(save_nodes: Array, level_data: Dictionary) -> void:
+	# Create a dictionary to map node names to nodes for quick lookup
+	var node_map: Dictionary = {}
+	for node in save_nodes:
+		node_map[node.name] = node
+
+	# Iterate through the saved level data
+	for node_name in level_data.keys():
+		if node_name in node_map:
+			var node = node_map[node_name]
+			var node_data: Dictionary = level_data[node_name]
+
+			if !node.has_method("load"):
+				printerr("persistent node '%s' is missing a load() function, skipped" % node.name)
+				continue
+
+			node.call("load", node_data)
+		else:
+			printerr("persistent node '%s' not found in the current scene, skipped" % node_name)
 
 func save_game(slot: int) -> void:
 	var save_file_path: String = get_save_file_path(slot)
@@ -133,7 +153,7 @@ func load_game(slot: int) -> void:
 		return
 
 	var save_nodes: Array[Node] = get_tree().get_nodes_in_group("savable")
-	revert_and_reload_savable_nodes(save_nodes, save_data["level_data"][current_level_name], get_tree().current_scene.get_node("World3D"))
+	revert_and_reload_savable_nodes(save_nodes, save_data["level_data"][current_level_name])
 
 func delete_save_file(slot: int) -> void:
 	var save_file_path: String = get_save_file_path(slot)

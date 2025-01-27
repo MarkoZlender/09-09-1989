@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cd3fm13s6uxk6"]
+[gd_scene load_steps=10 format=3 uid="uid://cd3fm13s6uxk6"]
 
 [ext_resource type="Script" path="res://scripts/globals/global.gd" id="1_ef01j"]
 [ext_resource type="PackedScene" uid="uid://jlpql0vbg6mg" path="res://scenes/globals/save_manager.tscn" id="2_2r8wd"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://addons/gloot/core/inventory.gd" id="6_fmdso"]
 [ext_resource type="JSON" path="res://resources/prototree.json" id="7_flclb"]
 [ext_resource type="Script" path="res://addons/gloot/core/item_slot.gd" id="8_0734y"]
+[ext_resource type="Script" path="res://addons/gloot/ui/ctrl_item_slot.gd" id="8_n3aw3"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_ef01j")
@@ -46,6 +47,16 @@ _serialized_format = {
 "node_name": "Inventory",
 "protoset": "res://resources/prototree.json"
 }
+
+[node name="CtrlItemSlot" type="Control" parent="Inventory" node_paths=PackedStringArray("item_slot")]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 338.0
+offset_bottom = 112.0
+script = ExtResource("8_n3aw3")
+item_slot = NodePath("../WeaponSlot")
+icon_stretch_mode = 4
 
 [node name="WeaponSlot" type="Node" parent="Inventory"]
 script = ExtResource("8_0734y")

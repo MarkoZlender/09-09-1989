@@ -20,7 +20,8 @@ script = ExtResource("1_fxgoe")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="BodyCollision" type="CollisionShape3D" parent="StaticBody3D"]
+unique_name_in_owner = true
 shape = SubResource("BoxShape3D_fxgoe")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
@@ -29,6 +30,7 @@ mesh = SubResource("BoxMesh_76smg")
 
 [node name="InteractComponent" parent="." instance=ExtResource("1_bf4sv")]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractComponent"]
+[node name="InteractCollision" type="CollisionShape3D" parent="InteractComponent"]
+unique_name_in_owner = true
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.251465, 0)
 shape = SubResource("BoxShape3D_bf4sv")

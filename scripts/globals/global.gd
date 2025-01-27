@@ -11,3 +11,8 @@ const LOADING_SCREEN: String = "res://scenes/ui/save_system/loading_screen.tscn"
 @onready var quest_manager: QuestManager
 @onready var utils: Utils
 @onready var inventory: Inventory = $Inventory
+
+func _ready() -> void:
+    var dict: Dictionary = inventory.serialize()
+    var json: String = JSON.stringify(dict, "\t")
+    print(json)

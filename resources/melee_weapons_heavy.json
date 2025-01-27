@@ -1,0 +1,8 @@
+{
+	"mace": {
+		"id": "mace",
+		"name": "Mace",
+		"damage": 10,
+		"stack_size": 5
+	}
+}

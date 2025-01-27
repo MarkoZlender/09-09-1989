@@ -4,7 +4,12 @@ signal collected(item: TestCube)
 
 @export var item_data_for_cube: ItemData
 @export var text: String = "Interact"
+
+var picked_up: bool = false
+
 @onready var interact_component: InteractComponent = $InteractComponent
+@onready var body_collision = %BodyCollision
+@onready var interact_collision = %InteractCollision
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	interact_component.interact = Callable(self, "_on_interact")
@@ -12,7 +17,10 @@ func _ready() -> void:
 func _on_interact() -> void:
 	collected.emit(self)
 	Global.inventory.create_and_add_item("potion")
-	queue_free()
+	picked_up = true
+	visible = false
+	interact_collision.disabled = true
+	body_collision.disabled = true
 	# await dialog finished, animation finished, etc.
 
 func save() -> Dictionary:
@@ -26,11 +34,15 @@ func save() -> Dictionary:
 		"rot_y" : rotation.y,
 		"rot_z" : rotation.z,
 		"name" : item_data_for_cube.name,
+		"picked_up" : picked_up
 	}
 	return save_data
 
 func load(data: Dictionary) -> void:
-	global_position = Vector3(data["pos_x"], data["pos_y"], data["pos_z"])
-	rotation = Vector3(data["rot_x"], data["rot_y"], data["rot_z"])
-	item_data_for_cube = ItemData.new()
-	item_data_for_cube.name = data["name"]
+	if data["picked_up"]:
+		queue_free()
+	else:
+		global_position = Vector3(data["pos_x"], data["pos_y"], data["pos_z"])
+		rotation = Vector3(data["rot_x"], data["rot_y"], data["rot_z"])
+		item_data_for_cube = ItemData.new()
+		item_data_for_cube.name = data["name"]
