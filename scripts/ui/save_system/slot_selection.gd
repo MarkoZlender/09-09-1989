@@ -2,8 +2,6 @@ class_name SlotSelection extends Control
 
 @export var show_empty_slots: bool = true
 
-var _first_avaliable_slot_set: bool = false
-
 @onready var _vslot_container: VBoxContainer = %VSlotContainer
 @onready var _slot_buttons: Array[Node] = []
 @onready var _warning_dialog: Panel = %WarningDialog
@@ -12,6 +10,12 @@ var _first_avaliable_slot_set: bool = false
 func _ready() -> void:
 	_warning_dialog.confirm_delete.connect(_on_confirm_delete)
 	_populate_slots()
+	for slot_button: Node in _slot_buttons:
+		if slot_button.text.find("Empty") == -1:
+			_menu_cursor.focus_node = slot_button
+			_menu_cursor.refresh_focus()
+			break
+		
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_delete"):
@@ -32,9 +36,6 @@ func _populate_slots() -> void:
 			var save_data: Dictionary = Global.save_manager.load_existing_save_data(save_file_path, {})
 			if save_data.has("current_level"):
 				slot_button.text = str(slot_index + 1) + ". " + save_data["current_level"]
-				if !_first_avaliable_slot_set:
-					_menu_cursor.focus_node = slot_button
-					_first_avaliable_slot_set = true
 			else:
 				slot_button.text = str(slot_index + 1) + ". Empty"
 		else:
@@ -42,7 +43,6 @@ func _populate_slots() -> void:
 		slot_button.slot = slot_index
 		_slot_buttons.append(slot_button)
 		_vslot_container.add_child(slot_button)
-		_menu_cursor.refresh_focus()
 
 	for slot_button: Node in _slot_buttons:
 		slot_button.connect("slot_button_pressed", _on_slot_button_pressed)
