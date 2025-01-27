@@ -8,8 +8,8 @@ signal collected(item: TestCube)
 var picked_up: bool = false
 
 @onready var interact_component: InteractComponent = $InteractComponent
-@onready var body_collision = %BodyCollision
-@onready var interact_collision = %InteractCollision
+@onready var body_collision: CollisionShape3D = %BodyCollision
+@onready var interact_collision: CollisionShape3D = %InteractCollision
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	interact_component.interact = Callable(self, "_on_interact")

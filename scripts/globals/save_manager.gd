@@ -103,6 +103,8 @@ func revert_and_reload_savable_nodes(save_nodes: Array, level_data: Dictionary) 
 func save_game(slot: int) -> void:
 	var save_file_path: String = get_save_file_path(slot)
 	var save_data: Dictionary = {
+		# inventory serialization
+		"inventory":Global.inventory.serialize(),
 		"current_level":{},
 		"player_data": {},
 		"level_data": {}
@@ -154,6 +156,9 @@ func load_game(slot: int) -> void:
 
 	var save_nodes: Array[Node] = get_tree().get_nodes_in_group("savable")
 	revert_and_reload_savable_nodes(save_nodes, save_data["level_data"][current_level_name])
+	# inventory deserialization
+	if save_data.has("inventory"):
+		Global.inventory.deserialize(save_data["inventory"])
 
 func delete_save_file(slot: int) -> void:
 	var save_file_path: String = get_save_file_path(slot)

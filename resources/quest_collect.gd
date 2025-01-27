@@ -2,7 +2,6 @@ class_name CollectQuest extends Quest
 
 @export var quantity_to_collect: int = 1
 @export var collectible_type: PackedScene
-    
 
 var collected: int = 0
 
