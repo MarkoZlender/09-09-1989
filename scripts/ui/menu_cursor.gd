@@ -14,10 +14,6 @@ var cursor_index : int = 0
 
 func _ready() -> void:
 	await get_parent().ready
-	if anim_player and anim_player.has_animation("eyecandy"):
-		print("AnimationPlayer and animation 'eyecandy' found")
-	else:
-		printerr("AnimationPlayer or animation 'eyecandy' not found")
 	if focus_node != null:
 		cursor_index = menu_parent.get_children().find(focus_node)
 	else:

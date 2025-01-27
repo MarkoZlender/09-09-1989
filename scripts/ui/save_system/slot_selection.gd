@@ -16,9 +16,12 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_delete"):
 		Global.save_manager.current_save_slot = _menu_cursor.cursor_index
-		_menu_cursor.freeze()
-		_warning_dialog.show()
-		_warning_dialog.menu_cursor.unfreeze()
+		if Global.save_manager.get_current_level(_menu_cursor.cursor_index) != "":
+			_menu_cursor.freeze()
+			_warning_dialog.show()
+			_warning_dialog.menu_cursor.unfreeze()
+		else:
+			return
 
 func _populate_slots() -> void:
 	var n_slots: int = 3
@@ -31,7 +34,6 @@ func _populate_slots() -> void:
 				slot_button.text = str(slot_index + 1) + ". " + save_data["current_level"]
 				if !_first_avaliable_slot_set:
 					_menu_cursor.focus_node = slot_button
-					_menu_cursor.refresh_focus()
 					_first_avaliable_slot_set = true
 			else:
 				slot_button.text = str(slot_index + 1) + ". Empty"
@@ -40,6 +42,7 @@ func _populate_slots() -> void:
 		slot_button.slot = slot_index
 		_slot_buttons.append(slot_button)
 		_vslot_container.add_child(slot_button)
+		_menu_cursor.refresh_focus()
 
 	for slot_button: Node in _slot_buttons:
 		slot_button.connect("slot_button_pressed", _on_slot_button_pressed)
