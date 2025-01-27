@@ -24,7 +24,28 @@ script = ExtResource("1_ef01j")
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("6_fmdso")
 protoset = ExtResource("7_flclb")
-_serialized_format = {}
+_serialized_format = {
+"items": [{
+"properties": {
+"image": {
+"type": 4,
+"value": "\"\""
+},
+"name": {
+"type": 4,
+"value": "\"\""
+},
+"stack_size": {
+"type": 3,
+"value": "0.0"
+}
+},
+"protoset": "res://resources/prototree.json",
+"prototype_id": "potion"
+}],
+"node_name": "Inventory",
+"protoset": "res://resources/prototree.json"
+}
 
 [node name="CtrlItemSlot" type="Control" parent="Inventory" node_paths=PackedStringArray("item_slot")]
 visible = false
