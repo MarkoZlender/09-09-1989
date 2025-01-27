@@ -14,6 +14,10 @@ var cursor_index : int = 0
 
 func _ready() -> void:
 	await get_parent().ready
+	if anim_player and anim_player.has_animation("eyecandy"):
+		print("AnimationPlayer and animation 'eyecandy' found")
+	else:
+		printerr("AnimationPlayer or animation 'eyecandy' not found")
 	if focus_node != null:
 		cursor_index = menu_parent.get_children().find(focus_node)
 	else:
@@ -57,13 +61,16 @@ func _input(event: InputEvent) -> void:
 		set_cursor()
 
 func refresh_focus() -> void:
+	if focus_node != null:
+		cursor_index = menu_parent.get_children().find(focus_node)
+	else:
+		cursor_index = 0
 	for menu_item: Node in menu_parent.get_children():
 		menu_item.focus_mode = FOCUS_NONE
-	if menu_parent.get_child_count() > 0:
-		current_focused_control = menu_parent.get_child(cursor_index)
-		current_focused_control.focus_mode = FOCUS_ALL
-		current_focused_control.grab_focus()
-		set_cursor()
+	menu_parent.get_child(cursor_index).focus_mode = FOCUS_ALL
+	current_focused_control = menu_parent.get_child(cursor_index)
+	current_focused_control.grab_focus()
+	set_cursor()
 
 func _process(_delta: float) -> void:
 	if is_instance_valid(current_focused_control):
@@ -73,12 +80,14 @@ func _process(_delta: float) -> void:
 		set_cursor()
 	else:
 		for menu_item: Node in menu_parent.get_children():
-			if is_instance_valid(menu_item):
+			if is_instance_valid(menu_item) && menu_parent.get_children().find(menu_item) == cursor_index:
 				menu_item.focus_mode = FOCUS_ALL
 				menu_item.grab_focus()
 				current_focused_control = menu_item  # Update the current focused control
+				cursor_index = menu_parent.get_children().find(current_focused_control)
 				set_cursor()
-				return
+			else:
+				menu_item.focus_mode = FOCUS_NONE
 		print("MenuCursor: _process: current_focused_control is not valid")
 	set_cursor()
 

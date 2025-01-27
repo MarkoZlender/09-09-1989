@@ -2,8 +2,6 @@ extends Panel
 
 signal confirm_delete(delete: bool)
 
-@onready var yes_button: Button = %YesButton
-@onready var no_button: Button = %NoButton
 @onready var menu_cursor: MenuCursor = %MenuCursor
 
 func _ready() -> void:
@@ -11,6 +9,7 @@ func _ready() -> void:
 
 func _on_yes_button_pressed() -> void:
     confirm_delete.emit(true)
+    menu_cursor.refresh_focus()
     menu_cursor.freeze()
     hide()
 
