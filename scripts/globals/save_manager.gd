@@ -106,8 +106,9 @@ func save_game(slot: int) -> void:
 		# inventory serialization
 		"inventory":Global.inventory.serialize(),
 		"current_level":{},
-		"player_data": {},
-		"level_data": {}
+		"player_data":{},
+		"level_data":{},
+		"globals": Global.serialize()
 	}
 
 	save_data = load_existing_save_data(save_file_path, save_data)
@@ -159,6 +160,9 @@ func load_game(slot: int) -> void:
 	# inventory deserialization
 	if save_data.has("inventory"):
 		Global.inventory.deserialize(save_data["inventory"])
+	
+	if save_data.has("globals"):
+		Global.deserialize(save_data["globals"])
 
 func delete_save_file(slot: int) -> void:
 	var save_file_path: String = get_save_file_path(slot)
