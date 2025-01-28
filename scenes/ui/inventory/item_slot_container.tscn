@@ -13,7 +13,6 @@ content_margin_bottom = 10.0
 offset_right = 374.0
 offset_bottom = 87.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
 script = ExtResource("2_so6ge")
 
 [node name="ItemSlotContainer" type="HBoxContainer" parent="."]
