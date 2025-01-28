@@ -54,7 +54,7 @@ func _input(event: InputEvent) -> void:
 		current_focused_control = menu_parent.get_child(cursor_index)
 		current_focused_control.set_focus_mode(FOCUS_ALL)
 		current_focused_control.grab_focus()
-		set_cursor()
+		set_cursor_anim()
 
 func refresh_focus() -> void:
 	if focus_node != null:
@@ -73,7 +73,7 @@ func _process(_delta: float) -> void:
 		#current_focused_control.focus_mode = FOCUS_NONE
 		current_focused_control.set_focus_mode(FOCUS_ALL)
 		current_focused_control.grab_focus()
-		set_cursor()
+		set_cursor_anim()
 	else:
 		for menu_item: Node in menu_parent.get_children():
 			if is_instance_valid(menu_item) && menu_parent.get_children().find(menu_item) == cursor_index:
@@ -88,6 +88,19 @@ func _process(_delta: float) -> void:
 	set_cursor()
 
 
+func set_cursor_anim() -> void:
+	var menu_item: Control = current_focused_control
+
+	if menu_item == null:
+		return
+
+	var menu_item_position: Vector2 = menu_item.global_position
+	var menu_item_size: Vector2 = menu_item.size
+
+	var new_global_position: Vector2 = Vector2(menu_item_position.x, menu_item_position.y + menu_item_size.y / 2.0) - (size / 2.0) - cursor_offset
+	var tween: Tween = get_tree().create_tween()
+	tween.tween_property(self, "global_position", new_global_position, 0.2)
+
 func set_cursor() -> void:
 	var menu_item: Control = current_focused_control
 
@@ -98,6 +111,7 @@ func set_cursor() -> void:
 	var menu_item_size: Vector2 = menu_item.size
 
 	global_position = Vector2(menu_item_position.x, menu_item_position.y + menu_item_size.y / 2.0) - (size / 2.0) - cursor_offset
+
 
 func freeze() -> void:
 	anim_player.stop()

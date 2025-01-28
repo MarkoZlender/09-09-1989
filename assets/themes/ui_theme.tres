@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=16 format=4 uid="uid://cuognvkm850tx"]
+[gd_resource type="Theme" load_steps=15 format=4 uid="uid://cuognvkm850tx"]
 
 [ext_resource type="FontFile" uid="uid://2jxyyqem7wjw" path="res://assets/fonts/Hahmlet-VariableFont_wght.ttf" id="2_qed47"]
 
@@ -7,13 +7,6 @@ content_margin_left = 0.0
 content_margin_top = 20.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m08bj"]
-content_margin_left = 0.0
-content_margin_top = 20.0
-content_margin_right = 10.0
-content_margin_bottom = 10.0
-bg_color = Color(0.984314, 0.360784, 0.290196, 0.419608)
 
 [sub_resource type="Image" id="Image_vptnm"]
 data = {
@@ -1231,7 +1224,7 @@ Button/constants/icon_max_width = 50
 Button/font_sizes/font_size = 40
 Button/fonts/font = ExtResource("2_qed47")
 Button/styles/disabled = SubResource("StyleBoxEmpty_nxla3")
-Button/styles/focus = SubResource("StyleBoxFlat_m08bj")
+Button/styles/focus = SubResource("StyleBoxEmpty_nxla3")
 Button/styles/hover = SubResource("StyleBoxEmpty_nxla3")
 Button/styles/normal = SubResource("StyleBoxEmpty_nxla3")
 Button/styles/pressed = SubResource("StyleBoxEmpty_nxla3")

@@ -70,7 +70,6 @@ previous_scene = "res://scenes/ui/main_menu.tscn"
 [node name="MenuCursor" parent="." instance=ExtResource("4_0i80v")]
 unique_name_in_owner = true
 layout_mode = 0
-offset_top = 3.0
-offset_right = 96.0
-offset_bottom = 99.0
+offset_right = 80.0
+offset_bottom = 80.0
 menu_parent_path = NodePath("../Control/ScrollContainer/VSlotContainer")
