@@ -50,6 +50,21 @@ _serialized_format = {
 },
 "protoset": "res://resources/prototree.json",
 "prototype_id": "potion"
+}, {
+"protoset": "res://resources/prototree.json",
+"prototype_id": "sword"
+}, {
+"protoset": "res://resources/prototree.json",
+"prototype_id": "sword"
+}, {
+"protoset": "res://resources/prototree.json",
+"prototype_id": "sword"
+}, {
+"protoset": "res://resources/prototree.json",
+"prototype_id": "potion"
+}, {
+"protoset": "res://resources/prototree.json",
+"prototype_id": "potion"
 }],
 "node_name": "Inventory",
 "protoset": "res://resources/prototree.json"

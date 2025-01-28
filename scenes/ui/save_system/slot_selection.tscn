@@ -64,8 +64,8 @@ layout_mode = 1
 [node name="MenuCursor" parent="." instance=ExtResource("4_0i80v")]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
+offset_right = 50.0
+offset_bottom = 50.0
 menu_parent_path = NodePath("../SlotSelectionPanel/ScrollContainer/VSlotContainer")
 
 [node name="BasicUiInputComponent" parent="." instance=ExtResource("6_njv8q")]

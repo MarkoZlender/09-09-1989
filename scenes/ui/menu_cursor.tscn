@@ -26,10 +26,11 @@ _data = {
 }
 
 [node name="MenuCursor" type="TextureRect"]
-custom_minimum_size = Vector2(80, 80)
+custom_minimum_size = Vector2(50, 50)
 texture = ExtResource("1_l5asd")
+expand_mode = 1
 script = ExtResource("2_5gnl7")
-cursor_offset = Vector2(-50, -20)
+cursor_offset = Vector2(-50, -10)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

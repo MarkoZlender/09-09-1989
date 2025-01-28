@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://0b3v6vfacdwv" path="res://assets/sprites/sword.png" id="3_ixuqm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rt5be"]
-content_margin_left = 226.0
-content_margin_top = 20.0
+content_margin_left = 140.0
 content_margin_right = 10.0
-content_margin_bottom = 10.0
+content_margin_bottom = 5.0
 
 [node name="ItemSlotButton" type="Button"]
-offset_right = 374.0
+custom_minimum_size = Vector2(0, 64)
+offset_right = 581.0
 offset_bottom = 87.0
 size_flags_horizontal = 3
 script = ExtResource("2_so6ge")
@@ -39,13 +39,13 @@ offset_top = -16.0
 offset_right = 32.0
 offset_bottom = 16.0
 grow_vertical = 2
-theme_override_constants/margin_left = 116
-theme_override_constants/margin_top = 5
+theme_override_constants/margin_left = 90
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
 
 [node name="ItemIcon" type="TextureRect" parent="ItemSlotContainer/ItemNameLabel/MarginContainer"]
 unique_name_in_owner = true
-texture_filter = 1
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("3_ixuqm")
 
