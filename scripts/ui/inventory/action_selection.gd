@@ -1,4 +1,4 @@
-extends Control
+extends Panel
 
 func _on_use_button_pressed() -> void:
 	print("Use button pressed")

@@ -1,4 +1,4 @@
-extends Control
+extends Panel
 
 signal inventory_item_activated(item: InventoryItem) ## Emitted when an inventory item has been double-clicked.
 signal inventory_item_clicked(item: InventoryItem) ## Emitted when an inventory item has been clicked.

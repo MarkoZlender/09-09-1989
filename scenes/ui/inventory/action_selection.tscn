@@ -1,24 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://d1yyevudxsvgs"]
+[gd_scene load_steps=4 format=3 uid="uid://d1yyevudxsvgs"]
 
 [ext_resource type="Script" path="res://scripts/ui/inventory/action_selection.gd" id="2_f3k7b"]
-[ext_resource type="PackedScene" uid="uid://cfwctomig6xhw" path="res://scenes/ui/ui_background.tscn" id="2_vncbw"]
 [ext_resource type="PackedScene" uid="uid://b4goedwokmaph" path="res://scenes/ui/menu_cursor.tscn" id="3_ful4d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nakrs"]
 content_margin_left = 116.0
 content_margin_top = 10.0
 
-[node name="ActionSelection" type="Control"]
-layout_mode = 3
+[node name="ActionSelection" type="Panel"]
+anchors_preset = -1
 anchor_left = 0.136458
 anchor_top = 0.0990741
 anchor_right = 0.434896
 anchor_bottom = 0.336111
+offset_right = 6.10352e-05
 script = ExtResource("2_f3k7b")
 metadata/_edit_use_anchors_ = true
-
-[node name="UIBackground" parent="." instance=ExtResource("2_vncbw")]
-layout_mode = 1
 
 [node name="VContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -78,6 +75,8 @@ alignment = 0
 
 [node name="MenuCursor" parent="." instance=ExtResource("3_ful4d")]
 layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
 menu_parent_path = NodePath("../VContainer")
 
 [connection signal="pressed" from="VContainer/UseButton" to="." method="_on_use_button_pressed"]
