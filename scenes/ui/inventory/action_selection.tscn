@@ -1,15 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1yyevudxsvgs"]
+[gd_scene load_steps=3 format=3 uid="uid://d1yyevudxsvgs"]
 
 [ext_resource type="Script" path="res://scripts/ui/inventory/action_selection.gd" id="2_f3k7b"]
 [ext_resource type="PackedScene" uid="uid://b4goedwokmaph" path="res://scenes/ui/menu_cursor.tscn" id="3_ful4d"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nakrs"]
-content_margin_left = 116.0
-content_margin_top = 10.0
+[node name="ActionSelection" type="CanvasLayer"]
 
-[node name="ActionSelection" type="Panel"]
+[node name="ActionSelection" type="Panel" parent="."]
 anchors_preset = -1
-anchor_left = 0.136458
+anchor_left = 0.149479
 anchor_top = 0.0990741
 anchor_right = 0.434896
 anchor_bottom = 0.336111
@@ -17,7 +15,7 @@ offset_right = 6.10352e-05
 script = ExtResource("2_f3k7b")
 metadata/_edit_use_anchors_ = true
 
-[node name="VContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="ActionSelection"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,60 +23,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UseButton" type="Button" parent="VContainer"]
+[node name="VContainer" type="VBoxContainer" parent="ActionSelection/MarginContainer"]
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_nakrs")
+
+[node name="UseButton" type="Button" parent="ActionSelection/MarginContainer/VContainer"]
+layout_mode = 2
 text = "Use"
 alignment = 0
 
-[node name="ThrowOutButton" type="Button" parent="VContainer"]
+[node name="ThrowOutButton" type="Button" parent="ActionSelection/MarginContainer/VContainer"]
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_nakrs")
 text = "Throw Out"
 alignment = 0
 
-[node name="ArrangeButton" type="Button" parent="VContainer"]
+[node name="ArrangeButton" type="Button" parent="ActionSelection/MarginContainer/VContainer"]
 layout_mode = 2
-theme_override_styles/focus = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_nakrs")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_nakrs")
 text = "Arrange"
 alignment = 0
 
-[node name="MenuCursor" parent="." instance=ExtResource("3_ful4d")]
+[node name="MenuCursor" parent="ActionSelection" instance=ExtResource("3_ful4d")]
 layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-menu_parent_path = NodePath("../VContainer")
+menu_parent_path = NodePath("../MarginContainer/VContainer")
 
-[connection signal="pressed" from="VContainer/UseButton" to="." method="_on_use_button_pressed"]
-[connection signal="pressed" from="VContainer/ThrowOutButton" to="." method="_on_throw_out_button_pressed"]
-[connection signal="pressed" from="VContainer/ArrangeButton" to="." method="_on_arrange_button_pressed"]
+[connection signal="pressed" from="ActionSelection/MarginContainer/VContainer/UseButton" to="ActionSelection" method="_on_use_button_pressed"]
+[connection signal="pressed" from="ActionSelection/MarginContainer/VContainer/ThrowOutButton" to="ActionSelection" method="_on_throw_out_button_pressed"]
+[connection signal="pressed" from="ActionSelection/MarginContainer/VContainer/ArrangeButton" to="ActionSelection" method="_on_arrange_button_pressed"]
