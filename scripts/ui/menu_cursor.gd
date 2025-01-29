@@ -1,6 +1,6 @@
 # https://gist.github.com/sjvnnings/6b54a962f4c72758b182c49f655ed4e8
 # https://www.youtube.com/watch?v=AkhPfCF_2Vg
-class_name MenuCursor extends TextureRect
+class_name MenuCursor extends Label
 
 @export var menu_parent_path: NodePath
 @export var focus_node: Control
@@ -10,7 +10,6 @@ var current_focused_control: Control = null
 var cursor_index : int = 0
 
 @onready var menu_parent: Node = get_node(menu_parent_path)
-@onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	await get_parent().ready
@@ -54,7 +53,7 @@ func _input(event: InputEvent) -> void:
 		current_focused_control = menu_parent.get_child(cursor_index)
 		current_focused_control.set_focus_mode(FOCUS_ALL)
 		current_focused_control.grab_focus()
-		set_cursor_anim()
+		set_cursor()
 
 func refresh_focus() -> void:
 	if focus_node != null:
@@ -73,7 +72,7 @@ func _process(_delta: float) -> void:
 		#current_focused_control.focus_mode = FOCUS_NONE
 		current_focused_control.set_focus_mode(FOCUS_ALL)
 		current_focused_control.grab_focus()
-		set_cursor_anim()
+		set_cursor()
 	else:
 		for menu_item: Node in menu_parent.get_children():
 			if is_instance_valid(menu_item) && menu_parent.get_children().find(menu_item) == cursor_index:
@@ -86,20 +85,6 @@ func _process(_delta: float) -> void:
 				menu_item.focus_mode = FOCUS_NONE
 		print("MenuCursor: _process: current_focused_control is not valid")
 	set_cursor()
-
-
-func set_cursor_anim() -> void:
-	var menu_item: Control = current_focused_control
-
-	if menu_item == null:
-		return
-
-	var menu_item_position: Vector2 = menu_item.global_position
-	var menu_item_size: Vector2 = menu_item.size
-
-	var new_global_position: Vector2 = Vector2(menu_item_position.x, menu_item_position.y + menu_item_size.y / 2.0) - (size / 2.0) - cursor_offset
-	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(self, "global_position", new_global_position, 0.2)
 
 func set_cursor() -> void:
 	var menu_item: Control = current_focused_control
@@ -114,11 +99,11 @@ func set_cursor() -> void:
 
 
 func freeze() -> void:
-	anim_player.stop()
+	#anim_player.stop()
 	set_process_input(false)
 	set_process(false)
 
 func unfreeze() -> void:
-	anim_player.play("eyecandy")
+	#anim_player.play("eyecandy")
 	set_process_input(true)
 	set_process(true)

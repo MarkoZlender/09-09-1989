@@ -39,22 +39,16 @@ offset_bottom = 251.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="SlotSelectionPanel"]
+[node name="VSlotContainer" type="VBoxContainer" parent="SlotSelectionPanel"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-follow_focus = true
-
-[node name="VSlotContainer" type="VBoxContainer" parent="SlotSelectionPanel/ScrollContainer"]
-unique_name_in_owner = true
-layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="WarningDialog" parent="." instance=ExtResource("5_xhaur")]
 unique_name_in_owner = true
@@ -64,9 +58,8 @@ layout_mode = 1
 [node name="MenuCursor" parent="." instance=ExtResource("4_0i80v")]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 50.0
 offset_bottom = 50.0
-menu_parent_path = NodePath("../SlotSelectionPanel/ScrollContainer/VSlotContainer")
+menu_parent_path = NodePath("../SlotSelectionPanel/VSlotContainer")
 
 [node name="BasicUiInputComponent" parent="." instance=ExtResource("6_njv8q")]
 previous_scene = "res://scenes/ui/main_menu.tscn"

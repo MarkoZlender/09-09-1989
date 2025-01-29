@@ -11,17 +11,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rjo4w")
 
-[node name="VContainer" type="VBoxContainer" parent="."]
-unique_name_in_owner = true
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VContainer" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 10
+theme_override_constants/separation = 20
 
 [node name="MenuCursor" parent="." instance=ExtResource("3_84ha7")]
 layout_mode = 0
-menu_parent_path = NodePath("../VContainer")
+menu_parent_path = NodePath("../MarginContainer/VContainer")

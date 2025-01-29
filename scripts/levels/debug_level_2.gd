@@ -2,8 +2,9 @@ extends Node3D
 
 @export var player_data: PlayerData
 
-func _ready() -> void:
-	Global.save_manager.load_game(Global.save_manager.current_save_slot)
-	print(Global.save_manager.current_save_slot)
-	print(get_tree().get_nodes_in_group("savable"))
-	Global.interaction_manager.player = get_tree().get_first_node_in_group("player")
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("inventory"):
+		if !Global.game_controller.gui.has_node("InventoryScreen"):
+			Global.game_controller.change_gui_scene("res://scenes/ui/inventory/inventory_screen.tscn", true, false, false)
+		elif Global.game_controller.gui.has_node("InventoryScreen"):
+			Global.game_controller.change_gui_scene("", true, false, false)		

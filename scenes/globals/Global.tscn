@@ -34,23 +34,6 @@ script = ExtResource("6_fmdso")
 protoset = ExtResource("7_flclb")
 _serialized_format = {
 "items": [{
-"properties": {
-"image": {
-"type": 4,
-"value": "\"\""
-},
-"name": {
-"type": 4,
-"value": "\"\""
-},
-"stack_size": {
-"type": 3,
-"value": "0.0"
-}
-},
-"protoset": "res://resources/prototree.json",
-"prototype_id": "potion"
-}, {
 "protoset": "res://resources/prototree.json",
 "prototype_id": "sword"
 }, {

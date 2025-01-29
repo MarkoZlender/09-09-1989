@@ -1,30 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://b657lysfraeak"]
+[gd_scene load_steps=3 format=3 uid="uid://b657lysfraeak"]
 
-[ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/ui_theme.tres" id="1_1kaml"]
 [ext_resource type="ButtonGroup" uid="uid://chgaopo2emhti" path="res://scenes/ui/save_system/slot_selection_button_group.tres" id="1_5bqp8"]
 [ext_resource type="Script" path="res://scripts/ui/save_system/slot_button.gd" id="2_w7kmr"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ma7g"]
-content_margin_left = 116.0
-
 [node name="SlotButton" type="Button"]
-custom_minimum_size = Vector2(300, 77)
-offset_right = 300.0
-offset_bottom = 77.0
+offset_right = 83.0
+offset_bottom = 26.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource("1_1kaml")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_5ma7g")
-theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_5ma7g")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_5ma7g")
-theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_5ma7g")
-theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5ma7g")
-theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_5ma7g")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_5ma7g")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_5ma7g")
-theme_override_styles/pressed = SubResource("StyleBoxEmpty_5ma7g")
-theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_5ma7g")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_5ma7g")
+theme_type_variation = &"ButtonWithCursor"
 toggle_mode = true
 button_group = ExtResource("1_5bqp8")
 text = "Slot"

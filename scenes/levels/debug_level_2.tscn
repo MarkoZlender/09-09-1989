@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://boiiijulkllqb"]
+[gd_scene load_steps=16 format=3 uid="uid://boiiijulkllqb"]
 
 [ext_resource type="Script" path="res://scripts/levels/debug_level_2.gd" id="1_vnnkb"]
 [ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/entities/player.tscn" id="3_cina5"]
@@ -6,7 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://c6pyep1cusmnn" path="res://assets/textures/prototype_textures/Dark/texture_01.png" id="5_g1ucc"]
 [ext_resource type="PackedScene" uid="uid://pfrlin6rnx1l" path="res://scenes/interaction/interactables/test_cube.tscn" id="6_5c0pr"]
 [ext_resource type="Script" path="res://scripts/data/item_data.gd" id="7_7jh18"]
-[ext_resource type="PackedScene" uid="uid://cftivtsqiijgj" path="res://scenes/effects/post_process_effects.tscn" id="8_lk631"]
+[ext_resource type="PackedScene" uid="uid://47b6ywwy1olr" path="res://scenes/components/load_level_component.tscn" id="8_6fm0f"]
+[ext_resource type="PackedScene" uid="uid://bm3l5td4ucfyf" path="res://scenes/interaction/interactables/save_point.tscn" id="8_a6mis"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c87d4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -66,8 +67,12 @@ item_data_for_cube = SubResource("Resource_sk1pg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.68522, 0.107178, 2.33119)
 item_data_for_cube = SubResource("Resource_0h4dv")
 
-[node name="PostProcessEffects" parent="." instance=ExtResource("8_lk631")]
-
 [node name="Player" parent="." groups=["savable"] instance=ExtResource("3_cina5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
 player_data = SubResource("Resource_u5x61")
+
+[node name="SavePoint" parent="." instance=ExtResource("8_a6mis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.4978)
+
+[node name="LoadLevelComponent" parent="." node_paths=PackedStringArray("scene_root") instance=ExtResource("8_6fm0f")]
+scene_root = NodePath("..")
