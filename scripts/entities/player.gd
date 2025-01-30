@@ -10,8 +10,7 @@ var is_moving := false
 var move_queue := []
 var current_direction := Vector3.ZERO
 var global_cell_coordinates: Array[Vector3] = []
-var tween: Tween
-
+var tween
 var inputs = {
 	"move_right": Vector3.RIGHT,
 	"move_left": Vector3.LEFT,
@@ -24,13 +23,21 @@ func _ready():
 	for cell in gridmap.get_used_cells():
 		global_cell_coordinates.append(gridmap.map_to_local(cell))
 
-# func _physics_process(delta: float) -> void:
-# 	if !is_moving:
+# func _process(delta: float) -> void:
+# 	if move_queue.is_empty() and !is_moving:
+# 		# Check for held inputs
 # 		for dir in inputs.keys():
 # 			if Input.is_action_pressed(dir):
-# 				move(dir)
-# 				$Cynthia/AnimationPlayer.play("Run")
+# 				var new_dir = inputs[dir]
+# 				if new_dir != current_direction:
+# 					current_direction = new_dir
+# 					move_queue.append(dir)
 # 				break
+
+# 	# Process queue if not moving
+# 	if !is_moving && !move_queue.is_empty():
+# 		var next_dir = move_queue.pop_front()
+# 		move(next_dir)
 
 func _physics_process(delta: float) -> void:
 	if tween and tween.is_running():
@@ -65,14 +72,7 @@ func _physics_process(delta: float) -> void:
 		await tween.finished
 
 func move(dir):
-	if is_position_valid(position + inputs[dir]):
-		if is_moving:
-			return
-
-		var new_position = position + inputs[dir] * cell_size
-		is_moving = true
-
-		match dir:
+	match dir:
 			"move_right":
 				rotation.y = deg_to_rad(0)
 			"move_left":
@@ -81,10 +81,18 @@ func move(dir):
 				rotation.y = deg_to_rad(90)
 			"move_back":
 				rotation.y = deg_to_rad(-90)
+	if is_position_valid(position + inputs[dir]):
+		if is_moving:
+			return
 
-		var tween = create_tween()
-		tween.tween_property(self, "position", new_position, 0.2)
+		var new_position = position + inputs[dir] * cell_size
+		is_moving = true
+
+		var tween: Tween = create_tween()
+		tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+		tween.tween_property(self, "position", new_position, 1 / move_speed).set_trans(Tween.TRANS_LINEAR)
 		tween.tween_callback(_on_tween_finished)
+		await tween.finished
 
 func _on_tween_finished():
 	is_moving = false
