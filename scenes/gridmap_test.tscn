@@ -66,11 +66,10 @@ look_at_mode = 2
 look_at_target = NodePath("../../Player")
 tween_resource = SubResource("Resource_tvd3i")
 follow_offset = Vector3(-5, 5, 5)
-follow_damping = true
-look_at_damping = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("gridmap") instance=ExtResource("2_enrh5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 0.5)
+move_speed = 5.0
 gridmap = NodePath("../GridMap")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

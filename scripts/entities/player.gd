@@ -23,53 +23,54 @@ func _ready():
 	for cell in gridmap.get_used_cells():
 		global_cell_coordinates.append(gridmap.map_to_local(cell))
 
-# func _process(delta: float) -> void:
-# 	if move_queue.is_empty() and !is_moving:
-# 		# Check for held inputs
-# 		for dir in inputs.keys():
-# 			if Input.is_action_pressed(dir):
-# 				var new_dir = inputs[dir]
-# 				if new_dir != current_direction:
-# 					current_direction = new_dir
-# 					move_queue.append(dir)
-# 				break
+func _process(delta: float) -> void:
+	# for dir in inputs.keys():
+	# 	if Input.is_action_pressed(dir):
+	# 		move(dir)
+	if Input.is_action_pressed("move_forward"):
+		move("move_forward")
+	if Input.is_action_pressed("move_back"):
+		move("move_back")
+	if Input.is_action_pressed("move_left"):
+		move("move_left")
+	if Input.is_action_pressed("move_right"):
+		move("move_right")
 
-# 	# Process queue if not moving
-# 	if !is_moving && !move_queue.is_empty():
-# 		var next_dir = move_queue.pop_front()
-# 		move(next_dir)
-
-func _physics_process(delta: float) -> void:
-	if tween and tween.is_running():
-		return
-	if Input.is_action_pressed("move_forward") && is_position_valid(position + Vector3.FORWARD * cell_size):
-		tween = create_tween()
-		tween.set_process_mode(0)
-		var new_position = position + Vector3.FORWARD * cell_size
-		tween.tween_property(self, "position", new_position, 0.1).set_trans(Tween.TRANS_LINEAR)
-		rotation.y = deg_to_rad(90)
-		await tween.finished
-	if Input.is_action_pressed("move_back") && is_position_valid(position + Vector3.BACK * cell_size):
-		tween = create_tween()
-		tween.set_process_mode(0)
-		var new_position = position + Vector3.BACK * cell_size
-		tween.tween_property(self, "position", new_position, 0.1).set_trans(Tween.TRANS_LINEAR)
-		rotation.y = deg_to_rad(-90)
-		await tween.finished
-	if Input.is_action_pressed("move_left") && is_position_valid(position + Vector3.LEFT * cell_size):
-		tween = create_tween()
-		tween.set_process_mode(0)
-		var new_position = position + Vector3.LEFT * cell_size
-		tween.tween_property(self, "position", new_position, 0.1).set_trans(Tween.TRANS_LINEAR)
-		rotation.y = deg_to_rad(180)
-		await tween.finished
-	if Input.is_action_pressed("move_right") && is_position_valid(position + Vector3.RIGHT * cell_size):
-		tween = create_tween()
-		tween.set_process_mode(0)
-		var new_position = position + Vector3.RIGHT * cell_size
-		tween.tween_property(self, "position", new_position, 0.1).set_trans(Tween.TRANS_LINEAR)
-		rotation.y = deg_to_rad(0)
-		await tween.finished
+# func _physics_process(delta: float) -> void:
+# 	if tween and tween.is_running():
+# 		return
+# 	if Input.is_action_pressed("move_forward") && is_position_valid(position + Vector3.FORWARD * cell_size):
+# 		tween = create_tween()
+# 		tween.set_process_mode(0)
+# 		tween.set_parallel()
+# 		var new_position = position + Vector3.FORWARD * cell_size
+# 		tween.tween_property(self, "position", new_position, 0.1).set_trans(Tween.TRANS_LINEAR)
+# 		rotation.y = deg_to_rad(90)
+# 		await tween.finished
+# 	if Input.is_action_pressed("move_back") && is_position_valid(position + Vector3.BACK * cell_size):
+# 		tween = create_tween()
+# 		tween.set_process_mode(0)
+# 		tween.set_parallel()
+# 		var new_position = position + Vector3.BACK * cell_size
+# 		tween.tween_property(self, "position", new_position, 0.1).set_trans(Tween.TRANS_LINEAR)
+# 		rotation.y = deg_to_rad(-90)
+# 		await tween.finished
+# 	if Input.is_action_pressed("move_left") && is_position_valid(position + Vector3.LEFT * cell_size):
+# 		tween = create_tween()
+# 		tween.set_process_mode(0)
+# 		tween.set_parallel()
+# 		var new_position = position + Vector3.LEFT * cell_size
+# 		tween.tween_property(self, "position", new_position, 0.1).set_trans(Tween.TRANS_LINEAR)
+# 		rotation.y = deg_to_rad(180)
+# 		await tween.finished
+# 	if Input.is_action_pressed("move_right") && is_position_valid(position + Vector3.RIGHT * cell_size):
+# 		tween = create_tween()
+# 		tween.set_process_mode(0)
+# 		tween.set_parallel()
+# 		var new_position = position + Vector3.RIGHT * cell_size
+# 		tween.tween_property(self, "position", new_position, 0.1).set_trans(Tween.TRANS_LINEAR)
+# 		rotation.y = deg_to_rad(0)
+# 		await tween.finished
 
 func move(dir):
 	match dir:
@@ -82,17 +83,19 @@ func move(dir):
 			"move_back":
 				rotation.y = deg_to_rad(-90)
 	if is_position_valid(position + inputs[dir]):
-		if is_moving:
-			return
+
 
 		var new_position = position + inputs[dir] * cell_size
-		is_moving = true
+		
 
 		var tween: Tween = create_tween()
+		tween.set_loops(2)
 		tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 		tween.tween_property(self, "position", new_position, 1 / move_speed).set_trans(Tween.TRANS_LINEAR)
-		tween.tween_callback(_on_tween_finished)
+		#tween.tween_callback(_on_tween_finished)
 		await tween.finished
+		grid_position = position / cell_size
+		current_direction = Vector3.ZERO
 
 func _on_tween_finished():
 	is_moving = false

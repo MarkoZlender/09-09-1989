@@ -6,7 +6,8 @@ func enter(previous_state_path: String, data: Dictionary= {}) -> void:
 	pass
 
 func physics_update(delta: float) -> void:
-	player.move(delta)
+	pass
+	# player.move(delta)
 	
-	if is_equal_approx(player.velocity.length(), 0.0):
-		finished.emit(IDLE)
+	# if is_equal_approx(player.velocity.length(), 0.0):
+	# 	finished.emit(IDLE)
