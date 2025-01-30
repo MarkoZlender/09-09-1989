@@ -5,6 +5,8 @@ class_name Player extends CharacterBody3D
 @export var move_speed := 5.0  # Tween speed
 @export var gridmap: GridMap
 
+@onready var camera_rig: Marker3D = %CameraRig
+
 var grid_position := Vector3(0.5, 0, 0.5)
 var is_moving := false
 var move_queue := []
@@ -19,6 +21,7 @@ var inputs = {
 }
 
 func _ready():
+	camera_rig.top_level = true
 	position = grid_position
 	for cell in gridmap.get_used_cells():
 		global_cell_coordinates.append(gridmap.map_to_local(cell))
@@ -27,6 +30,7 @@ func _process(delta: float) -> void:
 	# for dir in inputs.keys():
 	# 	if Input.is_action_pressed(dir):
 	# 		move(dir)
+	camera_follows_player()
 	if Input.is_action_pressed("move_forward"):
 		move("move_forward")
 	if Input.is_action_pressed("move_back"):
@@ -36,6 +40,9 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("move_right"):
 		move("move_right")
 
+func camera_follows_player():
+	var player_pos = global_position
+	camera_rig.global_position = player_pos + Vector3(-5,6,5)
 # func _physics_process(delta: float) -> void:
 # 	if tween and tween.is_running():
 # 		return
