@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dcjlc87qrm3qu"]
+[gd_scene load_steps=12 format=3 uid="uid://dcjlc87qrm3qu"]
 
 [ext_resource type="Script" path="res://scripts/levels/debug_level.gd" id="1_qs4br"]
 [ext_resource type="Texture2D" uid="uid://c6pyep1cusmnn" path="res://assets/textures/prototype_textures/Dark/texture_01.png" id="2_1jke0"]
 [ext_resource type="PackedScene" uid="uid://pfrlin6rnx1l" path="res://scenes/interaction/interactables/test_cube.tscn" id="3_50my6"]
-[ext_resource type="Script" path="res://scripts/data/player_data.gd" id="4_d4s1l"]
 [ext_resource type="Script" path="res://scripts/data/item_data.gd" id="6_tn5mt"]
 [ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/entities/player.tscn" id="8_p7r6i"]
 [ext_resource type="PackedScene" uid="uid://bm3l5td4ucfyf" path="res://scenes/interaction/interactables/save_point.tscn" id="9_mioeh"]
@@ -16,11 +15,6 @@ background_energy_multiplier = 0.88
 ambient_light_source = 2
 ambient_light_color = Color(0.560955, 0.560955, 0.560955, 1)
 ambient_light_energy = 3.45
-
-[sub_resource type="Resource" id="Resource_1mbi4"]
-script = ExtResource("4_d4s1l")
-health = 100
-mana = 50
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0aj7"]
 albedo_texture = ExtResource("2_1jke0")
@@ -44,7 +38,8 @@ environment = SubResource("Environment_8v1jl")
 
 [node name="Player" parent="." groups=["savable"] instance=ExtResource("8_p7r6i")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
+cell_size = null
+move_speed = null
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.392822, 0)

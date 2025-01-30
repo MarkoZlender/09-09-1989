@@ -7,44 +7,53 @@
 [node name="Menu" type="CanvasLayer" parent="."]
 
 [node name="MarginContainer" type="MarginContainer" parent="Menu"]
-offset_right = 298.0
-offset_bottom = 226.0
+offset_right = 346.0
+offset_bottom = 289.0
 
 [node name="Panel" type="Panel" parent="Menu/MarginContainer"]
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Menu/MarginContainer/Panel"]
 layout_mode = 1
-offset_right = 216.0
-offset_bottom = 156.0
+offset_right = 251.0
+offset_bottom = 242.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer/Panel/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Menu/MarginContainer/Panel/MarginContainer"]
 layout_mode = 2
+
+[node name="Label" type="Label" parent="Menu/MarginContainer/Panel/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Menu"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/MarginContainer/Panel/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="EquipmentButton" type="Button" parent="Menu/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="EquipmentButton" type="Button" parent="Menu/MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Equipment"
 alignment = 0
 
-[node name="AbilitiesButton" type="Button" parent="Menu/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="AbilitiesButton" type="Button" parent="Menu/MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Abilities
 "
 alignment = 0
 
-[node name="InventoryButton" type="Button" parent="Menu/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="InventoryButton" type="Button" parent="Menu/MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"ButtonWithCursor"
 text = "Inventory"
 alignment = 0
 
-[node name="ConfigButton" type="Button" parent="Menu/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="ConfigButton" type="Button" parent="Menu/MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Configuration"
 alignment = 0
 
-[node name="QuitButton" type="Button" parent="Menu/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+[node name="QuitButton" type="Button" parent="Menu/MarginContainer/Panel/MarginContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Quit
 "
@@ -52,5 +61,5 @@ alignment = 0
 
 [node name="MenuCursor" parent="Menu/MarginContainer/Panel" node_paths=PackedStringArray("focus_node") instance=ExtResource("1_gtfsp")]
 layout_mode = 0
-menu_parent_path = NodePath("../MarginContainer/VBoxContainer")
-focus_node = NodePath("../MarginContainer/VBoxContainer/EquipmentButton")
+menu_parent_path = NodePath("../MarginContainer/VBoxContainer2/VBoxContainer")
+focus_node = NodePath("../MarginContainer/VBoxContainer2/VBoxContainer/EquipmentButton")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cd3fm13s6uxk6"]
+[gd_scene load_steps=10 format=3 uid="uid://cd3fm13s6uxk6"]
 
 [ext_resource type="Script" path="res://scripts/globals/global.gd" id="1_ef01j"]
 [ext_resource type="PackedScene" uid="uid://jlpql0vbg6mg" path="res://scenes/globals/save_manager.tscn" id="2_2r8wd"]
@@ -9,17 +9,10 @@
 [ext_resource type="JSON" path="res://resources/prototree.json" id="7_flclb"]
 [ext_resource type="Script" path="res://addons/gloot/core/item_slot.gd" id="8_0734y"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_item_slot.gd" id="8_n3aw3"]
-[ext_resource type="PackedScene" uid="uid://pfrlin6rnx1l" path="res://scenes/interaction/interactables/test_cube.tscn" id="10_1obbt"]
-[ext_resource type="Script" path="res://scripts/data/item_data.gd" id="11_340of"]
-
-[sub_resource type="Resource" id="Resource_s8ips"]
-script = ExtResource("11_340of")
-name = "Cube global"
-description = "An item"
 
 [node name="Global" type="Node" node_paths=PackedStringArray("savable_globals")]
 script = ExtResource("1_ef01j")
-savable_globals = [NodePath("TestCube")]
+savable_globals = [NodePath("")]
 
 [node name="SaveManager" parent="." instance=ExtResource("2_2r8wd")]
 
@@ -66,6 +59,3 @@ icon_stretch_mode = 4
 [node name="WeaponSlot" type="Node" parent="Inventory"]
 script = ExtResource("8_0734y")
 protoset = ExtResource("7_flclb")
-
-[node name="TestCube" parent="." instance=ExtResource("10_1obbt")]
-item_data_for_cube = SubResource("Resource_s8ips")

@@ -1,71 +1,121 @@
 class_name Player extends CharacterBody3D
 
-#signal pick_up_item(item: Node)
-#signal hurt(damage: float)
+# Grid settings
+@export var cell_size := Vector3(1, 0, 1)  # Cell size (X, Y, Z)
+@export var move_speed := 5.0  # Tween speed
+@export var gridmap: GridMap
 
-# @export var FORWARD_SPEED = 2.0
-# @export var BACK_SPEED = 5.0
-# @export var TURN_SPEED = 0.025
-# @export var RUN_SPEED = 4.0
-# @export var BACK_RUN_SPEED = 3.0
+var grid_position := Vector3(0.5, 0, 0.5)
+var is_moving := false
+var move_queue := []
+var current_direction := Vector3.ZERO
+var global_cell_coordinates: Array[Vector3] = []
+var tween: Tween
 
-@export var player_data: PlayerData
+var inputs = {
+	"move_right": Vector3.RIGHT,
+	"move_left": Vector3.LEFT,
+	"move_forward": Vector3.FORWARD,
+	"move_back": Vector3.BACK
+}
 
-@export var MOVE_SPEED: float = 2.0
-@export var ROTATION_SPEED: float = 3.0
+func _ready():
+	position = grid_position
+	for cell in gridmap.get_used_cells():
+		global_cell_coordinates.append(gridmap.map_to_local(cell))
 
-@export var rotation_speed_idle: float = 3.0
-@export var rotation_speed_moving: float = 2.0
-@export var rotation_speed_aiming: float = 2.0
+# func _physics_process(delta: float) -> void:
+# 	if !is_moving:
+# 		for dir in inputs.keys():
+# 			if Input.is_action_pressed(dir):
+# 				move(dir)
+# 				$Cynthia/AnimationPlayer.play("Run")
+# 				break
 
-@export var move_speed_hurt: float = 1.0
+func _physics_process(delta: float) -> void:
+	if tween and tween.is_running():
+		return
+	if Input.is_action_pressed("move_forward") && is_position_valid(position + Vector3.FORWARD * cell_size):
+		tween = create_tween()
+		var new_position = position + Vector3.FORWARD * cell_size
+		tween.tween_property(self, "position", new_position, 0.1)
+		rotation.y = deg_to_rad(90)
+	if Input.is_action_pressed("move_back") && is_position_valid(position + Vector3.BACK * cell_size):
+		tween = create_tween()
+		var new_position = position + Vector3.BACK * cell_size
+		tween.tween_property(self, "position", new_position, 0.1)
+		rotation.y = deg_to_rad(-90)
+	if Input.is_action_pressed("move_left") && is_position_valid(position + Vector3.LEFT * cell_size):
+		tween = create_tween()
+		var new_position = position + Vector3.LEFT * cell_size
+		tween.tween_property(self, "position", new_position, 0.1)
+		rotation.y = deg_to_rad(180)
+	if Input.is_action_pressed("move_right") && is_position_valid(position + Vector3.RIGHT * cell_size):
+		tween = create_tween()
+		var new_position = position + Vector3.RIGHT * cell_size
+		tween.tween_property(self, "position", new_position, 0.1)
+		rotation.y = deg_to_rad(0)
 
-@export var health: int = 100
+func move(dir):
+	if is_position_valid(position + inputs[dir]):
+		if is_moving:
+			return
 
-@export var spawn_point: Marker3D
+		var new_position = position + inputs[dir] * cell_size
+		is_moving = true
 
-var direction: float = 0
+		match dir:
+			"move_right":
+				rotation.y = deg_to_rad(0)
+			"move_left":
+				rotation.y = deg_to_rad(180)
+			"move_forward":
+				rotation.y = deg_to_rad(90)
+			"move_back":
+				rotation.y = deg_to_rad(-90)
 
-func _ready() -> void:
-	if spawn_point != null:
-		global_position = spawn_point.global_position + Vector3(0, 0.1, 0)
-	else:
-		pass
+		var tween = create_tween()
+		tween.tween_property(self, "position", new_position, 0.2)
+		tween.tween_callback(_on_tween_finished)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("save"):
-		Global.save_manager.save_game(Global.save_manager.current_save_slot)
-		print("Saved game")
-	elif event.is_action_pressed("load"):
-		Global.save_manager.load_game(Global.save_manager.current_save_slot)
-		print("Loaded game")
+func _on_tween_finished():
+	is_moving = false
+	grid_position = position / cell_size
+	current_direction = Vector3.ZERO
 
-# func move(delta: float):
-# 	rotate_player(delta)
-# 	direction = Input.get_axis("move_back", "move_forward")
-# 	velocity = direction * MOVE_SPEED * global_transform.basis.x
+func is_position_valid(pos: Vector3) -> bool:
+	return pos in global_cell_coordinates
 
-# 	move_and_slide()
+# func _process(_delta):
+# 	if is_moving:
+# 		return  # Skip input during movement
+	
+# 	# Check input direction
+# 	var direction = Vector3.ZERO
+# 	if Input.is_action_just_pressed("ui_up"):
+# 		direction.x += 1
+# 	elif Input.is_action_just_pressed("ui_down"):
+# 		direction.x -= 1
+# 	elif Input.is_action_just_pressed("ui_right"):
+# 		direction.z += 1
+# 	elif Input.is_action_just_pressed("ui_left"):
+# 		direction.z -= 1
+	
+# 	if direction != Vector3.ZERO:
+# 		move_to(grid_position + direction)
 
-func move(delta: float) -> void:
-	rotate_player(delta)
-	direction = Input.get_axis("move_back", "move_forward")
-	velocity = direction * MOVE_SPEED * global_transform.basis.x
-	if !is_on_floor():
-		# check if delta is already applied by the move_and_slide function or physics_process()
-		velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity")
-
-	# Move the player
-	move_and_slide()
-
-func rotate_player(delta: float) -> void:
-	var rotation_direction: float = Input.get_axis("turn_right", "turn_left")
-	#print("Rotation speed: ", ROTATION_SPEED)
-	if velocity.length() == 0:
-		ROTATION_SPEED = rotation_speed_idle
-	else:
-		ROTATION_SPEED = rotation_speed_moving
-	rotation += Vector3(0, rotation_direction * ROTATION_SPEED * delta, 0)
+# func move_to(target_grid_pos: Vector3):
+# 	if is_position_valid(target_grid_pos):
+# 		is_moving = true
+# 		grid_position = target_grid_pos
+		
+# 		# Calculate world position
+# 		var target_world_pos = grid_position * cell_size
+		
+# 		# Animate movement with Tween
+# 		var tween = create_tween()
+# 		tween.tween_property(self, "position", target_world_pos, 1.0 / move_speed)
+# 		tween.tween_callback(func(): is_moving = false)
 
 func save() -> Dictionary:
 	var save_data: Dictionary = {
@@ -77,14 +127,9 @@ func save() -> Dictionary:
 		"rot_x" : rotation.x,
 		"rot_y" : rotation.y,
 		"rot_z" : rotation.z,
-		"health" : player_data.health,
-		"mana" : player_data.mana
 	}
 	return save_data
 
 func load(data: Dictionary) -> void:
 	global_position = Vector3(data["pos_x"], data["pos_y"], data["pos_z"])
 	rotation = Vector3(data["rot_x"], data["rot_y"], data["rot_z"])
-	player_data = PlayerData.new()
-	player_data.health = data["health"]
-	player_data.mana = data["mana"]

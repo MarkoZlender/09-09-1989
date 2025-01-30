@@ -3614,7 +3614,7 @@ _data = {
 [node name="animatedglb" type="Node3D"]
 
 [node name="Cynthia_002" type="Node3D" parent="."]
-transform = Transform3D(0.995308, 0.0519115, -0.0816578, -0.0509687, 0.998608, 0.01359, 0.0822496, -0.00936426, 0.996568, -0.104798, -0.00945625, -0.00786746)
+transform = Transform3D(0.995308, 0.0519115, -0.0816578, -0.0509687, 0.998608, 0.01359, 0.0822496, -0.00936426, 0.996568, -0.0111151, -0.00945625, -0.00786746)
 
 [node name="Skeleton3D" type="Skeleton3D" parent="Cynthia_002"]
 bones/0/name = "Hips"
