@@ -37,24 +37,32 @@ func _physics_process(delta: float) -> void:
 		return
 	if Input.is_action_pressed("move_forward") && is_position_valid(position + Vector3.FORWARD * cell_size):
 		tween = create_tween()
+		tween.set_process_mode(0)
 		var new_position = position + Vector3.FORWARD * cell_size
-		tween.tween_property(self, "position", new_position, 0.1)
+		tween.tween_property(self, "position", new_position, 0.1).set_trans(Tween.TRANS_LINEAR)
 		rotation.y = deg_to_rad(90)
+		await tween.finished
 	if Input.is_action_pressed("move_back") && is_position_valid(position + Vector3.BACK * cell_size):
 		tween = create_tween()
+		tween.set_process_mode(0)
 		var new_position = position + Vector3.BACK * cell_size
-		tween.tween_property(self, "position", new_position, 0.1)
+		tween.tween_property(self, "position", new_position, 0.1).set_trans(Tween.TRANS_LINEAR)
 		rotation.y = deg_to_rad(-90)
+		await tween.finished
 	if Input.is_action_pressed("move_left") && is_position_valid(position + Vector3.LEFT * cell_size):
 		tween = create_tween()
+		tween.set_process_mode(0)
 		var new_position = position + Vector3.LEFT * cell_size
-		tween.tween_property(self, "position", new_position, 0.1)
+		tween.tween_property(self, "position", new_position, 0.1).set_trans(Tween.TRANS_LINEAR)
 		rotation.y = deg_to_rad(180)
+		await tween.finished
 	if Input.is_action_pressed("move_right") && is_position_valid(position + Vector3.RIGHT * cell_size):
 		tween = create_tween()
+		tween.set_process_mode(0)
 		var new_position = position + Vector3.RIGHT * cell_size
-		tween.tween_property(self, "position", new_position, 0.1)
+		tween.tween_property(self, "position", new_position, 0.1).set_trans(Tween.TRANS_LINEAR)
 		rotation.y = deg_to_rad(0)
+		await tween.finished
 
 func move(dir):
 	if is_position_valid(position + inputs[dir]):

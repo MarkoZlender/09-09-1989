@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://clmjc1qpnqhi0"]
+[gd_scene load_steps=7 format=3 uid="uid://clmjc1qpnqhi0"]
 
 [ext_resource type="MeshLibrary" uid="uid://d0wed63eghym7" path="res://assets/meshlibs/test_meshlib.meshlib" id="1_88ewg"]
 [ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/entities/player.tscn" id="2_enrh5"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_t28jq"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_bfpoo"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_svckr"]
 
@@ -44,11 +43,6 @@ look_at_damping = true
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.707107, 0.408248, -0.57735, -1.49012e-08, 0.816497, 0.57735, 0.707107, -0.408248, 0.57735, -4.5, 5, 5.5)
 size = 7.329
-
-[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
-process_priority = 300
-process_physics_priority = 300
-script = ExtResource("2_t28jq")
 
 [node name="Player" parent="." node_paths=PackedStringArray("gridmap") instance=ExtResource("2_enrh5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.5, 0, 0.5)
