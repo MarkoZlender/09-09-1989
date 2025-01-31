@@ -1,18 +1,16 @@
 class_name Player extends CharacterBody3D
 
 # Grid settings
-@export var cell_size := Vector3(1, 0, 1)  # Cell size (X, Y, Z)
-@export var move_speed := 5.0  # Tween speed
+@export var cell_size := Vector3(1, 0, 1)
+@export var move_speed := 5.0
 @export var gridmap: GridMap
 
 @onready var camera_rig: Marker3D = %CameraRig
 
 var grid_position := Vector3(0.5, 0, 0.5)
-var is_moving := false
-var move_queue := []
-var current_direction := Vector3.ZERO
 var global_cell_coordinates: Array[Vector3] = []
 var tween
+var is_moving := false
 var inputs = {
 	"move_right": Vector3.RIGHT,
 	"move_left": Vector3.LEFT,
@@ -27,56 +25,66 @@ func _ready():
 		global_cell_coordinates.append(gridmap.map_to_local(cell))
 
 func _process(delta: float) -> void:
-	# for dir in inputs.keys():
-	# 	if Input.is_action_pressed(dir):
-	# 		move(dir)
 	camera_follows_player()
+	handle_movement_input()
+	update_idle_state()
+
+func handle_movement_input():
+	var direction_pressed = false
+	
 	if Input.is_action_pressed("move_forward"):
-		move("move_forward")
+		direction_pressed = true
+		attempt_move("move_forward")
 	elif Input.is_action_pressed("move_back"):
-		move("move_back")
+		direction_pressed = true
+		attempt_move("move_back")
 	elif Input.is_action_pressed("move_left"):
-		move("move_left")
+		direction_pressed = true
+		attempt_move("move_left")
 	elif Input.is_action_pressed("move_right"):
-		move("move_right")
+		direction_pressed = true
+		attempt_move("move_right")
+	
+	if !direction_pressed and !is_moving:
+		$Cynthia/AnimationPlayer.play("Idle")
+
+func attempt_move(dir: String):
+	if is_moving:
+		return
+
+	match dir:
+		"move_right": rotation.y = deg_to_rad(0)
+		"move_left": rotation.y = deg_to_rad(180)
+		"move_forward": rotation.y = deg_to_rad(90)
+		"move_back": rotation.y = deg_to_rad(-90)
+	
+	var new_position = position + inputs[dir]
+	
+	if is_position_valid(new_position):
+		start_movement(new_position)
 	else:
 		$Cynthia/AnimationPlayer.play("Idle")
 
-func camera_follows_player():
-	var player_pos = global_position
-	camera_rig.global_position = player_pos + Vector3(-5,6,5)
-
-func move(dir):
-	match dir:
-			"move_right":
-				rotation.y = deg_to_rad(0)
-			"move_left":
-				rotation.y = deg_to_rad(180)
-			"move_forward":
-				rotation.y = deg_to_rad(90)
-			"move_back":
-				rotation.y = deg_to_rad(-90)
+func start_movement(target_pos: Vector3):
+	is_moving = true
+	$Cynthia/AnimationPlayer.play("Run")
 	
-	if is_position_valid(position + inputs[dir]):
-		$Cynthia/AnimationPlayer.play("Run")
+	tween = create_tween()
+	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
+	tween.tween_property(self, "position", target_pos, 1 / move_speed).set_trans(Tween.TRANS_LINEAR)
+	tween.tween_callback(finalize_movement)
 
-
-		var new_position = position + inputs[dir] * cell_size
-		
-
-		var tween: Tween = create_tween()
-		#tween.set_loops(2)
-		tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
-		tween.tween_property(self, "position", new_position, 1 / move_speed).set_trans(Tween.TRANS_LINEAR)
-		#tween.tween_callback(_on_tween_finished)
-		await tween.finished
-		grid_position = position / cell_size
-		current_direction = Vector3.ZERO
-
-func _on_tween_finished():
+func finalize_movement():
 	is_moving = false
-	grid_position = position / cell_size
-	current_direction = Vector3.ZERO
+	# Check if still pressing direction after movement
+	handle_movement_input()
+
+func update_idle_state():
+	if !is_moving && !Input.is_anything_pressed():
+		$Cynthia/AnimationPlayer.play("Idle")
+
+func camera_follows_player():
+	camera_rig.global_position = global_position + Vector3(-3, 9, 7)
 
 func is_position_valid(pos: Vector3) -> bool:
 	return pos in global_cell_coordinates
