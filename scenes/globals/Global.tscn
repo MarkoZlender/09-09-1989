@@ -12,7 +12,7 @@
 
 [node name="Global" type="Node" node_paths=PackedStringArray("savable_globals")]
 script = ExtResource("1_ef01j")
-savable_globals = [NodePath("")]
+savable_globals = [null]
 
 [node name="SaveManager" parent="." instance=ExtResource("2_2r8wd")]
 

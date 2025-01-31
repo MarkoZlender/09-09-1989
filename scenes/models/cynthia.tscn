@@ -4258,3 +4258,4 @@ libraries = {
 "": SubResource("AnimationLibrary_8o24h")
 }
 autoplay = "Idle"
+playback_default_blend_time = 0.2
