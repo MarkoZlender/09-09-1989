@@ -1,9 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://bml51umf76aq0"]
+[gd_scene load_steps=9 format=3 uid="uid://bml51umf76aq0"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_3vyb7"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="3_qlg0r"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/idle.gd" id="4_tuyoq"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/walking.gd" id="5_fjrip"]
+
+[sub_resource type="Animation" id="Animation_npihl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraRig:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.5, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_rpvdp"]
 resource_name = "headbob"
@@ -21,26 +36,14 @@ tracks/0/keys = {
 "values": [Vector3(0, 0.5, 0), Vector3(0, 0.55, 0), Vector3(0, 0.45, 0), Vector3(0, 0.5, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_npihl"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CameraRig:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.5, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oirrf"]
 _data = {
 "RESET": SubResource("Animation_npihl"),
 "headbob": SubResource("Animation_rpvdp")
 }
+
+[sub_resource type="BoxMesh" id="BoxMesh_u7krv"]
+size = Vector3(0.05, 0.05, 0.5)
 
 [node name="Player" type="Node3D" groups=["player"]]
 script = ExtResource("1_3vyb7")
@@ -65,3 +68,7 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_oirrf")
 }
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.778473, -0.627678, 0, 0.627678, 0.778473, 0.174366, 0.292923, -0.18006)
+mesh = SubResource("BoxMesh_u7krv")
