@@ -6,6 +6,7 @@ const TRAVEL_TIME: float = 0.3
 @export var gridmap: GridMap
 
 @onready var camera_rig: Marker3D = %CameraRig
+@onready var animation_player: AnimationPlayer = %AnimationPlayer
 
 var grid_position := Vector3(0.5, 0, 0.5)
 var global_cell_coordinates: Array[Vector3] = []
@@ -38,29 +39,33 @@ func handle_movement_input():
 
 #region front_back
 	if Input.is_action_pressed("move_forward") && is_position_valid(position + local_forward * cell_size):
-		move(local_forward)
-		#animation_player.play("headbob")
-		#play_footsteps()
+		if !animation_player.is_playing():
+			move(local_forward)
+			animation_player.play("headbob")
+			#play_footsteps()
 
 
 	elif Input.is_action_pressed("move_back") && is_position_valid(position + local_back * cell_size):
-		move(local_back)
-		#animation_player.play("headbob")
-		#play_footsteps()
+		if !animation_player.is_playing():
+			move(local_back)
+			animation_player.play("headbob")
+			#play_footsteps()
 		
 #endregion
 
 #region strafing
 	elif Input.is_action_pressed("strafe_left") && is_position_valid(position + local_left * cell_size):
-		move(local_left)
-		#animation_player.play("headbob")
-		#play_footsteps()
+		if !animation_player.is_playing():
+			move(local_left)
+			animation_player.play("headbob")
+			#play_footsteps()
 		
 	
 	elif Input.is_action_pressed("strafe_right") && is_position_valid(position + local_right * cell_size):
-		move(local_right)
-		#animation_player.play("headbob")
-		#play_footsteps()
+		if !animation_player.is_playing():
+			move(local_right)
+			animation_player.play("headbob")
+			#play_footsteps()
 		
 #endregion
 
