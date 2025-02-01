@@ -1,20 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://clmjc1qpnqhi0"]
+[gd_scene load_steps=4 format=3 uid="uid://clmjc1qpnqhi0"]
 
 [ext_resource type="MeshLibrary" uid="uid://d0wed63eghym7" path="res://assets/meshlibs/test_meshlib.meshlib" id="1_88ewg"]
 [ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/entities/player.tscn" id="2_enrh5"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_etgci"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="4_t4i7g"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="5_nio4m"]
 
 [sub_resource type="Environment" id="Environment_ci85l"]
 ambient_light_source = 2
 ambient_light_color = Color(0.620167, 0.620167, 0.620167, 1)
-
-[sub_resource type="Resource" id="Resource_ma0uo"]
-script = ExtResource("5_nio4m")
-duration = 1.0
-transition = 0
-ease = 2
 
 [node name="GridmapTest" type="Node3D"]
 
@@ -35,22 +26,3 @@ gridmap = NodePath("../GridMap")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ci85l")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.919145, 0.300706, -0.254457, -2.98023e-08, 0.645961, 0.76337, 0.393919, -0.701648, 0.593732, -2.5, 9, 7.5)
-
-[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
-process_priority = 300
-process_physics_priority = 300
-script = ExtResource("3_etgci")
-
-[node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target", "look_at_target")]
-transform = Transform3D(0.919145, 0.300706, -0.254457, -2.98023e-08, 0.645961, 0.76337, 0.393919, -0.701648, 0.593732, -2.5, 9, 7.5)
-top_level = true
-script = ExtResource("4_t4i7g")
-follow_mode = 2
-follow_target = NodePath("../Player")
-look_at_mode = 2
-look_at_target = NodePath("../Player")
-tween_resource = SubResource("Resource_ma0uo")
-follow_offset = Vector3(-3, 9, 7)

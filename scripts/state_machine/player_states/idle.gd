@@ -3,7 +3,8 @@ extends PlayerState
 @warning_ignore("unused_parameter")
 func enter(previous_state_path: String, data: Dictionary = {}) -> void:
 	#print("Entering idle state")
-	player.velocity = Vector3.ZERO
+	#player.velocity = Vector3.ZERO
+	pass
 
 func physics_update(delta: float) -> void:
 	pass

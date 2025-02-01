@@ -1,5 +1,5 @@
-class_name Player extends CharacterBody3D
-
+class_name Player extends Node3D
+const TRAVEL_TIME: float = 0.3
 # Grid settings
 @export var cell_size := Vector3(1, 0, 1)
 @export var move_speed := 5.0
@@ -19,55 +19,76 @@ var inputs = {
 }
 
 func _ready():
-	camera_rig.top_level = true
-	position = grid_position
+	#self.global_transform.origin = gridmap.map_to_local(Vector3i(0, 1, 0))
+	global_position = grid_position
 	for cell in gridmap.get_used_cells():
 		global_cell_coordinates.append(gridmap.map_to_local(cell))
 
 func _process(delta: float) -> void:
-	camera_follows_player()
 	handle_movement_input()
-	update_idle_state()
 
 func handle_movement_input():
-	var direction_pressed = false
+	if tween is Tween and tween.is_running():
+		return
 	
-	if Input.is_action_pressed("move_forward"):
-		direction_pressed = true
-		attempt_move("move_forward")
-	elif Input.is_action_pressed("move_back"):
-		direction_pressed = true
-		attempt_move("move_back")
-	elif Input.is_action_pressed("move_left"):
-		direction_pressed = true
-		attempt_move("move_left")
-	elif Input.is_action_pressed("move_right"):
-		direction_pressed = true
-		attempt_move("move_right")
+	var local_forward = -transform.basis.z
+	var local_back = transform.basis.z
+	var local_left = -transform.basis.x
+	var local_right = transform.basis.x
+
+#region front_back
+	if Input.is_action_pressed("move_forward") && is_position_valid(position + local_forward * cell_size):
+		move(local_forward)
+		#animation_player.play("headbob")
+		#play_footsteps()
+
+
+	elif Input.is_action_pressed("move_back") && is_position_valid(position + local_back * cell_size):
+		move(local_back)
+		#animation_player.play("headbob")
+		#play_footsteps()
+		
+#endregion
+
+#region strafing
+	elif Input.is_action_pressed("strafe_left") && is_position_valid(position + local_left * cell_size):
+		move(local_left)
+		#animation_player.play("headbob")
+		#play_footsteps()
+		
 	
-	if !direction_pressed and !is_moving:
-		$Cynthia/AnimationPlayer.play("Idle")
+	elif Input.is_action_pressed("strafe_right") && is_position_valid(position + local_right * cell_size):
+		move(local_right)
+		#animation_player.play("headbob")
+		#play_footsteps()
+		
+#endregion
+
+#region left_right
+	elif Input.is_action_pressed("move_left") && !Input.is_action_pressed("strafe_left"):
+		tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		tween.tween_property(self, "transform", transform.rotated_local(Vector3.UP, PI / 2), TRAVEL_TIME)
+	
+	elif Input.is_action_pressed("move_right") && !Input.is_action_pressed("strafe_right"):
+		tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+		tween.tween_property(self, "transform", transform.rotated_local(Vector3.UP, -PI / 2), TRAVEL_TIME)
+
+
+func move(direction: Vector3):
+	tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "position", position + direction * cell_size, TRAVEL_TIME)
 
 func attempt_move(dir: String):
 	if is_moving:
 		return
 
-	match dir:
-		"move_right": rotation.y = deg_to_rad(0)
-		"move_left": rotation.y = deg_to_rad(180)
-		"move_forward": rotation.y = deg_to_rad(90)
-		"move_back": rotation.y = deg_to_rad(-90)
-	
 	var new_position = position + inputs[dir]
 	
 	if is_position_valid(new_position):
 		start_movement(new_position)
-	else:
-		$Cynthia/AnimationPlayer.play("Idle")
 
 func start_movement(target_pos: Vector3):
 	is_moving = true
-	$Cynthia/AnimationPlayer.play("Run")
 	
 	tween = create_tween()
 	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
@@ -79,15 +100,10 @@ func finalize_movement():
 	# Check if still pressing direction after movement
 	handle_movement_input()
 
-func update_idle_state():
-	if !is_moving && !Input.is_anything_pressed():
-		$Cynthia/AnimationPlayer.play("Idle")
-
-func camera_follows_player():
-	camera_rig.global_position = global_position + Vector3(-3, 9, 7)
 
 func is_position_valid(pos: Vector3) -> bool:
-	return pos in global_cell_coordinates
+	var cell = gridmap.local_to_map(pos)
+	return gridmap.get_cell_item(cell) != GridMap.INVALID_CELL_ITEM
 
 func save() -> Dictionary:
 	var save_data: Dictionary = {

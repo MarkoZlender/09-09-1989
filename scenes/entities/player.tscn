@@ -1,50 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://bml51umf76aq0"]
+[gd_scene load_steps=5 format=3 uid="uid://bml51umf76aq0"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_3vyb7"]
-[ext_resource type="PackedScene" uid="uid://b8wsips5ayqn4" path="res://scenes/models/cynthia.tscn" id="2_g2els"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="3_qlg0r"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/idle.gd" id="4_tuyoq"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/walking.gd" id="5_fjrip"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gj4c5"]
-radius = 0.280617
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3vyb7"]
-shading_mode = 2
-albedo_color = Color(1.54018e-06, 0.946563, 0.165257, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
-material = SubResource("StandardMaterial3D_3vyb7")
-
-[sub_resource type="BoxMesh" id="BoxMesh_u8vuu"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_clego"]
-radius = 0.106154
-height = 0.270843
-
-[node name="Player" type="CharacterBody3D" groups=["player"]]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
-collision_layer = 3
+[node name="Player" type="Node3D" groups=["player"]]
 script = ExtResource("1_3vyb7")
-cell_size = null
-move_speed = null
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 3.55271e-15, 0, 1, 0, -3.55271e-15, 0, 1, 0.00450778, 1.00909, 0.00597668)
-shape = SubResource("CapsuleShape3D_gj4c5")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.6519, 0, 0, 0, 1, 0, 1.57195, 0)
-visible = false
-mesh = SubResource("CapsuleMesh_u8vuu")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, -2.1163e-08, 0, 0.256284, 0, 8.74228e-08, 0, -0.242076, -0.576535, 0.390326, -0.0608716)
-visible = false
-mesh = SubResource("BoxMesh_u8vuu")
-
-[node name="Cynthia" parent="." instance=ExtResource("2_g2els")]
-transform = Transform3D(7.54979e-08, 0, 1, 0, 1, 0, -1, 0, 7.54979e-08, 4.30015e-09, 0, 0.098376)
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_qlg0r")
@@ -55,17 +17,9 @@ script = ExtResource("4_tuyoq")
 [node name="Walking" type="Node" parent="StateMachine"]
 script = ExtResource("5_fjrip")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(4.37114e-08, 0, -1, 0, 1, 0, 1, 0, 4.37114e-08, 0.113985, 1.26465, -4.98245e-09)
-visible = false
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 1, -4.37114e-08, -4.37114e-08, 4.37114e-08, 4.37114e-08, 1, 0.130552, 0.109429, -0.0704203)
-shape = SubResource("CapsuleShape3D_clego")
-
 [node name="CameraRig" type="Marker3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(0.105205, -0.497225, 0.861219, -8.13273e-08, 0.866025, 0.5, -0.994451, -0.0526027, 0.0911104, 3.78852, 3.9869, 4.19375)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0.706162, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CameraRig"]
 current = true
