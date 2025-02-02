@@ -25,8 +25,8 @@ func _ready():
 	for cell in gridmap.get_used_cells():
 		global_cell_coordinates.append(gridmap.map_to_local(cell))
 
-func _process(delta: float) -> void:
-	handle_movement_input()
+# func _process(delta: float) -> void:
+# 	handle_movement_input()
 
 func handle_movement_input():
 	if tween is Tween and tween.is_running():
@@ -37,8 +37,9 @@ func handle_movement_input():
 	var local_left = -transform.basis.x
 	var local_right = transform.basis.x
 
-#region front_back
+#region forward_back
 	if Input.is_action_pressed("move_forward") && is_position_valid(position + local_forward * cell_size):
+		is_moving = true
 		if !animation_player.is_playing():
 			move(local_forward)
 			animation_player.play("headbob")
@@ -47,6 +48,7 @@ func handle_movement_input():
 
 	elif Input.is_action_pressed("move_back") && is_position_valid(position + local_back * cell_size):
 		if !animation_player.is_playing():
+			is_moving = true
 			move(local_back)
 			animation_player.play("headbob")
 			#play_footsteps()
@@ -56,6 +58,7 @@ func handle_movement_input():
 #region strafing
 	elif Input.is_action_pressed("strafe_left") && is_position_valid(position + local_left * cell_size):
 		if !animation_player.is_playing():
+			is_moving = true
 			move(local_left)
 			animation_player.play("headbob")
 			#play_footsteps()
@@ -63,6 +66,7 @@ func handle_movement_input():
 	
 	elif Input.is_action_pressed("strafe_right") && is_position_valid(position + local_right * cell_size):
 		if !animation_player.is_playing():
+			is_moving = true
 			move(local_right)
 			animation_player.play("headbob")
 			#play_footsteps()
@@ -71,12 +75,17 @@ func handle_movement_input():
 
 #region left_right
 	elif Input.is_action_pressed("move_left") && !Input.is_action_pressed("strafe_left"):
+		is_moving = true
 		tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 		tween.tween_property(self, "transform", transform.rotated_local(Vector3.UP, PI / 2), TRAVEL_TIME)
 	
 	elif Input.is_action_pressed("move_right") && !Input.is_action_pressed("strafe_right"):
+		is_moving = true
 		tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 		tween.tween_property(self, "transform", transform.rotated_local(Vector3.UP, -PI / 2), TRAVEL_TIME)
+	
+	else:
+		is_moving = false
 
 
 func move(direction: Vector3):

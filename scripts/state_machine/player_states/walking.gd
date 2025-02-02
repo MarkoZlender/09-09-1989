@@ -2,12 +2,10 @@ extends PlayerState
 
 @warning_ignore("unused_parameter")
 func enter(previous_state_path: String, data: Dictionary= {}) -> void:
-	#print("Entering walking state")
-	pass
+	print("Entering walking state")
 
 func physics_update(delta: float) -> void:
-	pass
-	# player.move(delta)
+	player.handle_movement_input()
 	
-	# if is_equal_approx(player.velocity.length(), 0.0):
-	# 	finished.emit(IDLE)
+	if !player.is_moving:
+		finished.emit(IDLE)

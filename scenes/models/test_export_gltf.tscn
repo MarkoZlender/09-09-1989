@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtr6iwvuw6b8x"]
+
+[ext_resource type="Texture2D" uid="uid://c6pyep1cusmnn" path="res://assets/textures/prototype_textures/Dark/texture_01.png" id="1_ls181"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmvb7"]
+albedo_texture = ExtResource("1_ls181")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2rjso"]
+material = SubResource("StandardMaterial3D_cmvb7")
+size = Vector2(1, 1)
+
+[node name="TestExportGltf" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_2rjso")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("PlaneMesh_2rjso")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.5, -0.5)
+mesh = SubResource("PlaneMesh_2rjso")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0.5, 0.5)
+mesh = SubResource("PlaneMesh_2rjso")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, -0.5, 0.5, 0)
+mesh = SubResource("PlaneMesh_2rjso")
