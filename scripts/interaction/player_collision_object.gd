@@ -1,0 +1,2 @@
+class_name PlayerCollisionObject
+extends CharacterBody3D

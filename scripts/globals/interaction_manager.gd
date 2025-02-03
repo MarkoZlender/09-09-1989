@@ -9,7 +9,7 @@ var can_interact: bool = true
 func _ready() -> void:
 	Global.interaction_manager = self
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if active_areas.size() > 0 && can_interact:
 		active_areas.sort_custom(_sort_by_distance_to_player)
 

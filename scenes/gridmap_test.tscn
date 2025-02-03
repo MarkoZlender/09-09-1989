@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://clmjc1qpnqhi0"]
+[gd_scene load_steps=7 format=3 uid="uid://clmjc1qpnqhi0"]
 
 [ext_resource type="MeshLibrary" uid="uid://cpks8l4534y8t" path="res://assets/meshlibs/test_meshlib2.meshlib" id="1_lnupk"]
 [ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/entities/player.tscn" id="2_enrh5"]
 [ext_resource type="MeshLibrary" uid="uid://yqeqsr267l5f" path="res://assets/meshlibs/test_full_meshlib.meshlib" id="3_enfte"]
 [ext_resource type="PackedScene" uid="uid://cftivtsqiijgj" path="res://scenes/effects/post_process_effects.tscn" id="4_u1sn4"]
+[ext_resource type="PackedScene" uid="uid://pfrlin6rnx1l" path="res://scenes/interaction/interactables/test_cube.tscn" id="5_5mjab"]
 
 [sub_resource type="Environment" id="Environment_ci85l"]
 ambient_light_source = 2
@@ -24,6 +25,7 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 environment = SubResource("Environment_ci85l")
 
 [node name="Player" parent="." node_paths=PackedStringArray("gridmap") instance=ExtResource("2_enrh5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 gridmap = NodePath("../GridMap")
 
 [node name="GridMap2" type="GridMap" parent="."]
@@ -36,3 +38,6 @@ data = {
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="PostProcessEffects" parent="." instance=ExtResource("4_u1sn4")]
+
+[node name="TestCube" parent="." instance=ExtResource("5_5mjab")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.5, 0.245463, -1.5)
