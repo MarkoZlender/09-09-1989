@@ -13,7 +13,7 @@ enum ROTATION_DIRECTION {
 @onready var camera_rig: Marker3D = %CameraRig
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 
-var grid_position: Vector3= Vector3(0.5, 0, 0.5)
+var grid_position: Vector3= Vector3(-0.5, 0, 3.5)
 var global_cell_coordinates: Array[Vector3] = []
 var tween: Tween
 var is_moving: bool= false

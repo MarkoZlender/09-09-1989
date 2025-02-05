@@ -37,7 +37,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="PostProcessEffects" parent="." instance=ExtResource("4_u1sn4")]
-
 [node name="TestCube" parent="." instance=ExtResource("5_5mjab")]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 1.5, 0.245463, -1.5)
+
+[node name="PostProcessEffects" parent="." instance=ExtResource("4_u1sn4")]
