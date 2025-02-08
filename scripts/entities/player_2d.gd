@@ -21,7 +21,6 @@ var inputs: Dictionary = {
 }
 
 func _ready() -> void:
-	#self.global_transform.origin = gridmap.map_to_local(Vector3i(0, 1, 0))
 	global_position = tilemap.map_to_local(tilemap_position)
 	for tile: Vector2i in tilemap.get_used_cells():
 		global_tilemap_coordinates.append(tilemap.map_to_local(tile))
@@ -37,8 +36,9 @@ func _unhandled_input(event: InputEvent) -> void:
 func handle_movement_input(event: InputEvent) -> void:
 	var local_forward: Vector2 = -transform.y
 	var local_back: Vector2 = transform.y
-	var local_left: Vector2 = transform.x
-	var local_right: Vector2 = -transform.x
+	var local_left: Vector2 = -transform.x
+	var local_right: Vector2 = transform.x
+
 
 #region forward_back
 	# not using switch/match because it is slower in gdscript than if-elif-else statements
