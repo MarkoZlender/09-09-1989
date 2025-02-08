@@ -1,9 +1,57 @@
-[gd_scene load_steps=2 format=3 uid="uid://cftivtsqiijgj"]
+[gd_scene load_steps=11 format=3 uid="uid://cftivtsqiijgj"]
 
 [ext_resource type="Material" uid="uid://cptisqjqacpax" path="res://shaders/film_grain_shader_material.tres" id="1_rsqnp"]
+[ext_resource type="Shader" path="res://shaders/sobel_gaussian.gdshader" id="2_45rhy"]
+[ext_resource type="Texture2D" uid="uid://cgqwlqmmxxfgh" path="res://assets/textures/lcd_back.png" id="2_owy6t"]
+[ext_resource type="Shader" path="res://shaders/kuwahara.gdshader" id="4_22sdm"]
+[ext_resource type="Shader" path="res://shaders/sobel_gaussian_2.gdshader" id="4_rrkk7"]
+[ext_resource type="Shader" path="res://shaders/gameboy.gdshader" id="5_f42vq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1tql"]
+shader = ExtResource("5_f42vq")
+shader_parameter/dot_size = 4.0
+shader_parameter/color0 = Color(1, 1, 1, 1)
+shader_parameter/color1 = Color(0.510601, 0.510601, 0.510601, 1)
+shader_parameter/color2 = Color(0.270222, 0.270222, 0.270222, 1)
+shader_parameter/color3 = Color(0, 0.247, 0, 1)
+shader_parameter/color_swap = true
+shader_parameter/color_correction = true
+shader_parameter/use_image_for_lcd = true
+shader_parameter/border_size = -600.0
+shader_parameter/enable_dot_matrix = true
+shader_parameter/glare_amount = 0.002
+shader_parameter/brightness = 0.0
+shader_parameter/pixel_shadow_amount = 0.244
+shader_parameter/lcd_dark_square_transparency = 0.03
+shader_parameter/lcd_back = ExtResource("2_owy6t")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vdq6"]
+shader = ExtResource("4_22sdm")
+shader_parameter/_KernelSize = 10
+shader_parameter/_Hardness = 5.0
+shader_parameter/_Sharpness = 1.0
+shader_parameter/_Zeta = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g5arw"]
+shader = ExtResource("2_45rhy")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xptxx"]
+shader = ExtResource("4_rrkk7")
+shader_parameter/alpha = 1.0
 
 [node name="PostProcessEffects" type="Control"]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameboyFilter" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="GameboyRect" type="ColorRect" parent="GameboyFilter"]
+material = SubResource("ShaderMaterial_s1tql")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,6 +62,39 @@ grow_vertical = 2
 
 [node name="FilmGrainEffectRect" type="ColorRect" parent="FilmGrainEffect"]
 material = ExtResource("1_rsqnp")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Kuwahara" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="KuwaharaRect" type="ColorRect" parent="Kuwahara"]
+material = SubResource("ShaderMaterial_5vdq6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SobelGaussian" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="SobelGaussianRect" type="ColorRect" parent="SobelGaussian"]
+material = SubResource("ShaderMaterial_g5arw")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SobelGaussian2" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="SobelGaussian2Rect" type="ColorRect" parent="SobelGaussian2"]
+material = SubResource("ShaderMaterial_xptxx")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
