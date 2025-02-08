@@ -26,11 +26,15 @@ func _ready() -> void:
 	for tile: Vector2i in tilemap.get_used_cells():
 		global_tilemap_coordinates.append(tilemap.map_to_local(tile))
 
-func _process(delta: float) -> void:
-	handle_movement_input()
+# func _process(delta: float) -> void:
+# 	handle_movement_input()
+
+# unhandled because we want to handle these input events independently of ui input
+func _unhandled_input(event: InputEvent) -> void:
+	handle_movement_input(event)
 
 
-func handle_movement_input() -> void:
+func handle_movement_input(event: InputEvent) -> void:
 	var local_forward: Vector2 = -transform.y
 	var local_back: Vector2 = transform.y
 	var local_left: Vector2 = transform.x
@@ -38,33 +42,33 @@ func handle_movement_input() -> void:
 
 #region forward_back
 	# not using switch/match because it is slower in gdscript than if-elif-else statements
-	if Input.is_action_pressed("move_forward") && is_position_valid(position + local_forward * tile_size) && timer.is_stopped():
+	if event.is_action_pressed("move_forward", true) && is_position_valid(position + local_forward * tile_size):
 		move(local_forward)
-		timer.start(0.2)
+		
 
-	elif Input.is_action_pressed("move_back") && is_position_valid(position + local_back * tile_size) && timer.is_stopped():
+	elif event.is_action_pressed("move_back", true) && is_position_valid(position + local_back * tile_size):
 		move(local_back)
-		timer.start(0.2)
+		
 #endregion
 
 #region strafing
-	elif Input.is_action_pressed("strafe_left") && is_position_valid(position + local_left * tile_size) && timer.is_stopped():
+	elif event.is_action_pressed("strafe_left", true) && is_position_valid(position + local_left * tile_size):
 			move(local_left)
-			timer.start(0.2)
+			
 
-	elif Input.is_action_pressed("strafe_right") && is_position_valid(position + local_right * tile_size) && timer.is_stopped():
+	elif event.is_action_pressed("strafe_right", true) && is_position_valid(position + local_right * tile_size):
 			move(local_right)
-			timer.start(0.2)
+			
 #endregion
 
 #region left_right
-	elif Input.is_action_pressed("move_left") && !Input.is_action_pressed("strafe_left") && timer.is_stopped():
+	elif event.is_action_pressed("move_left", true) && !event.is_action_pressed("strafe_left", true):
 		rotate_player(ROTATION_DIRECTION.LEFT)
-		timer.start(0.2)
+		
 
-	elif Input.is_action_pressed("move_right") && !Input.is_action_pressed("strafe_right") && timer.is_stopped():
+	elif event.is_action_pressed("move_right", true) && !event.is_action_pressed("strafe_right", true):
 		rotate_player(ROTATION_DIRECTION.RIGHT)
-		timer.start(0.2)
+		
 
 	else:
 		is_moving = false
