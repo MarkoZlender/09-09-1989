@@ -1,13 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bml51umf76aq0"]
+[gd_scene load_steps=11 format=3 uid="uid://bml51umf76aq0"]
 
 [ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_3vyb7"]
 [ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="3_qlg0r"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/idle.gd" id="4_tuyoq"]
-[ext_resource type="Shader" path="res://shaders/ascii.gdshader" id="5_3wm0v"]
 [ext_resource type="Script" path="res://scripts/state_machine/player_states/walking.gd" id="5_fjrip"]
 [ext_resource type="Script" path="res://scripts/interaction/player_collision_object.gd" id="5_uoot5"]
-[ext_resource type="Texture2D" uid="uid://m4jgivj57ifr" path="res://assets/textures/ascii_characters/edgesASCII.png" id="7_5dtch"]
-[ext_resource type="Texture2D" uid="uid://bhxgxgn1ibbmq" path="res://assets/textures/ascii_characters/fillASCII.png" id="7_vhb8s"]
 
 [sub_resource type="Animation" id="Animation_npihl"]
 length = 0.001
@@ -50,19 +47,6 @@ _data = {
 size = Vector3(0.05, 0.05, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ll3kl"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_pksff"]
-render_priority = 0
-shader = ExtResource("5_3wm0v")
-shader_parameter/_char_size = 8.0
-shader_parameter/_char_count = 10.0
-shader_parameter/_ascii_tex = ExtResource("7_vhb8s")
-shader_parameter/_ascii_edge_tex = ExtResource("7_5dtch")
-
-[sub_resource type="QuadMesh" id="QuadMesh_7ujtr"]
-material = SubResource("ShaderMaterial_pksff")
-flip_faces = true
-size = Vector2(2, 2)
 
 [node name="Player" type="Node3D" groups=["player"]]
 script = ExtResource("1_3vyb7")
@@ -110,9 +94,3 @@ light_energy = 1.982
 light_size = 0.627
 spot_range = 1.832
 spot_angle = 41.0572
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.051)
-visible = false
-mesh = SubResource("QuadMesh_7ujtr")
-skeleton = NodePath("../CameraRig/Camera3D")

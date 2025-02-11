@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://cxdwn84j6ukn6"]
+[gd_scene load_steps=6 format=4 uid="uid://cxdwn84j6ukn6"]
 
 [ext_resource type="Texture2D" uid="uid://b74a3w682n7rm" path="res://assets/sprites/tileset template 2.png" id="1_4o3k1"]
 [ext_resource type="PackedScene" uid="uid://car51jukwbi15" path="res://scenes/entities/player2d.tscn" id="2_cpvef"]
+[ext_resource type="PackedScene" uid="uid://708gxdw8r3e4" path="res://scenes/ui/psudo_view.tscn" id="3_jduu6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f4kkb"]
 texture = ExtResource("1_4o3k1")
@@ -74,3 +75,16 @@ tile_set = SubResource("TileSet_j0i2s")
 [node name="Player2d" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("2_cpvef")]
 position = Vector2(88, 41)
 tilemap = NodePath("../TileMapLayer")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_left = 174.0
+offset_top = 14.0
+offset_right = 430.0
+offset_bottom = 270.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(256, 256)
+render_target_update_mode = 4
+
+[node name="TextureRect" parent="SubViewportContainer/SubViewport" instance=ExtResource("3_jduu6")]

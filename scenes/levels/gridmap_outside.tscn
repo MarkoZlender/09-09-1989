@@ -1,28 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbl57vjy4yby"]
+[gd_scene load_steps=5 format=3 uid="uid://bbl57vjy4yby"]
 
 [ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/entities/player.tscn" id="1_lmc5k"]
 [ext_resource type="PackedScene" uid="uid://cftivtsqiijgj" path="res://scenes/effects/post_process_effects.tscn" id="2_4hbot"]
-[ext_resource type="Texture2D" uid="uid://cgqwlqmmxxfgh" path="res://assets/textures/lcd_back.png" id="2_bjbso"]
 [ext_resource type="MeshLibrary" uid="uid://ccvvpvqlj8cid" path="res://assets/meshlibs/outside.meshlib" id="2_sjjds"]
-[ext_resource type="Shader" path="res://shaders/gameboy.gdshader" id="4_fnlgb"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_d434a"]
-shader = ExtResource("4_fnlgb")
-shader_parameter/dot_size = 4.0
-shader_parameter/color0 = Color(0.961, 0.98, 0.937, 1)
-shader_parameter/color1 = Color(0.549, 0.749, 0.039, 1)
-shader_parameter/color2 = Color(0.18, 0.451, 0.125, 1)
-shader_parameter/color3 = Color(0, 0.247, 0, 1)
-shader_parameter/color_swap = true
-shader_parameter/color_correction = true
-shader_parameter/use_image_for_lcd = true
-shader_parameter/border_size = -600.0
-shader_parameter/enable_dot_matrix = true
-shader_parameter/glare_amount = 0.002
-shader_parameter/brightness = 0.0
-shader_parameter/pixel_shadow_amount = 0.244
-shader_parameter/lcd_dark_square_transparency = 0.03
-shader_parameter/lcd_back = ExtResource("2_bjbso")
 
 [sub_resource type="Environment" id="Environment_y2pff"]
 ambient_light_source = 2
@@ -31,27 +11,14 @@ ambient_light_energy = 5.47
 
 [node name="GridmapOutside" type="Node3D"]
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-material = SubResource("ShaderMaterial_d434a")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(160, 144)
-render_target_update_mode = 4
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_y2pff")
 
-[node name="Player" parent="SubViewportContainer/SubViewport" node_paths=PackedStringArray("gridmap") instance=ExtResource("1_lmc5k")]
+[node name="Player" parent="." node_paths=PackedStringArray("gridmap") instance=ExtResource("1_lmc5k")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 gridmap = NodePath("../GridMap")
 
-[node name="GridMap" type="GridMap" parent="SubViewportContainer/SubViewport"]
+[node name="GridMap" type="GridMap" parent="."]
 mesh_library = ExtResource("2_sjjds")
 cell_size = Vector3(1, 1, 1)
 cell_center_y = false
@@ -60,5 +27,5 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="PostProcessEffects" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_4hbot")]
+[node name="PostProcessEffects" parent="." instance=ExtResource("2_4hbot")]
 visible = false

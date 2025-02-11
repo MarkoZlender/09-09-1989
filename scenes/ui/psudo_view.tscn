@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://708gxdw8r3e4"]
+
+[node name="Control" type="Node2D"]
+metadata/_edit_use_anchors_ = true
