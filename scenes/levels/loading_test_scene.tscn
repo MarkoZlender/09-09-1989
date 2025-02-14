@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://birph4dvo5wc"]
+[gd_scene load_steps=14 format=3 uid="uid://birph4dvo5wc"]
 
 [ext_resource type="Script" path="res://scripts/levels/debug_level.gd" id="1_f5x54"]
 [ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/entities/player.tscn" id="3_hm7h0"]
-[ext_resource type="Script" path="res://scripts/data/player_data.gd" id="4_tfk13"]
 [ext_resource type="Texture2D" uid="uid://c6pyep1cusmnn" path="res://assets/textures/prototype_textures/Dark/texture_01.png" id="5_pfq3l"]
 [ext_resource type="PackedScene" uid="uid://pfrlin6rnx1l" path="res://scenes/interaction/interactables/test_cube.tscn" id="6_53c6u"]
 [ext_resource type="Script" path="res://scripts/data/item_data.gd" id="7_a6d2l"]
@@ -24,11 +23,6 @@ tonemap_mode = 2
 glow_enabled = true
 adjustment_enabled = true
 adjustment_saturation = 0.5
-
-[sub_resource type="Resource" id="Resource_1mbi4"]
-script = ExtResource("4_tfk13")
-health = 100
-mana = 50
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0aj7"]
 albedo_texture = ExtResource("5_pfq3l")
@@ -52,2003 +46,1503 @@ environment = SubResource("Environment_ip54w")
 
 [node name="Player" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player2" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player3" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player4" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player5" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player6" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player7" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player8" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player9" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player10" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player11" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player12" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player13" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player14" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player15" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player16" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player17" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player18" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player19" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player20" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player21" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player22" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player23" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player24" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player25" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player26" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player27" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player28" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player29" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player30" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player31" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player32" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player33" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player34" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player35" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player36" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player37" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player38" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player39" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player40" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player41" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player42" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player43" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player44" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player45" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player46" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player47" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player48" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player49" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player50" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player51" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player52" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player53" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player54" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player55" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player56" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player57" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player58" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player59" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player60" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player61" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player62" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player63" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player64" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player65" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player66" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player67" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player68" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player69" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player70" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player71" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player72" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player73" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player74" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player75" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player76" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player77" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player78" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player79" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player80" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player81" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player82" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player83" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player84" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player85" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player86" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player87" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player88" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player89" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player90" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player91" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player92" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player93" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player94" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player95" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player96" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player97" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player98" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player99" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player100" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player101" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player102" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player103" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player104" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player105" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player106" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player107" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player108" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player109" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player110" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player111" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player112" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player113" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player114" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player115" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player116" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player117" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player118" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player119" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player120" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player121" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player122" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player123" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player124" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player125" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player126" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player127" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player128" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player129" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player130" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player131" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player132" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player133" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player134" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player135" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player136" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player137" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player138" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player139" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player140" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player141" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player142" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player143" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player144" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player145" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player146" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player147" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player148" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player149" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player150" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player151" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player152" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player153" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player154" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player155" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player156" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player157" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player158" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player159" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player160" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player161" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player162" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player163" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player164" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player165" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player166" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player167" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player168" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player169" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player170" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player171" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player172" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player173" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player174" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player175" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player176" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player177" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player178" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player179" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player180" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player181" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player182" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player183" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player184" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player185" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player186" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player187" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player188" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player189" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player190" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player191" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player192" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player193" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player194" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player195" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player196" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player197" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player198" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player199" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player200" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player201" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player202" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player203" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player204" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player205" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player206" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player207" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player208" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player209" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player210" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player211" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player212" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player213" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player214" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player215" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player216" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player217" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player218" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player219" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player220" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player221" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player222" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player223" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player224" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player225" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player226" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player227" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player228" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player229" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player230" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player231" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player232" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player233" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player234" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player235" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player236" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player237" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player238" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player239" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player240" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player241" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player242" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player243" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player244" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player245" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player246" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player247" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player248" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player249" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player250" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player251" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player252" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player253" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player254" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player255" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player256" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player257" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player258" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player259" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player260" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player261" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player262" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player263" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player264" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player265" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player266" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player267" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player268" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player269" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player270" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player271" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player272" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player273" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player274" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player275" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player276" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player277" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player278" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player279" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player280" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player281" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player282" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player283" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player284" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player285" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player286" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player287" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player288" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player289" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player290" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player291" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player292" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player293" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player294" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player295" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player296" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player297" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player298" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player299" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player300" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player301" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player302" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player303" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player304" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player305" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player306" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player307" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player308" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player309" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player310" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player311" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player312" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player313" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player314" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player315" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player316" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player317" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player318" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player319" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player320" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player321" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player322" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player323" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player324" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player325" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player326" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player327" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player328" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player329" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player330" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player331" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player332" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player333" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player334" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player335" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player336" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player337" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player338" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player339" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player340" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player341" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player342" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player343" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player344" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player345" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player346" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player347" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player348" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player349" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player350" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player351" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player352" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player353" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player354" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player355" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player356" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player357" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player358" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player359" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player360" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player361" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player362" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player363" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player364" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player365" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player366" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player367" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player368" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player369" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player370" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player371" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player372" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player373" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player374" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player375" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player376" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player377" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player378" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player379" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player380" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player381" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player382" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player383" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player384" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player385" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player386" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player387" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player388" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player389" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player390" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player391" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player392" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player393" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player394" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player395" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player396" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player397" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player398" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player399" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player400" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player401" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player402" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player403" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player404" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player405" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player406" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player407" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player408" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player409" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player410" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player411" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player412" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player413" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player414" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player415" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player416" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player417" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player418" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player419" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player420" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player421" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player422" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player423" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player424" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player425" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player426" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player427" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player428" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player429" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player430" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player431" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player432" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player433" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player434" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player435" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player436" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player437" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player438" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player439" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player440" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player441" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player442" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player443" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player444" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player445" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player446" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player447" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player448" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player449" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player450" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player451" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player452" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player453" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player454" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player455" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player456" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player457" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player458" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player459" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player460" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player461" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player462" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player463" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player464" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player465" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player466" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player467" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player468" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player469" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player470" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player471" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player472" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player473" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player474" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player475" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player476" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player477" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player478" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player479" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player480" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player481" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player482" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player483" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player484" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player485" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player486" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player487" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player488" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player489" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player490" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player491" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player492" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player493" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player494" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player495" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player496" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player497" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player498" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player499" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="Player500" parent="." groups=["savable"] instance=ExtResource("3_hm7h0")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -0.401147, 0)
-player_data = SubResource("Resource_1mbi4")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.392822, 0)

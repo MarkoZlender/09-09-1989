@@ -87,10 +87,5 @@ script = ExtResource("5_uoot5")
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.00578094, -0.665979)
 shape = SubResource("BoxShape3D_ll3kl")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999908, 0.0135434, 0, -0.0135434, 0.999908, 0, 0, 0)
-visible = false
-light_energy = 1.982
-light_size = 0.627
-spot_range = 1.832
-spot_angle = 41.0572
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

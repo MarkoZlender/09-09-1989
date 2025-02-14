@@ -7,7 +7,7 @@
 [sub_resource type="Environment" id="Environment_y2pff"]
 ambient_light_source = 2
 ambient_light_color = Color(0.918091, 0.918091, 0.918091, 1)
-ambient_light_energy = 5.47
+ambient_light_energy = 0.01
 
 [node name="GridmapOutside" type="Node3D"]
 
