@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cd3fm13s6uxk6"]
+[gd_scene load_steps=12 format=3 uid="uid://cd3fm13s6uxk6"]
 
 [ext_resource type="Script" path="res://scripts/globals/global.gd" id="1_ef01j"]
 [ext_resource type="PackedScene" uid="uid://jlpql0vbg6mg" path="res://scenes/globals/save_manager.tscn" id="2_2r8wd"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://k80pext0c5gt" path="res://scenes/globals/utils.tscn" id="4_5bla8"]
 [ext_resource type="PackedScene" uid="uid://be6ikd0pxgjxs" path="res://scenes/globals/QuestManager.tscn" id="4_mlqme"]
 [ext_resource type="Script" path="res://addons/gloot/core/inventory.gd" id="6_fmdso"]
+[ext_resource type="PackedScene" uid="uid://pv0dh6qajxt5" path="res://scenes/globals/signal_bus.tscn" id="6_r8nug"]
+[ext_resource type="PackedScene" uid="uid://21qamqnj383" path="res://scenes/globals/audio_player.tscn" id="7_0k02b"]
 [ext_resource type="JSON" path="res://resources/prototree.json" id="7_flclb"]
 [ext_resource type="Script" path="res://addons/gloot/core/item_slot.gd" id="8_0734y"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_item_slot.gd" id="8_n3aw3"]
@@ -20,7 +22,11 @@ savable_globals = [null]
 
 [node name="QuestManager" parent="." instance=ExtResource("4_mlqme")]
 
+[node name="SignalBus" parent="." instance=ExtResource("6_r8nug")]
+
 [node name="Utils" parent="." instance=ExtResource("4_5bla8")]
+
+[node name="AudioPlayer" parent="." instance=ExtResource("7_0k02b")]
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("6_fmdso")

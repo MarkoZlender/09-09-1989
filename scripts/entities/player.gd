@@ -76,6 +76,7 @@ func handle_movement_input() -> void:
 
 func move(direction: Vector3) -> void:
 	is_moving = true
+	Global.signal_bus.player_moved.emit(position + direction * cell_size)
 	tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "position", position + direction * cell_size, TRAVEL_TIME)
 	animation_player.play("headbob")

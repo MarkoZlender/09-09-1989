@@ -5,9 +5,9 @@
 [ext_resource type="MeshLibrary" uid="uid://ccvvpvqlj8cid" path="res://assets/meshlibs/outside.meshlib" id="2_sjjds"]
 
 [sub_resource type="Environment" id="Environment_y2pff"]
+background_energy_multiplier = 16.0
 ambient_light_source = 2
-ambient_light_color = Color(0.918091, 0.918091, 0.918091, 1)
-ambient_light_energy = 0.01
+ambient_light_energy = 0.0
 
 [node name="GridmapOutside" type="Node3D"]
 
