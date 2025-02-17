@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bbl57vjy4yby"]
+[gd_scene load_steps=6 format=3 uid="uid://bbl57vjy4yby"]
 
 [ext_resource type="PackedScene" uid="uid://bml51umf76aq0" path="res://scenes/entities/player.tscn" id="1_lmc5k"]
-[ext_resource type="PackedScene" uid="uid://cftivtsqiijgj" path="res://scenes/effects/post_process_effects.tscn" id="2_4hbot"]
 [ext_resource type="MeshLibrary" uid="uid://ccvvpvqlj8cid" path="res://assets/meshlibs/outside.meshlib" id="2_sjjds"]
+[ext_resource type="PackedScene" uid="uid://47b6ywwy1olr" path="res://scenes/components/load_level_component.tscn" id="4_anmag"]
+[ext_resource type="Resource" uid="uid://cx5j3hdtv1xpo" path="res://resources/gridmap_outside_audio.tres" id="4_o76vs"]
 
 [sub_resource type="Environment" id="Environment_y2pff"]
 background_energy_multiplier = 16.0
@@ -14,7 +15,7 @@ ambient_light_energy = 0.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_y2pff")
 
-[node name="Player" parent="." node_paths=PackedStringArray("gridmap") instance=ExtResource("1_lmc5k")]
+[node name="Player" parent="." node_paths=PackedStringArray("gridmap") groups=["savable"] instance=ExtResource("1_lmc5k")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 gridmap = NodePath("../GridMap")
 
@@ -27,5 +28,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="PostProcessEffects" parent="." instance=ExtResource("2_4hbot")]
-visible = false
+[node name="LoadLevelComponent" parent="." node_paths=PackedStringArray("scene_root") instance=ExtResource("4_anmag")]
+scene_root = NodePath("..")
+debug_mode = true
+level_audio = ExtResource("4_o76vs")

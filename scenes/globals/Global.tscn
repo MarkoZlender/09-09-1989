@@ -12,9 +12,8 @@
 [ext_resource type="Script" path="res://addons/gloot/core/item_slot.gd" id="8_0734y"]
 [ext_resource type="Script" path="res://addons/gloot/ui/ctrl_item_slot.gd" id="8_n3aw3"]
 
-[node name="Global" type="Node" node_paths=PackedStringArray("savable_globals")]
+[node name="Global" type="Node"]
 script = ExtResource("1_ef01j")
-savable_globals = [null]
 
 [node name="SaveManager" parent="." instance=ExtResource("2_2r8wd")]
 

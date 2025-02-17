@@ -23,6 +23,7 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 
 [debug]
 
+gdscript/warnings/unused_signal=0
 gdscript/warnings/untyped_declaration=1
 gdscript/warnings/inferred_declaration=1
 

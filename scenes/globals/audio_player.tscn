@@ -6,5 +6,5 @@
 
 [node name="AudioPlayer" type="AudioStreamPlayer"]
 stream = SubResource("AudioStreamPolyphonic_3wcvk")
-stream_paused = true
+max_polyphony = 32
 script = ExtResource("1_pg1k6")
