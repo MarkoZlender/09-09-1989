@@ -28,23 +28,23 @@ func _ready() -> void:
 	set_cursor()
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down") or event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right"):
+	if event.is_action_pressed("ui_up", true) || event.is_action_pressed("ui_down", true) || event.is_action_pressed("ui_left", true) || event.is_action_pressed("ui_right", true):
 		var child_count: int = menu_parent.get_child_count()
 		if menu_parent is VBoxContainer:
-			if event.is_action_pressed("ui_up"):
+			if event.is_action_pressed("ui_up", true):
 				cursor_index -= 1
 				if cursor_index < 0:
 					cursor_index = child_count - 1
-			elif event.is_action_pressed("ui_down"):
+			elif event.is_action_pressed("ui_down", true):
 				cursor_index += 1
 				if cursor_index >= child_count:
 					cursor_index = 0
 		elif menu_parent is HBoxContainer:
-			if event.is_action_pressed("ui_left"):
+			if event.is_action_pressed("ui_left", true):
 				cursor_index -= 1
 				if cursor_index < 0:
 					cursor_index = child_count - 1
-			elif event.is_action_pressed("ui_right"):
+			elif event.is_action_pressed("ui_right", true):
 				cursor_index += 1
 				if cursor_index >= child_count:
 					cursor_index = 0

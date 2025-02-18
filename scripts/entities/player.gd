@@ -54,11 +54,13 @@ func handle_movement_input() -> void:
 #endregion
 
 #region strafing
-	elif Input.is_action_pressed("strafe_left") && is_position_valid(position + local_left * cell_size):
+	elif (Input.is_action_pressed("strafe_left") || Input.is_action_pressed("left_trigger")) \
+	&& is_position_valid(position + local_left * cell_size):
 		if !animation_player.is_playing():
 			move(local_left)
 
-	elif Input.is_action_pressed("strafe_right") && is_position_valid(position + local_right * cell_size):
+	elif (Input.is_action_pressed("strafe_right") || Input.is_action_pressed("right_trigger")) \
+	&& is_position_valid(position + local_right * cell_size):
 		if !animation_player.is_playing():
 			move(local_right)
 #endregion
