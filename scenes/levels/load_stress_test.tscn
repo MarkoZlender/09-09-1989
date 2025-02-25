@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7ea6onk2bcu2"]
+
+[ext_resource type="Script" uid="uid://wnu83phie3ep" path="res://scripts/levels/load_stress_test.gd" id="1_man2w"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_man2w"]
+
+[sub_resource type="Sky" id="Sky_3v1br"]
+sky_material = SubResource("ProceduralSkyMaterial_man2w")
+
+[sub_resource type="Environment" id="Environment_8ry2q"]
+background_mode = 2
+sky = SubResource("Sky_3v1br")
+
+[node name="LoadStressTest" type="Node3D"]
+script = ExtResource("1_man2w")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8ry2q")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.11017, 0.498496)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.877694, 0)
+size = Vector3(1000, 1, 1000)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+light_energy = 13.023
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.998136, -0.0610311, 0, 0.0610311, 0.998136, 0, 3.72773, 0)

@@ -13,7 +13,6 @@ config_version=5
 config/name="topdown_adventure"
 run/main_scene="res://scenes/game_controller/game_controller.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
-run/max_fps=60
 config/icon="res://icon.svg"
 
 [autoload]

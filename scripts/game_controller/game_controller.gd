@@ -113,7 +113,7 @@ func _deferred_load_scene_threaded(scene_path: String) -> void:
 		load_progress.emit(str(floor(progress[0] * 100)) + "%")
 		if status == ResourceLoader.THREAD_LOAD_LOADED:
 			break
-		await get_tree().create_timer(2).timeout
+		await get_tree().create_timer(0.001).timeout
 		#await Engine.get_main_loop().process_frame
 	scene_loaded.emit()
 
