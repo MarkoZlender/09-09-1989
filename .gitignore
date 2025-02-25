@@ -2,5 +2,4 @@
 .godot/
 /android/
 *.import
-*.crocotile
-assets/models/crocotile_test/*.crocotile
+/.vscode/
