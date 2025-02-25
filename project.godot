@@ -19,7 +19,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://scenes/globals/global.tscn"
-PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [debug]
 
@@ -41,7 +40,7 @@ project/assembly_name="fixed_cam"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/gloot/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/gloot/plugin.cfg")
 
 [global_group]
 
@@ -150,7 +149,3 @@ right_trigger={
 "events": [Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":5,"axis_value":1.0,"script":null)
 ]
 }
-
-[physics]
-
-3d/physics_engine="JoltPhysics3D"

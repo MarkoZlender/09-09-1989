@@ -10,7 +10,6 @@ const LOADING_SCREEN: String = "res://scenes/ui/save_system/loading_screen.tscn"
 @onready var save_manager: SaveManager
 @onready var interaction_manager: InteractionManager
 @onready var game_controller: GameController
-@onready var quest_manager: QuestManager
 @onready var signal_bus: SignalBus
 @onready var utils: Utils
 @onready var inventory: Inventory = $Inventory
