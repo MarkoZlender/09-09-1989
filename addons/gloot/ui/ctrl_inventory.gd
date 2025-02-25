@@ -71,7 +71,6 @@ func _on_item_manipulated(item: InventoryItem) -> void:
 
 
 func _ready() -> void:
-    #inventory = Global.inventory
     item_activated.connect(_on_list_item_activated)
     item_clicked.connect(_on_list_item_clicked)
     item_selected.connect(_on_list_item_selected)

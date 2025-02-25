@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu5oa038m67wd"]
+
+[ext_resource type="Texture2D" uid="uid://c6pyep1cusmnn" path="res://assets/textures/Dark/texture_01.png" id="1_4uqmx"]
+[ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="2_rkgaf"]
+[ext_resource type="PackedScene" uid="uid://47b6ywwy1olr" path="res://scenes/components/load_level_component.tscn" id="3_fr1um"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtgnm"]
+albedo_texture = ExtResource("1_4uqmx")
+uv1_triplanar = true
+
+[node name="TestLevel" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(10, 0.2, 10)
+material = SubResource("StandardMaterial3D_jtgnm")
+
+[node name="Player" parent="." groups=["savable"] instance=ExtResource("2_rkgaf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38, 0)
+
+[node name="LoadLevelComponent" parent="." node_paths=PackedStringArray("scene_root") instance=ExtResource("3_fr1um")]
+scene_root = NodePath("..")
+debug_mode = true

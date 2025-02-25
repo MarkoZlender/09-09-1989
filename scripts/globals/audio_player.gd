@@ -10,6 +10,8 @@ func _ready() -> void:
 	Global.signal_bus.player_moved.connect(_on_player_moved)
 
 func _on_level_audio_loaded(level_audio: LevelAudio) -> void:
+	if level_audio == null:
+		return
 	_level_audio = level_audio
 	bgm_stream = get_stream_playback().play_stream(_level_audio.bgm, 0, 0, 1.0, 0, "BGM")
 	update_volume()

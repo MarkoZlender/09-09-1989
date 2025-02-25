@@ -1,102 +1,45 @@
-class_name Player extends Node3D
-const TRAVEL_TIME: float = 0.3
-# Grid settings
-@export var cell_size: Vector3 = Vector3(1, 0, 1)
-@export var move_speed: float = 5.0
-@export var gridmap: GridMap
+class_name Player 
+extends CharacterBody3D
 
-enum ROTATION_DIRECTION {
-	LEFT,
-	RIGHT
-}
+const JUMP_VELOCITY = 4.5
 
-@onready var camera_rig: Marker3D = %CameraRig
-@onready var animation_player: AnimationPlayer = %AnimationPlayer
+@export var SPEED = 5.0
+@onready var animation_tree: AnimationTree = $AnimationTree
+#@onready var animation: AnimatedSprite3D = $Animation
+var direction
+var last_facing_direction: Vector2 = Vector2(0, -1)
 
-var grid_position: Vector3= Vector3(0.5, 0, -1.5)
-var global_cell_coordinates: Array[Vector3] = []
-var tween: Tween
-var is_moving: bool= false
-var inputs: Dictionary = {
-	"move_right": Vector3.RIGHT,
-	"move_left": Vector3.LEFT,
-	"move_forward": Vector3.FORWARD,
-	"move_back": Vector3.BACK
-}
 
-func _ready() -> void:
-	#self.global_transform.origin = gridmap.map_to_local(Vector3i(0, 1, 0))
-	global_position = grid_position
-	for cell: Vector3i in gridmap.get_used_cells():
-		global_cell_coordinates.append(gridmap.map_to_local(cell))
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
 
-# func _process(delta: float) -> void:
-# 	handle_movement_input()
+	# # Handle jump.
+	# if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	# 	velocity.y = JUMP_VELOCITY
 
-func handle_movement_input() -> void:
-	if tween is Tween and tween.is_running():
-		return
-	
-	var local_forward: Vector3 = -transform.basis.z
-	var local_back: Vector3 = transform.basis.z
-	var local_left: Vector3 = -transform.basis.x
-	var local_right: Vector3 = transform.basis.x
-
-#region forward_back
-	# not using switch/match because it is slower in gdscript than if-elif-else statements
-	if Input.is_action_pressed("move_forward") && is_position_valid(position + local_forward * cell_size):
-		if !animation_player.is_playing():
-			move(local_forward)
-
-	elif Input.is_action_pressed("move_back") && is_position_valid(position + local_back * cell_size):
-		if !animation_player.is_playing():
-			move(local_back)
-#endregion
-
-#region strafing
-	elif (Input.is_action_pressed("strafe_left") || Input.is_action_pressed("left_trigger")) \
-	&& is_position_valid(position + local_left * cell_size):
-		if !animation_player.is_playing():
-			move(local_left)
-
-	elif (Input.is_action_pressed("strafe_right") || Input.is_action_pressed("right_trigger")) \
-	&& is_position_valid(position + local_right * cell_size):
-		if !animation_player.is_playing():
-			move(local_right)
-#endregion
-
-#region left_right
-	elif Input.is_action_pressed("move_left") && !Input.is_action_pressed("strafe_left"):
-		rotate_player(ROTATION_DIRECTION.LEFT)
-
-	elif Input.is_action_pressed("move_right") && !Input.is_action_pressed("strafe_right"):
-		rotate_player(ROTATION_DIRECTION.RIGHT)
-
+	var input_dir := Input.get_vector("left", "right", "up", "down")
+	#animate_input()
+	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if direction:
+		velocity.x = direction.x * SPEED
+		velocity.z = direction.z * SPEED
 	else:
-		is_moving = false
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.z = move_toward(velocity.z, 0, SPEED)
 
+	move_and_slide()
+	animate_input()
 
-func move(direction: Vector3) -> void:
-	is_moving = true
-	Global.signal_bus.player_moved.emit(position + direction * cell_size)
-	tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	tween.tween_property(self, "position", position + direction * cell_size, TRAVEL_TIME)
-	animation_player.play("headbob")
-	#play_footsteps()
+func animate_input():
+	var idle = !velocity
+	var blend_position = Vector2(velocity.x, velocity.z).normalized()
+	if !idle:
+		last_facing_direction = blend_position
 
-func rotate_player(direction: ROTATION_DIRECTION) -> void:
-	is_moving = true
-	tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-	
-	if direction == ROTATION_DIRECTION.LEFT:
-		tween.tween_property(self, "transform", transform.rotated_local(Vector3.UP, PI / 2), TRAVEL_TIME)
-	elif direction == ROTATION_DIRECTION.RIGHT:
-		tween.tween_property(self, "transform", transform.rotated_local(Vector3.UP, -PI / 2), TRAVEL_TIME)
-
-
-func is_position_valid(pos: Vector3) -> bool:
-	var cell: Vector3i = gridmap.local_to_map(pos)
-	return gridmap.get_cell_item(cell) != GridMap.INVALID_CELL_ITEM
+	animation_tree.set("parameters/Run/blend_position", last_facing_direction)
+	animation_tree.set("parameters/Idle/blend_position", last_facing_direction)
 
 func save() -> Dictionary:
 	var save_data: Dictionary = {
