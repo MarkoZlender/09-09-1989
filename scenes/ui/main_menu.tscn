@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://7ttjcnsru146"]
 
-[ext_resource type="Script" path="res://scripts/ui/main_menu.gd" id="1_lnxuf"]
+[ext_resource type="Script" uid="uid://dtjt7hd0gkvd0" path="res://scripts/ui/main_menu.gd" id="1_lnxuf"]
 [ext_resource type="FontFile" uid="uid://dtdnrjy2s7fo4" path="res://assets/fonts/Portmanteau Regular.ttf" id="2_wg1pw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x10xj"]
@@ -75,8 +75,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gbmd3"]
 _data = {
-"RESET": SubResource("Animation_14pl0"),
-"blink": SubResource("Animation_vo1vg")
+&"RESET": SubResource("Animation_14pl0"),
+&"blink": SubResource("Animation_vo1vg")
 }
 
 [node name="MainMenu" type="Control"]

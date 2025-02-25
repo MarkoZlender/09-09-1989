@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b5wsbousnpwq4"]
 
-[ext_resource type="Script" path="res://scripts/ui/save_system/warning_dialog.gd" id="1_nfg2l"]
+[ext_resource type="Script" uid="uid://dhmnmriofnsnb" path="res://scripts/ui/save_system/warning_dialog.gd" id="1_nfg2l"]
 [ext_resource type="PackedScene" uid="uid://b4goedwokmaph" path="res://scenes/ui/menu_cursor.tscn" id="3_oprwr"]
 
 [node name="WarningDialog" type="Panel"]

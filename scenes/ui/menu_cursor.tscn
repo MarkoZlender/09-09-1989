@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b4goedwokmaph"]
 
-[ext_resource type="Script" path="res://scripts/ui/menu_cursor.gd" id="2_5gnl7"]
+[ext_resource type="Script" uid="uid://wcmjbkgmwxwf" path="res://scripts/ui/menu_cursor.gd" id="2_5gnl7"]
 
 [node name="MenuCursor" type="Label"]
 offset_right = 35.0

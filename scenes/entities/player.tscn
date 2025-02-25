@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://bml51umf76aq0"]
 
-[ext_resource type="Script" path="res://scripts/entities/player.gd" id="1_3vyb7"]
-[ext_resource type="Script" path="res://scripts/state_machine/state_machine.gd" id="3_qlg0r"]
-[ext_resource type="Script" path="res://scripts/state_machine/player_states/idle.gd" id="4_tuyoq"]
-[ext_resource type="Script" path="res://scripts/state_machine/player_states/walking.gd" id="5_fjrip"]
-[ext_resource type="Script" path="res://scripts/interaction/player_collision_object.gd" id="5_uoot5"]
+[ext_resource type="Script" uid="uid://1uia1xe5nmrj" path="res://scripts/entities/player.gd" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://bn5ck804awuuo" path="res://scripts/state_machine/state_machine.gd" id="3_qlg0r"]
+[ext_resource type="Script" uid="uid://ci1oq46owkjmk" path="res://scripts/state_machine/player_states/idle.gd" id="4_tuyoq"]
+[ext_resource type="Script" uid="uid://cepxivish70q4" path="res://scripts/state_machine/player_states/walking.gd" id="5_fjrip"]
+[ext_resource type="Script" uid="uid://brbc2rxavi51t" path="res://scripts/interaction/player_collision_object.gd" id="5_uoot5"]
 
 [sub_resource type="Animation" id="Animation_npihl"]
 length = 0.001
@@ -39,8 +39,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oirrf"]
 _data = {
-"RESET": SubResource("Animation_npihl"),
-"headbob": SubResource("Animation_rpvdp")
+&"RESET": SubResource("Animation_npihl"),
+&"headbob": SubResource("Animation_rpvdp")
 }
 
 [sub_resource type="BoxMesh" id="BoxMesh_u7krv"]

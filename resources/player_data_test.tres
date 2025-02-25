@@ -1,7 +1,8 @@
 [gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3 uid="uid://ch5ohx5cvmym6"]
 
-[ext_resource type="Script" path="res://scripts/data/player_data.gd" id="1_qxnkg"]
+[ext_resource type="Script" uid="uid://c5q20r4wynqst" path="res://scripts/data/player_data.gd" id="1_qxnkg"]
 
 [resource]
 script = ExtResource("1_qxnkg")
-map_position = Vector3(5, 7, 10)
+health = 100
+mana = 50

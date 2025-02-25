@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c62u2p3f0l7wg"]
 
-[ext_resource type="Script" path="res://scripts/game_controller/transition_controller.gd" id="1_vifdn"]
+[ext_resource type="Script" uid="uid://cjoxg7gtcoxer" path="res://scripts/game_controller/transition_controller.gd" id="1_vifdn"]
 
 [sub_resource type="Animation" id="Animation_g3kag"]
 length = 0.001
@@ -49,9 +49,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oyeb5"]
 _data = {
-"RESET": SubResource("Animation_g3kag"),
-"fade_in": SubResource("Animation_udba2"),
-"fade_out": SubResource("Animation_g4pps")
+&"RESET": SubResource("Animation_g3kag"),
+&"fade_in": SubResource("Animation_udba2"),
+&"fade_out": SubResource("Animation_g4pps")
 }
 
 [node name="TransitionController" type="Control"]

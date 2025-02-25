@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dgk04fuja3ay2"]
 
-[ext_resource type="Script" path="res://scripts/ui/inventory/inventory_item_list.gd" id="1_rjo4w"]
+[ext_resource type="Script" uid="uid://4act8gwoiuwb" path="res://scripts/ui/inventory/inventory_item_list.gd" id="1_rjo4w"]
 [ext_resource type="PackedScene" uid="uid://b4goedwokmaph" path="res://scenes/ui/menu_cursor.tscn" id="3_84ha7"]
 
 [node name="InventoryItemList" type="CanvasLayer"]

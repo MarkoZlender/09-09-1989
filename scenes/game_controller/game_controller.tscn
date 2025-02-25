@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b742kfgwr8sh"]
 
-[ext_resource type="Script" path="res://scripts/game_controller/game_controller.gd" id="1_ca7gh"]
+[ext_resource type="Script" uid="uid://2dbjk0u75wjo" path="res://scripts/game_controller/game_controller.gd" id="1_ca7gh"]
 [ext_resource type="PackedScene" uid="uid://c62u2p3f0l7wg" path="res://scenes/game_controller/transition_controller.tscn" id="2_bddcm"]
 
 [node name="GameController" type="Node" node_paths=PackedStringArray("world_3d", "world_2d", "gui", "transition_controller")]
