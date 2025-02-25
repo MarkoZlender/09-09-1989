@@ -4,7 +4,7 @@ const TRAVEL_TIME: float = 0.3
 @export var cell_size: Vector3 = Vector3(1, 0, 1)
 @export var move_speed: float = 5.0
 @export var gridmap: GridMap
-
+#repo test
 enum ROTATION_DIRECTION {
 	LEFT,
 	RIGHT
