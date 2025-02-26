@@ -328,6 +328,9 @@ delay_in_seconds = "0.0"
 [node name="Interacting" type="Node" parent="StateChart/Root"]
 script = ExtResource("6_c5rqy")
 
+[node name="Fighting" type="Node" parent="StateChart/Root"]
+script = ExtResource("6_c5rqy")
+
 [node name="StatesLogic" type="Node" parent="."]
 
 [node name="Idle" type="Node" parent="StatesLogic"]
