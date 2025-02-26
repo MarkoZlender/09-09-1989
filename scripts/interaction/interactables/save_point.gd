@@ -1,5 +1,5 @@
 extends Node3D
-const _save_point_slot_selection_scene: String = "res://scenes/ui/save_system/save_point_slot_selection.tscn"
+const _save_point_slot_selection_scene: String = "res://scenes/ui/save_system/slot_selection.tscn"
 @onready var interact_component: InteractComponent = $InteractComponent
 
 

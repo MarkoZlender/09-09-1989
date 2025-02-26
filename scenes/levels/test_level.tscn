@@ -1,12 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://bu5oa038m67wd"]
+[gd_scene load_steps=10 format=3 uid="uid://bu5oa038m67wd"]
 
 [ext_resource type="Texture2D" uid="uid://c6pyep1cusmnn" path="res://assets/textures/Dark/texture_01.png" id="1_4uqmx"]
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="2_rkgaf"]
 [ext_resource type="PackedScene" uid="uid://47b6ywwy1olr" path="res://scenes/components/load_level_component.tscn" id="3_fr1um"]
+[ext_resource type="PackedScene" uid="uid://bm3l5td4ucfyf" path="res://scenes/interaction/interactables/save_point.tscn" id="4_v45ci"]
+[ext_resource type="PackedScene" uid="uid://b065twii5uo1m" path="res://scenes/environment/objects/door.tscn" id="5_48ne7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtgnm"]
 albedo_texture = ExtResource("1_4uqmx")
 uv1_triplanar = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fr1um"]
+
+[sub_resource type="Sky" id="Sky_v45ci"]
+sky_material = SubResource("ProceduralSkyMaterial_fr1um")
+
+[sub_resource type="Environment" id="Environment_48ne7"]
+background_mode = 2
+sky = SubResource("Sky_v45ci")
 
 [node name="TestLevel" type="Node3D"]
 
@@ -18,6 +29,19 @@ material = SubResource("StandardMaterial3D_jtgnm")
 [node name="Player" parent="." groups=["savable"] instance=ExtResource("2_rkgaf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38, 0)
 
+[node name="SavePoint" parent="." instance=ExtResource("4_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.80812)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.388304, 0.921531, 0, -0.921531, 0.388304, 0, 1.56394, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_48ne7")
+
 [node name="LoadLevelComponent" parent="." node_paths=PackedStringArray("scene_root") instance=ExtResource("3_fr1um")]
 scene_root = NodePath("..")
 debug_mode = true
+
+[node name="Door" parent="." instance=ExtResource("5_48ne7")]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 2, 0.4, 0)
+next_scene = "uid://dmf84117cndp0"

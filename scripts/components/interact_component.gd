@@ -5,10 +5,10 @@ var interact: Callable = func():
 
 
 func _on_body_entered(_body:Node3D) -> void:
-	if _body is PlayerCollisionObject:
+	if _body is Player:
 		Global.interaction_manager.register_area(self)
 
 
 func _on_body_exited(_body:Node3D) -> void:
-	if _body is PlayerCollisionObject:
+	if _body is Player:
 		Global.interaction_manager.unregister_area(self)

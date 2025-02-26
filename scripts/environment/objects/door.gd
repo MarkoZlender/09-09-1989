@@ -12,4 +12,3 @@ func _on_interact() -> void:
 		Global.game_controller.change_3d_scene(next_scene)
 	else:
 		printerr("No next scene set for door")
-
