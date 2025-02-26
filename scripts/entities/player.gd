@@ -7,10 +7,13 @@ const JUMP_VELOCITY = 4.5
 @onready var animation_tree: AnimationTree = $AnimationTree
 #@onready var animation: AnimatedSprite3D = $Animation
 var direction
+var is_moving: bool = false
 var last_facing_direction: Vector2 = Vector2(0, -1)
 
+# func _physics_process(delta: float) -> void:
+# 	move(delta)
 
-func _physics_process(delta: float) -> void:
+func move(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -23,11 +26,14 @@ func _physics_process(delta: float) -> void:
 	#animate_input()
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
+		is_moving = true
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
+		is_moving = false
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+		
 
 	move_and_slide()
 	animate_input()
