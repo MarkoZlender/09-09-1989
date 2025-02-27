@@ -1,17 +1,10 @@
-[gd_scene load_steps=44 format=3 uid="uid://ds0d7p7idbuc4"]
+[gd_scene load_steps=37 format=3 uid="uid://ds0d7p7idbuc4"]
 
+[ext_resource type="Script" uid="uid://b238w80surb6y" path="res://scripts/entities/Player.cs" id="1_b6tgf"]
 [ext_resource type="Texture2D" uid="uid://bkwystcuhg33w" path="res://assets/sprites/characters.png" id="1_h27i2"]
-[ext_resource type="Script" uid="uid://1uia1xe5nmrj" path="res://scripts/entities/player.gd" id="1_mfpxk"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bg31c0p3ncbjc" path="res://assets/animations/player_run_blend.tres" id="3_ovmmi"]
-[ext_resource type="Script" uid="uid://bqnr5hyceu623" path="res://addons/godot_state_charts/state_chart.gd" id="4_ss7kx"]
-[ext_resource type="Script" uid="uid://bt4iqisaqggy8" path="res://addons/godot_state_charts/compound_state.gd" id="5_dnykm"]
-[ext_resource type="Script" uid="uid://bm4a5s8vovnwv" path="res://addons/godot_state_charts/atomic_state.gd" id="6_c5rqy"]
-[ext_resource type="Script" uid="uid://btg0k6scpejn3" path="res://addons/godot_state_charts/transition.gd" id="7_b6tgf"]
-[ext_resource type="Script" uid="uid://cw43pgy3x2a52" path="res://scripts/entities/player_states/idle.gd" id="8_dnykm"]
-[ext_resource type="Script" uid="uid://c7whpml006e7v" path="res://scripts/entities/player_states/moving.gd" id="9_c5rqy"]
-[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="10_b6tgf"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_sxi1g"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_1ie0h"]
 size = Vector3(0.2, 0.2, 0.2)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_456sy"]
@@ -272,11 +265,10 @@ _data = {
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
 collision_layer = 3
-script = ExtResource("1_mfpxk")
-SPEED = 2.0
+script = ExtResource("1_b6tgf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_sxi1g")
+shape = SubResource("BoxShape3D_1ie0h")
 
 [node name="Animation" type="Sprite3D" parent="."]
 billboard = 1
@@ -290,59 +282,10 @@ fov = 45.0
 tree_root = SubResource("AnimationNodeStateMachine_yqx8p")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
-parameters/Idle/blend_position = Vector2(0.0152478, 0.0860534)
+parameters/Idle/blend_position = Vector2(0.00721729, 0.143911)
 parameters/Run/blend_position = Vector2(-0.089978, -0.163205)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_1qls1")
 }
-
-[node name="StateChart" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("4_ss7kx")
-metadata/_custom_type_script = "uid://bqnr5hyceu623"
-
-[node name="Root" type="Node" parent="StateChart"]
-script = ExtResource("5_dnykm")
-initial_state = NodePath("Idle")
-
-[node name="Idle" type="Node" parent="StateChart/Root"]
-script = ExtResource("6_c5rqy")
-
-[node name="ToMoving" type="Node" parent="StateChart/Root/Idle"]
-script = ExtResource("7_b6tgf")
-to = NodePath("../../Moving")
-event = &"player_moved"
-delay_in_seconds = "0.0"
-
-[node name="Moving" type="Node" parent="StateChart/Root"]
-script = ExtResource("6_c5rqy")
-
-[node name="Transition" type="Node" parent="StateChart/Root/Moving"]
-script = ExtResource("7_b6tgf")
-to = NodePath("../../Idle")
-event = &"player_stopped"
-delay_in_seconds = "0.0"
-
-[node name="Interacting" type="Node" parent="StateChart/Root"]
-script = ExtResource("6_c5rqy")
-
-[node name="Fighting" type="Node" parent="StateChart/Root"]
-script = ExtResource("6_c5rqy")
-
-[node name="StatesLogic" type="Node" parent="."]
-
-[node name="Idle" type="Node" parent="StatesLogic"]
-script = ExtResource("8_dnykm")
-
-[node name="Moving" type="Node" parent="StatesLogic"]
-script = ExtResource("9_c5rqy")
-
-[node name="StateChartDebugger" parent="." instance=ExtResource("10_b6tgf")]
-offset_right = -1368.0
-offset_bottom = -511.0
-initial_node_to_watch = NodePath("../StateChart")
-
-[connection signal="state_physics_processing" from="StateChart/Root/Idle" to="StatesLogic/Idle" method="_on_idle_state_physics_processing"]
-[connection signal="state_physics_processing" from="StateChart/Root/Moving" to="StatesLogic/Moving" method="_on_moving_state_physics_processing"]

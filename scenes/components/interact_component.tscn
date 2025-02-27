@@ -1,11 +1,11 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8rtwryepqr5w"]
 
-[ext_resource type="Script" uid="uid://2rao8k7t0o57" path="res://scripts/components/interact_component.gd" id="1_g32l6"]
+[ext_resource type="Script" uid="uid://ckeqx757n24c7" path="res://scripts/components/InteractComponent.cs" id="1_pab14"]
 
 [node name="InteractComponent" type="Area3D"]
 collision_layer = 0
 collision_mask = 2
-script = ExtResource("1_g32l6")
+script = ExtResource("1_pab14")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="OnBodyExited"]

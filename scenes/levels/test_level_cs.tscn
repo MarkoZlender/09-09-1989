@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dp7jhr3rvh2an"]
+
+[ext_resource type="Texture2D" uid="uid://c6pyep1cusmnn" path="res://assets/textures/Dark/texture_01.png" id="1_2ouyd"]
+[ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="2_4lxis"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lxis"]
+albedo_texture = ExtResource("1_2ouyd")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4lxis"]
+
+[sub_resource type="Sky" id="Sky_govea"]
+sky_material = SubResource("ProceduralSkyMaterial_4lxis")
+
+[sub_resource type="Environment" id="Environment_upw7i"]
+background_mode = 2
+sky = SubResource("Sky_govea")
+
+[node name="TestLevelCs" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("2_4lxis")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+Speed = 3.0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_4lxis")
+use_collision = true
+size = Vector3(10, 0.2, 10)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_upw7i")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)

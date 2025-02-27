@@ -10,9 +10,8 @@ var direction
 var is_moving: bool = false
 var last_facing_direction: Vector2 = Vector2(0, -1)
 
-# func _physics_process(delta: float) -> void:
-# 	move(delta)
-
+func _physics_process(delta: float) -> void:
+	move(delta)
 func move(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():

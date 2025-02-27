@@ -1,9 +1,9 @@
 using System;
+using Godot;
+using GodotStateCharts;
 
-namespace GodotStateCharts
+namespace topdown_adventure.addons.godot_state_charts.csharp
 {
-    using Godot;
-
     /// <summary>
     /// A transition between two states. 
     /// </summary>

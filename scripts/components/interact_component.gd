@@ -3,7 +3,6 @@ class_name InteractComponent extends Area3D
 var interact: Callable = func():
 	pass
 
-
 func _on_body_entered(_body:Node3D) -> void:
 	if _body is Player:
 		Global.interaction_manager.register_area(self)
