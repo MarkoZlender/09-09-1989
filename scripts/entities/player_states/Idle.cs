@@ -22,6 +22,6 @@ public partial class Idle : Node
     {
         _player.Move(delta);
         if (_player.IsMoving) _stateChart.SendEvent("player_moved");
-        //test
+        //test2
     }
 }
