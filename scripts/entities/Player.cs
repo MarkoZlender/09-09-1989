@@ -1,6 +1,6 @@
 using Godot;
 
-namespace topdown_adventure.scripts.entities;
+namespace Game.Entities;
 
 public partial class Player : CharacterBody3D
 {
@@ -18,15 +18,15 @@ public partial class Player : CharacterBody3D
         _animationTree = GetNode<AnimationTree>("AnimationTree");
     }
 
-    public override void _PhysicsProcess(double delta)
-    {
-        Move(delta);
-    }
+    // public override void _PhysicsProcess(double delta)
+    // {
+    //     Move(delta);
+    // }
 
     public void Move(double delta)
     {
         var velocity = Velocity;
-        if (!IsOnFloor()) velocity += GetGravity() * (float)delta;;
+        if (!IsOnFloor()) velocity += GetGravity() * (float)delta;
         var inputDirection = Input.GetVector("left", "right", "up", "down");
         var direction = (Transform.Basis * new Vector3(inputDirection.X, 0, inputDirection.Y)).Normalized();
         if (direction != Vector3.Zero)

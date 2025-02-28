@@ -1,16 +1,17 @@
 using System.Linq;
 using Godot;
 using Godot.Collections;
-using topdown_adventure.scripts.components;
-using topdown_adventure.scripts.entities;
+using Godot.Components;
+using Game.Entities;
 
-namespace topdown_adventure.scripts.globals;
+namespace Game.Globals;
 
 public partial class InteractionManager : Node
 {
+    public Player Player { get; set; }
     private Array<InteractComponent> _activeAreas;
     private bool _canInteract;
-    public Player Player { get; set; }
+    
 
     public override void _Ready()
     {

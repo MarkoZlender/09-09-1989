@@ -1,7 +1,6 @@
-using Godot;
-using topdown_adventure.scripts.entities;
+using Game.Entities;
 
-namespace topdown_adventure.scripts.components;
+namespace Godot.Components;
 
 public partial class InteractComponent : Area3D
 {

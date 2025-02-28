@@ -1,6 +1,8 @@
 using Godot;
 using Godot.Collections;
+using Game.Globals;
 
+[GlobalClass]
 public partial class Global : Node
 {
     public const string SlotButtonScene = "res://scenes/ui/save_system/slot_button.tscn";
@@ -10,5 +12,5 @@ public partial class Global : Node
 
     [Export] public Array<Node> SavableGlobals = [];
 
-    public static topdown_adventure.scripts.globals.InteractionManager InteractionManager { get; set; }
+    public static InteractionManager InteractionManager { get; set; }
 }
