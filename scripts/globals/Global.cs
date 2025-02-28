@@ -2,6 +2,8 @@ using Godot;
 using Godot.Collections;
 using Game.Globals;
 
+namespace Game.Globals;
+
 [GlobalClass]
 public partial class Global : Node
 {
@@ -13,4 +15,6 @@ public partial class Global : Node
     [Export] public Array<Node> SavableGlobals = [];
 
     public static InteractionManager InteractionManager { get; set; }
+    public static GameController GameController { get; set; }
+    
 }

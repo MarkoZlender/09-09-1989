@@ -43,7 +43,6 @@ public partial class Player : CharacterBody3D
             
         }
         Velocity = velocity;
-        GD.Print(Velocity);
         MoveAndSlide();
         AnimateMovement();
 

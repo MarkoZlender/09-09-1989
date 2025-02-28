@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
 using Godot.Components;
@@ -24,6 +25,20 @@ public partial class InteractionManager : Node
         if (_activeAreas.Count > 0 && _canInteract)
         {
             _activeAreas = new Array<InteractComponent>(_activeAreas.OrderBy(area => Player.GlobalPosition.DistanceTo(area.GlobalPosition)));
+        }
+    }
+
+    public override void _Input(InputEvent @event)
+    {
+        if (@event.IsActionPressed("interact") && _canInteract)
+        {
+            GD.Print("Interact Pressed");
+            if (_activeAreas.Count > 0)
+            {
+                _canInteract = false;
+                _activeAreas.First().Interact.Call();
+                _canInteract = true;
+            }
         }
     }
 

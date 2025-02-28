@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://diqa1kakonkag"]
+
+[ext_resource type="Texture2D" uid="uid://c6pyep1cusmnn" path="res://assets/textures/Dark/texture_01.png" id="1_3678i"]
+[ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="2_7rrdg"]
+[ext_resource type="PackedScene" uid="uid://b065twii5uo1m" path="res://scenes/environment/objects/door.tscn" id="3_f8mfd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04x6q"]
+albedo_texture = ExtResource("1_3678i")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7rrdg"]
+
+[sub_resource type="Sky" id="Sky_govea"]
+sky_material = SubResource("ProceduralSkyMaterial_7rrdg")
+
+[sub_resource type="Environment" id="Environment_f8mfd"]
+background_mode = 2
+sky = SubResource("Sky_govea")
+
+[node name="TestLevelCs2" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_04x6q")
+use_collision = true
+size = Vector3(10, 0.2, 10)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f8mfd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_7rrdg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58, 0)
+
+[node name="Door" parent="." instance=ExtResource("3_f8mfd")]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 1, 0.4, 0)
+NextScene = "uid://dp7jhr3rvh2an"

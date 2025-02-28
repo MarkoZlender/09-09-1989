@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cd3fm13s6uxk6"]
+[gd_scene load_steps=7 format=3 uid="uid://cd3fm13s6uxk6"]
 
 [ext_resource type="Script" uid="uid://c82042pm3h25p" path="res://scripts/globals/Global.cs" id="1_upu1x"]
+[ext_resource type="PackedScene" uid="uid://buvpd7nh1gtu7" path="res://scenes/globals/interaction_manager.tscn" id="2_8rvg3"]
 [ext_resource type="Script" uid="uid://r2mug85xsh0g" path="res://addons/gloot/core/inventory.gd" id="6_fmdso"]
 [ext_resource type="JSON" path="res://resources/prototree.json" id="7_flclb"]
 [ext_resource type="Script" uid="uid://dkdltovqr6wu0" path="res://addons/gloot/core/item_slot.gd" id="8_0734y"]
@@ -9,6 +10,8 @@
 [node name="Global" type="Node" node_paths=PackedStringArray("SavableGlobals")]
 script = ExtResource("1_upu1x")
 SavableGlobals = [null]
+
+[node name="InteractionManager" parent="." instance=ExtResource("2_8rvg3")]
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("6_fmdso")

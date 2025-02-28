@@ -13,10 +13,7 @@ var current_3d_scene: Node3D
 var current_2d_scene: Node2D
 var current_gui_scene: Control
 
-var new_3d_scene: Node3D
-
 func _ready() -> void:
-	set_process(false)
 	Global.game_controller = self
 	#%InventoryItemList.inventory = Global.inventory
 	#%CtrlInventory.inventory = Global.inventory

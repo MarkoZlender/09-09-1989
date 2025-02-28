@@ -1,19 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://dp7jhr3rvh2an"]
+[gd_scene load_steps=8 format=3 uid="uid://dp7jhr3rvh2an"]
 
 [ext_resource type="Texture2D" uid="uid://c6pyep1cusmnn" path="res://assets/textures/Dark/texture_01.png" id="1_2ouyd"]
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="2_4lxis"]
+[ext_resource type="PackedScene" uid="uid://b065twii5uo1m" path="res://scenes/environment/objects/door.tscn" id="3_govea"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lxis"]
 albedo_texture = ExtResource("1_2ouyd")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4lxis"]
 
-[sub_resource type="Sky" id="Sky_govea"]
+[sub_resource type="Sky" id="Sky_4lxis"]
 sky_material = SubResource("ProceduralSkyMaterial_4lxis")
 
 [sub_resource type="Environment" id="Environment_upw7i"]
 background_mode = 2
-sky = SubResource("Sky_govea")
+sky = SubResource("Sky_4lxis")
 
 [node name="TestLevelCs" type="Node3D"]
 
@@ -31,3 +32,7 @@ environment = SubResource("Environment_upw7i")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
+
+[node name="Door" parent="." instance=ExtResource("3_govea")]
+transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 1.5, 0.4, 0)
+NextScene = "uid://diqa1kakonkag"
