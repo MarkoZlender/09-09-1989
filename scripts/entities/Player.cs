@@ -32,7 +32,6 @@ public partial class Player : CharacterBody3D
         if (!IsOnFloor()) velocity += GetGravity() * (float)delta;
         var inputDirection = Input.GetVector("left", "right", "up", "down");
         var direction = (Transform.Basis * new Vector3(inputDirection.X, 0, inputDirection.Y)).Normalized();
-        GD.Print(direction);
         if (direction != Vector3.Zero)
         {
             IsMoving = true;
