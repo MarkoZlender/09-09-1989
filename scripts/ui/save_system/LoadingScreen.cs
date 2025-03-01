@@ -17,5 +17,10 @@ public partial class LoadingScreen : Control
     {
         _progressLabel.Text = percent;
     }
+
+    public override void _ExitTree()
+    {
+        Global.GameController.LoadProgress -= OnSceneLoadUpdate;
+    }
 }
 

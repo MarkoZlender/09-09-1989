@@ -286,6 +286,7 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 2.40818
 fov = 45.0
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 tree_root = SubResource("AnimationNodeStateMachine_yqx8p")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")

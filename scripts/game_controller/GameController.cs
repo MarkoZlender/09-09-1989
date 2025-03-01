@@ -59,16 +59,18 @@ public partial class GameController : Node
         {
             _transitionController.Transition(transitionOut, seconds);
         }
-        
-        if (_currentGuiScene != null)
+
+
+        if (IsInstanceValid(_currentGuiScene))
         {
             if (delete)
-                _currentGuiScene.QueueFree();
+                _currentGuiScene?.QueueFree();
             else if (keepRunning)
                 _currentGuiScene.Visible = false;
             else
                 _gui.RemoveChild(_currentGuiScene);
         }
+        
         
         if (!string.IsNullOrEmpty(newScene))
         {
