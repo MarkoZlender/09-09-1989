@@ -58,6 +58,7 @@ public partial class GameController : Node
         if (transition)
         {
             _transitionController.Transition(transitionOut, seconds);
+            await ToSignal(_transitionController.GetNode<AnimationPlayer>("AnimationPlayer"), "animation_finished");
         }
 
 
@@ -84,9 +85,19 @@ public partial class GameController : Node
                 _transitionController.Transition(transitionIn, seconds);
                 await ToSignal(_transitionController.GetNode<AnimationPlayer>("AnimationPlayer"), "animation_finished");
             }
+            _transitionController.Hide();
         }
-
-        _transitionController.Hide();
+        else
+        {
+            if (transition)
+            {
+                _transitionController.Transition(transitionIn, seconds);
+                await ToSignal(_transitionController.GetNode<AnimationPlayer>("AnimationPlayer"), "animation_finished");
+            }
+            _transitionController.Hide();
+            return;
+        }
+        
     }
     
     public async Task Change3DScene(
@@ -125,11 +136,10 @@ public partial class GameController : Node
         Node newInstance = ((PackedScene)newResource).Instantiate();
         _world3D.AddChild(newInstance);
         _current3DScene = (Node3D)newInstance;
-
+        
         _transitionController.Transition(transitionIn, seconds);
         await ToSignal(_transitionController.GetNode<AnimationPlayer>("AnimationPlayer"), "animation_finished");
-
-        await ChangeGuiScene("", true, false, true);
+        await ChangeGuiScene(""); 
     }
 
     // private void LoadSceneThreaded(string scenePath)

@@ -14,7 +14,7 @@ public partial class TransitionController : Control
 
     public void Transition(string animation, float seconds)
     {
-        _animationPlayer.Play(animation, -1, 1 / seconds);
+        _animationPlayer.Play(animation, -1.0, 1 / seconds);
     }
 }
 

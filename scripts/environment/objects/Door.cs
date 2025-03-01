@@ -1,7 +1,9 @@
+using System.Threading.Tasks;
 using Godot;
-using System;
+using Game.Components;
 using Game.Globals;
-using Godot.Components;
+
+namespace Game.Entities;
 
 public partial class Door : StaticBody3D
 {
@@ -13,7 +15,7 @@ public partial class Door : StaticBody3D
     public override void _Ready()
     {
         _interactComponent = GetNode<InteractComponent>("InteractComponent");
-        _interactComponent.Interact = Callable.From(()=> OnInteract());
+        //_interactComponent.Interact = Callable.From(() => OnInteract());
     }
 
     async void OnInteract()

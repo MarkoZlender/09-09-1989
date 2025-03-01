@@ -1,9 +1,9 @@
 #nullable enable
 using System.Linq;
-using System.Threading.Tasks;
 using Godot;
 using Godot.Collections;
-using Godot.Components;
+using Game.Components;
+
 using Game.Entities;
 
 namespace Game.Globals;
@@ -38,8 +38,10 @@ public partial class InteractionManager : Node
             GD.Print("Interact Pressed");
             if (_activeAreas?.Count > 0)
             {
+                _activeAreas[0].EmitInteractionStarted();
                 _canInteract = false;
-                _activeAreas.First().Interact.Call();
+                //await new GDTask<Variant>(_activeAreas.First().Interact.Call());
+                ToSignal(_activeAreas[0], InteractComponent.SignalName.InteractionEnded);
                 _canInteract = true;
             }
         }

@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dp7jhr3rvh2an"]
+[gd_scene load_steps=11 format=3 uid="uid://dp7jhr3rvh2an"]
 
 [ext_resource type="Texture2D" uid="uid://c6pyep1cusmnn" path="res://assets/textures/Dark/texture_01.png" id="1_2ouyd"]
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="2_4lxis"]
 [ext_resource type="PackedScene" uid="uid://b065twii5uo1m" path="res://scenes/environment/objects/door.tscn" id="3_govea"]
+[ext_resource type="Script" uid="uid://cdt52i5swijmp" path="res://scripts/entities/TestNpc.cs" id="4_1wsk7"]
+[ext_resource type="PackedScene" uid="uid://b8rtwryepqr5w" path="res://scenes/components/interact_component.tscn" id="4_upw7i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4lxis"]
 albedo_texture = ExtResource("1_2ouyd")
@@ -15,6 +17,9 @@ sky_material = SubResource("ProceduralSkyMaterial_4lxis")
 [sub_resource type="Environment" id="Environment_upw7i"]
 background_mode = 2
 sky = SubResource("Sky_4lxis")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1wsk7"]
+size = Vector3(2, 2, 2)
 
 [node name="TestLevelCs" type="Node3D"]
 
@@ -36,3 +41,12 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0)
 [node name="Door" parent="." instance=ExtResource("3_govea")]
 transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, 1.5, 0.4, 0)
 NextScene = "uid://diqa1kakonkag"
+
+[node name="test_npc" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 0, 0)
+script = ExtResource("4_1wsk7")
+
+[node name="InteractComponent" parent="test_npc" instance=ExtResource("4_upw7i")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="test_npc/InteractComponent"]
+shape = SubResource("BoxShape3D_1wsk7")
