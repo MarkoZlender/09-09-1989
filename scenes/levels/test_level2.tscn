@@ -33,7 +33,7 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38, 0)
 
 [node name="Door" parent="." groups=["exits"] instance=ExtResource("5_gpx4h")]
-transform = Transform3D(-8.74228e-09, 0, -0.2, 0, 0.2, 0, 0.2, 0, -8.74228e-09, -2.45375, 0.4, -0.428611)
+transform = Transform3D(2.62268e-08, 0, 0.2, 0, 0.2, 0, -0.2, 0, 2.62268e-08, -2.45375, 0.4, -0.428611)
 next_scene = "uid://bu5oa038m67wd"
 next_position_marker = ExtResource("4_yjesi")
 
