@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://bu5oa038m67wd"]
+[gd_scene load_steps=15 format=3 uid="uid://bu5oa038m67wd"]
 
 [ext_resource type="Texture2D" uid="uid://bv16itb8q58pc" path="res://assets/textures/Dark/texture_01.png" id="1_4uqmx"]
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="2_rkgaf"]
 [ext_resource type="PackedScene" uid="uid://47b6ywwy1olr" path="res://scenes/components/load_level_component.tscn" id="3_fr1um"]
 [ext_resource type="PackedScene" uid="uid://bm3l5td4ucfyf" path="res://scenes/interaction/interactables/save_point.tscn" id="4_v45ci"]
 [ext_resource type="PackedScene" uid="uid://b065twii5uo1m" path="res://scenes/environment/objects/door.tscn" id="5_48ne7"]
+[ext_resource type="PackedScene" uid="uid://b8rtwryepqr5w" path="res://scenes/components/interact_component.tscn" id="6_6xh4u"]
+[ext_resource type="Script" uid="uid://xdwl81gckf2u" path="res://scripts/entities/test_npc.gd" id="6_cyt5c"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtgnm"]
 albedo_texture = ExtResource("1_4uqmx")
@@ -18,6 +20,16 @@ sky_material = SubResource("ProceduralSkyMaterial_fr1um")
 [sub_resource type="Environment" id="Environment_48ne7"]
 background_mode = 2
 sky = SubResource("Sky_v45ci")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cyt5c"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7x1jh"]
+size = Vector3(0.1, 0.5, 0.1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_hfwtw"]
+radius = 0.09
+height = 0.5
 
 [node name="TestLevel" type="Node3D"]
 
@@ -45,3 +57,19 @@ environment = SubResource("Environment_48ne7")
 [node name="LoadLevelComponent" parent="." node_paths=PackedStringArray("scene_root") instance=ExtResource("3_fr1um")]
 scene_root = NodePath("..")
 debug_mode = true
+
+[node name="TestNpc" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.28836, 0.357312, 0)
+script = ExtResource("6_cyt5c")
+
+[node name="InteractComponent" parent="TestNpc" instance=ExtResource("6_6xh4u")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestNpc/InteractComponent"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201517, -0.00721937, -0.00832126)
+shape = SubResource("BoxShape3D_cyt5c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestNpc"]
+shape = SubResource("BoxShape3D_7x1jh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestNpc"]
+mesh = SubResource("CapsuleMesh_hfwtw")
