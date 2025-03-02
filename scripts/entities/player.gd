@@ -11,6 +11,7 @@ var _last_direction: Vector3 = Vector3.ZERO
 
 
 func move(delta: float) -> void:
+	# apply gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
