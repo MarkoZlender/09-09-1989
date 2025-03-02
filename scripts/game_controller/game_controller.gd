@@ -13,6 +13,7 @@ var current_3d_scene: Node3D
 var current_2d_scene: Node2D
 var current_gui_scene: Control
 
+# spawn point in the next scene
 var next_position_marker: String = ""
 
 var new_3d_scene: Node3D
