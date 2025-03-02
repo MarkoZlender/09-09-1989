@@ -9,5 +9,5 @@ func _ready() -> void:
 
 
 func _on_interact() -> void:
-	await Global.game_controller.change_gui_scene(_save_point_slot_selection_scene)
+	Global.game_controller.change_gui_scene(_save_point_slot_selection_scene)
 	get_tree().paused = true
