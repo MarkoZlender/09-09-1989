@@ -1,6 +1,6 @@
 [gd_scene load_steps=44 format=3 uid="uid://ds0d7p7idbuc4"]
 
-[ext_resource type="Texture2D" uid="uid://ocafxyc2n38q" path="res://assets/sprites/characters.png" id="1_h27i2"]
+[ext_resource type="Texture2D" uid="uid://cqtrs57r5l8b5" path="res://assets/sprites/characters.png" id="1_h27i2"]
 [ext_resource type="Script" uid="uid://1uia1xe5nmrj" path="res://scripts/entities/player.gd" id="1_mfpxk"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bg31c0p3ncbjc" path="res://assets/animations/player_run_blend.tres" id="3_ovmmi"]
 [ext_resource type="Script" uid="uid://bqnr5hyceu623" path="res://addons/godot_state_charts/state_chart.gd" id="4_ss7kx"]
