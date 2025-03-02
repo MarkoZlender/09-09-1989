@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cyxe4lbffpk6s" path="res://scripts/interaction/interactables/save_point.gd" id="1_x2xn3"]
 [ext_resource type="PackedScene" uid="uid://b8rtwryepqr5w" path="res://scenes/components/interact_component.tscn" id="2_h20tt"]
-[ext_resource type="Texture2D" uid="uid://cgwx50d3vpt27" path="res://assets/textures/Green/texture_04.png" id="2_rxin1"]
+[ext_resource type="Texture2D" uid="uid://6h6f4qinmic4" path="res://assets/textures/Green/texture_04.png" id="2_rxin1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bjpdj"]
 albedo_texture = ExtResource("2_rxin1")

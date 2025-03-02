@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bu5oa038m67wd"]
 
-[ext_resource type="Texture2D" uid="uid://c6pyep1cusmnn" path="res://assets/textures/Dark/texture_01.png" id="1_4uqmx"]
+[ext_resource type="Texture2D" uid="uid://bv16itb8q58pc" path="res://assets/textures/Dark/texture_01.png" id="1_4uqmx"]
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="2_rkgaf"]
 [ext_resource type="PackedScene" uid="uid://47b6ywwy1olr" path="res://scenes/components/load_level_component.tscn" id="3_fr1um"]
 [ext_resource type="PackedScene" uid="uid://bm3l5td4ucfyf" path="res://scenes/interaction/interactables/save_point.tscn" id="4_v45ci"]

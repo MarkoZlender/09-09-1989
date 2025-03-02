@@ -1,6 +1,6 @@
 [gd_scene load_steps=44 format=3 uid="uid://ds0d7p7idbuc4"]
 
-[ext_resource type="Texture2D" uid="uid://bkwystcuhg33w" path="res://assets/sprites/characters.png" id="1_h27i2"]
+[ext_resource type="Texture2D" uid="uid://ocafxyc2n38q" path="res://assets/sprites/characters.png" id="1_h27i2"]
 [ext_resource type="Script" uid="uid://1uia1xe5nmrj" path="res://scripts/entities/player.gd" id="1_mfpxk"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bg31c0p3ncbjc" path="res://assets/animations/player_run_blend.tres" id="3_ovmmi"]
 [ext_resource type="Script" uid="uid://bqnr5hyceu623" path="res://addons/godot_state_charts/state_chart.gd" id="4_ss7kx"]
@@ -287,6 +287,7 @@ transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 2.40818
 fov = 45.0
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 tree_root = SubResource("AnimationNodeStateMachine_yqx8p")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
@@ -340,8 +341,13 @@ script = ExtResource("8_dnykm")
 script = ExtResource("9_c5rqy")
 
 [node name="StateChartDebugger" parent="." instance=ExtResource("10_b6tgf")]
-offset_right = -1368.0
-offset_bottom = -511.0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 476.0
+offset_bottom = 513.0
+grow_horizontal = 1
+grow_vertical = 1
 initial_node_to_watch = NodePath("../StateChart")
 
 [connection signal="state_physics_processing" from="StateChart/Root/Idle" to="StatesLogic/Idle" method="_on_idle_state_physics_processing"]

@@ -48,6 +48,12 @@ player=""
 
 theme/custom="res://assets/themes/ui_theme.tres"
 
+[importer_defaults]
+
+texture={
+&"detect_3d/compress_to": 0
+}
+
 [input]
 
 ui_accept={
