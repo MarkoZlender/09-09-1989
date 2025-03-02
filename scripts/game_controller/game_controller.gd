@@ -13,19 +13,23 @@ var current_3d_scene: Node3D
 var current_2d_scene: Node2D
 var current_gui_scene: Control
 
+var next_position_marker: String = ""
+
 var new_3d_scene: Node3D
 
 func _ready() -> void:
-	set_process(false)
 	Global.game_controller = self
 	#%InventoryItemList.inventory = Global.inventory
 	#%CtrlInventory.inventory = Global.inventory
 	#%CtrlInventory.grab_focus()
 	# check if start scene is in res://scenes/ui or not and change scene accordingly
+	print("Start scene path:", start_scene)
+
 	if start_scene.find("res://scenes/ui") == -1:
-		change_3d_scene(start_scene)
+		change_gui_scene(start_scene, false, false, false)
 	else:
 		change_gui_scene(start_scene, false, false, false)
+
 
 func change_gui_scene(
 		new_scene: String,

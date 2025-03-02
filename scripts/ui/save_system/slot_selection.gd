@@ -2,6 +2,8 @@ class_name SlotSelection extends Control
 
 @export var show_empty_slots: bool = true
 
+var overwritable: bool = false
+
 @onready var _vslot_container: VBoxContainer = %VSlotContainer
 @onready var _slot_buttons: Array[Node] = []
 @onready var _warning_dialog: Panel = %WarningDialog
@@ -56,6 +58,7 @@ func _refresh_slots() -> void:
 
 func _on_slot_button_pressed(slot: int) -> void:
 	_menu_cursor.freeze()
+	_warning_dialog.set_label_text(false)
 	Global.save_manager.current_save_slot = slot
 	if Global.save_manager.get_current_level(slot) == "":
 		# start new game in empty slot
@@ -65,6 +68,7 @@ func _on_slot_button_pressed(slot: int) -> void:
 		Global.game_controller.change_3d_scene(Global.save_manager.get_current_level(slot))
 	else:
 		printerr("SlotSelection: _on_slot_button_pressed: invalid save file")
+
 
 func _on_confirm_delete(delete: bool) -> void:
 	if delete:

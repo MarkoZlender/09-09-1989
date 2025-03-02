@@ -5,6 +5,7 @@ const SAVE_DIR: String = "user://saves/"
 const SAVE_FILE_NAMES: Array = ["save_slot_0.json", "save_slot_1.json", "save_slot_2.json"]
 
 var current_save_slot: int = 0
+var fresh_load: bool = true
 
 func _ready() -> void:
 	Global.save_manager = self
@@ -133,7 +134,7 @@ func save_game(slot: int) -> void:
 	else:
 		printerr("Failed to open save file: ", save_file_path)
 
-func load_game(slot: int) -> void:
+func load_game(slot: int, save_point: bool) -> void:
 	var save_file_path: String = get_save_file_path(slot)
 	var json_string: String = read_existing_file(save_file_path)
 
@@ -156,6 +157,11 @@ func load_game(slot: int) -> void:
 		return
 
 	var save_nodes: Array[Node] = get_tree().get_nodes_in_group("savable")
+	print("save_nodes: ", save_nodes)
+	if !save_point:
+		for node: Node in save_nodes:
+			if node.name == "Player":
+				save_nodes.erase(node)
 	revert_and_reload_savable_nodes(save_nodes, save_data["level_data"][current_level_name])
 	# inventory deserialization
 	if save_data.has("inventory"):
