@@ -1,6 +1,6 @@
-[gd_scene load_steps=44 format=3 uid="uid://ds0d7p7idbuc4"]
+[gd_scene load_steps=45 format=3 uid="uid://ds0d7p7idbuc4"]
 
-[ext_resource type="Texture2D" uid="uid://cqtrs57r5l8b5" path="res://assets/sprites/characters.png" id="1_h27i2"]
+[ext_resource type="Texture2D" uid="uid://ocafxyc2n38q" path="res://assets/sprites/characters.png" id="1_h27i2"]
 [ext_resource type="Script" uid="uid://1uia1xe5nmrj" path="res://scripts/entities/player.gd" id="1_mfpxk"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bg31c0p3ncbjc" path="res://assets/animations/player_run_blend.tres" id="3_ovmmi"]
 [ext_resource type="Script" uid="uid://bqnr5hyceu623" path="res://addons/godot_state_charts/state_chart.gd" id="4_ss7kx"]
@@ -13,6 +13,11 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sxi1g"]
 size = Vector3(0.2, 0.2, 0.2)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_b6tgf"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 4.27
+dof_blur_amount = 0.15
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_456sy"]
 animation = &"idle_up"
@@ -283,8 +288,9 @@ billboard = 1
 texture_filter = 0
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 2.40818, 1.38514)
-fov = 45.0
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.40818, 2.38514)
+attributes = SubResource("CameraAttributesPractical_b6tgf")
+fov = 37.8493
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false

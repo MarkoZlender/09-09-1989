@@ -1,13 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://pfrlin6rnx1l"]
+[gd_scene load_steps=7 format=3 uid="uid://pfrlin6rnx1l"]
 
 [ext_resource type="PackedScene" uid="uid://b8rtwryepqr5w" path="res://scenes/components/interact_component.tscn" id="1_bf4sv"]
 [ext_resource type="Script" uid="uid://7cotxiac6nig" path="res://scripts/interaction/interactables/test_cube.gd" id="1_fxgoe"]
-[ext_resource type="Texture2D" uid="uid://w6r6y18ul7iv" path="res://assets/textures/prototype_textures/Orange/texture_02.png" id="2_32186"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fxgoe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o44qq"]
-albedo_texture = ExtResource("2_32186")
 
 [sub_resource type="BoxMesh" id="BoxMesh_76smg"]
 material = SubResource("StandardMaterial3D_o44qq")
