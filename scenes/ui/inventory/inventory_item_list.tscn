@@ -9,8 +9,12 @@
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1241.0
+offset_top = 80.0
+offset_bottom = -141.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 8
 script = ExtResource("1_rjo4w")
 
 [node name="MarginContainer" type="MarginContainer" parent="InventoryItemList"]
@@ -34,3 +38,4 @@ theme_override_constants/separation = 20
 [node name="MenuCursor" parent="InventoryItemList" instance=ExtResource("3_84ha7")]
 layout_mode = 0
 menu_parent_path = NodePath("../MarginContainer/VContainer")
+cursor_offset = Vector2(-4, 0)

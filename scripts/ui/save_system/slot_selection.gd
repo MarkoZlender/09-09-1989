@@ -57,6 +57,10 @@ func _refresh_slots() -> void:
 
 
 func _on_slot_button_pressed(slot: int) -> void:
+	# disconnect and disable all slot buttons
+	for slot_button: Node in _slot_buttons:
+		slot_button.disconnect("slot_button_pressed", _on_slot_button_pressed)
+		slot_button.disabled = true
 	_menu_cursor.freeze()
 	_warning_dialog.set_label_text(false)
 	Global.save_manager.current_save_slot = slot

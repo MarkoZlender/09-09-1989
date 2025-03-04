@@ -11,6 +11,14 @@ var _last_direction: Vector3 = Vector3.ZERO
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("inventory"):
+		if get_node_or_null("InventoryItemList") == null:
+			_add_inventory()
+		else:
+			get_node("InventoryItemList").queue_free()
+			
+		
 func move(delta: float) -> void:
 	# apply gravity
 	if not is_on_floor():
@@ -68,6 +76,12 @@ func animate_input_animation_tree() -> void:
 
 	animation_tree.set("parameters/Run/blend_position", last_facing_direction)
 	animation_tree.set("parameters/Idle/blend_position", last_facing_direction)
+
+func _add_inventory() -> void:
+	var loaded_resource: Resource = load("res://scenes/ui/inventory/inventory_item_list.tscn")
+	var instance: Node = loaded_resource.instantiate()
+	self.add_child(instance)
+
 
 func save() -> Dictionary:
 	var save_data: Dictionary = {

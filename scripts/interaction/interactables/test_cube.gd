@@ -40,7 +40,10 @@ func save() -> Dictionary:
 
 func load(data: Dictionary) -> void:
 	if data["picked_up"]:
-		queue_free()
+		visible = false
+		interact_collision.disabled = true
+		body_collision.disabled = true
+		picked_up = true
 	else:
 		global_position = Vector3(data["pos_x"], data["pos_y"], data["pos_z"])
 		rotation = Vector3(data["rot_x"], data["rot_y"], data["rot_z"])

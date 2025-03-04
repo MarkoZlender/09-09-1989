@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bu5oa038m67wd"]
+[gd_scene load_steps=20 format=3 uid="uid://bu5oa038m67wd"]
 
 [ext_resource type="Texture2D" uid="uid://bv16itb8q58pc" path="res://assets/textures/Dark/texture_01.png" id="1_4uqmx"]
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="2_rkgaf"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bb1hhoy3hnir0" path="res://scenes/levels/markers/test_level_2_west_1.tscn" id="5_hfwtw"]
 [ext_resource type="PackedScene" uid="uid://b8rtwryepqr5w" path="res://scenes/components/interact_component.tscn" id="6_6xh4u"]
 [ext_resource type="Script" uid="uid://xdwl81gckf2u" path="res://scripts/entities/test_npc.gd" id="6_cyt5c"]
+[ext_resource type="PackedScene" uid="uid://pfrlin6rnx1l" path="res://scenes/interaction/interactables/test_cube.tscn" id="10_2mu0v"]
+[ext_resource type="Script" uid="uid://d1q4wl87besgj" path="res://scripts/data/item_data.gd" id="10_jmx14"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jtgnm"]
 albedo_texture = ExtResource("1_4uqmx")
@@ -23,6 +25,12 @@ size = Vector3(0.1, 0.5, 0.1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hfwtw"]
 radius = 0.09
 height = 0.5
+
+[sub_resource type="Resource" id="Resource_eaa0b"]
+script = ExtResource("10_jmx14")
+name = "Item"
+description = "An item"
+metadata/_custom_type_script = "uid://d1q4wl87besgj"
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_fr1um"]
 
@@ -73,6 +81,10 @@ shape = SubResource("BoxShape3D_7x1jh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestNpc"]
 mesh = SubResource("CapsuleMesh_hfwtw")
+
+[node name="TestCube" parent="." groups=["savable"] instance=ExtResource("10_2mu0v")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.30889, 0.364059, -2.2346)
+item_data_for_cube = SubResource("Resource_eaa0b")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_48ne7")
