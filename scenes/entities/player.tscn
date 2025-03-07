@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://ds0d7p7idbuc4"]
+[gd_scene load_steps=45 format=3 uid="uid://ds0d7p7idbuc4"]
 
 [ext_resource type="Texture2D" uid="uid://ocafxyc2n38q" path="res://assets/sprites/characters.png" id="1_h27i2"]
 [ext_resource type="Script" uid="uid://1uia1xe5nmrj" path="res://scripts/entities/player.gd" id="1_mfpxk"]
@@ -14,11 +14,6 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sxi1g"]
 size = Vector3(0.2, 0.2, 0.2)
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_b6tgf"]
-dof_blur_far_enabled = true
-dof_blur_far_distance = 4.27
-dof_blur_amount = 0.15
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_456sy"]
 animation = &"idle_up"
@@ -287,13 +282,15 @@ shape = SubResource("BoxShape3D_sxi1g")
 [node name="Animation" type="Sprite3D" parent="."]
 billboard = 1
 texture_filter = 0
+region_rect = Rect2(0, 80, 16, 16)
 
 [node name="CameraGimbal" type="Node3D" parent="."]
 script = ExtResource("2_73kkf")
 
-[node name="Camera3D" type="Camera3D" parent="CameraGimbal"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.40818, 2.38514)
-attributes = SubResource("CameraAttributesPractical_b6tgf")
+[node name="InnerGimbal" type="Node3D" parent="CameraGimbal"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2.9872, 4.79483)
+
+[node name="Camera3D" type="Camera3D" parent="CameraGimbal/InnerGimbal"]
 fov = 37.8493
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
