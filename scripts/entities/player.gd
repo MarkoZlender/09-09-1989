@@ -10,6 +10,7 @@ var _last_direction: Vector3 = Vector3.ZERO
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
+@onready var _camera_gimbal: Node3D = $CameraGimbal
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -17,15 +18,16 @@ func _input(event: InputEvent) -> void:
 			_add_inventory()
 		else:
 			get_node("InventoryItemList").queue_free()
-			
 		
 func move(delta: float) -> void:
 	# apply gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
 	var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
-	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var camera_basis: Basis = _camera_gimbal.global_transform.basis
+	var adjusted_direction: Vector3 = (camera_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+	direction = (transform.basis * Vector3(adjusted_direction.x, 0, adjusted_direction.z)).normalized()
 	
 	if direction:
 		is_moving = true

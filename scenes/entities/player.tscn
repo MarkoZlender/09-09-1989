@@ -1,7 +1,8 @@
-[gd_scene load_steps=45 format=3 uid="uid://ds0d7p7idbuc4"]
+[gd_scene load_steps=46 format=3 uid="uid://ds0d7p7idbuc4"]
 
 [ext_resource type="Texture2D" uid="uid://ocafxyc2n38q" path="res://assets/sprites/characters.png" id="1_h27i2"]
 [ext_resource type="Script" uid="uid://1uia1xe5nmrj" path="res://scripts/entities/player.gd" id="1_mfpxk"]
+[ext_resource type="Script" uid="uid://r07fqxyrf5xi" path="res://scripts/utility_scripts/camera_gimbal.gd" id="2_73kkf"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bg31c0p3ncbjc" path="res://assets/animations/player_run_blend.tres" id="3_ovmmi"]
 [ext_resource type="Script" uid="uid://bqnr5hyceu623" path="res://addons/godot_state_charts/state_chart.gd" id="4_ss7kx"]
 [ext_resource type="Script" uid="uid://bt4iqisaqggy8" path="res://addons/godot_state_charts/compound_state.gd" id="5_dnykm"]
@@ -287,7 +288,10 @@ shape = SubResource("BoxShape3D_sxi1g")
 billboard = 1
 texture_filter = 0
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="CameraGimbal" type="Node3D" parent="."]
+script = ExtResource("2_73kkf")
+
+[node name="Camera3D" type="Camera3D" parent="CameraGimbal"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1.40818, 2.38514)
 attributes = SubResource("CameraAttributesPractical_b6tgf")
 fov = 37.8493

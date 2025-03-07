@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cd3fm13s6uxk6"]
+[gd_scene load_steps=10 format=3 uid="uid://cd3fm13s6uxk6"]
 
 [ext_resource type="Script" uid="uid://c71x4andfxukw" path="res://scripts/globals/global.gd" id="1_ef01j"]
 [ext_resource type="PackedScene" uid="uid://jlpql0vbg6mg" path="res://scenes/globals/save_manager.tscn" id="2_2r8wd"]
@@ -8,8 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://pv0dh6qajxt5" path="res://scenes/globals/signal_bus.tscn" id="6_r8nug"]
 [ext_resource type="PackedScene" uid="uid://21qamqnj383" path="res://scenes/globals/audio_player.tscn" id="7_0k02b"]
 [ext_resource type="JSON" path="res://resources/prototree.json" id="7_flclb"]
-[ext_resource type="Script" uid="uid://dkdltovqr6wu0" path="res://addons/gloot/core/item_slot.gd" id="8_0734y"]
-[ext_resource type="Script" uid="uid://br7aikn66e45" path="res://addons/gloot/ui/ctrl_item_slot.gd" id="8_n3aw3"]
+[ext_resource type="Script" uid="uid://cixnaubr0q3gj" path="res://addons/gloot/core/constraints/item_count_constraint.gd" id="11_uijrs"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_ef01j")
@@ -28,18 +27,17 @@ script = ExtResource("1_ef01j")
 script = ExtResource("6_fmdso")
 protoset = ExtResource("7_flclb")
 _serialized_format = {
+"constraints": {
+"res://addons/gloot/core/constraints/item_count_constraint.gd": {
+"data": {
+"capacity": 2
+},
+"name": &"ItemCountConstraint"
+}
+},
 "items": [{
 "protoset": "res://resources/prototree.json",
 "prototype_id": "sword"
-}, {
-"protoset": "res://resources/prototree.json",
-"prototype_id": "sword"
-}, {
-"protoset": "res://resources/prototree.json",
-"prototype_id": "sword"
-}, {
-"protoset": "res://resources/prototree.json",
-"prototype_id": "potion"
 }, {
 "protoset": "res://resources/prototree.json",
 "prototype_id": "potion"
@@ -48,16 +46,6 @@ _serialized_format = {
 "protoset": "res://resources/prototree.json"
 }
 
-[node name="CtrlItemSlot" type="Control" parent="Inventory" node_paths=PackedStringArray("item_slot")]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 338.0
-offset_bottom = 112.0
-script = ExtResource("8_n3aw3")
-item_slot = NodePath("../WeaponSlot")
-icon_stretch_mode = 4
-
-[node name="WeaponSlot" type="Node" parent="Inventory"]
-script = ExtResource("8_0734y")
-protoset = ExtResource("7_flclb")
+[node name="ItemCountConstraint" type="Node" parent="Inventory"]
+script = ExtResource("11_uijrs")
+capacity = 2
