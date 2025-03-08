@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cd3fm13s6uxk6"]
+[gd_scene load_steps=9 format=3 uid="uid://cd3fm13s6uxk6"]
 
 [ext_resource type="Script" uid="uid://c71x4andfxukw" path="res://scripts/globals/global.gd" id="1_ef01j"]
 [ext_resource type="PackedScene" uid="uid://jlpql0vbg6mg" path="res://scenes/globals/save_manager.tscn" id="2_2r8wd"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://pv0dh6qajxt5" path="res://scenes/globals/signal_bus.tscn" id="6_r8nug"]
 [ext_resource type="PackedScene" uid="uid://21qamqnj383" path="res://scenes/globals/audio_player.tscn" id="7_0k02b"]
 [ext_resource type="JSON" path="res://resources/prototree.json" id="7_flclb"]
-[ext_resource type="Script" uid="uid://cixnaubr0q3gj" path="res://addons/gloot/core/constraints/item_count_constraint.gd" id="11_uijrs"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_ef01j")
@@ -45,7 +44,3 @@ _serialized_format = {
 "node_name": "Inventory",
 "protoset": "res://resources/prototree.json"
 }
-
-[node name="ItemCountConstraint" type="Node" parent="Inventory"]
-script = ExtResource("11_uijrs")
-capacity = 2

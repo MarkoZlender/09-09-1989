@@ -20,11 +20,8 @@ var new_3d_scene: Node3D
 
 func _ready() -> void:
 	Global.game_controller = self
-	#%InventoryItemList.inventory = Global.inventory
-	#%CtrlInventory.inventory = Global.inventory
-	#%CtrlInventory.grab_focus()
-	# check if start scene is in res://scenes/ui or not and change scene accordingly
-	print("Start scene path:", start_scene)
+
+	Global.signal_bus.level_changed.connect(_on_level_changed)
 
 	if start_scene.find("res://scenes/ui") == -1:
 		change_gui_scene(start_scene, false, false, false)
@@ -147,3 +144,8 @@ func change_2d_scene(
 	world_2d.add_child(new)
 	current_2d_scene = new
 	transition_controller.transition(transition_in, seconds)
+
+func _on_level_changed() -> void:
+	for node: Node in gui.get_children():
+		if node.name != "TransitionController":
+			node.queue_free()

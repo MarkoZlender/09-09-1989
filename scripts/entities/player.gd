@@ -14,10 +14,10 @@ var _last_direction: Vector3 = Vector3.ZERO
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
-		if get_node_or_null("InventoryItemList") == null:
+		if Global.game_controller.get_node_or_null("GUI/InventoryItemList") == null:
 			_add_inventory()
 		else:
-			get_node("InventoryItemList").queue_free()
+			Global.game_controller.get_node("GUI/InventoryItemList").queue_free()
 		
 func move(delta: float) -> void:
 	# apply gravity
@@ -104,7 +104,9 @@ func animate_input_animation_tree() -> void:
 func _add_inventory() -> void:
 	var loaded_resource: Resource = load("res://scenes/ui/inventory/inventory_item_list.tscn")
 	var instance: Node = loaded_resource.instantiate()
-	self.add_child(instance)
+	Global.game_controller.get_node("GUI").add_child(instance)
+	Global.game_controller.get_node("GUI").move_child(instance, 0)
+
 
 
 func save() -> Dictionary:
