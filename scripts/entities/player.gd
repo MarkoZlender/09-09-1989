@@ -42,33 +42,55 @@ func move(delta: float) -> void:
 	animate_input()
 
 func animate_input() -> void: # fallback method until they fix animation tree errors
+	var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
 	
-	var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down");
-	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if input_dir != Vector2.ZERO:
+		_last_direction = Vector3(input_dir.x, 0, input_dir.y)
 
-	if direction != Vector3.ZERO:
-	
-		_last_direction = direction;
-
-		if direction.x > 0:
-			_animation_player.play("run_right");
-		elif direction.x < 0:
-			_animation_player.play("run_left");
-		elif direction.z > 0:
-			_animation_player.play("run_down");
-		elif direction.z < 0:
-			_animation_player.play("run_up");
+		# Determine the animation based on the input direction
+		if input_dir.x > 0:
+			_animation_player.play("run_right")
+		elif input_dir.x < 0:
+			_animation_player.play("run_left")
+		elif input_dir.y > 0:
+			_animation_player.play("run_down")
+		elif input_dir.y < 0:
+			_animation_player.play("run_up")
 	else:
 		if _last_direction.x > 0:
-			_animation_player.play("idle_right");
+			_animation_player.play("idle_right")
 		elif _last_direction.x < 0:
-			_animation_player.play("idle_left");
+			_animation_player.play("idle_left")
 		elif _last_direction.z > 0:
-			_animation_player.play("idle_down");
+			_animation_player.play("idle_down")
 		elif _last_direction.z < 0:
-			_animation_player.play("idle_up");
+			_animation_player.play("idle_up")
 		else:
-			_animation_player.play("idle_down");
+			_animation_player.play("idle_down")
+
+	# if direction != Vector3.ZERO:
+	
+	# 	_last_direction = direction;
+
+	# 	if direction.x > 0:
+	# 		_animation_player.play("run_right");
+	# 	elif direction.x < 0:
+	# 		_animation_player.play("run_left");
+	# 	elif direction.z > 0:
+	# 		_animation_player.play("run_down");
+	# 	elif direction.z < 0:
+	# 		_animation_player.play("run_up");
+	# else:
+	# 	if _last_direction.x > 0:
+	# 		_animation_player.play("idle_right");
+	# 	elif _last_direction.x < 0:
+	# 		_animation_player.play("idle_left");
+	# 	elif _last_direction.z > 0:
+	# 		_animation_player.play("idle_down");
+	# 	elif _last_direction.z < 0:
+	# 		_animation_player.play("idle_up");
+	# 	else:
+	# 		_animation_player.play("idle_down");
 
 func animate_input_animation_tree() -> void:
 	var idle: bool = !velocity

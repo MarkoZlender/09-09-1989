@@ -54,3 +54,4 @@ environment = SubResource("Environment_48ne7")
 
 [node name="LoadLevelComponent" parent="." node_paths=PackedStringArray("scene_root") instance=ExtResource("4_qd4ae")]
 scene_root = NodePath("..")
+debug_mode = true

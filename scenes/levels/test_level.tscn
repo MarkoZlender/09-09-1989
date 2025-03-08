@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bu5oa038m67wd"]
+[gd_scene load_steps=20 format=3 uid="uid://bu5oa038m67wd"]
 
 [ext_resource type="Texture2D" uid="uid://bv16itb8q58pc" path="res://assets/textures/Dark/texture_01.png" id="1_4uqmx"]
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="2_rkgaf"]
@@ -25,10 +25,6 @@ size = Vector3(0.1, 0.5, 0.1)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_hfwtw"]
 radius = 0.09
 height = 0.5
-
-[sub_resource type="Environment" id="Environment_jmx14"]
-background_mode = 1
-adjustment_enabled = true
 
 [sub_resource type="Resource" id="Resource_eaa0b"]
 script = ExtResource("10_jmx14")
@@ -85,11 +81,6 @@ shape = SubResource("BoxShape3D_7x1jh")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="TestNpc"]
 mesh = SubResource("CapsuleMesh_hfwtw")
-
-[node name="Camera3D" type="Camera3D" parent="TestNpc"]
-transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 0.764322, 0.195346, 0.00466514)
-environment = SubResource("Environment_jmx14")
-fov = 45.0
 
 [node name="TestCube" parent="." groups=["savable"] instance=ExtResource("10_2mu0v")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.30889, 0.364059, -2.2346)
