@@ -107,8 +107,6 @@ func _add_inventory() -> void:
 	Global.game_controller.get_node("GUI").add_child(instance)
 	Global.game_controller.get_node("GUI").move_child(instance, 0)
 
-
-
 func save() -> Dictionary:
 	var save_data: Dictionary = {
 		"filename" : get_scene_file_path(),

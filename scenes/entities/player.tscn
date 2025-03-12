@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://ds0d7p7idbuc4"]
+[gd_scene load_steps=46 format=3 uid="uid://ds0d7p7idbuc4"]
 
 [ext_resource type="Texture2D" uid="uid://ocafxyc2n38q" path="res://assets/sprites/characters.png" id="1_h27i2"]
 [ext_resource type="Script" uid="uid://1uia1xe5nmrj" path="res://scripts/entities/player.gd" id="1_mfpxk"]
@@ -11,9 +11,10 @@
 [ext_resource type="Script" uid="uid://cw43pgy3x2a52" path="res://scripts/entities/player_states/idle.gd" id="8_dnykm"]
 [ext_resource type="Script" uid="uid://c7whpml006e7v" path="res://scripts/entities/player_states/moving.gd" id="9_c5rqy"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="10_b6tgf"]
+[ext_resource type="PackedScene" uid="uid://jkbxv18ld1sf" path="res://scenes/vfx/fire.tscn" id="12_n5sgd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sxi1g"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.2, 0.2, 0.1)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_456sy"]
 animation = &"idle_up"
@@ -280,7 +281,9 @@ SPEED = 2.0
 shape = SubResource("BoxShape3D_sxi1g")
 
 [node name="Animation" type="Sprite3D" parent="."]
+modulate = Color(0.5, 0.5, 0.5, 1)
 billboard = 1
+shaded = true
 texture_filter = 0
 region_rect = Rect2(0, 80, 16, 16)
 
@@ -288,13 +291,14 @@ region_rect = Rect2(0, 80, 16, 16)
 script = ExtResource("2_73kkf")
 
 [node name="InnerGimbal" type="Node3D" parent="CameraGimbal"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2.9872, 4.79483)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2.13833, 3.08009)
 
 [node name="Camera3D" type="Camera3D" parent="CameraGimbal/InnerGimbal"]
-fov = 37.8493
+fov = 29.1
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
+reset_on_save = false
 tree_root = SubResource("AnimationNodeStateMachine_yqx8p")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
@@ -305,7 +309,6 @@ parameters/Run/blend_position = Vector2(-0.089978, -0.163205)
 libraries = {
 &"": SubResource("AnimationLibrary_1qls1")
 }
-autoplay = "idle_down"
 
 [node name="StateChart" type="Node" parent="."]
 unique_name_in_owner = true
@@ -357,6 +360,12 @@ offset_bottom = 513.0
 grow_horizontal = 1
 grow_vertical = 1
 initial_node_to_watch = NodePath("../StateChart")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+current = true
+
+[node name="Fire" parent="." instance=ExtResource("12_n5sgd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.117167, 0.160541, 0)
 
 [connection signal="state_physics_processing" from="StateChart/Root/Idle" to="StatesLogic/Idle" method="_on_idle_state_physics_processing"]
 [connection signal="state_physics_processing" from="StateChart/Root/Moving" to="StatesLogic/Moving" method="_on_moving_state_physics_processing"]

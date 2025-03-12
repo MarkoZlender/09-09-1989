@@ -26,14 +26,6 @@ script = ExtResource("1_ef01j")
 script = ExtResource("6_fmdso")
 protoset = ExtResource("7_flclb")
 _serialized_format = {
-"constraints": {
-"res://addons/gloot/core/constraints/item_count_constraint.gd": {
-"data": {
-"capacity": 2
-},
-"name": &"ItemCountConstraint"
-}
-},
 "items": [{
 "protoset": "res://resources/prototree.json",
 "prototype_id": "sword"

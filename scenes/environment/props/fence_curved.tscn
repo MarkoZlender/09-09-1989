@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://d26rns47amibd"]
+
+[ext_resource type="PackedScene" uid="uid://cgmjvah5juwqg" path="res://assets/models/props/fenceCurved.glb" id="1_8wm46"]
+
+[node name="fenceCurved2" instance=ExtResource("1_8wm46")]
