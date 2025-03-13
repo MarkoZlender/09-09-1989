@@ -7,7 +7,8 @@ signal load_progress(percent: String)
 @export var world_2d: Node2D
 @export var gui: Control
 @export var transition_controller: TransitionController
-@export_file("*.tscn") var start_scene: String = "res://scenes/ui/main_menu.tscn"
+#@export_file("*.tscn") var start_scene: String = "res://scenes/ui/main_menu.tscn"
+@export var start_scene: PackedScene
 
 var current_3d_scene: Node3D
 var current_2d_scene: Node2D
@@ -23,10 +24,10 @@ func _ready() -> void:
 
 	Global.signal_bus.level_changed.connect(_on_level_changed)
 
-	if start_scene.find("res://scenes/ui") == -1:
-		change_gui_scene(start_scene, false, false, false)
+	if start_scene.resource_path.find("res://scenes/ui") == -1:
+		change_3d_scene(start_scene.resource_path)
 	else:
-		change_gui_scene(start_scene, false, false, false)
+		change_gui_scene(start_scene.resource_path, false, false, false)
 
 
 func change_gui_scene(

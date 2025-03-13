@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="2_vly7b"]
 [ext_resource type="PackedScene" uid="uid://47b6ywwy1olr" path="res://scenes/components/load_level_component.tscn" id="4_qd4ae"]
 [ext_resource type="PackedScene" uid="uid://sxroctlwmjt5" path="res://scenes/levels/markers/test_level_east_1.tscn" id="4_yjesi"]
-[ext_resource type="PackedScene" uid="uid://b065twii5uo1m" path="res://scenes/environment/objects/door.tscn" id="5_gpx4h"]
+[ext_resource type="PackedScene" uid="uid://b065twii5uo1m" path="res://scenes/environment/objects/level_changer.tscn" id="5_gpx4h"]
 [ext_resource type="PackedScene" uid="uid://bm3l5td4ucfyf" path="res://scenes/interaction/interactables/save_point.tscn" id="5_q0jxe"]
 [ext_resource type="PackedScene" uid="uid://bb1hhoy3hnir0" path="res://scenes/levels/markers/test_level_2_west_1.tscn" id="5_vly7b"]
 
