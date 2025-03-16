@@ -8,6 +8,7 @@ func _ready() -> void:
 	await scene_root.ready
 
 	if !debug_mode:
+		get_tree().paused = false
 		if Global.save_manager.fresh_load:
 			Global.save_manager.load_game(Global.save_manager.current_save_slot, true)
 			Global.save_manager.fresh_load = false
@@ -21,5 +22,6 @@ func _ready() -> void:
 		Global.interaction_manager.player = get_tree().get_first_node_in_group("player")
 		Global.signal_bus.level_audio_loaded.emit(level_audio)
 	else:
+		get_tree().paused = false
 		Global.signal_bus.level_audio_loaded.emit(level_audio)
 		Global.interaction_manager.player = get_tree().get_first_node_in_group("player")

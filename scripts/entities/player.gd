@@ -1,12 +1,14 @@
 class_name Player 
 extends CharacterBody3D
 
-@export var SPEED: float = 5.0
+@export var SPEED: float = 1.0
+@export var rotation_controls: bool = true
 
 var direction: Vector3 = Vector3.ZERO
 var is_moving: bool = false
 var last_facing_direction: Vector2 = Vector2(0, -1)
 var _last_direction: Vector3 = Vector3.ZERO
+
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer

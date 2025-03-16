@@ -1,0 +1,111 @@
+[gd_scene load_steps=13 format=3 uid="uid://dq6fr16aesm5"]
+
+[ext_resource type="Environment" uid="uid://6fc13qeubdl1" path="res://resources/global_world_environment.tres" id="1_nqh4c"]
+[ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="2_gcjuh"]
+[ext_resource type="PackedScene" uid="uid://dwat62j4plv3j" path="res://scenes/levels/safe_house/safe_house_interior_marker.tscn" id="3_83v66"]
+[ext_resource type="PackedScene" uid="uid://bm3l5td4ucfyf" path="res://scenes/interaction/interactables/save_point.tscn" id="4_3mqjn"]
+[ext_resource type="PackedScene" uid="uid://dlh4185b0tw7r" path="res://assets/models/props/doorway.glb" id="5_77qn0"]
+[ext_resource type="PackedScene" uid="uid://47b6ywwy1olr" path="res://scenes/components/load_level_component.tscn" id="6_83v66"]
+[ext_resource type="PackedScene" uid="uid://b065twii5uo1m" path="res://scenes/environment/objects/level_changer.tscn" id="7_3mqjn"]
+[ext_resource type="PackedScene" uid="uid://blw8q7m5qvog4" path="res://scenes/levels/main_hub_village/spawn_markers/safe_house_marker.tscn" id="7_77qn0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_u8mqd"]
+size = Vector3(4, 0.1, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mvduk"]
+points = PackedVector3Array(-1.5, -0.05, -0.5, -1.5, 0.05, -0.5, 1.5, -0.05, -0.5, -1.5, -0.05, 0.5, -1.5, 0.05, 0.5, 1.5, 0.05, -0.5, 1.5, -0.05, 0.5, 1.5, 0.05, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mvduk"]
+size = Vector3(1, 0.1, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ghdk7"]
+points = PackedVector3Array(-0.5, -0.05, -0.5, -0.5, 0.05, -0.5, 0.5, -0.05, -0.5, -0.5, -0.05, 0.5, -0.5, 0.05, 0.5, 0.5, 0.05, -0.5, 0.5, -0.05, 0.5, 0.5, 0.05, 0.5)
+
+[node name="SafeHouse" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_nqh4c")
+
+[node name="Player" parent="." instance=ExtResource("2_gcjuh")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.900276, 0.15, 0)
+rotation_controls = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.434481, 1.39458)
+current = true
+fov = 55.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.537005, -0.843579, 0, 0.843579, -0.537005, 0, 0.735128, 1.01697)
+visible = false
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_u8mqd")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_mvduk")
+
+[node name="Ceiling" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00771213, 0.959809, 0)
+mesh = SubResource("BoxMesh_u8mqd")
+skeleton = NodePath("")
+
+[node name="NorthWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.450946, -0.476589)
+mesh = SubResource("BoxMesh_u8mqd")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NorthWall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NorthWall/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_mvduk")
+
+[node name="SouthWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.450946, 0.527865)
+visible = false
+mesh = SubResource("BoxMesh_u8mqd")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="SouthWall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SouthWall/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_mvduk")
+
+[node name="EastWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, -2.98023e-08, 0, 2.98023e-08, -1, 1, -4.37114e-08, -1.3027e-15, 1.484, 0.451, 0)
+mesh = SubResource("BoxMesh_mvduk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="EastWall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EastWall/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ghdk7")
+
+[node name="WestWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, -2.98023e-08, 0, 2.98023e-08, -1, 1, -4.37114e-08, -1.3027e-15, -1.18723, 0.451, -0.0588497)
+mesh = SubResource("BoxMesh_mvduk")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="WestWall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WestWall/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_ghdk7")
+
+[node name="SavePoint" parent="." instance=ExtResource("4_3mqjn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.06138, 0, -0.218019)
+
+[node name="doorway" parent="." instance=ExtResource("5_77qn0")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, -1.09899, 0.0488788, 0.177503)
+
+[node name="LoadLevelComponent" parent="." node_paths=PackedStringArray("scene_root") instance=ExtResource("6_83v66")]
+scene_root = NodePath("..")
+
+[node name="LevelChanger" parent="." groups=["exits"] instance=ExtResource("7_3mqjn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03327, 0.15, 0.0715988)
+next_scene = "uid://5stui8mohgji"
+next_position_marker = ExtResource("7_77qn0")
+
+[node name="safe_house_marker" parent="LevelChanger" instance=ExtResource("3_83v66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)

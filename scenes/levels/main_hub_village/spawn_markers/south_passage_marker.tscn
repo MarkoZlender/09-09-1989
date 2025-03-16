@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://d3cw1dte38qwr"]
+
+[node name="south_passage_marker" type="Marker3D"]
