@@ -14,6 +14,7 @@ var _last_direction: Vector3 = Vector3.ZERO
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var _animation_player: AnimationPlayer = $AnimationPlayer
 @onready var _camera_gimbal: Node3D = $CameraGimbal
+@onready var animated_sprite: AnimatedSprite3D = $AnimatedSprite3D
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -27,7 +28,7 @@ func move(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	
-	if Input.is_action_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
 	var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
@@ -47,8 +48,110 @@ func move(delta: float) -> void:
 		
 	move_and_slide()
 	animate_input()
+	animate_jump_input()
 
-func animate_input() -> void: # fallback method until they fix animation tree errors
+
+func animate_input() -> void:
+	var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
+	
+	if input_dir != Vector2.ZERO:
+		# Convert input direction to the player's local space
+		var local_direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+		_last_direction = local_direction
+
+		# Determine the animation based on the local direction
+		if local_direction.x > 0 and abs(local_direction.x) > abs(local_direction.z):
+			animated_sprite.play("run_right")
+		elif local_direction.x < 0 and abs(local_direction.x) > abs(local_direction.z):
+			animated_sprite.play("run_left")
+		elif local_direction.z > 0 and abs(local_direction.z) > abs(local_direction.x):
+			animated_sprite.play("run_back")
+		elif local_direction.z < 0 and abs(local_direction.z) > abs(local_direction.x):
+			animated_sprite.play("run_forward")
+		# Diagonal directions
+		elif local_direction.x > 0 and local_direction.z > 0:
+			animated_sprite.play("run_se")
+		elif local_direction.x < 0 and local_direction.z > 0:
+			animated_sprite.play("run_sw")
+		elif local_direction.x > 0 and local_direction.z < 0:
+			animated_sprite.play("run_ne")
+		elif local_direction.x < 0 and local_direction.z < 0:
+			animated_sprite.play("run_nw")
+	else:
+		# Idle animations based on the last direction
+		if _last_direction.x > 0 and abs(_last_direction.x) > abs(_last_direction.z):
+			animated_sprite.play("idle_right")
+		elif _last_direction.x < 0 and abs(_last_direction.x) > abs(_last_direction.z):
+			animated_sprite.play("idle_left")
+		elif _last_direction.z > 0 and abs(_last_direction.z) > abs(_last_direction.x):
+			animated_sprite.play("idle_back")
+		elif _last_direction.z < 0 and abs(_last_direction.z) > abs(_last_direction.x):
+			animated_sprite.play("idle_forward")
+		# Diagonal idle directions
+		elif _last_direction.x > 0 and _last_direction.z > 0:
+			animated_sprite.play("idle_se")
+		elif _last_direction.x < 0 and _last_direction.z > 0:
+			animated_sprite.play("idle_sw")
+		elif _last_direction.x > 0 and _last_direction.z < 0:
+			animated_sprite.play("idle_ne")
+		elif _last_direction.x < 0 and _last_direction.z < 0:
+			animated_sprite.play("idle_nw")
+		else:
+			animated_sprite.play("idle_back")
+
+func animate_jump_input() -> void:
+	# animate jump in 8 directions
+	if Input.is_action_just_pressed("jump"):
+		var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
+
+		if input_dir != Vector2.ZERO:
+			# Convert input direction to the player's local space
+			var local_direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+			_last_direction = local_direction
+
+			# Determine the animation based on the local direction
+			if local_direction.x > 0 and abs(local_direction.x) > abs(local_direction.z):
+				animated_sprite.play("jump_right")
+			elif local_direction.x < 0 and abs(local_direction.x) > abs(local_direction.z):
+				animated_sprite.play("jump_left")
+			elif local_direction.z > 0 and abs(local_direction.z) > abs(local_direction.x):
+				animated_sprite.play("jump_back")
+			elif local_direction.z < 0 and abs(local_direction.z) > abs(local_direction.x):
+				animated_sprite.play("jump_forward")
+			# Diagonal directions
+			elif local_direction.x > 0 and local_direction.z > 0:
+				animated_sprite.play("jump_se")
+			elif local_direction.x < 0 and local_direction.z > 0:
+				animated_sprite.play("jump_sw")
+			elif local_direction.x > 0 and local_direction.z < 0:
+				animated_sprite.play("jump_ne")
+			elif local_direction.x < 0 and local_direction.z < 0:
+				animated_sprite.play("jump_nw")
+		else:
+			# Idle animations based on the last direction
+			if _last_direction.x > 0 and abs(_last_direction.x) > abs(_last_direction.z):
+				animated_sprite.play("jump_right")
+			elif _last_direction.x < 0 and abs(_last_direction.x) > abs(_last_direction.z):
+				animated_sprite.play("jump_left")
+			elif _last_direction.z > 0 and abs(_last_direction.z) > abs(_last_direction.x):
+				animated_sprite.play("jump_back")
+			elif _last_direction.z < 0 and abs(_last_direction.z) > abs(_last_direction.x):
+				animated_sprite.play("jump_forward")
+			# Diagonal idle directions
+			elif _last_direction.x > 0 and _last_direction.z > 0:
+				animated_sprite.play("jump_se")
+			elif _last_direction.x < 0 and _last_direction.z > 0:
+				animated_sprite.play("jump_sw")
+			elif _last_direction.x > 0 and _last_direction.z < 0:
+				animated_sprite.play("jump_ne")
+			elif _last_direction.x < 0 and _last_direction.z < 0:
+				animated_sprite.play("jump_nw")
+			else:
+				animated_sprite.play("jump_back")
+
+func animate_input_a_player() -> void: # fallback method until they fix animation tree errors
 	var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
 	
 	if input_dir != Vector2.ZERO:
@@ -74,6 +177,7 @@ func animate_input() -> void: # fallback method until they fix animation tree er
 			_animation_player.play("idle_up")
 		else:
 			_animation_player.play("idle_down")
+
 
 	# if direction != Vector3.ZERO:
 	

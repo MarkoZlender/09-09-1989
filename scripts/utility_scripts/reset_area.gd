@@ -1,5 +1,5 @@
 extends Area3D
 
-
 func _on_body_entered(body:Node3D) -> void:
-	get_tree().call_deferred("reload_current_scene")
+	if body is Player:
+		get_tree().call_deferred("reload_current_scene")

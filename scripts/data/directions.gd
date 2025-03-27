@@ -1,2 +1,2 @@
 extends RefCounted
-enum Directions { FORWARD, BACKWARD, LEFT, RIGHT }
+enum Directions { FORWARD, BACKWARD, LEFT, RIGHT, UP, DOWN }

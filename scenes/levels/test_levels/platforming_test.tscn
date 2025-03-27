@@ -1,16 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctdr8dygo77j1"]
+[gd_scene load_steps=11 format=3 uid="uid://ctdr8dygo77j1"]
 
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="1_0tcst"]
-[ext_resource type="Script" uid="uid://c68ay7oilpfxp" path="res://scripts/environment/moving_platform.gd" id="2_dd7au"]
+[ext_resource type="PackedScene" uid="uid://b4yel28q8mccd" path="res://scenes/environment/props/moving_platform.tscn" id="2_dd7au"]
 [ext_resource type="Script" uid="uid://c4l2dq1k63b6s" path="res://scripts/utility_scripts/reset_area.gd" id="2_tf773"]
 [ext_resource type="Script" uid="uid://bt0kgh1bkc2n6" path="res://scripts/data/platform_move_step.gd" id="3_pvcxf"]
-
-[sub_resource type="Resource" id="Resource_ppqmi"]
-script = ExtResource("3_pvcxf")
-direction = 3
-distance = 5.0
-duration = 4.0
-metadata/_custom_type_script = "uid://bt0kgh1bkc2n6"
 
 [sub_resource type="Resource" id="Resource_pvcxf"]
 script = ExtResource("3_pvcxf")
@@ -19,18 +12,19 @@ distance = 10.0
 duration = 8.0
 metadata/_custom_type_script = "uid://bt0kgh1bkc2n6"
 
-[sub_resource type="Resource" id="Resource_8y4br"]
+[sub_resource type="Resource" id="Resource_ppqmi"]
 script = ExtResource("3_pvcxf")
 direction = 3
 distance = 5.0
 duration = 4.0
 metadata/_custom_type_script = "uid://bt0kgh1bkc2n6"
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0tcst"]
-size = Vector3(1, 0.2, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_tf773"]
-size = Vector3(1, 0.2, 1)
+[sub_resource type="Resource" id="Resource_8y4br"]
+script = ExtResource("3_pvcxf")
+direction = 5
+distance = 5.0
+duration = 4.0
+metadata/_custom_type_script = "uid://bt0kgh1bkc2n6"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tf773"]
 size = Vector3(20, 1, 20)
@@ -40,7 +34,7 @@ resource_name = "new_animation"
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatableBody3D")
+tracks/0/path = NodePath("MovingPlatform")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -80,24 +74,22 @@ SPEED = 1.5
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-2.18557e-08, -0.866025, 0.5, -3.78552e-08, 0.5, 0.866025, -1, 0, -4.37114e-08, 0, 2, 0)
 
-[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+[node name="MovingPlatform" parent="." instance=ExtResource("2_dd7au")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3.5)
-sync_to_physics = false
-script = ExtResource("2_dd7au")
-movement_steps = Array[Resource]([SubResource("Resource_ppqmi"), SubResource("Resource_pvcxf"), SubResource("Resource_8y4br")])
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
-shape = SubResource("BoxShape3D_0tcst")
+[node name="MovingPlatform2" parent="." instance=ExtResource("2_dd7au")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 1, -5.1)
+movement_steps = Array[ExtResource("3_pvcxf")]([SubResource("Resource_pvcxf"), SubResource("Resource_ppqmi"), SubResource("Resource_ppqmi")])
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
-mesh = SubResource("BoxMesh_tf773")
-skeleton = NodePath("../CollisionShape3D")
+[node name="MovingPlatform3" parent="." instance=ExtResource("2_dd7au")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 1, -6.5)
+movement_steps = Array[ExtResource("3_pvcxf")]([SubResource("Resource_pvcxf"), SubResource("Resource_ppqmi"), SubResource("Resource_ppqmi"), SubResource("Resource_8y4br")])
 
 [node name="ResetArea" type="Area3D" parent="."]
 script = ExtResource("2_tf773")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ResetArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.4, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.4, 0)
 shape = SubResource("BoxShape3D_tf773")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

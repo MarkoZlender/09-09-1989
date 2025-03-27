@@ -32,7 +32,7 @@ func move_platform() -> void:
 			# Update the starting position for the next step
 			start_position = target_position
 	
-	var tween = create_tween()
+	var tween: Tween = create_tween()
 	tween.set_loops()
 	tween.tween_subtween(subtween)
 
@@ -46,4 +46,9 @@ func get_movement_vector(direction: Directions) -> Vector3:
 			return -transform.basis.x
 		Directions.RIGHT:
 			return transform.basis.x
-	return Vector3.ZERO
+		Directions.UP:
+			return transform.basis.y
+		Directions.DOWN:
+			return -transform.basis.y
+		_:
+			return Vector3.ZERO
