@@ -1550,7 +1550,7 @@ animation = &"jump_left"
 animation = &"jump_sw"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_k4syd"]
-animation = &"run_se"
+animation = &"jump_se"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_760aj"]
 animation = &"jump_nw"
