@@ -76,7 +76,6 @@ size = Vector3(1, 0.2, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_0tcst")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.78, 0)
-platform_on_leave = 1
 SPEED = 1.5
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

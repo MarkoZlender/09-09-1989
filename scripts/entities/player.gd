@@ -1,8 +1,9 @@
 class_name Player 
 extends CharacterBody3D
 
+const JUMP_VELOCITY: float = 3.5
+
 @export var SPEED: float = 1.0
-const JUMP_VELOCITY = 3.5
 @export var rotation_controls: bool = true
 
 var direction: Vector3 = Vector3.ZERO
@@ -10,7 +11,8 @@ var is_moving: bool = false
 var last_facing_direction: Vector2 = Vector2(0, -1)
 var _last_direction: Vector3 = Vector3.ZERO
 var is_jumping: bool = false
-var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
+@onready var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
+var camera_velocity: Vector3 = Vector3.ZERO
 
 
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -33,7 +35,7 @@ func move(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
-	var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
+	input_dir = Input.get_vector("left", "right", "up", "down")
 	var camera_basis: Basis = _camera_gimbal.global_transform.basis
 	var adjusted_direction: Vector3 = (camera_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
@@ -47,6 +49,8 @@ func move(delta: float) -> void:
 		is_moving = false
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	
+	camera_velocity = _camera_gimbal.global_transform.basis.inverse() * velocity
 		
 	move_and_slide()
 	animate_input_animation_tree()
@@ -206,13 +210,14 @@ func animate_input_a_player() -> void: # fallback method until they fix animatio
 	# 		_animation_player.play("idle_down");
 
 func animate_input_animation_tree() -> void:
-	var idle: bool = !velocity
-	var blend_position: Vector2 = Vector2(velocity.x, velocity.z).normalized()
+	var idle: bool = !camera_velocity
+	var blend_position: Vector2 = Vector2(camera_velocity.x, camera_velocity.z).normalized()
 	if !idle:
 		last_facing_direction = blend_position
 
 	animation_tree.set("parameters/Run/blend_position", last_facing_direction)
 	animation_tree.set("parameters/Idle/blend_position", last_facing_direction)
+	animation_tree.set("parameters/Jump/blend_position", last_facing_direction)
 
 func _add_inventory() -> void:
 	var loaded_resource: Resource = load("res://scenes/ui/inventory/inventory_item_list.tscn")
