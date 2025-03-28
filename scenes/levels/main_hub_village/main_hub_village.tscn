@@ -215,6 +215,7 @@ next_scene = "uid://bu5oa038m67wd"
 next_position_marker = ExtResource("10_g0wkp")
 
 [node name="tavern_marker" parent="LevelChangerTavern" instance=ExtResource("11_t02g4")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.12359, -0.151439, 0.0129197)
 
 [node name="LevelChangerShop" parent="." groups=["exits"] instance=ExtResource("9_552nb")]

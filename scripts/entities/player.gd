@@ -9,6 +9,8 @@ var direction: Vector3 = Vector3.ZERO
 var is_moving: bool = false
 var last_facing_direction: Vector2 = Vector2(0, -1)
 var _last_direction: Vector3 = Vector3.ZERO
+var is_jumping: bool = false
+var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
 
 
 @onready var animation_tree: AnimationTree = $AnimationTree
@@ -47,13 +49,12 @@ func move(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		
 	move_and_slide()
-	animate_input()
-	animate_jump_input()
+	animate_input_animation_tree()
+	#animate_input()
+	#animate_jump_input()
 
 
 func animate_input() -> void:
-	var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
-	
 	if input_dir != Vector2.ZERO:
 		# Convert input direction to the player's local space
 		var local_direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -101,17 +102,18 @@ func animate_input() -> void:
 			animated_sprite.play("idle_back")
 
 func animate_jump_input() -> void:
-	# animate jump in 8 directions
-	if Input.is_action_just_pressed("jump"):
+	# Check if the jump action is pressed and the player is not already jumping
+	if Input.is_action_just_pressed("jump") and not is_jumping:
+		is_jumping = true  # Set the jumping flag
 		var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
-
+		
 		if input_dir != Vector2.ZERO:
 			# Convert input direction to the player's local space
 			var local_direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 			_last_direction = local_direction
 
-			# Determine the animation based on the local direction
+			# Determine the jump animation based on the local direction
 			if local_direction.x > 0 and abs(local_direction.x) > abs(local_direction.z):
 				animated_sprite.play("jump_right")
 			elif local_direction.x < 0 and abs(local_direction.x) > abs(local_direction.z):
@@ -130,7 +132,7 @@ func animate_jump_input() -> void:
 			elif local_direction.x < 0 and local_direction.z < 0:
 				animated_sprite.play("jump_nw")
 		else:
-			# Idle animations based on the last direction
+			# Idle jump animations based on the last direction
 			if _last_direction.x > 0 and abs(_last_direction.x) > abs(_last_direction.z):
 				animated_sprite.play("jump_right")
 			elif _last_direction.x < 0 and abs(_last_direction.x) > abs(_last_direction.z):

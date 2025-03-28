@@ -1,9 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://ctdr8dygo77j1"]
+[gd_scene load_steps=12 format=3 uid="uid://ctdr8dygo77j1"]
 
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="1_0tcst"]
 [ext_resource type="PackedScene" uid="uid://b4yel28q8mccd" path="res://scenes/environment/props/moving_platform.tscn" id="2_dd7au"]
 [ext_resource type="Script" uid="uid://c4l2dq1k63b6s" path="res://scripts/utility_scripts/reset_area.gd" id="2_tf773"]
 [ext_resource type="Script" uid="uid://bt0kgh1bkc2n6" path="res://scripts/data/platform_move_step.gd" id="3_pvcxf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvcxf"]
+albedo_color = Color(0.988397, 0.606444, 0.467667, 1)
 
 [sub_resource type="Resource" id="Resource_pvcxf"]
 script = ExtResource("3_pvcxf")
@@ -54,6 +57,12 @@ _data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 use_collision = true
 size = Vector3(1, 0.2, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 1)
+material_override = SubResource("StandardMaterial3D_pvcxf")
+use_collision = true
+size = Vector3(10, 0.2, 10)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
