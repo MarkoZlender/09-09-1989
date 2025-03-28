@@ -14,27 +14,27 @@ func _ready() -> void:
 	move_platform()
 
 func move_platform() -> void:
-	var subtween: Tween = create_tween()
+	var tween: Tween = create_tween().set_process_mode(0).set_loops(0).set_parallel(false)
+	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)  # Ensure physics-based movement
+
+	start_position = position  # Store the initial position
+
 	for step: PlatformMoveStep in movement_steps:
 		if step is PlatformMoveStep:
 			var direction: Directions = step.direction
 			var distance: float = step.distance
 			var duration: float = step.duration
 
-			# Calculate the target position based on the starting position
+			# Calculate target position from the last known position
 			var target_position: Vector3 = start_position + get_movement_vector(direction) * distance
 
-			# Create a tween to move the platform to the target position
-			
-			subtween.tween_property(self, "position", target_position, duration)
-			
+			# Chain tweens smoothly without a separate subtween
+			tween.tween_property(self, "position", target_position, duration).set_trans(Tween.TRANS_LINEAR)
 
-			# Update the starting position for the next step
+			# Update start_position for the next step
 			start_position = target_position
-	
-	var tween: Tween = create_tween()
-	tween.set_loops()
-	tween.tween_subtween(subtween)
+
+
 
 func get_movement_vector(direction: Directions) -> Vector3:
 	match direction:

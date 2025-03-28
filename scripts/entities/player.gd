@@ -17,7 +17,6 @@ var camera_velocity: Vector3 = Vector3.ZERO
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var _camera_gimbal: Node3D = $CameraGimbal
 @onready var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
-@onready var animated_sprite: AnimatedSprite3D = $AnimatedSprite3D
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
