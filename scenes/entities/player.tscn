@@ -1531,7 +1531,7 @@ blend_point_6/node = SubResource("AnimationNodeAnimation_08w0t")
 blend_point_6/pos = Vector2(1, 1)
 blend_point_7/node = SubResource("AnimationNodeAnimation_g0gi2")
 blend_point_7/pos = Vector2(1, -0.9)
-blend_mode = 1
+blend_mode = 2
 sync = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6vtb4"]
@@ -1575,7 +1575,7 @@ blend_point_6/node = SubResource("AnimationNodeAnimation_760aj")
 blend_point_6/pos = Vector2(-1, -1)
 blend_point_7/node = SubResource("AnimationNodeAnimation_fbml0")
 blend_point_7/pos = Vector2(1, -1)
-blend_mode = 1
+blend_mode = 2
 sync = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hud51"]
@@ -1619,7 +1619,7 @@ blend_point_6/node = SubResource("AnimationNodeAnimation_ile2b")
 blend_point_6/pos = Vector2(-1, -1)
 blend_point_7/node = SubResource("AnimationNodeAnimation_tmjoi")
 blend_point_7/pos = Vector2(1, -1)
-blend_mode = 1
+blend_mode = 2
 sync = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5tmvo"]
@@ -1631,23 +1631,23 @@ advance_expression = "abs(camera_velocity.x) || abs(camera_velocity.z)"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4rwnx"]
 advance_mode = 2
-advance_expression = "abs(camera_velocity.x) <= 0.1 && abs(camera_velocity.z) <= 0.1"
+advance_expression = "!abs(camera_velocity.x) && !abs(camera_velocity.z)"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i2i0h"]
 advance_mode = 2
-advance_expression = "camera_velocity.y"
+advance_expression = "is_jumping"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0beyh"]
 advance_mode = 2
-advance_expression = "camera_velocity.y && (camera_velocity.x || camera_velocity.z)"
+advance_expression = "is_jumping"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p4vbq"]
 advance_mode = 2
-advance_expression = "!camera_velocity.y && (camera_velocity.x || camera_velocity.z)"
+advance_expression = "!is_jumping && !idle"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l6jip"]
 advance_mode = 2
-advance_expression = "!camera_velocity.y"
+advance_expression = "!is_jumping && idle"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ruh63"]
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_0ph45")

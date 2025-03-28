@@ -8,6 +8,7 @@ const JUMP_VELOCITY: float = 3.5
 
 var direction: Vector3 = Vector3.ZERO
 var is_moving: bool = false
+var idle: bool
 var last_facing_direction: Vector2 = Vector2(0, -1)
 var _last_direction: Vector3 = Vector3.ZERO
 var is_jumping: bool = false
@@ -31,6 +32,9 @@ func move(delta: float) -> void:
 	# apply gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		is_jumping = true
+	else:
+		is_jumping = false
 	
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -210,14 +214,34 @@ func animate_input_a_player() -> void: # fallback method until they fix animatio
 	# 		_animation_player.play("idle_down");
 
 func animate_input_animation_tree() -> void:
-	var idle: bool = !camera_velocity
+	# Determine if the player is idle (no movement input)
+	idle = camera_velocity.length() < 0.1  # Threshold to consider the player idle
+
+	# Normalize the camera velocity for blending
 	var blend_position: Vector2 = Vector2(camera_velocity.x, camera_velocity.z).normalized()
-	if !idle:
+
+	# Ensure last_facing_direction doesn't reset to zero
+	if blend_position.length() > 0.1:  # Only update when there's movement
 		last_facing_direction = blend_position
 
-	animation_tree.set("parameters/Run/blend_position", last_facing_direction)
-	animation_tree.set("parameters/Idle/blend_position", last_facing_direction)
-	animation_tree.set("parameters/Jump/blend_position", last_facing_direction)
+	# If still (0,0), ensure a fallback direction (e.g., idle forward)
+	if last_facing_direction == Vector2.ZERO:
+		last_facing_direction = Vector2(0, -1)  # Default to facing forward
+
+	# Handle jump animations
+	if is_jumping:
+		animation_tree.set("parameters/Jump/blend_position", last_facing_direction)
+		animation_tree.set("parameters/State/current", 2)  # Jump state
+
+	elif idle:
+		animation_tree.set("parameters/Idle/blend_position", last_facing_direction)
+		animation_tree.set("parameters/State/current", 0)  # Idle state
+
+	else:
+		animation_tree.set("parameters/Run/blend_position", blend_position)
+		animation_tree.set("parameters/State/current", 1)  # Run state
+
+
 
 func _add_inventory() -> void:
 	var loaded_resource: Resource = load("res://scenes/ui/inventory/inventory_item_list.tscn")
