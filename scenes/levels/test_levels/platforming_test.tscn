@@ -1,12 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctdr8dygo77j1"]
+[gd_scene load_steps=16 format=3 uid="uid://ctdr8dygo77j1"]
 
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="1_0tcst"]
+[ext_resource type="Texture2D" uid="uid://bv16itb8q58pc" path="res://assets/textures/Dark/texture_01.png" id="1_8y4br"]
 [ext_resource type="PackedScene" uid="uid://b4yel28q8mccd" path="res://scenes/environment/props/moving_platform.tscn" id="2_dd7au"]
 [ext_resource type="Script" uid="uid://c4l2dq1k63b6s" path="res://scripts/utility_scripts/reset_area.gd" id="2_tf773"]
 [ext_resource type="Script" uid="uid://bt0kgh1bkc2n6" path="res://scripts/data/platform_move_step.gd" id="3_pvcxf"]
+[ext_resource type="Script" uid="uid://dhgpdqod4iift" path="res://scripts/entities/enemy.gd" id="5_ppqmi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvcxf"]
-albedo_color = Color(0.988397, 0.606444, 0.467667, 1)
+albedo_texture = ExtResource("1_8y4br")
+uv1_triplanar = true
 
 [sub_resource type="Resource" id="Resource_pvcxf"]
 script = ExtResource("3_pvcxf")
@@ -32,24 +35,23 @@ metadata/_custom_type_script = "uid://bt0kgh1bkc2n6"
 [sub_resource type="BoxShape3D" id="BoxShape3D_tf773"]
 size = Vector3(20, 1, 20)
 
-[sub_resource type="Animation" id="Animation_dd7au"]
-resource_name = "new_animation"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MovingPlatform")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
-}
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ppqmi"]
+albedo_color = Color(0.917227, 0.146842, 0.256426, 1)
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_pvcxf"]
-_data = {
-&"new_animation": SubResource("Animation_dd7au")
-}
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8y4br"]
+material = SubResource("StandardMaterial3D_ppqmi")
+radius = 0.05
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ppqmi"]
+radius = 0.05
+height = 0.2
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_8y4br"]
+vertices = PackedVector3Array(-4.75, 0.917591, 2.25, -0.75, 0.917591, 1.5, 0.5, 0.917591, 1.25, 4.75, 0.917591, -4.75, -4.75, 0.917591, -4.75, 4.75, 0.917591, 1, 1, 0.917591, 1.5, 0.75, 0.917591, 2, 4.75, 0.917591, 4.75, -0.5, 0.917591, 2, -4.75, 0.917591, 4.75)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(3, 5, 2), PackedInt32Array(6, 2, 5), PackedInt32Array(6, 5, 7), PackedInt32Array(7, 5, 8), PackedInt32Array(0, 1, 9), PackedInt32Array(9, 7, 0), PackedInt32Array(0, 7, 10), PackedInt32Array(10, 7, 8)]
+agent_height = 0.2
+agent_radius = 0.05
 
 [node name="PlatformingTest" type="Node3D"]
 
@@ -57,12 +59,6 @@ _data = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 use_collision = true
 size = Vector3(1, 0.2, 1)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 1)
-material_override = SubResource("StandardMaterial3D_pvcxf")
-use_collision = true
-size = Vector3(10, 0.2, 10)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
@@ -73,6 +69,17 @@ size = Vector3(1, 0.2, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -2)
 use_collision = true
 size = Vector3(1, 0.2, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 2.6)
+use_collision = true
+size = Vector3(1, 0.2, 1)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 1)
+material_override = SubResource("StandardMaterial3D_pvcxf")
+use_collision = true
+size = Vector3(10, 0.2, 10)
 
 [node name="Player" parent="." instance=ExtResource("1_0tcst")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.78, 0)
@@ -106,9 +113,26 @@ script = ExtResource("2_tf773")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.4, 0)
 shape = SubResource("BoxShape3D_tf773")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_pvcxf")
-}
+[node name="Enemy" type="CharacterBody3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.2)
+script = ExtResource("5_ppqmi")
+player = NodePath("../Player")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enemy"]
+mesh = SubResource("CapsuleMesh_8y4br")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enemy"]
+shape = SubResource("CapsuleShape3D_ppqmi")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Enemy"]
+path_desired_distance = 0.1
+target_desired_distance = 0.1
+path_max_distance = 0.01
+avoidance_enabled = true
+debug_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.983562, 1)
+navigation_mesh = SubResource("NavigationMesh_8y4br")
 
 [connection signal="body_entered" from="ResetArea" to="ResetArea" method="_on_body_entered"]
