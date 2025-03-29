@@ -1,0 +1,1 @@
+class_name PlayerAttackSurfaceArea extends Area3D

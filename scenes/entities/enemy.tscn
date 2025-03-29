@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://byv5ix5sf5y4w"]
+[gd_scene load_steps=11 format=3 uid="uid://byv5ix5sf5y4w"]
 
 [ext_resource type="Script" uid="uid://dhgpdqod4iift" path="res://scripts/entities/enemy.gd" id="1_d7j71"]
+[ext_resource type="Script" uid="uid://dy0s2ot576nwh" path="res://scripts/entities/enemy_attack_surface_area.gd" id="2_67neu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ppqmi"]
-albedo_color = Color(0.917227, 0.146842, 0.256426, 1)
+albedo_color = Color(0.640773, 0.0577389, 0.750444, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_8y4br"]
 material = SubResource("StandardMaterial3D_ppqmi")
@@ -14,9 +15,25 @@ height = 0.2
 radius = 0.05
 height = 0.2
 
-[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("player")]
+[sub_resource type="BoxShape3D" id="BoxShape3D_d7j71"]
+size = Vector3(0.1, 0.2, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_67neu"]
+size = Vector3(0.1, 0.2, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ktqfp"]
+size = Vector3(0.1, 0.2, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_defa4"]
+size = Vector3(0.1, 0.2, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jr1g6"]
+size = Vector3(0.1, 0.2, 0.09)
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_d7j71")
-player = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_8y4br")
@@ -30,3 +47,51 @@ target_desired_distance = 0.1
 path_max_distance = 0.01
 avoidance_enabled = true
 debug_enabled = true
+
+[node name="HurtSurfaces" type="Node3D" parent="."]
+
+[node name="BackHurtSurfaceArea" type="Area3D" parent="HurtSurfaces"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="BackHurtSurface" type="CollisionShape3D" parent="HurtSurfaces/BackHurtSurfaceArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0426878)
+shape = SubResource("BoxShape3D_d7j71")
+debug_color = Color(0.7, 0, 0.0116665, 1)
+
+[node name="FrontHurtSurfaceArea" type="Area3D" parent="HurtSurfaces"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="FrontHurtSurface" type="CollisionShape3D" parent="HurtSurfaces/FrontHurtSurfaceArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0546219)
+shape = SubResource("BoxShape3D_67neu")
+debug_color = Color(0.0864, 0.75616, 0.96, 1)
+
+[node name="RightHurtSurfaceArea" type="Area3D" parent="HurtSurfaces"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="RightHurtSurface" type="CollisionShape3D" parent="HurtSurfaces/RightHurtSurfaceArea"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.0567717, 0, -0.00551353)
+shape = SubResource("BoxShape3D_ktqfp")
+debug_color = Color(0, 0.7, 0.0933334, 1)
+
+[node name="LeftHurtSurfaceArea" type="Area3D" parent="HurtSurfaces"]
+collision_layer = 8
+collision_mask = 8
+
+[node name="LeftHurtSurface" type="CollisionShape3D" parent="HurtSurfaces/LeftHurtSurfaceArea"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.0548701, 0, -0.00551353)
+shape = SubResource("BoxShape3D_defa4")
+debug_color = Color(0, 0.7, 0.0933334, 1)
+
+[node name="AttackSurfaceArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("2_67neu")
+
+[node name="AttackSurface" type="CollisionShape3D" parent="AttackSurfaceArea"]
+transform = Transform3D(0.349502, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0945408)
+shape = SubResource("BoxShape3D_jr1g6")
+debug_color = Color(0.82896, 0.0864, 0.96, 1)

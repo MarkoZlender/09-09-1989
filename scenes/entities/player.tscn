@@ -1,4 +1,4 @@
-[gd_scene load_steps=290 format=3 uid="uid://ds0d7p7idbuc4"]
+[gd_scene load_steps=293 format=3 uid="uid://ds0d7p7idbuc4"]
 
 [ext_resource type="Script" uid="uid://1uia1xe5nmrj" path="res://scripts/entities/player.gd" id="1_mfpxk"]
 [ext_resource type="Texture2D" uid="uid://epddv8fv6blv" path="res://assets/sprites/idle_back/C_102_265.png" id="2_4x3sa"]
@@ -226,6 +226,7 @@
 [ext_resource type="Texture2D" uid="uid://3djbxe0nfai2" path="res://assets/sprites/jump_sw/C_102_192.png" id="151_cuvjl"]
 [ext_resource type="Texture2D" uid="uid://5dwpgaqbtgl5" path="res://assets/sprites/jump_sw/C_102_193.png" id="152_k4syd"]
 [ext_resource type="Texture2D" uid="uid://cq1rs5mjx7lfp" path="res://assets/sprites/jump_sw/C_102_194.png" id="153_760aj"]
+[ext_resource type="Script" uid="uid://cgoijtm7bh3t5" path="res://scenes/entities/player_attack_surface_area.gd" id="227_l6jip"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_73kkf"]
 radius = 0.05
@@ -1659,9 +1660,17 @@ states/Run/position = Vector2(321.457, 214)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_5tmvo"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_par6c"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_4rwnx"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_i2i0h"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_0beyh"), "Jump", "Run", SubResource("AnimationNodeStateMachineTransition_p4vbq"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_l6jip")]
 graph_offset = Vector2(85, 49)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_l6jip"]
+size = Vector3(0.1, 0.2, 0.05)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i2i0h"]
+radius = 0.05
+height = 0.2
+
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0)
-collision_layer = 3
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_mfpxk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -1752,6 +1761,23 @@ initial_node_to_watch = NodePath("../StateChart")
 current = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="AttackSurfaceArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("227_l6jip")
+
+[node name="AttackSurface" type="CollisionShape3D" parent="AttackSurfaceArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0546219)
+shape = SubResource("BoxShape3D_l6jip")
+debug_color = Color(0.0864, 0.75616, 0.96, 1)
+
+[node name="HurtSurfaceArea" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtSurfaceArea"]
+shape = SubResource("CapsuleShape3D_i2i0h")
 
 [connection signal="state_physics_processing" from="StateChart/Root/Idle" to="StatesLogic/Idle" method="_on_idle_state_physics_processing"]
 [connection signal="state_physics_processing" from="StateChart/Root/Moving" to="StatesLogic/Moving" method="_on_moving_state_physics_processing"]

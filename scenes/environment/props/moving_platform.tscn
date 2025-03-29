@@ -31,6 +31,7 @@ size = Vector3(1, 0.2, 1)
 size = Vector3(1, 0.2, 1)
 
 [node name="MovingPlatform" type="AnimatableBody3D"]
+collision_mask = 6
 sync_to_physics = false
 script = ExtResource("1_cdfv0")
 movement_steps = Array[ExtResource("2_db0vp")]([SubResource("Resource_ppqmi"), SubResource("Resource_pvcxf"), SubResource("Resource_8y4br")])

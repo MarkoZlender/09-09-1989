@@ -9,6 +9,7 @@ const JUMP_VELOCITY: float = 3.5
 var idle: bool
 var is_moving: bool = false
 var is_jumping: bool = false
+var hurt:bool = false
 var direction: Vector3 = Vector3.ZERO
 var last_facing_direction: Vector2 = Vector2(0, -1)
 var camera_velocity: Vector3 = Vector3.ZERO
@@ -17,6 +18,10 @@ var camera_velocity: Vector3 = Vector3.ZERO
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var _camera_gimbal: Node3D = $CameraGimbal
 @onready var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
+
+func _ready() -> void:
+	$HurtSurfaceArea.connect("area_entered", _on_hurt)
+	$HurtSurfaceArea.connect("area_exited", _on_disengage)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -52,9 +57,15 @@ func move(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 	
 	camera_velocity = _camera_gimbal.global_transform.basis.inverse() * velocity
-		
+	
+	if direction.length() > 0.01:  # Avoid rotating when the direction is too small
+		$AttackSurfaceArea.rotation.y = atan2(-direction.x, -direction.z)
+	
 	move_and_slide()
 	animate_input_animation_tree()
+
+	if hurt:
+		print("Hurting player")
 
 func animate_input_animation_tree() -> void:
 	# Determine if the player is idle (no movement input)
@@ -84,7 +95,13 @@ func animate_input_animation_tree() -> void:
 		animation_tree.set("parameters/Run/blend_position", blend_position)
 		animation_tree.set("parameters/State/current", 1)  # Run state
 
-
+func _on_hurt(area: Area3D) -> void:
+	if area is EnemyAttackSurfaceArea:
+		hurt = true
+func _on_disengage(area: Area3D) -> void:
+	if area is EnemyAttackSurfaceArea:
+		hurt = false
+		print("Disengaging")
 
 func _add_inventory() -> void:
 	var loaded_resource: Resource = load("res://scenes/ui/inventory/inventory_item_list.tscn")
@@ -108,3 +125,4 @@ func save() -> Dictionary:
 func load(data: Dictionary) -> void:
 	global_position = Vector3(data["pos_x"], data["pos_y"], data["pos_z"])
 	rotation = Vector3(data["rot_x"], data["rot_y"], data["rot_z"])
+

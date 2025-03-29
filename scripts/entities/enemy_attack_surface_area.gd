@@ -1,0 +1,1 @@
+class_name EnemyAttackSurfaceArea extends Area3D
