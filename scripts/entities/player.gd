@@ -14,6 +14,11 @@ var direction: Vector3 = Vector3.ZERO
 var last_facing_direction: Vector2 = Vector2(0, -1)
 var camera_velocity: Vector3 = Vector3.ZERO
 
+var knockback_direction: Vector3 = Vector3.ZERO
+var knockback_strength: float = 2.0  # Adjust the force as needed
+var knockback_duration: float = 0.2  # How long the knockback lasts
+var knockback_timer: float = 0.0
+
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var _camera_gimbal: Node3D = $CameraGimbal
@@ -31,13 +36,21 @@ func _input(event: InputEvent) -> void:
 			Global.game_controller.get_node("GUI/InventoryItemList").queue_free()
 		
 func move(delta: float) -> void:
-	# apply gravity
+	# Apply gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		is_jumping = true
 	else:
 		is_jumping = false
-	
+
+	# Handle knockback
+	if knockback_timer > 0:
+		knockback_timer -= delta
+		velocity = knockback_direction * knockback_strength
+		move_and_slide()
+		return  # Skip normal movement during knockback
+
+	# Normal movement logic
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 
@@ -46,7 +59,7 @@ func move(delta: float) -> void:
 	var adjusted_direction: Vector3 = (camera_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	direction = (transform.basis * Vector3(adjusted_direction.x, 0, adjusted_direction.z)).normalized()
-	
+
 	if direction:
 		is_moving = true
 		velocity.x = direction.x * speed
@@ -55,12 +68,12 @@ func move(delta: float) -> void:
 		is_moving = false
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
-	
+
 	camera_velocity = _camera_gimbal.global_transform.basis.inverse() * velocity
-	
+
 	if direction.length() > 0.01:  # Avoid rotating when the direction is too small
 		$AttackSurfaceArea.rotation.y = atan2(-direction.x, -direction.z)
-	
+
 	move_and_slide()
 	animate_input_animation_tree()
 
@@ -98,6 +111,9 @@ func animate_input_animation_tree() -> void:
 func _on_hurt(area: Area3D) -> void:
 	if area is EnemyAttackSurfaceArea:
 		hurt = true
+		knockback_timer = knockback_duration
+		knockback_direction = (global_position - area.global_position).normalized()
+
 func _on_disengage(area: Area3D) -> void:
 	if area is EnemyAttackSurfaceArea:
 		hurt = false
