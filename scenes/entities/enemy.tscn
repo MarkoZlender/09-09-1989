@@ -16,9 +16,8 @@ size = Vector3(0.1, 0.2, 0.1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_jr1g6"]
 size = Vector3(0.1, 0.2, 0.0513477)
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_67neu"]
-radius = 0.05
-height = 0.2
+[sub_resource type="BoxShape3D" id="BoxShape3D_67neu"]
+size = Vector3(0.1, 0.2, 0.1)
 
 [node name="Enemy" type="CharacterBody3D"]
 collision_layer = 4
@@ -48,9 +47,10 @@ transform = Transform3D(0.229869, 0, 0, 0, 0.462235, 0, 0, 0, 1, 0, 0, -0.075214
 shape = SubResource("BoxShape3D_jr1g6")
 debug_color = Color(0.82896, 0.0864, 0.96, 1)
 
-[node name="HurtSurfaceArea" type="Area3D" parent="."]
+[node name="FrontHurtSurfaceArea" type="Area3D" parent="."]
 collision_layer = 8
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtSurfaceArea"]
-shape = SubResource("CapsuleShape3D_67neu")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FrontHurtSurfaceArea"]
+transform = Transform3D(2.23176, 0, 0, 0, 1, 0, 0, 0, 0.212097, 0, 0, -0.0550626)
+shape = SubResource("BoxShape3D_67neu")
