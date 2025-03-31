@@ -9,6 +9,7 @@ const JUMP_VELOCITY: float = 3.5
 var idle: bool
 var is_moving: bool = false
 var is_jumping: bool = false
+
 var hurt:bool = false
 var direction: Vector3 = Vector3.ZERO
 var last_facing_direction: Vector2 = Vector2(0, -1)
@@ -21,7 +22,7 @@ var knockback_timer: float = 0.0
 
 
 @onready var animation_tree: AnimationTree = $AnimationTree
-@onready var _camera_gimbal: Node3D = $CameraGimbal
+@onready var camera_gimbal: Node3D = $CameraGimbal
 @onready var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
 
 func _ready() -> void:
@@ -55,7 +56,7 @@ func move(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 
 	input_dir = Input.get_vector("left", "right", "up", "down")
-	var camera_basis: Basis = _camera_gimbal.global_transform.basis
+	var camera_basis: Basis = camera_gimbal.global_transform.basis
 	var adjusted_direction: Vector3 = (camera_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	direction = (transform.basis * Vector3(adjusted_direction.x, 0, adjusted_direction.z)).normalized()
@@ -69,7 +70,7 @@ func move(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, speed)
 		velocity.z = move_toward(velocity.z, 0, speed)
 
-	camera_velocity = _camera_gimbal.global_transform.basis.inverse() * velocity
+	camera_velocity = camera_gimbal.global_transform.basis.inverse() * velocity
 
 	if direction.length() > 0.01:  # Avoid rotating when the direction is too small
 		$AttackSurfaceArea.rotation.y = atan2(-direction.x, -direction.z)
