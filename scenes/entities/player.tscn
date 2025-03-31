@@ -1681,8 +1681,7 @@ transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 billboard = 2
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_0kspk")
-animation = &"jump_sw"
-frame_progress = 0.291825
+animation = &"idle_se"
 
 [node name="CameraGimbal" type="Node3D" parent="."]
 script = ExtResource("2_73kkf")

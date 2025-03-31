@@ -24,8 +24,8 @@ var stun_timer: float = 0.0  # Timer to track stun time
 @onready var enemy_collision_shape: CollisionShape3D = $EnemyCollisionShape
 
 func _ready() -> void:
-	$FrontHurtSurfaceArea.connect("area_entered", _on_hurt_front)
-	$FrontHurtSurfaceArea.connect("area_exited", _on_disengage_front)
+	$FrontHurtSurfaceArea.connect("area_entered", _on_hurt)
+	$FrontHurtSurfaceArea.connect("area_exited", _on_disengage)
 
 func _physics_process(delta: float) -> void:
 	time_since_last_rotation += delta
@@ -61,9 +61,6 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-
-
-
 func _rotate() -> void:
 	if direction.length() > 0.01 and time_since_last_rotation >= rotation_delay:
 		time_since_last_rotation = 0.0  # Reset timer
@@ -88,21 +85,41 @@ func _rotate() -> void:
 		# Snap to the closest direction
 		rotation.y = atan2(-closest_direction.x, -closest_direction.z)
 
-func _on_hurt_front(area: Area3D) -> void:
+func _on_hurt(area: Area3D) -> void:
 	if area is PlayerAttackSurfaceArea:
 		hurt = true
 		knockback_timer = knockback_duration  # Knockback duration
 		stun_timer = stun_duration  # Stun duration (starts after knockback)
 
-		# Get enemy's exact forward direction (-Z in local space)
-		var forward_direction = -global_transform.basis.z.normalized()
+		# Calculate the direction of the knockback based on the attacker's position
+		var relative_position = (area.global_position - global_position).normalized()
 
-		# Ensure knockback is exactly backward (no sideways movement)
-		knockback_direction = Vector3(forward_direction.x, 0, forward_direction.z).normalized() * -1
+		# Define the 4 possible directions
+		var directions = [
+			Vector3(0, 0, -1),  # Forward (-Z)
+			Vector3(0, 0, 1),   # Backward (+Z)
+			Vector3(-1, 0, 0),  # Left (-X)
+			Vector3(1, 0, 0)    # Right (+X)
+		]
 
+		# Find the closest direction
+		var closest_direction = directions[0]
+		var closest_dot = -1  # Minimum possible dot product
+		for dir in directions:
+			var dot = relative_position.dot(dir)
+			if dot > closest_dot:
+				closest_dot = dot
+				closest_direction = dir
 
+		# Set the knockback direction to the closest direction
+		knockback_direction = closest_direction * -1  # Knockback is in the opposite direction
 
-func _on_disengage_front(area: Area3D) -> void:
+func _on_disengage(area: Area3D) -> void:
 	if area is PlayerAttackSurfaceArea:
 		print("Disengaging")
 		hurt = false
+
+
+func _on_navigation_agent_3d_velocity_computed(safe_velocity:Vector3) -> void:
+	velocity = velocity.move_toward(safe_velocity, accel * get_process_delta_time())
+	move_and_slide()

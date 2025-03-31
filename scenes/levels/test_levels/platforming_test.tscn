@@ -36,8 +36,8 @@ metadata/_custom_type_script = "uid://bt0kgh1bkc2n6"
 size = Vector3(20, 1, 20)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_8y4br"]
-vertices = PackedVector3Array(-4.75, 0.917591, 2.25, -0.75, 0.917591, 1.5, 0.5, 0.917591, 1.25, 4.75, 0.917591, -4.75, -4.75, 0.917591, -4.75, 4.75, 0.917591, 1, 1, 0.917591, 1.5, 0.75, 0.917591, 2, 4.75, 0.917591, 4.75, -0.5, 0.917591, 2, -4.75, 0.917591, 4.75)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(3, 5, 2), PackedInt32Array(6, 2, 5), PackedInt32Array(6, 5, 7), PackedInt32Array(7, 5, 8), PackedInt32Array(0, 1, 9), PackedInt32Array(9, 7, 0), PackedInt32Array(0, 7, 10), PackedInt32Array(10, 7, 8)]
+vertices = PackedVector3Array(-4.75, 1.23326, 1, -0.5, 1.23326, 1.25, 0.5, 1.23326, 1, 4.75, 1.23326, -4.75, -4.75, 1.23326, -4.75, 4.75, 1.23326, 1, 1, 1.23326, 1.5, -1, 1.23326, 1.5, 0.75, 1.23326, 2, 4.75, 1.23326, 4.75, -0.75, 1.23326, 2, -4.75, 1.23326, 4.75)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 4), PackedInt32Array(2, 4, 3), PackedInt32Array(3, 5, 2), PackedInt32Array(5, 6, 2), PackedInt32Array(0, 1, 7), PackedInt32Array(6, 5, 8), PackedInt32Array(8, 5, 9), PackedInt32Array(7, 10, 0), PackedInt32Array(0, 10, 11), PackedInt32Array(8, 9, 10), PackedInt32Array(10, 9, 11)]
 agent_height = 0.2
 agent_radius = 0.05
 
@@ -51,7 +51,6 @@ size = Vector3(1, 0.2, 1)
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1)
 use_collision = true
-size = Vector3(1, 0.2, 1)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, -2)
@@ -59,7 +58,7 @@ use_collision = true
 size = Vector3(1, 0.2, 1)
 
 [node name="CSGBox3D5" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 2.6)
+transform = Transform3D(0.999999, -0.00154032, -0.000262094, 0.000264694, 0.00166896, 0.999999, -0.00153987, -0.999997, 0.00166937, 0, 0, 2.6)
 use_collision = true
 size = Vector3(1, 0.2, 1)
 
@@ -105,8 +104,12 @@ shape = SubResource("BoxShape3D_tf773")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 1.2)
 player = NodePath("../Player")
 
+[node name="Enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_8y4br")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1.35808, 0, 1.72653)
+player = NodePath("../Player")
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.983562, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.3154, 1)
 navigation_mesh = SubResource("NavigationMesh_8y4br")
 
 [connection signal="body_entered" from="ResetArea" to="ResetArea" method="_on_body_entered"]
