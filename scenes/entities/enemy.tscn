@@ -1,4 +1,4 @@
-[gd_scene load_steps=287 format=3 uid="uid://byv5ix5sf5y4w"]
+[gd_scene load_steps=298 format=3 uid="uid://byv5ix5sf5y4w"]
 
 [ext_resource type="Script" uid="uid://dhgpdqod4iift" path="res://scripts/entities/enemy.gd" id="1_d7j71"]
 [ext_resource type="Script" uid="uid://dy0s2ot576nwh" path="res://scripts/entities/enemy_attack_surface_area.gd" id="2_67neu"]
@@ -219,6 +219,15 @@
 [ext_resource type="Texture2D" uid="uid://cxfrn2mskhrh4" path="res://assets/sprites/run_sw/C_102_111.png" id="217_6kwn5"]
 [ext_resource type="Texture2D" uid="uid://oclagc008res" path="res://assets/sprites/run_sw/C_102_112.png" id="218_ga4np"]
 [ext_resource type="PackedScene" uid="uid://f4fj2u87647d" path="res://scenes/components/animation_tree.tscn" id="219_rid7h"]
+[ext_resource type="Script" uid="uid://bqnr5hyceu623" path="res://addons/godot_state_charts/state_chart.gd" id="220_0fyhf"]
+[ext_resource type="Script" uid="uid://deb60yher4wfl" path="res://scripts/entities/enemy/deaggro_area.gd" id="220_yoqot"]
+[ext_resource type="Script" uid="uid://bt4iqisaqggy8" path="res://addons/godot_state_charts/compound_state.gd" id="221_qkhq7"]
+[ext_resource type="Script" uid="uid://bm4a5s8vovnwv" path="res://addons/godot_state_charts/atomic_state.gd" id="222_2dase"]
+[ext_resource type="Script" uid="uid://btg0k6scpejn3" path="res://addons/godot_state_charts/transition.gd" id="223_a7qny"]
+[ext_resource type="Script" uid="uid://bf2nikgdhcgty" path="res://scripts/state_machine/enemy_states/aggroed.gd" id="224_2dase"]
+[ext_resource type="Script" uid="uid://dlye65oy0c6c0" path="res://scripts/state_machine/enemy_states/deaggroed.gd" id="225_a7qny"]
+[ext_resource type="Script" uid="uid://b3iyupm8a5he2" path="res://scripts/entities/enemy/aggro_area.gd" id="226_a7qny"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="228_fw1hu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67neu"]
 albedo_color = Color(0.6, 0, 1, 1)
@@ -1007,6 +1016,13 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2dase"]
+height = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_a7qny"]
+height = 0.2
+radius = 1.0
+
 [sub_resource type="Animation" id="Animation_l6jip"]
 length = 0.001
 
@@ -1712,6 +1728,60 @@ texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_ubfdq")
 animation = &"idle_se"
 
+[node name="AggroArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("226_a7qny")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AggroArea"]
+shape = SubResource("CylinderShape3D_2dase")
+debug_color = Color(0.999597, 0, 0.107821, 0.42)
+
+[node name="DeaggroArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("220_yoqot")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeaggroArea"]
+shape = SubResource("CylinderShape3D_a7qny")
+debug_color = Color(0.270519, 0.624619, 0.296623, 0.42)
+debug_fill = false
+
+[node name="StateChart" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("220_0fyhf")
+metadata/_custom_type_script = "uid://bqnr5hyceu623"
+
+[node name="Root" type="Node" parent="StateChart"]
+script = ExtResource("221_qkhq7")
+initial_state = NodePath("Deaggroed")
+
+[node name="Deaggroed" type="Node" parent="StateChart/Root"]
+script = ExtResource("222_2dase")
+
+[node name="ToAggroed" type="Node" parent="StateChart/Root/Deaggroed"]
+script = ExtResource("223_a7qny")
+to = NodePath("../../Aggroed")
+event = &"aggroed"
+delay_in_seconds = "0.0"
+
+[node name="Aggroed" type="Node" parent="StateChart/Root"]
+script = ExtResource("222_2dase")
+
+[node name="ToDeaggroed" type="Node" parent="StateChart/Root/Aggroed"]
+script = ExtResource("223_a7qny")
+to = NodePath("../../Deaggroed")
+event = &"deaggroed"
+delay_in_seconds = "0.0"
+
+[node name="StatesLogic" type="Node" parent="."]
+
+[node name="Aggroed" type="Node" parent="StatesLogic"]
+script = ExtResource("224_2dase")
+
+[node name="Deaggroed" type="Node" parent="StatesLogic"]
+script = ExtResource("225_a7qny")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_p4vbq")
@@ -1725,4 +1795,13 @@ parameters/Idle/blend_position = Vector2(-0.304348, 0.60961)
 parameters/Jump/blend_position = Vector2(0.0468228, -0.087087)
 parameters/Run/blend_position = Vector2(0.0284281, -0.114391)
 
+[node name="StateChartDebugger" parent="." instance=ExtResource("228_fw1hu")]
+offset_right = -1420.0
+offset_bottom = -489.0
+initial_node_to_watch = NodePath("../StateChart")
+
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="body_entered" from="AggroArea" to="AggroArea" method="_on_body_entered"]
+[connection signal="body_exited" from="DeaggroArea" to="DeaggroArea" method="_on_body_exited"]
+[connection signal="state_physics_processing" from="StateChart/Root/Deaggroed" to="StatesLogic/Deaggroed" method="_on_deaggroed_state_physics_processing"]
+[connection signal="state_physics_processing" from="StateChart/Root/Aggroed" to="StatesLogic/Aggroed" method="_on_aggroed_state_physics_processing"]

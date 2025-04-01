@@ -20,6 +20,9 @@ var knockback_strength: float = 3.0  # Adjust the force as needed
 var knockback_duration: float = 0.1  # How long the knockback lasts
 var knockback_timer: float = 0.0
 
+var wait_timer: float = 0.0
+var wait_duration: float = 1.5
+
 var camera_velocity: Vector3 = Vector3.ZERO
 
 var last_facing_direction: Vector2 = Vector2(0, -1)
@@ -37,7 +40,7 @@ func _ready() -> void:
 	$FrontHurtSurfaceArea.connect("area_entered", _on_hurt)
 	$FrontHurtSurfaceArea.connect("area_exited", _on_disengage)
 
-func _physics_process(delta: float) -> void:
+func aggroed(delta: float) -> void:
 	camera_velocity = camera_gimbal.global_transform.basis.inverse() * velocity
 	time_since_last_rotation += delta
 
@@ -82,6 +85,54 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	animate_input_animation_tree()
+
+func deaggroed(delta: float) -> void:
+	# If the enemy is hurt or stunned, do nothing
+	camera_velocity = camera_gimbal.global_transform.basis.inverse() * velocity
+	time_since_last_rotation += delta
+	if hurt or knockback_timer > 0 or stun_timer > 0:
+		return
+	
+	# If no target position is set or the enemy has reached the target, start waiting
+	if navigation_agent.is_navigation_finished():
+		if wait_timer <= 0:  
+			wait_timer = wait_duration  # Start wait timer
+		else:
+			wait_timer -= delta  # Decrease timer each frame
+			if wait_timer > 0:
+				velocity = Vector3.ZERO  # Stop movement while waiting
+				is_moving = false  # Set idle animation
+				animate_input_animation_tree()
+				return  # Exit function to stay idle
+
+		# After waiting, pick a new target
+		if wait_timer <= 0:
+			var random_offset = Vector3(
+				randf_range(-3, 3),  # Increased range for more movement variety
+				0,
+				randf_range(-3, 3)
+			)
+			navigation_agent.target_position = global_position + random_offset
+			wait_timer = 0  # Reset timer to allow movement
+
+	# Move towards the target position
+	direction = navigation_agent.get_next_path_position() - global_position
+	direction = direction.normalized()
+	_rotate()
+	velocity = velocity.move_toward(direction * movement_speed, accel * delta)
+
+	# Check if the enemy is moving or idle
+	is_moving = velocity.length() > 0.1
+
+	# Handle jumping state
+	is_jumping = not is_on_floor()
+
+	# Apply movement
+	move_and_slide()
+	animate_input_animation_tree()
+
+
+
 
 func _rotate() -> void:
 	if direction.length() > 0.01 and time_since_last_rotation >= rotation_delay:

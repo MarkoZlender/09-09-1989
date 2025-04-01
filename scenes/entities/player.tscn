@@ -1747,6 +1747,7 @@ script = ExtResource("8_dnykm")
 script = ExtResource("9_c5rqy")
 
 [node name="StateChartDebugger" parent="." instance=ExtResource("10_b6tgf")]
+visible = false
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
