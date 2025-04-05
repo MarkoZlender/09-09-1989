@@ -70,7 +70,7 @@ disable_mode = 2
 sync_to_physics = true
 
 [node name="MovingPlatform2" parent="." instance=ExtResource("2_dd7au")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8, 1, -5.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8301, 1, -5.1)
 disable_mode = 2
 sync_to_physics = true
 movement_steps = Array[ExtResource("3_pvcxf")]([SubResource("Resource_pvcxf"), SubResource("Resource_ppqmi"), SubResource("Resource_ppqmi")])
