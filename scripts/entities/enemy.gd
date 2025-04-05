@@ -17,7 +17,7 @@ var knockback_strength: float = 2.0
 var knockback_duration: float = 0.2
 var knockback_timer: float = 0.0
 
-var stun_duration: float = 0.1
+var stun_duration: float = 0.2
 var stun_timer: float = 0.0  
 
 var camera_velocity: Vector3 = Vector3.ZERO
@@ -64,6 +64,7 @@ func apply_stun_and_knockback(delta: float) -> void:
 		stunned = false
 		hurt = false
 		animation_tree.active = true
+		# pause aniamtion tree to give time for the animation reset
 		animation_tree.set_process_callback(2)
 		await get_tree().create_timer(0.1).timeout
 		animation_tree.set_process_callback(1)
@@ -183,16 +184,6 @@ func _rotate() -> void:
 
 ### **Handles Animation State Switching**
 func animate_input_animation_tree() -> void:
-	# if stunned:
-	# 	animation_tree.active = false
-	# 	last_animation = $Animation.animation
-	# 	$Animation.stop()
-	# 	return
-	# else:
-	# 	#animation_tree.active = true
-	# 	pass
-	# 	#last_animation = $Animation.animation
-
 	idle = camera_velocity.length() < 0.1
 	var blend_position: Vector2 = Vector2(camera_velocity.x, camera_velocity.z).normalized()
 	if blend_position.length() > 0.1:
