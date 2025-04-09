@@ -1,7 +1,8 @@
-[gd_scene load_steps=267 format=3 uid="uid://byv5ix5sf5y4w"]
+[gd_scene load_steps=269 format=3 uid="uid://byv5ix5sf5y4w"]
 
 [ext_resource type="Script" uid="uid://dhgpdqod4iift" path="res://scripts/entities/enemy.gd" id="1_d7j71"]
 [ext_resource type="Script" uid="uid://dy0s2ot576nwh" path="res://scripts/entities/enemy_attack_surface_area.gd" id="2_67neu"]
+[ext_resource type="Script" uid="uid://0fkyd553m7cg" path="res://scripts/data/enemy_data.gd" id="2_txpl2"]
 [ext_resource type="Texture2D" uid="uid://epddv8fv6blv" path="res://assets/sprites/idle_back/C_102_265.png" id="3_c8xv5"]
 [ext_resource type="Texture2D" uid="uid://b56p5vleahhdh" path="res://assets/sprites/idle_back/C_102_266.png" id="4_rid7h"]
 [ext_resource type="Texture2D" uid="uid://la57w3h6fucm" path="res://assets/sprites/idle_back/C_102_267.png" id="5_ubfdq"]
@@ -230,22 +231,6 @@
 [ext_resource type="Script" uid="uid://doylfv46820k0" path="res://scripts/state_machine/enemy_states/stunned.gd" id="227_3eutw"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="228_fw1hu"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://ck2y4gpmr4c60" path="res://resources/enemy_animation_tree.tres" id="229_46oj2"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67neu"]
-albedo_color = Color(0.6, 0, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ktqfp"]
-material = SubResource("StandardMaterial3D_67neu")
-size = Vector3(0.1, 0.2, 0.03)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_defa4"]
-size = Vector3(0.1, 0.2, 0.1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_jr1g6"]
-size = Vector3(0.001, 0.001, 0.051)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_67neu"]
-size = Vector3(0.05, 0.2, 0.5)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ubfdq"]
 animations = [{
@@ -1018,6 +1003,31 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Resource" id="Resource_1pxj6"]
+script = ExtResource("2_txpl2")
+health = 100
+hit_strength = 10
+spriteframes = SubResource("SpriteFrames_ubfdq")
+wander_range_min = Vector2(-1, -1)
+wander_range_max = Vector2(1, 1)
+metadata/_custom_type_script = "uid://0fkyd553m7cg"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67neu"]
+albedo_color = Color(0.6, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ktqfp"]
+material = SubResource("StandardMaterial3D_67neu")
+size = Vector3(0.1, 0.2, 0.03)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_defa4"]
+size = Vector3(0.1, 0.2, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jr1g6"]
+size = Vector3(0.001, 0.001, 0.051)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_67neu"]
+size = Vector3(0.05, 0.2, 0.5)
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2dase"]
 height = 0.2
 
@@ -1529,6 +1539,7 @@ collision_layer = 4
 collision_mask = 3
 wall_min_slide_angle = 0.0
 script = ExtResource("1_d7j71")
+enemy_data = SubResource("Resource_1pxj6")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
@@ -1569,8 +1580,7 @@ shape = SubResource("BoxShape3D_67neu")
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
 billboard = 2
 texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_ubfdq")
-animation = &"idle_se"
+animation = &""
 
 [node name="AggroArea" type="Area3D" parent="."]
 collision_layer = 0

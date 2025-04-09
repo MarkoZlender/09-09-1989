@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctdr8dygo77j1"]
+[gd_scene load_steps=14 format=3 uid="uid://ctdr8dygo77j1"]
 
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="1_0tcst"]
 [ext_resource type="Texture2D" uid="uid://bv16itb8q58pc" path="res://assets/textures/Dark/texture_01.png" id="1_8y4br"]
@@ -32,10 +32,9 @@ metadata/_custom_type_script = "uid://bt0kgh1bkc2n6"
 size = Vector3(20, 1, 20)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_8y4br"]
-vertices = PackedVector3Array(-0.56, 1.2651, -1.55, -0.29, 1.2651, -1.58, -0.29, 1.2651, -4.94, -4.94, 1.2651, -4.94, -4.94, 1.2651, -1.31, -0.56, 1.2651, -1.31, 0.31, 1.2651, -1.58, 0.31, 1.2651, -4.94, 0.55, 1.2651, -1.58, 0.58, 1.2651, -1.37, 4.93, 1.2651, -1.4, 4.93, 1.2651, -4.94, -0.44, 1.5351, -1.46, -0.44, 1.5351, -0.53, 0.46, 1.5351, -0.53, 0.46, 1.5351, -1.46, 0.58, 1.2651, -0.62, 4.93, 1.2651, -0.59, -4.94, 1.2651, -0.68, -0.56, 1.2651, -0.68, -0.56, 1.2651, 1.42, -0.35, 1.2651, 1.42, -0.32, 1.2651, -0.41, -0.56, 1.2651, -0.44, -0.59, 1.2651, 1.54, -4.94, 1.2651, 1.54, 0.34, 1.2651, -0.41, 0.34, 1.2651, 1.42, 0.55, 1.2651, 1.42, 0.55, 1.2651, -0.41, 0.58, 1.2651, 1.6, 4.93, 1.2651, 1.6, -0.38, 1.2651, 4.93, -0.35, 1.2651, 1.78, -0.56, 1.2651, 1.75, -4.94, 1.2651, 4.93, -0.47, 1.8651, 1.54, -0.47, 1.8651, 1.66, 0.46, 1.8651, 1.66, 0.46, 1.8651, 1.54, -0.41, 1.2651, 1.57, -0.41, 1.2651, 1.63, 0.43, 1.2651, 1.63, 0.43, 1.2651, 1.57, 0.55, 1.2651, 1.78, 0.37, 1.2651, 1.78, 0.4, 1.2651, 4.93, 4.93, 1.2651, 4.93)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 4), PackedInt32Array(0, 5, 4), PackedInt32Array(2, 7, 1), PackedInt32Array(1, 7, 6), PackedInt32Array(8, 6, 7), PackedInt32Array(8, 7, 9), PackedInt32Array(9, 7, 10), PackedInt32Array(10, 7, 11), PackedInt32Array(15, 14, 12), PackedInt32Array(12, 14, 13), PackedInt32Array(9, 10, 16), PackedInt32Array(16, 10, 17), PackedInt32Array(4, 5, 18), PackedInt32Array(18, 5, 19), PackedInt32Array(22, 21, 20), PackedInt32Array(20, 24, 22), PackedInt32Array(22, 24, 23), PackedInt32Array(23, 24, 19), PackedInt32Array(19, 24, 25), PackedInt32Array(19, 25, 18), PackedInt32Array(29, 28, 26), PackedInt32Array(26, 28, 27), PackedInt32Array(28, 29, 30), PackedInt32Array(30, 29, 16), PackedInt32Array(30, 16, 17), PackedInt32Array(30, 17, 31), PackedInt32Array(26, 27, 22), PackedInt32Array(22, 27, 21), PackedInt32Array(32, 34, 33), PackedInt32Array(34, 32, 24), PackedInt32Array(24, 32, 25), PackedInt32Array(25, 32, 35), PackedInt32Array(39, 38, 36), PackedInt32Array(36, 38, 37), PackedInt32Array(43, 42, 40), PackedInt32Array(40, 42, 41), PackedInt32Array(46, 45, 44), PackedInt32Array(44, 30, 46), PackedInt32Array(46, 30, 31), PackedInt32Array(46, 31, 47), PackedInt32Array(33, 45, 32), PackedInt32Array(32, 45, 46)]
-cell_size = 0.03
-cell_height = 0.03
+vertices = PackedVector3Array(0, 1.2351, 1, 0, 1.2351, 0, -0.75, 1.2351, -0.25, -1, 1.2351, 1.5, -0.75, 1.2351, -1.5, 0.25, 1.2351, -1.75, 0.25, 1.2351, -4.75, -4.75, 1.2351, -4.75, 0, 1.2351, 4.75, 0, 1.2351, 2, -0.75, 1.2351, 2, -4.75, 1.2351, 4.75, 1, 1.2351, -0.5, 1, 1.2351, 1.5, 4.75, 1.2351, -4.75, 1, 1.2351, -1.5, 0.75, 1.2351, 2, 4.75, 1.2351, 4.75, -0.25, 1.4951, -1.25, -0.25, 1.4951, -0.75, 0.25, 1.4951, -0.75, 0.25, 1.4951, -1.25)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(10, 9, 8), PackedInt32Array(2, 3, 4), PackedInt32Array(4, 3, 11), PackedInt32Array(4, 11, 7), PackedInt32Array(10, 8, 3), PackedInt32Array(3, 8, 11), PackedInt32Array(1, 12, 0), PackedInt32Array(0, 12, 13), PackedInt32Array(12, 15, 14), PackedInt32Array(8, 9, 16), PackedInt32Array(5, 6, 15), PackedInt32Array(15, 6, 14), PackedInt32Array(16, 13, 8), PackedInt32Array(8, 13, 17), PackedInt32Array(13, 12, 17), PackedInt32Array(17, 12, 14), PackedInt32Array(21, 20, 18), PackedInt32Array(18, 20, 19)]
+cell_height = 0.01
 agent_height = 0.2
 agent_radius = 0.05
 agent_max_climb = 0.05
@@ -43,6 +42,10 @@ agent_max_climb = 0.05
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvcxf"]
 albedo_texture = ExtResource("1_8y4br")
 uv1_triplanar = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_t60y1"]
+cell_size = 0.2
+cell_height = 0.05
 
 [node name="PlatformingTest" type="Node3D"]
 
@@ -64,11 +67,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423895, 0)
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-2.18557e-08, -0.866025, 0.5, -3.78552e-08, 0.5, 0.866025, -1, 0, -4.37114e-08, 0, 2, 0)
 
-[node name="MovingPlatform" parent="." instance=ExtResource("2_dd7au")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3.5)
-disable_mode = 2
-sync_to_physics = true
-
 [node name="MovingPlatform2" parent="." instance=ExtResource("2_dd7au")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8301, 1, -5.1)
 disable_mode = 2
@@ -89,7 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.4, 0)
 shape = SubResource("BoxShape3D_tf773")
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_8y4br")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 1.2)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.197464, 1.54977, -3.52911)
 player = NodePath("../Player")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
@@ -111,5 +109,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1154, 0)
 material_override = SubResource("StandardMaterial3D_pvcxf")
 use_collision = true
 size = Vector3(10, 0.2, 10)
+
+[node name="NavigationRegion3D2" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_t60y1")
+
+[node name="MovingPlatform" parent="NavigationRegion3D2" instance=ExtResource("2_dd7au")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -3.5)
+disable_mode = 2
+sync_to_physics = true
 
 [connection signal="body_entered" from="ResetArea" to="ResetArea" method="_on_body_entered"]
