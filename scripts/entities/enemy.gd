@@ -24,8 +24,6 @@ var stun_timer: float = 0.0
 var camera_velocity: Vector3 = Vector3.ZERO
 var last_facing_direction: Vector2
 
-var last_animation: StringName
-
 var time_since_last_rotation: float = 0.0
 var rotation_delay: float = 0.2
 
@@ -66,9 +64,9 @@ func apply_stun_and_knockback(delta: float) -> void:
 		hurt = false
 		animation_tree.active = true
 		# pause aniamtion tree to give time for the animation reset
-		animation_tree.set_process_callback(2)
+		animation_tree.set_process_callback(AnimationTree.ANIMATION_PROCESS_MANUAL)
 		await get_tree().create_timer(0.1).timeout
-		animation_tree.set_process_callback(1)
+		animation_tree.set_process_callback(AnimationTree.ANIMATION_PROCESS_IDLE)
 
 func aggroed(delta: float) -> void:
 	_apply_gravity(delta)
@@ -98,9 +96,13 @@ func deaggroed(delta: float) -> void:
 	apply_stun_and_knockback(delta)
 	if knockback_timer > 0 or stunned:
 		return  
-
+	# enemy wandering/patrolling
 	if navigation_agent.is_navigation_finished():
-		var random_offset: Vector3 = Vector3(randf_range(-3, 3), 0, randf_range(-3, 3))
+		var random_offset: Vector3 = Vector3(
+				randf_range(enemy_data.wander_range_x.x, enemy_data.wander_range_x.y), 
+				0, 
+				randf_range(enemy_data.wander_range_z.x, enemy_data.wander_range_z.y)
+			)
 		navigation_agent.target_position = global_position + random_offset
 
 	# Move towards the new target
@@ -121,19 +123,17 @@ func _apply_gravity(delta: float) -> void:
 	else:
 		velocity.y = 0
 
-
 func _on_hurt(area: Area3D) -> void:
 	if area is PlayerAttackSurfaceArea:
-		if enemy_data.health <= 0:
-			queue_free()
+		# decrease enemy health
 		enemy_data.health -= 10
-		print("Enemy is hurt! Health: ", enemy_data.health)
-		last_animation = animated_sprite.animation
+		enemy_data.health = clamp(enemy_data.health, 0, enemy_data.health)
+		# pause animation tree when hurt
 		animated_sprite.stop()
 		animation_tree.active = false
 		hurt = true
-		knockback_timer = knockback_duration  # Knockback duration
-		stun_timer = stun_duration  # Stun duration (starts after knockback)
+		knockback_timer = knockback_duration
+		stun_timer = stun_duration
 
 		# Calculate the direction of the knockback based on the attacker's position
 		var relative_position: Vector3 = (area.global_position - global_position).normalized()

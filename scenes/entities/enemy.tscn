@@ -1005,11 +1005,13 @@ animations = [{
 
 [sub_resource type="Resource" id="Resource_1pxj6"]
 script = ExtResource("2_txpl2")
+level = 1
+experience = 10
 health = 100
 hit_strength = 10
 spriteframes = SubResource("SpriteFrames_ubfdq")
-wander_range_min = Vector2(-1, -1)
-wander_range_max = Vector2(1, 1)
+wander_range_x = Vector2(-3, 3)
+wander_range_z = Vector2(-3, 3)
 metadata/_custom_type_script = "uid://0fkyd553m7cg"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67neu"]

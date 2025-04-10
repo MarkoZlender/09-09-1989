@@ -24,10 +24,10 @@ distance = 5.0
 duration = 4.0
 metadata/_custom_type_script = "uid://bt0kgh1bkc2n6"
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_0tcst"]
+[sub_resource type="BoxMesh" id="BoxMesh_tf773"]
 size = Vector3(1, 0.2, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_tf773"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_0tcst"]
 size = Vector3(1, 0.2, 1)
 
 [node name="MovingPlatform" type="AnimatableBody3D"]
@@ -36,9 +36,9 @@ sync_to_physics = false
 script = ExtResource("1_cdfv0")
 movement_steps = Array[ExtResource("2_db0vp")]([SubResource("Resource_ppqmi"), SubResource("Resource_pvcxf"), SubResource("Resource_8y4br")])
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_0tcst")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_tf773")
 skeleton = NodePath("../CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0tcst")
