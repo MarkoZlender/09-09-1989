@@ -92,7 +92,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.4, 0)
 shape = SubResource("BoxShape3D_tf773")
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_8y4br")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.197464, 1.54977, -3.52911)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.197464, -3.57628e-07, 1.23451)
 player = NodePath("../Player")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]

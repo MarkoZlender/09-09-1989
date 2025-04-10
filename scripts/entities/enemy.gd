@@ -1,8 +1,6 @@
 class_name Enemy extends CharacterBody3D
 
 @export var enemy_data: EnemyData
-@export var movement_speed: float = 0.5
-@export var accel: float = 10
 @export var player: Player
 
 var idle: bool
@@ -27,6 +25,8 @@ var last_facing_direction: Vector2
 var time_since_last_rotation: float = 0.0
 var rotation_delay: float = 0.2
 
+@onready var movement_speed: float = enemy_data.movement_speed
+@onready var accel: float = enemy_data.accel
 
 @onready var navigation_agent: NavigationAgent3D = get_node("NavigationAgent3D")
 @onready var enemy_collision_shape: CollisionShape3D = $EnemyCollisionShape
@@ -34,9 +34,11 @@ var rotation_delay: float = 0.2
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var camera_gimbal: Node3D = get_tree().get_first_node_in_group("player").camera_gimbal  
 @onready var animated_sprite: AnimatedSprite3D = $Animation
+@onready var sfx_player: AudioStreamPlayer3D = $SFXPlayer
 
 func _ready() -> void:
 	animated_sprite.sprite_frames = enemy_data.spriteframes
+	enemy_data.experience *= enemy_data.level
 	$FrontHurtSurfaceArea.connect("area_entered", _on_hurt)
 	$FrontHurtSurfaceArea.connect("area_exited", _on_disengage)
 
@@ -127,6 +129,8 @@ func _on_hurt(area: Area3D) -> void:
 	if area is PlayerAttackSurfaceArea:
 		# decrease enemy health
 		enemy_data.health -= 10
+		sfx_player.stream = enemy_data.hurt_sfx
+		sfx_player.play()
 		enemy_data.health = clamp(enemy_data.health, 0, enemy_data.health)
 		# pause animation tree when hurt
 		animated_sprite.stop()
@@ -156,6 +160,24 @@ func _on_hurt(area: Area3D) -> void:
 				closest_direction = dir
 
 		knockback_direction = closest_direction * -1
+		# death
+		if enemy_data.health == 0:
+			%StateChart.send_event("dead")
+			for collision: CollisionShape3D in get_tree().get_nodes_in_group("collisions"):
+				print(collision)
+				collision.disabled = true
+			animated_sprite.modulate = Color(1, 0, 0)
+			sfx_player.stream = enemy_data.death_sfx
+			sfx_player.play()
+			# Create a Tween node to handle the fade-out effect
+			await sfx_player.finished
+			Global.signal_bus.enemy_died.emit(self)
+			var tween: Tween = get_tree().create_tween()
+			tween.finished.connect(_on_tween_completed)
+			tween.tween_property(animated_sprite, "modulate", Color(0, 0, 0, 0), 1.0)
+
+func _on_tween_completed():
+	queue_free()
 
 func _on_disengage(area: Area3D) -> void:
 	if area is PlayerAttackSurfaceArea:

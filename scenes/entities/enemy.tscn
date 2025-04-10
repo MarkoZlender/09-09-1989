@@ -1,7 +1,9 @@
-[gd_scene load_steps=269 format=3 uid="uid://byv5ix5sf5y4w"]
+[gd_scene load_steps=271 format=3 uid="uid://byv5ix5sf5y4w"]
 
 [ext_resource type="Script" uid="uid://dhgpdqod4iift" path="res://scripts/entities/enemy.gd" id="1_d7j71"]
+[ext_resource type="AudioStream" uid="uid://cxvtwkquf2x4l" path="res://assets/sounds/sfx/enemy_damaged.mp3" id="2_1pxj6"]
 [ext_resource type="Script" uid="uid://dy0s2ot576nwh" path="res://scripts/entities/enemy_attack_surface_area.gd" id="2_67neu"]
+[ext_resource type="AudioStream" uid="uid://d3ku5ceumm0sd" path="res://assets/sounds/sfx/enemy_death.wav" id="2_733a4"]
 [ext_resource type="Script" uid="uid://0fkyd553m7cg" path="res://scripts/data/enemy_data.gd" id="2_txpl2"]
 [ext_resource type="Texture2D" uid="uid://epddv8fv6blv" path="res://assets/sprites/idle_back/C_102_265.png" id="3_c8xv5"]
 [ext_resource type="Texture2D" uid="uid://b56p5vleahhdh" path="res://assets/sprites/idle_back/C_102_266.png" id="4_rid7h"]
@@ -1005,6 +1007,8 @@ animations = [{
 
 [sub_resource type="Resource" id="Resource_1pxj6"]
 script = ExtResource("2_txpl2")
+movement_speed = 0.5
+accel = 10.0
 level = 1
 experience = 10
 health = 100
@@ -1012,6 +1016,8 @@ hit_strength = 10
 spriteframes = SubResource("SpriteFrames_ubfdq")
 wander_range_x = Vector2(-3, 3)
 wander_range_z = Vector2(-3, 3)
+hurt_sfx = ExtResource("2_1pxj6")
+death_sfx = ExtResource("2_733a4")
 metadata/_custom_type_script = "uid://0fkyd553m7cg"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67neu"]
@@ -1547,7 +1553,7 @@ enemy_data = SubResource("Resource_1pxj6")
 visible = false
 mesh = SubResource("BoxMesh_ktqfp")
 
-[node name="EnemyCollisionShape" type="CollisionShape3D" parent="."]
+[node name="EnemyCollisionShape" type="CollisionShape3D" parent="." groups=["collisions"]]
 shape = SubResource("BoxShape3D_defa4")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -1565,7 +1571,7 @@ collision_layer = 8
 collision_mask = 8
 script = ExtResource("2_67neu")
 
-[node name="AttackSurface" type="CollisionShape3D" parent="AttackSurfaceArea"]
+[node name="AttackSurface" type="CollisionShape3D" parent="AttackSurfaceArea" groups=["collisions"]]
 transform = Transform3D(0.229869, 0, 0, 0, 0.462235, 0, 0, 0, 1, 0, 0, -0.0752146)
 shape = SubResource("BoxShape3D_jr1g6")
 debug_color = Color(0.82896, 0.0864, 0.96, 1)
@@ -1574,7 +1580,7 @@ debug_color = Color(0.82896, 0.0864, 0.96, 1)
 collision_layer = 8
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FrontHurtSurfaceArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FrontHurtSurfaceArea" groups=["collisions"]]
 transform = Transform3D(2.23176, 0, 0, 0, 1, 0, 0, 0, 0.212097, 0, 0, 0)
 shape = SubResource("BoxShape3D_67neu")
 
@@ -1589,7 +1595,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("226_a7qny")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AggroArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AggroArea" groups=["collisions"]]
 shape = SubResource("CylinderShape3D_2dase")
 debug_color = Color(0.999597, 0, 0.107821, 0.42)
 
@@ -1598,7 +1604,7 @@ collision_layer = 0
 collision_mask = 2
 script = ExtResource("220_yoqot")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeaggroArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeaggroArea" groups=["collisions"]]
 shape = SubResource("CylinderShape3D_a7qny")
 debug_color = Color(0.270519, 0.624619, 0.296623, 0.42)
 debug_fill = false
@@ -1657,6 +1663,15 @@ to = NodePath("../../Deaggroed")
 event = &"recovered"
 delay_in_seconds = "0.0"
 
+[node name="ToDead" type="Node" parent="StateChart/Root/Stunned"]
+script = ExtResource("223_a7qny")
+to = NodePath("../../Dead")
+event = &"dead"
+delay_in_seconds = "0.0"
+
+[node name="Dead" type="Node" parent="StateChart/Root"]
+script = ExtResource("222_2dase")
+
 [node name="StatesLogic" type="Node" parent="."]
 
 [node name="Aggroed" type="Node" parent="StatesLogic"]
@@ -1681,6 +1696,9 @@ parameters/AnimationNodeStateMachine/Idle/blend_position = Vector2(0, 0)
 parameters/AnimationNodeStateMachine/Jump/blend_position = Vector2(0, 0)
 parameters/AnimationNodeStateMachine/Run/blend_position = Vector2(0, 0)
 parameters/TimeScale/scale = 1.0
+
+[node name="SFXPlayer" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
 
 [node name="StateChartDebugger" parent="." instance=ExtResource("228_fw1hu")]
 offset_right = -1420.0
