@@ -1,4 +1,4 @@
-[gd_scene load_steps=271 format=3 uid="uid://byv5ix5sf5y4w"]
+[gd_scene load_steps=270 format=3 uid="uid://byv5ix5sf5y4w"]
 
 [ext_resource type="Script" uid="uid://dhgpdqod4iift" path="res://scripts/entities/enemy.gd" id="1_d7j71"]
 [ext_resource type="AudioStream" uid="uid://cxvtwkquf2x4l" path="res://assets/sounds/sfx/enemy_damaged.mp3" id="2_1pxj6"]
@@ -224,6 +224,7 @@
 [ext_resource type="PackedScene" uid="uid://f4fj2u87647d" path="res://scenes/components/animation_tree.tscn" id="219_rid7h"]
 [ext_resource type="Script" uid="uid://bqnr5hyceu623" path="res://addons/godot_state_charts/state_chart.gd" id="220_0fyhf"]
 [ext_resource type="Script" uid="uid://deb60yher4wfl" path="res://scripts/entities/enemy/deaggro_area.gd" id="220_yoqot"]
+[ext_resource type="AudioStream" uid="uid://cdvyuif766yk1" path="res://assets/sounds/sfx/retro-footstep.wav" id="221_anhxh"]
 [ext_resource type="Script" uid="uid://bt4iqisaqggy8" path="res://addons/godot_state_charts/compound_state.gd" id="221_qkhq7"]
 [ext_resource type="Script" uid="uid://bm4a5s8vovnwv" path="res://addons/godot_state_charts/atomic_state.gd" id="222_2dase"]
 [ext_resource type="Script" uid="uid://btg0k6scpejn3" path="res://addons/godot_state_charts/transition.gd" id="223_a7qny"]
@@ -1016,6 +1017,7 @@ hit_strength = 10
 spriteframes = SubResource("SpriteFrames_ubfdq")
 wander_range_x = Vector2(-3, 3)
 wander_range_z = Vector2(-3, 3)
+walk_sfx = ExtResource("221_anhxh")
 hurt_sfx = ExtResource("2_1pxj6")
 death_sfx = ExtResource("2_733a4")
 metadata/_custom_type_script = "uid://0fkyd553m7cg"
@@ -1531,17 +1533,6 @@ _data = {
 &"run_sw": SubResource("Animation_67qm6")
 }
 
-[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_txpl2"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_1pxj6"]
-graph_offset = Vector2(-157.1, -8.77956)
-nodes/AnimationNodeStateMachine/node = ExtResource("229_46oj2")
-nodes/AnimationNodeStateMachine/position = Vector2(-66.6667, 106.667)
-nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_txpl2")
-nodes/TimeScale/position = Vector2(240, 66.6667)
-nodes/output/position = Vector2(426.667, 80)
-node_connections = [&"TimeScale", 0, &"AnimationNodeStateMachine", &"output", 0, &"TimeScale"]
-
 [node name="Enemy" type="CharacterBody3D"]
 collision_layer = 4
 collision_mask = 3
@@ -1691,11 +1682,8 @@ speed_scale = 0.5
 
 [node name="AnimationTree" parent="." instance=ExtResource("219_rid7h")]
 active = true
-tree_root = SubResource("AnimationNodeBlendTree_1pxj6")
-parameters/AnimationNodeStateMachine/Idle/blend_position = Vector2(0, 0)
-parameters/AnimationNodeStateMachine/Jump/blend_position = Vector2(0, 0)
-parameters/AnimationNodeStateMachine/Run/blend_position = Vector2(0, 0)
-parameters/TimeScale/scale = 1.0
+tree_root = ExtResource("229_46oj2")
+parameters/Jump/blend_position = Vector2(0, 0)
 
 [node name="SFXPlayer" type="AudioStreamPlayer3D" parent="."]
 bus = &"SFX"
@@ -1704,6 +1692,14 @@ bus = &"SFX"
 offset_right = -1420.0
 offset_bottom = -489.0
 initial_node_to_watch = NodePath("../StateChart")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PatrollTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 2.0
+one_shot = true
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="body_entered" from="AggroArea" to="AggroArea" method="_on_body_entered"]

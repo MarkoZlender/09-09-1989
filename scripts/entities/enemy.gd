@@ -41,9 +41,11 @@ func _ready() -> void:
 	enemy_data.experience *= enemy_data.level
 	$FrontHurtSurfaceArea.connect("area_entered", _on_hurt)
 	$FrontHurtSurfaceArea.connect("area_exited", _on_disengage)
+	$PatrollTimer.start(randf_range(3.0, 4.0))
 
 func apply_stun_and_knockback(delta: float) -> void:
 	_apply_gravity(delta)
+	_play_footsteps()
 	time_since_last_rotation += delta
 	if knockback_timer > 0:
 		knockback_timer -= delta
@@ -72,6 +74,7 @@ func apply_stun_and_knockback(delta: float) -> void:
 
 func aggroed(delta: float) -> void:
 	_apply_gravity(delta)
+	_play_footsteps()
 	time_since_last_rotation += delta
 	camera_velocity = camera_gimbal.global_transform.basis.inverse() * velocity
 
@@ -92,32 +95,59 @@ func aggroed(delta: float) -> void:
 
 func deaggroed(delta: float) -> void:
 	_apply_gravity(delta)
+	_play_footsteps()
 	time_since_last_rotation += delta
 	camera_velocity = camera_gimbal.global_transform.basis.inverse() * velocity
 
 	apply_stun_and_knockback(delta)
 	if knockback_timer > 0 or stunned:
 		return  
-	# enemy wandering/patrolling
-	if navigation_agent.is_navigation_finished():
-		var random_offset: Vector3 = Vector3(
-				randf_range(enemy_data.wander_range_x.x, enemy_data.wander_range_x.y), 
-				0, 
-				randf_range(enemy_data.wander_range_z.x, enemy_data.wander_range_z.y)
-			)
-		navigation_agent.target_position = global_position + random_offset
 
-	# Move towards the new target
-	direction = navigation_agent.get_next_path_position() - global_position
-	direction = direction.normalized()
-	_rotate()
-	velocity = velocity.move_toward(direction * movement_speed, accel * delta)
+	# Handle patrolling with a stop-and-wait behavior
+	if navigation_agent.is_navigation_finished():
+		# If the timer is not running, start it and stop the enemy
+		if $PatrollTimer.time_left <= 0:
+			if velocity.length() > 0.1:
+				# Stop the enemy and start the timer
+				velocity = Vector3.ZERO
+				move_and_slide()
+				is_moving = false
+				$PatrollTimer.start(randf_range(2.0, 3.0))  # Wait for a random duration
+			else:
+				# After waiting, pick a new random patrol target
+				var random_offset: Vector3 = Vector3(
+					randf_range(enemy_data.wander_range_x.x, enemy_data.wander_range_x.y), 
+					0, 
+					randf_range(enemy_data.wander_range_z.x, enemy_data.wander_range_z.y)
+				)
+				navigation_agent.target_position = global_position + random_offset
+
+	# Move towards the new target if the timer is not running
+	if $PatrollTimer.time_left <= 0:
+		direction = navigation_agent.get_next_path_position() - global_position
+		direction = direction.normalized()
+		_rotate()
+		velocity = velocity.move_toward(direction * movement_speed, accel * delta)
 
 	is_moving = velocity.length() > 0.1
 	is_jumping = not is_on_floor()
 
 	move_and_slide()
 	animate_input_animation_tree()
+
+func _play_footsteps() -> void:
+	if is_moving && is_on_floor():
+		if not sfx_player.playing  && $Timer.time_left <= 0:
+			sfx_player.stream = enemy_data.walk_sfx
+			#sfx_player.volume_db = -50
+			sfx_player.pitch_scale = 1.0 + randf_range(-0.1, 0.1)
+			sfx_player.play()
+			$Timer.start(0.42)
+	else:
+		sfx_player.pitch_scale = 1.0
+		sfx_player.volume_db = 0
+		if sfx_player.playing:
+			sfx_player.stop()
 
 func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
@@ -164,7 +194,6 @@ func _on_hurt(area: Area3D) -> void:
 		if enemy_data.health == 0:
 			%StateChart.send_event("dead")
 			for collision: CollisionShape3D in get_tree().get_nodes_in_group("collisions"):
-				print(collision)
 				collision.disabled = true
 			animated_sprite.modulate = Color(1, 0, 0)
 			sfx_player.stream = enemy_data.death_sfx
@@ -176,7 +205,7 @@ func _on_hurt(area: Area3D) -> void:
 			tween.finished.connect(_on_tween_completed)
 			tween.tween_property(animated_sprite, "modulate", Color(0, 0, 0, 0), 1.0)
 
-func _on_tween_completed():
+func _on_tween_completed() -> void:
 	queue_free()
 
 func _on_disengage(area: Area3D) -> void:
@@ -215,11 +244,11 @@ func animate_input_animation_tree() -> void:
 	if last_facing_direction == Vector2.ZERO:
 		last_facing_direction = Vector2(0, -1)
 	if is_jumping:
-		animation_tree.set("parameters/AnimationNodeStateMachine/Jump/blend_position", last_facing_direction)
-		animation_tree.set("parameters/AnimationNodeStateMachine/State/current", 2)
+		animation_tree.set("parameters/Jump/blend_position", last_facing_direction)
+		animation_tree.set("parameters/State/current", 2)
 	elif idle:
-		animation_tree.set("parameters/AnimationNodeStateMachine/Idle/blend_position", last_facing_direction)
-		animation_tree.set("parameters/AnimationNodeStateMachine/State/current", 0)
+		animation_tree.set("parameters/Idle/blend_position", last_facing_direction)
+		animation_tree.set("parameters/State/current", 0)
 	else:
-		animation_tree.set("parameters/AnimationNodeStateMachine/Run/blend_position", blend_position)
-		animation_tree.set("parameters/AnimationNodeStateMachine/State/current", 1)
+		animation_tree.set("parameters/Run/blend_position", blend_position)
+		animation_tree.set("parameters/State/current", 1)
