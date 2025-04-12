@@ -4,3 +4,7 @@ func _on_body_entered(body:Node3D) -> void:
 	if body is Player:
 		print("Player entered the area")
 		get_tree().call_deferred("reload_current_scene")
+	
+	if body is Enemy:
+		Global.signal_bus.enemy_died.emit(body)
+		body.queue_free()

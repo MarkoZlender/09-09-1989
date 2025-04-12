@@ -37,6 +37,9 @@ var rotation_delay: float = 0.2
 @onready var sfx_player: AudioStreamPlayer3D = $SFXPlayer
 
 func _ready() -> void:
+	enemy_data = enemy_data.duplicate()
+	for collision in get_tree().get_nodes_in_group("collisions"):
+		collision.duplicate()
 	animated_sprite.sprite_frames = enemy_data.spriteframes
 	enemy_data.experience *= enemy_data.level
 	$FrontHurtSurfaceArea.connect("area_entered", _on_hurt)
@@ -191,19 +194,28 @@ func _on_hurt(area: Area3D) -> void:
 
 		knockback_direction = closest_direction * -1
 		# death
-		if enemy_data.health == 0:
+		if enemy_data.health <= 0:
 			%StateChart.send_event("dead")
-			for collision: CollisionShape3D in get_tree().get_nodes_in_group("collisions"):
-				collision.disabled = true
+			# disable collisions
+			for collision: Node in get_children():
+				if collision is Area3D:
+					collision.get_child(0).disabled = true
 			animated_sprite.modulate = Color(1, 0, 0)
+			# play death sound
 			sfx_player.stream = enemy_data.death_sfx
 			sfx_player.play()
-			# Create a Tween node to handle the fade-out effect
 			await sfx_player.finished
+			# emit signal to notify that the enemy has died
 			Global.signal_bus.enemy_died.emit(self)
+			# animate death
 			var tween: Tween = get_tree().create_tween()
 			tween.finished.connect(_on_tween_completed)
 			tween.tween_property(animated_sprite, "modulate", Color(0, 0, 0, 0), 1.0)
+			navigation_agent.process_mode = Node3D.ProcessMode.PROCESS_MODE_DISABLED
+			await tween.finished
+			for collision: Node in get_children():
+				if collision is CollisionShape3D:
+					collision.disabled = true
 
 func _on_tween_completed() -> void:
 	queue_free()
@@ -252,3 +264,9 @@ func animate_input_animation_tree() -> void:
 	else:
 		animation_tree.set("parameters/Run/blend_position", blend_position)
 		animation_tree.set("parameters/State/current", 1)
+
+func _on_attack_surface_area_body_entered(body: Node3D) -> void:
+	if body is Player:
+		sfx_player.stream = enemy_data.attack_sfx
+		sfx_player.play()
+		

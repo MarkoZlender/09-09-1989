@@ -1,7 +1,8 @@
-[gd_scene load_steps=270 format=3 uid="uid://byv5ix5sf5y4w"]
+[gd_scene load_steps=271 format=3 uid="uid://byv5ix5sf5y4w"]
 
 [ext_resource type="Script" uid="uid://dhgpdqod4iift" path="res://scripts/entities/enemy.gd" id="1_d7j71"]
 [ext_resource type="AudioStream" uid="uid://cxvtwkquf2x4l" path="res://assets/sounds/sfx/enemy_damaged.mp3" id="2_1pxj6"]
+[ext_resource type="AudioStream" uid="uid://e3al4myv2wvx" path="res://assets/sounds/sfx/hit-sound.wav" id="2_6c1u7"]
 [ext_resource type="Script" uid="uid://dy0s2ot576nwh" path="res://scripts/entities/enemy_attack_surface_area.gd" id="2_67neu"]
 [ext_resource type="AudioStream" uid="uid://d3ku5ceumm0sd" path="res://assets/sounds/sfx/enemy_death.wav" id="2_733a4"]
 [ext_resource type="Script" uid="uid://0fkyd553m7cg" path="res://scripts/data/enemy_data.gd" id="2_txpl2"]
@@ -1017,6 +1018,7 @@ hit_strength = 10
 spriteframes = SubResource("SpriteFrames_ubfdq")
 wander_range_x = Vector2(-3, 3)
 wander_range_z = Vector2(-3, 3)
+attack_sfx = ExtResource("2_6c1u7")
 walk_sfx = ExtResource("221_anhxh")
 hurt_sfx = ExtResource("2_1pxj6")
 death_sfx = ExtResource("2_733a4")
@@ -1033,7 +1035,8 @@ size = Vector3(0.1, 0.2, 0.03)
 size = Vector3(0.1, 0.2, 0.1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jr1g6"]
-size = Vector3(0.001, 0.001, 0.051)
+margin = 0.01
+size = Vector3(0.01, 0.01, 0.05)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_67neu"]
 size = Vector3(0.05, 0.2, 0.5)
@@ -1559,7 +1562,8 @@ debug_enabled = true
 
 [node name="AttackSurfaceArea" type="Area3D" parent="."]
 collision_layer = 8
-collision_mask = 8
+collision_mask = 10
+priority = 10
 script = ExtResource("2_67neu")
 
 [node name="AttackSurface" type="CollisionShape3D" parent="AttackSurfaceArea" groups=["collisions"]]
@@ -1702,6 +1706,7 @@ wait_time = 2.0
 one_shot = true
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="body_entered" from="AttackSurfaceArea" to="." method="_on_attack_surface_area_body_entered"]
 [connection signal="body_entered" from="AggroArea" to="AggroArea" method="_on_body_entered"]
 [connection signal="body_exited" from="DeaggroArea" to="DeaggroArea" method="_on_body_exited"]
 [connection signal="state_physics_processing" from="StateChart/Root/Deaggroed" to="StatesLogic/Deaggroed" method="_on_deaggroed_state_physics_processing"]
