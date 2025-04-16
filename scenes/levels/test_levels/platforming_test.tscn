@@ -1,4 +1,4 @@
-[gd_scene load_steps=239 format=3 uid="uid://ctdr8dygo77j1"]
+[gd_scene load_steps=240 format=3 uid="uid://ctdr8dygo77j1"]
 
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="1_0tcst"]
 [ext_resource type="Texture2D" uid="uid://bv16itb8q58pc" path="res://assets/textures/Dark/texture_01.png" id="1_8y4br"]
@@ -227,6 +227,7 @@
 [ext_resource type="Texture2D" uid="uid://cxfrn2mskhrh4" path="res://assets/sprites/run_sw/C_102_111.png" id="225_duxgs"]
 [ext_resource type="Texture2D" uid="uid://oclagc008res" path="res://assets/sprites/run_sw/C_102_112.png" id="226_q0s6d"]
 [ext_resource type="AudioStream" uid="uid://cdvyuif766yk1" path="res://assets/sounds/sfx/retro-footstep.wav" id="227_upmf0"]
+[ext_resource type="PackedScene" uid="uid://luwtg3pa4rwf" path="res://scenes/components/bgm_player.tscn" id="228_avp6s"]
 
 [sub_resource type="Resource" id="Resource_pvcxf"]
 script = ExtResource("3_pvcxf")
@@ -1921,5 +1922,7 @@ player = NodePath("../Player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.83953, 0, 1.39199)
 enemy_data = SubResource("Resource_avp6s")
 player = NodePath("../Player")
+
+[node name="BGMPlayer" parent="." instance=ExtResource("228_avp6s")]
 
 [connection signal="body_entered" from="ResetArea" to="ResetArea" method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=272 format=3 uid="uid://byv5ix5sf5y4w"]
+[gd_scene load_steps=271 format=3 uid="uid://byv5ix5sf5y4w"]
 
 [ext_resource type="Script" uid="uid://dhgpdqod4iift" path="res://scripts/entities/enemy.gd" id="1_d7j71"]
 [ext_resource type="AudioStream" uid="uid://cxvtwkquf2x4l" path="res://assets/sounds/sfx/enemy_damaged.mp3" id="2_1pxj6"]
@@ -1537,8 +1537,6 @@ _data = {
 &"run_sw": SubResource("Animation_67qm6")
 }
 
-[sub_resource type="AudioStreamPolyphonic" id="AudioStreamPolyphonic_6c1u7"]
-
 [node name="Enemy" type="CharacterBody3D"]
 collision_layer = 4
 collision_mask = 3
@@ -1693,7 +1691,6 @@ tree_root = ExtResource("229_46oj2")
 parameters/Jump/blend_position = Vector2(0, 0)
 
 [node name="SFXPlayer" type="AudioStreamPlayer3D" parent="."]
-stream = SubResource("AudioStreamPolyphonic_6c1u7")
 max_polyphony = 32
 bus = &"SFX"
 
