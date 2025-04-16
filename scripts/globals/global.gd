@@ -13,8 +13,6 @@ const LOADING_SCREEN: String = "res://scenes/ui/save_system/loading_screen.tscn"
 @onready var signal_bus: SignalBus
 @onready var utils: Utils
 @onready var inventory: Inventory = $Inventory
-@onready var audio_player: AudioStreamPlayer = $AudioPlayer
-
 
 func serialize() -> Dictionary:
 	var save_data: Dictionary = {}
