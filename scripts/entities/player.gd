@@ -114,11 +114,11 @@ func _on_hurt(area: Area3D) -> void:
 		hurt = true
 		knockback_timer = knockback_duration
 		knockback_direction = (global_position - area.global_position).normalized()
+		Global.signal_bus.player_hurt.emit()
 
 func _on_disengage(area: Area3D) -> void:
 	if area is EnemyAttackSurfaceArea:
 		hurt = false
-		print("Disengaging")
 
 func _add_inventory() -> void:
 	var loaded_resource: Resource = load("res://scenes/ui/inventory/inventory_item_list.tscn")
@@ -142,4 +142,3 @@ func save() -> Dictionary:
 func load(data: Dictionary) -> void:
 	global_position = Vector3(data["pos_x"], data["pos_y"], data["pos_z"])
 	rotation = Vector3(data["rot_x"], data["rot_y"], data["rot_z"])
-

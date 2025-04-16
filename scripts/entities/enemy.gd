@@ -44,6 +44,7 @@ func _ready() -> void:
 	enemy_data.experience *= enemy_data.level
 	$FrontHurtSurfaceArea.connect("area_entered", _on_hurt)
 	$FrontHurtSurfaceArea.connect("area_exited", _on_disengage)
+	Global.signal_bus.player_hurt.connect(_on_player_hurt)
 	$PatrollTimer.start(randf_range(3.0, 4.0))
 
 func apply_stun_and_knockback(delta: float) -> void:
@@ -267,6 +268,9 @@ func animate_input_animation_tree() -> void:
 
 func _on_attack_surface_area_body_entered(body: Node3D) -> void:
 	if body is Player:
-		sfx_player.stream = enemy_data.attack_sfx
-		sfx_player.play()
-		
+		# sfx_player.stream = enemy_data.attack_sfx
+		# sfx_player.play()
+		pass
+func _on_player_hurt():
+	sfx_player.stream = enemy_data.attack_sfx
+	sfx_player.play()
