@@ -165,6 +165,7 @@ advance_mode = 2
 advance_expression = "abs(camera_velocity.x) || abs(camera_velocity.z)"
 
 [resource]
+allow_transition_to_self = true
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_0ph45")
 states/Idle/position = Vector2(321.63, 100.074)
 states/Jump/node = SubResource("AnimationNodeBlendSpace2D_67qm6")

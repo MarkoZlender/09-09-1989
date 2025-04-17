@@ -72,9 +72,9 @@ func apply_stun_and_knockback(delta: float) -> void:
 		hurt = false
 		animation_tree.active = true
 		# pause aniamtion tree to give time for the animation reset
-		animation_tree.set_process_callback(AnimationTree.ANIMATION_PROCESS_MANUAL)
-		await get_tree().create_timer(0.1).timeout
-		animation_tree.set_process_callback(AnimationTree.ANIMATION_PROCESS_IDLE)
+		#animation_tree.set_process_callback(AnimationTree.ANIMATION_PROCESS_MANUAL)
+		#await get_tree().create_timer(0.1).timeout
+		#animation_tree.set_process_callback(AnimationTree.ANIMATION_PROCESS_IDLE)
 
 func aggroed(delta: float) -> void:
 	_apply_gravity(delta)
@@ -84,7 +84,7 @@ func aggroed(delta: float) -> void:
 
 	apply_stun_and_knockback(delta)
 	if knockback_timer > 0 or stunned:
-		return  
+		return
 
 	navigation_agent.target_position = player.global_position
 	direction = (navigation_agent.get_next_path_position() - global_position).normalized()
