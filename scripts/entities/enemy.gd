@@ -141,7 +141,7 @@ func deaggroed(delta: float) -> void:
 
 func _play_footsteps() -> void:
 	if is_moving && is_on_floor():
-		if not sfx_player.playing  && $Timer.time_left <= 0:
+		if not sfx_player.playing && $Timer.time_left <= 0:
 			sfx_player.stream = enemy_data.walk_sfx
 			#sfx_player.volume_db = -50
 			sfx_player.pitch_scale = 1.0 + randf_range(-0.1, 0.1)

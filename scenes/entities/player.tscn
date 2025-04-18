@@ -1,8 +1,10 @@
-[gd_scene load_steps=293 format=3 uid="uid://ds0d7p7idbuc4"]
+[gd_scene load_steps=296 format=3 uid="uid://ds0d7p7idbuc4"]
 
 [ext_resource type="Script" uid="uid://1uia1xe5nmrj" path="res://scripts/entities/player.gd" id="1_mfpxk"]
 [ext_resource type="Texture2D" uid="uid://epddv8fv6blv" path="res://assets/sprites/idle_back/C_102_265.png" id="2_4x3sa"]
 [ext_resource type="Script" uid="uid://r07fqxyrf5xi" path="res://scripts/utility_scripts/camera_gimbal.gd" id="2_73kkf"]
+[ext_resource type="Script" uid="uid://c5q20r4wynqst" path="res://scripts/data/player_data.gd" id="2_p4vbq"]
+[ext_resource type="AudioStream" uid="uid://cdvyuif766yk1" path="res://assets/sounds/sfx/retro-footstep.wav" id="3_0beyh"]
 [ext_resource type="Texture2D" uid="uid://b56p5vleahhdh" path="res://assets/sprites/idle_back/C_102_266.png" id="3_8ym7k"]
 [ext_resource type="PackedScene" uid="uid://f4fj2u87647d" path="res://scenes/components/animation_tree.tscn" id="3_n5sgd"]
 [ext_resource type="Texture2D" uid="uid://la57w3h6fucm" path="res://assets/sprites/idle_back/C_102_267.png" id="4_f4kbr"]
@@ -227,6 +229,17 @@
 [ext_resource type="Texture2D" uid="uid://5dwpgaqbtgl5" path="res://assets/sprites/jump_sw/C_102_193.png" id="152_k4syd"]
 [ext_resource type="Texture2D" uid="uid://cq1rs5mjx7lfp" path="res://assets/sprites/jump_sw/C_102_194.png" id="153_760aj"]
 [ext_resource type="Script" uid="uid://cgoijtm7bh3t5" path="res://scenes/entities/player_attack_surface_area.gd" id="227_l6jip"]
+
+[sub_resource type="Resource" id="Resource_0beyh"]
+script = ExtResource("2_p4vbq")
+speed = 1.5
+rotation_controls = true
+level = 1
+experience = 10
+health = 100
+hit_strength = 10
+walk_sfx = ExtResource("3_0beyh")
+metadata/_custom_type_script = "uid://c5q20r4wynqst"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_73kkf"]
 radius = 0.05
@@ -1672,6 +1685,7 @@ collision_layer = 2
 collision_mask = 5
 wall_min_slide_angle = 0.0
 script = ExtResource("1_mfpxk")
+player_data = SubResource("Resource_0beyh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_73kkf")
@@ -1760,7 +1774,8 @@ initial_node_to_watch = NodePath("../StateChart")
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
 current = true
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+[node name="SFXPlayer" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
 
 [node name="AttackSurfaceArea" type="Area3D" parent="."]
 collision_layer = 8
@@ -1778,6 +1793,9 @@ collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtSurfaceArea"]
 shape = SubResource("CapsuleShape3D_i2i0h")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
 
 [connection signal="state_physics_processing" from="StateChart/Root/Idle" to="StatesLogic/Idle" method="_on_idle_state_physics_processing"]
 [connection signal="state_physics_processing" from="StateChart/Root/Moving" to="StatesLogic/Moving" method="_on_moving_state_physics_processing"]

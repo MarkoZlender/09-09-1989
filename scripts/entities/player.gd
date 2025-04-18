@@ -3,14 +3,13 @@ extends CharacterBody3D
 
 const JUMP_VELOCITY: float = 3.5
 
-@export var speed: float = 1.5
-@export var rotation_controls: bool = true
+@export var player_data: PlayerData
 
 var idle: bool
 var is_moving: bool = false
 var is_jumping: bool = false
-
 var hurt:bool = false
+
 var direction: Vector3 = Vector3.ZERO
 var last_facing_direction: Vector2 = Vector2(0, -1)
 var camera_velocity: Vector3 = Vector3.ZERO
@@ -23,6 +22,7 @@ var knockback_timer: float = 0.0
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var camera_gimbal: Node3D = $CameraGimbal
+@onready var sfx_player: AudioStreamPlayer3D = $SFXPlayer
 @onready var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
 
 func _ready() -> void:
@@ -37,6 +37,7 @@ func _input(event: InputEvent) -> void:
 			Global.game_controller.get_node("GUI/InventoryItemList").queue_free()
 		
 func move(delta: float) -> void:
+	_play_footsteps()
 	# Apply gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -63,12 +64,12 @@ func move(delta: float) -> void:
 
 	if direction:
 		is_moving = true
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
+		velocity.x = direction.x * player_data.speed
+		velocity.z = direction.z * player_data.speed
 	else:
 		is_moving = false
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.z = move_toward(velocity.z, 0, speed)
+		velocity.x = move_toward(velocity.x, 0, player_data.speed)
+		velocity.z = move_toward(velocity.z, 0, player_data.speed)
 
 	camera_velocity = camera_gimbal.global_transform.basis.inverse() * velocity
 
@@ -77,6 +78,7 @@ func move(delta: float) -> void:
 
 	move_and_slide()
 	animate_input_animation_tree()
+	
 
 	if hurt:
 		print("Hurting player")
@@ -119,6 +121,20 @@ func _on_hurt(area: Area3D) -> void:
 func _on_disengage(area: Area3D) -> void:
 	if area is EnemyAttackSurfaceArea:
 		hurt = false
+
+func _play_footsteps() -> void:
+	if is_moving && is_on_floor():
+		if not sfx_player.playing && $Timer.time_left <= 0:
+			print("Playing footsteps")
+			sfx_player.stream = player_data.walk_sfx
+			sfx_player.pitch_scale = 1.0 + randf_range(-0.1, 0.1)
+			sfx_player.play()
+			$Timer.start(0.42)
+	else:
+		sfx_player.pitch_scale = 1.0
+		sfx_player.volume_db = 0
+		if sfx_player.playing:
+			sfx_player.stop()
 
 func _add_inventory() -> void:
 	var loaded_resource: Resource = load("res://scenes/ui/inventory/inventory_item_list.tscn")
