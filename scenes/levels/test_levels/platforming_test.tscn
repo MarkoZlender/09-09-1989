@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctdr8dygo77j1"]
+[gd_scene load_steps=15 format=3 uid="uid://ctdr8dygo77j1"]
 
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="1_0tcst"]
 [ext_resource type="Texture2D" uid="uid://bv16itb8q58pc" path="res://assets/textures/Dark/texture_01.png" id="1_8y4br"]
 [ext_resource type="PackedScene" uid="uid://b4yel28q8mccd" path="res://scenes/environment/props/moving_platform.tscn" id="2_dd7au"]
 [ext_resource type="Script" uid="uid://c4l2dq1k63b6s" path="res://scripts/utility_scripts/reset_area.gd" id="2_tf773"]
 [ext_resource type="Script" uid="uid://bt0kgh1bkc2n6" path="res://scripts/data/platform_move_step.gd" id="3_pvcxf"]
+[ext_resource type="PackedScene" uid="uid://byv5ix5sf5y4w" path="res://scenes/entities/enemy.tscn" id="7_t60y1"]
 [ext_resource type="PackedScene" uid="uid://luwtg3pa4rwf" path="res://scenes/components/bgm_player.tscn" id="228_avp6s"]
 
 [sub_resource type="Resource" id="Resource_pvcxf"]
@@ -42,6 +43,7 @@ agent_max_climb = 0.05
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvcxf"]
 albedo_texture = ExtResource("1_8y4br")
 uv1_triplanar = true
+texture_filter = 2
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_t60y1"]
 cell_size = 0.2
@@ -116,5 +118,9 @@ size = Vector3(10, 0.2, 10)
 navigation_mesh = SubResource("NavigationMesh_t60y1")
 
 [node name="BGMPlayer" parent="." instance=ExtResource("228_avp6s")]
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_t60y1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.891693, 0, 1.2236)
+player = NodePath("../Player")
 
 [connection signal="body_entered" from="ResetArea" to="ResetArea" method="_on_body_entered"]

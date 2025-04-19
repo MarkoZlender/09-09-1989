@@ -2330,7 +2330,6 @@ avoidance_enabled = true
 height = 0.2
 radius = 0.05
 use_3d_avoidance = true
-debug_enabled = true
 
 [node name="Animation" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
@@ -2468,6 +2467,7 @@ max_polyphony = 32
 bus = &"SFX"
 
 [node name="StateChartDebugger" parent="." instance=ExtResource("228_fw1hu")]
+visible = false
 offset_right = -1420.0
 offset_bottom = -489.0
 initial_node_to_watch = NodePath("../StateChart")

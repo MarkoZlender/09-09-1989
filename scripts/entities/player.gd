@@ -93,23 +93,18 @@ func animate_input_animation_tree() -> void:
 	# Normalize the camera velocity for blending
 	var blend_position: Vector2 = Vector2(camera_velocity.x, camera_velocity.z).normalized()
 
-	# Ensure last_facing_direction doesn't reset to zero
+	# Update last_facing_direction even when jumping
 	if blend_position.length() > 0.1:  # Only update when there's movement
 		last_facing_direction = blend_position
 
-	# If still (0,0), ensure a fallback direction (e.g., idle forward)
-	if last_facing_direction == Vector2.ZERO:
-		last_facing_direction = Vector2(0, -1)  # Default to facing forward
-
-	# Handle jump animations
 	if is_jumping:
 		animation_tree.set("parameters/Jump/blend_position", last_facing_direction)
 		animation_tree.set("parameters/State/current", 2)  # Jump state
 
+	# Handle animations based on state
 	elif idle:
 		animation_tree.set("parameters/Idle/blend_position", last_facing_direction)
 		animation_tree.set("parameters/State/current", 0)  # Idle state
-
 	else:
 		animation_tree.set("parameters/Run/blend_position", blend_position)
 		animation_tree.set("parameters/State/current", 1)  # Run state
@@ -136,8 +131,6 @@ func _play_footsteps() -> void:
 	else:
 		sfx_player.pitch_scale = 1.0
 		sfx_player.volume_db = 0
-		# if sfx_player.playing:
-		# 	sfx_player.stop()
 
 func _add_inventory() -> void:
 	var loaded_resource: Resource = load("res://scenes/ui/inventory/inventory_item_list.tscn")
