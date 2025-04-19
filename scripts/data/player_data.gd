@@ -12,7 +12,8 @@ extends Resource
 @export var hit_strength: int = 10
 
 @export_group("Audio")
-@export var attack_sfx: AudioStream
 @export var walk_sfx: AudioStream
+@export var jump_sfx: AudioStream
+@export var attack_sfx: AudioStream
 @export var hurt_sfx: AudioStream
 @export var death_sfx: AudioStream

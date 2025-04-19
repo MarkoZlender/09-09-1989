@@ -55,6 +55,9 @@ func move(delta: float) -> void:
 	# Normal movement logic
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+		print("Jumping")
+		sfx_player.stream = player_data.jump_sfx
+		sfx_player.play()
 
 	input_dir = Input.get_vector("left", "right", "up", "down")
 	var camera_basis: Basis = camera_gimbal.global_transform.basis
@@ -133,8 +136,8 @@ func _play_footsteps() -> void:
 	else:
 		sfx_player.pitch_scale = 1.0
 		sfx_player.volume_db = 0
-		if sfx_player.playing:
-			sfx_player.stop()
+		# if sfx_player.playing:
+		# 	sfx_player.stop()
 
 func _add_inventory() -> void:
 	var loaded_resource: Resource = load("res://scenes/ui/inventory/inventory_item_list.tscn")
