@@ -1,9 +1,19 @@
 class_name Player 
 extends CharacterBody3D
 
+#region Constants
+
 const JUMP_VELOCITY: float = 3.5
 
+#endregion
+
+#region Exports
+
 @export var player_data: PlayerData
+
+#endregion
+
+#region Variables
 
 var idle: bool
 var is_moving: bool = false
@@ -19,15 +29,23 @@ var knockback_strength: float = 2.0  # Adjust the force as needed
 var knockback_duration: float = 0.2  # How long the knockback lasts
 var knockback_timer: float = 0.0
 
+#endregion
+
+#region Onready variables
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var camera_gimbal: Node3D = $CameraGimbal
 @onready var sfx_player: AudioStreamPlayer3D = $SFXPlayer
 @onready var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
 
+#endregion
+
+#region Built-in functions
+
 func _ready() -> void:
 	$HurtSurfaceArea.connect("area_entered", _on_hurt)
 	$HurtSurfaceArea.connect("area_exited", _on_disengage)
+	Global.signal_bus.player_died.connect(_on_player_died)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -35,7 +53,11 @@ func _input(event: InputEvent) -> void:
 			_add_inventory()
 		else:
 			Global.game_controller.get_node("GUI/InventoryItemList").queue_free()
-		
+
+#endregion
+
+#region Public functions
+
 func move(delta: float) -> void:
 	_play_footsteps()
 	# Apply gravity
@@ -109,35 +131,6 @@ func animate_input_animation_tree() -> void:
 		animation_tree.set("parameters/Run/blend_position", blend_position)
 		animation_tree.set("parameters/State/current", 1)  # Run state
 
-func _on_hurt(area: Area3D) -> void:
-	if area is EnemyAttackSurfaceArea:
-		hurt = true
-		knockback_timer = knockback_duration
-		knockback_direction = (global_position - area.global_position).normalized()
-		Global.signal_bus.player_hurt.emit()
-
-func _on_disengage(area: Area3D) -> void:
-	if area is EnemyAttackSurfaceArea:
-		hurt = false
-
-func _play_footsteps() -> void:
-	if is_moving && is_on_floor():
-		if not sfx_player.playing && $Timer.time_left <= 0:
-			print("Playing footsteps")
-			sfx_player.stream = player_data.walk_sfx
-			sfx_player.pitch_scale = 1.0 + randf_range(-0.1, 0.1)
-			sfx_player.play()
-			$Timer.start(0.42)
-	else:
-		sfx_player.pitch_scale = 1.0
-		sfx_player.volume_db = 0
-
-func _add_inventory() -> void:
-	var loaded_resource: Resource = load("res://scenes/ui/inventory/inventory_item_list.tscn")
-	var instance: Node = loaded_resource.instantiate()
-	Global.game_controller.get_node("GUI").add_child(instance)
-	Global.game_controller.get_node("GUI").move_child(instance, 0)
-
 func save() -> Dictionary:
 	var save_data: Dictionary = {
 		"filename" : get_scene_file_path(),
@@ -154,3 +147,56 @@ func save() -> Dictionary:
 func load(data: Dictionary) -> void:
 	global_position = Vector3(data["pos_x"], data["pos_y"], data["pos_z"])
 	rotation = Vector3(data["rot_x"], data["rot_y"], data["rot_z"])
+
+#endregion
+
+#region Private functions 
+
+func _play_footsteps() -> void:
+	if is_moving && is_on_floor():
+		if not sfx_player.playing && $Timer.time_left <= 0:
+			print("Playing footsteps")
+			sfx_player.stream = player_data.walk_sfx
+			sfx_player.pitch_scale = 1.0 + randf_range(-0.1, 0.1)
+			sfx_player.play()
+			$Timer.start(0.42)
+	else:
+		sfx_player.pitch_scale = 1.0
+		sfx_player.volume_db = 0
+func _apply_knockback(area: Area3D) -> void:
+	knockback_timer = knockback_duration
+	knockback_direction = (global_position - area.global_position).normalized()
+	Global.signal_bus.player_hurt.emit()
+
+func _add_inventory() -> void:
+	var loaded_resource: Resource = load("res://scenes/ui/inventory/inventory_item_list.tscn")
+	var instance: Node = loaded_resource.instantiate()
+	Global.game_controller.get_node("GUI").add_child(instance)
+	Global.game_controller.get_node("GUI").move_child(instance, 0)
+
+#endregion
+
+#region Signal callables
+
+func _on_hurt(area: Area3D) -> void:
+	if area is EnemyAttackSurfaceArea:
+		hurt = true
+		player_data.health -= area.get_parent().enemy_data.hit_strength
+		clamp(player_data.health, 0, player_data.health)
+		print("Player health: ", player_data.health)
+		if player_data.health <= 0:
+			sfx_player.stream = player_data.death_sfx
+			sfx_player.play()
+			Global.signal_bus.player_died.emit()
+		_apply_knockback(area)
+
+func _on_disengage(area: Area3D) -> void:
+	if area is EnemyAttackSurfaceArea:
+		hurt = false
+
+func _on_player_died() -> void:
+
+	
+	Global.signal_bus.player_died.disconnect(_on_player_died)
+
+#endregion
