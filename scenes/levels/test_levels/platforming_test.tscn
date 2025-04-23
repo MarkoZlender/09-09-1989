@@ -1,10 +1,13 @@
-[gd_scene load_steps=23 format=3 uid="uid://ctdr8dygo77j1"]
+[gd_scene load_steps=26 format=3 uid="uid://ctdr8dygo77j1"]
 
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="1_0tcst"]
 [ext_resource type="Texture2D" uid="uid://q8qckcltgk44" path="res://assets/sprites/bones/bones6.png" id="1_skixb"]
 [ext_resource type="PackedScene" uid="uid://b4yel28q8mccd" path="res://scenes/environment/props/moving_platform.tscn" id="2_dd7au"]
 [ext_resource type="Script" uid="uid://c4l2dq1k63b6s" path="res://scripts/utility_scripts/reset_area.gd" id="2_tf773"]
+[ext_resource type="AudioStream" uid="uid://blufhax7l88cw" path="res://assets/sounds/sfx/jump_sound.wav" id="3_60qv0"]
 [ext_resource type="Script" uid="uid://bt0kgh1bkc2n6" path="res://scripts/data/platform_move_step.gd" id="3_pvcxf"]
+[ext_resource type="Script" uid="uid://c5q20r4wynqst" path="res://scripts/data/player_data.gd" id="4_kf4aw"]
+[ext_resource type="AudioStream" uid="uid://cdvyuif766yk1" path="res://assets/sounds/sfx/retro-footstep.wav" id="5_efmr4"]
 [ext_resource type="Texture2D" uid="uid://bvatenyu83o46" path="res://assets/sprites/tower/tower7.png" id="5_t60y1"]
 [ext_resource type="PackedScene" uid="uid://byv5ix5sf5y4w" path="res://scenes/entities/enemy.tscn" id="7_t60y1"]
 [ext_resource type="AudioStream" uid="uid://3mc2spugg3w0" path="res://assets/sounds/bgm/bgm.ogg" id="8_sl2ak"]
@@ -14,6 +17,18 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sl2ak"]
 albedo_texture = ExtResource("1_skixb")
 texture_filter = 0
+
+[sub_resource type="Resource" id="Resource_vp4rt"]
+script = ExtResource("4_kf4aw")
+speed = 1.5
+rotation_controls = true
+level = 1
+experience = 10
+health = 10
+hit_strength = 10
+walk_sfx = ExtResource("5_efmr4")
+jump_sfx = ExtResource("3_60qv0")
+metadata/_custom_type_script = "uid://c5q20r4wynqst"
 
 [sub_resource type="Environment" id="Environment_skixb"]
 adjustment_brightness = 0.76
@@ -74,10 +89,6 @@ distance = 1.0
 duration = 3.0
 metadata/_custom_type_script = "uid://bt0kgh1bkc2n6"
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_t60y1"]
-cell_size = 0.2
-cell_height = 0.05
-
 [node name="PlatformingTest" type="Node3D"]
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
@@ -94,6 +105,11 @@ size = Vector3(1, 0.2, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_0tcst")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423895, 0)
+player_data = SubResource("Resource_vp4rt")
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_t60y1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.891693, 0, 1.2236)
+player = NodePath("../Player")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_skixb")
@@ -200,16 +216,9 @@ disable_mode = 2
 sync_to_physics = true
 movement_steps = Array[ExtResource("3_pvcxf")]([SubResource("Resource_skixb"), SubResource("Resource_7pmin")])
 
-[node name="NavigationRegion3D2" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_t60y1")
-
 [node name="BGMPlayer" parent="." instance=ExtResource("228_avp6s")]
 process_mode = 3
 stream = ExtResource("8_sl2ak")
-
-[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_t60y1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.891693, 0, 1.2236)
-player = NodePath("../Player")
 
 [node name="LoadLevelComponent" parent="." node_paths=PackedStringArray("scene_root") instance=ExtResource("9_7pmin")]
 scene_root = NodePath("..")

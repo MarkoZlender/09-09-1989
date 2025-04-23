@@ -182,7 +182,6 @@ func _on_hurt(area: Area3D) -> void:
 	if area is EnemyAttackSurfaceArea:
 		hurt = true
 		player_data.health -= area.get_parent().enemy_data.hit_strength
-		clamp(player_data.health, 0, player_data.health)
 		print("Player health: ", player_data.health)
 		if player_data.health <= 0:
 			sfx_player.stream = player_data.death_sfx

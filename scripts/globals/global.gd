@@ -4,6 +4,7 @@ const SLOT_BUTTON_SCENE: String = "res://scenes/ui/save_system/slot_button.tscn"
 const MAIN_MENU_SCENE: String = "res://scenes/ui/main_menu.tscn"
 const STARTING_LEVEL: String = "res://scenes/levels/test_level.tscn"
 const LOADING_SCREEN: String = "res://scenes/ui/save_system/loading_screen.tscn"
+const GAME_OVER_SCENE: String = "res://scenes/ui/game_over_screen.tscn"
 
 @export var savable_globals: Array[Node] = []
 

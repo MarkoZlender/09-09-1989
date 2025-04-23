@@ -57,6 +57,7 @@ Label/font_sizes/font_size = 25
 Label/styles/normal = SubResource("StyleBoxEmpty_vijfk")
 MainMenuButton/base_type = &"Button"
 MainMenuButton/colors/font_color = Color(0.901961, 0.901961, 0.87451, 1)
+MainMenuButton/colors/font_hover_color = Color(0, 0, 0, 1)
 MainMenuButton/font_sizes/font_size = 30
 MainMenuButton/styles/hover = SubResource("StyleBoxFlat_81n5t")
 MainMenuButton/styles/normal = SubResource("StyleBoxEmpty_tjtyj")

@@ -107,9 +107,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme_override_colors/font_hover_color = Color(1, 1, 1, 0.286275)
-theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.286275)
-theme_override_colors/font_focus_color = Color(1, 1, 1, 0.286275)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 0.286275)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.286275)
 theme_override_font_sizes/font_size = 60
 theme_override_styles/focus = SubResource("StyleBoxEmpty_x10xj")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_x10xj")
@@ -160,7 +160,7 @@ text = "Quit"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_gbmd3")
+&"": SubResource("AnimationLibrary_gbmd3")
 }
 autoplay = "blink"
 

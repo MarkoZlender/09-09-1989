@@ -1,0 +1,68 @@
+[gd_scene load_steps=3 format=3 uid="uid://fhvorfgjiw4d"]
+
+[ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/ui_theme.tres" id="1_dnrai"]
+[ext_resource type="Script" uid="uid://dg1s7a5f7lwje" path="res://scripts/ui/game_over_screen.gd" id="2_sopbp"]
+
+[node name="GameOverScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_dnrai")
+script = ExtResource("2_sopbp")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.0
+offset_top = -220.0
+offset_right = 280.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -257.5
+offset_top = -22.0
+offset_right = 257.5
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RestartButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 2
+theme_type_variation = &"MainMenuButton"
+text = "Restart from last save"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 2
+theme_type_variation = &"MainMenuButton"
+text = "Quit to Main Menu"
+
+[connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

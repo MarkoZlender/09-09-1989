@@ -23,6 +23,7 @@ func _ready() -> void:
 	Global.game_controller = self
 
 	Global.signal_bus.level_changed.connect(_on_level_changed)
+	Global.signal_bus.player_died.connect(_on_player_died)
 
 	if start_scene.resource_path.find("res://scenes/ui") == -1:
 		change_3d_scene(start_scene.resource_path)
@@ -79,7 +80,10 @@ func change_3d_scene(
 		transition_out: String = "fade_out",
 		seconds: float = 1.0
 	) -> void:
-
+	
+	if new_scene == "":
+		current_3d_scene.queue_free()
+		return
 	change_gui_scene(Global.LOADING_SCREEN, true, false, true)
 	if transition:
 		transition_controller.transition(transition_out, seconds)
@@ -92,7 +96,7 @@ func change_3d_scene(
 			current_3d_scene.visible = false # Keeps node in memory and running
 		else:
 			world_3d.remove_child(current_3d_scene) # Keeps node in memory, does not run
-	# change scene to loading screen, delete previous ui scene, don't keep running, don't transition
+
 
 	_load_scene_threaded(new_scene)
 	await scene_loaded
@@ -150,3 +154,8 @@ func _on_level_changed() -> void:
 	for node: Node in gui.get_children():
 		if node.name != "TransitionController":
 			node.queue_free()
+
+func _on_player_died() -> void:
+	print("Player died")
+	change_gui_scene(Global.GAME_OVER_SCENE, true, false, true)
+
