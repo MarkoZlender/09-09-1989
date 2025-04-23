@@ -92,7 +92,7 @@ size = Vector3(1, 0.2, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423895, 0)
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_t60y1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.52976)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.46197)
 player = NodePath("../Player")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

@@ -146,7 +146,7 @@ func _play_footsteps() -> void:
 			#sfx_player.volume_db = -50
 			sfx_player.pitch_scale = 1.0 + randf_range(-0.1, 0.1)
 			sfx_player.play()
-			$Timer.start(0.42)
+			$Timer.start(0.2)
 	else:
 		sfx_player.pitch_scale = 1.0
 		sfx_player.volume_db = 0
