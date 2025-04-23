@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://byv5ix5sf5y4w"]
+[gd_scene load_steps=67 format=3 uid="uid://byv5ix5sf5y4w"]
 
 [ext_resource type="Script" uid="uid://dhgpdqod4iift" path="res://scripts/entities/enemy.gd" id="1_d7j71"]
 [ext_resource type="AudioStream" uid="uid://cxvtwkquf2x4l" path="res://assets/sounds/sfx/enemy_damaged.mp3" id="2_1pxj6"]
@@ -18,7 +18,6 @@
 [ext_resource type="Script" uid="uid://dlye65oy0c6c0" path="res://scripts/state_machine/enemy_states/deaggroed.gd" id="225_a7qny"]
 [ext_resource type="Script" uid="uid://b3iyupm8a5he2" path="res://scripts/entities/enemy/aggro_area.gd" id="226_a7qny"]
 [ext_resource type="Script" uid="uid://doylfv46820k0" path="res://scripts/state_machine/enemy_states/stunned.gd" id="227_3eutw"]
-[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="228_fw1hu"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://ck2y4gpmr4c60" path="res://resources/enemy_animation_tree.tres" id="229_46oj2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o3i7f"]
@@ -835,12 +834,6 @@ parameters/Jump/blend_position = Vector2(0, 0)
 [node name="SFXPlayer" type="AudioStreamPlayer3D" parent="."]
 max_polyphony = 32
 bus = &"SFX"
-
-[node name="StateChartDebugger" parent="." instance=ExtResource("228_fw1hu")]
-visible = false
-offset_right = -1420.0
-offset_bottom = -489.0
-initial_node_to_watch = NodePath("../StateChart")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true

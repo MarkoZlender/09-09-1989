@@ -91,6 +91,10 @@ size = Vector3(1, 0.2, 1)
 [node name="Player" parent="." instance=ExtResource("1_0tcst")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423895, 0)
 
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_t60y1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.52976)
+player = NodePath("../Player")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_skixb")
 
@@ -203,9 +207,5 @@ stream = ExtResource("8_sl2ak")
 [node name="LoadLevelComponent" parent="." node_paths=PackedStringArray("scene_root") instance=ExtResource("9_7pmin")]
 scene_root = NodePath("..")
 debug_mode = true
-
-[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_t60y1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.52976)
-player = NodePath("../Player")
 
 [connection signal="body_entered" from="ResetArea" to="ResetArea" method="_on_body_entered"]
