@@ -271,6 +271,7 @@ func _on_attack_surface_area_body_entered(body: Node3D) -> void:
 		# sfx_player.stream = enemy_data.attack_sfx
 		# sfx_player.play()
 		pass
-func _on_player_hurt():
+
+func _on_player_hurt(_health: int) -> void:
 	sfx_player.stream = enemy_data.attack_sfx
 	sfx_player.play()

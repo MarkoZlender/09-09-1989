@@ -1,4 +1,4 @@
-[gd_scene load_steps=233 format=3 uid="uid://ds0d7p7idbuc4"]
+[gd_scene load_steps=234 format=3 uid="uid://ds0d7p7idbuc4"]
 
 [ext_resource type="Script" uid="uid://1uia1xe5nmrj" path="res://scripts/entities/player.gd" id="1_mfpxk"]
 [ext_resource type="Script" uid="uid://r07fqxyrf5xi" path="res://scripts/utility_scripts/camera_gimbal.gd" id="2_73kkf"]
@@ -165,6 +165,7 @@
 [ext_resource type="Texture2D" uid="uid://3djbxe0nfai2" path="res://assets/sprites/jump_sw/C_102_192.png" id="151_cuvjl"]
 [ext_resource type="Texture2D" uid="uid://5dwpgaqbtgl5" path="res://assets/sprites/jump_sw/C_102_193.png" id="152_k4syd"]
 [ext_resource type="Texture2D" uid="uid://cq1rs5mjx7lfp" path="res://assets/sprites/jump_sw/C_102_194.png" id="153_760aj"]
+[ext_resource type="PackedScene" uid="uid://hln8ohgt64ft" path="res://scenes/ui/hud.tscn" id="167_efb02"]
 [ext_resource type="Script" uid="uid://cgoijtm7bh3t5" path="res://scenes/entities/player_attack_surface_area.gd" id="227_l6jip"]
 
 [sub_resource type="Resource" id="Resource_0beyh"]
@@ -172,8 +173,10 @@ script = ExtResource("2_p4vbq")
 speed = 1.5
 rotation_controls = true
 level = 1
+level_progression = Array[int]([20, 30])
 experience = 10
 health = 100
+max_health = 100
 hit_strength = 10
 walk_sfx = ExtResource("3_0beyh")
 jump_sfx = ExtResource("2_mfvd2")
@@ -1553,6 +1556,8 @@ shape = SubResource("CapsuleShape3D_i2i0h")
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Hud" parent="." instance=ExtResource("167_efb02")]
 
 [connection signal="state_physics_processing" from="StateChart/Root/Idle" to="StatesLogic/Idle" method="_on_idle_state_physics_processing"]
 [connection signal="state_physics_processing" from="StateChart/Root/Moving" to="StatesLogic/Moving" method="_on_moving_state_physics_processing"]

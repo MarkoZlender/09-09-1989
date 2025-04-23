@@ -45,7 +45,7 @@ var knockback_timer: float = 0.0
 func _ready() -> void:
 	$HurtSurfaceArea.connect("area_entered", _on_hurt)
 	$HurtSurfaceArea.connect("area_exited", _on_disengage)
-	Global.signal_bus.player_died.connect(_on_player_died)
+	Global.signal_bus.enemy_died.connect(_on_enemy_defeated)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -163,16 +163,22 @@ func _play_footsteps() -> void:
 	else:
 		sfx_player.pitch_scale = 1.0
 		sfx_player.volume_db = 0
+
 func _apply_knockback(area: Area3D) -> void:
 	knockback_timer = knockback_duration
 	knockback_direction = (global_position - area.global_position).normalized()
-	Global.signal_bus.player_hurt.emit()
+	Global.signal_bus.player_hurt.emit(player_data.health)
 
 func _add_inventory() -> void:
 	var loaded_resource: Resource = load("res://scenes/ui/inventory/inventory_item_list.tscn")
 	var instance: Node = loaded_resource.instantiate()
 	Global.game_controller.get_node("GUI").add_child(instance)
 	Global.game_controller.get_node("GUI").move_child(instance, 0)
+
+func _check_level() -> void:
+	if player_data.experience >= player_data.level_progression[player_data.level-1]:
+		player_data.level += 1
+		print("Level up! New level: ", player_data.level)
 
 #endregion
 
@@ -184,8 +190,6 @@ func _on_hurt(area: Area3D) -> void:
 		player_data.health -= area.get_parent().enemy_data.hit_strength
 		print("Player health: ", player_data.health)
 		if player_data.health <= 0:
-			sfx_player.stream = player_data.death_sfx
-			sfx_player.play()
 			Global.signal_bus.player_died.emit()
 		_apply_knockback(area)
 
@@ -193,9 +197,8 @@ func _on_disengage(area: Area3D) -> void:
 	if area is EnemyAttackSurfaceArea:
 		hurt = false
 
-func _on_player_died() -> void:
-
-	
-	Global.signal_bus.player_died.disconnect(_on_player_died)
+func _on_enemy_defeated(enemy: Enemy) -> void:
+	player_data.experience += enemy.enemy_data.experience
+	_check_level()
 
 #endregion

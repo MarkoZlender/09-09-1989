@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://fhvorfgjiw4d"]
+[gd_scene load_steps=4 format=3 uid="uid://fhvorfgjiw4d"]
 
 [ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/ui_theme.tres" id="1_dnrai"]
 [ext_resource type="Script" uid="uid://dg1s7a5f7lwje" path="res://scripts/ui/game_over_screen.gd" id="2_sopbp"]
+[ext_resource type="AudioStream" uid="uid://dlvhqdgwevjwx" path="res://assets/sounds/bgm/game_over.wav" id="3_bllgf"]
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -63,6 +64,11 @@ custom_minimum_size = Vector2(100, 70)
 layout_mode = 2
 theme_type_variation = &"MainMenuButton"
 text = "Quit to Main Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_bllgf")
+autoplay = true
+bus = &"BGM"
 
 [connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

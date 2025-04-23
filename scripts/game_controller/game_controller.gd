@@ -30,7 +30,6 @@ func _ready() -> void:
 	else:
 		change_gui_scene(start_scene.resource_path, false, false, false)
 
-
 func change_gui_scene(
 		new_scene: String,
 		delete: bool = true,
@@ -68,8 +67,6 @@ func change_gui_scene(
 		transition_controller.hide()
 		return
 
-
-
 # same as change_2d_scene, but for 3D scenes
 func change_3d_scene(
 		new_scene: String,
@@ -84,6 +81,7 @@ func change_3d_scene(
 	if new_scene == "":
 		current_3d_scene.queue_free()
 		return
+
 	change_gui_scene(Global.LOADING_SCREEN, true, false, true)
 	if transition:
 		transition_controller.transition(transition_out, seconds)
@@ -156,6 +154,5 @@ func _on_level_changed() -> void:
 			node.queue_free()
 
 func _on_player_died() -> void:
-	print("Player died")
 	change_gui_scene(Global.GAME_OVER_SCENE, true, false, true)
 
