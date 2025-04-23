@@ -27,8 +27,13 @@ func _check_exp() -> void:
 	if current_level > 1:
 		exp_at_current_level = player.player_data.level_progression[current_level - 2]
 
-	var exp_to_next_level: int = player.player_data.level_progression[current_level - 1]
+	# Prevent out-of-bounds when player reaches max level
+	if current_level - 1 >= player.player_data.level_progression.size():
+		exp_bar.value = 100.0
+		level_label.text = "LVL: " + str(current_level) + " (MAX)"
+		return
 
+	var exp_to_next_level: int = player.player_data.level_progression[current_level - 1]
 	var exp_gained_this_level: int = current_exp - exp_at_current_level
 	var exp_needed_this_level: int = exp_to_next_level - exp_at_current_level
 
