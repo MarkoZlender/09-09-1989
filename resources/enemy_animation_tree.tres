@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=28 format=3 uid="uid://ck2y4gpmr4c60"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=24 format=3 uid="uid://ck2y4gpmr4c60"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1b15t"]
 animation = &"idle_forward"
@@ -25,28 +25,16 @@ blend_mode = 2
 sync = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3eutw"]
-animation = &"jump_back"
+animation = &"run_back"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_46oj2"]
-animation = &"jump_forward"
+animation = &"run_forward"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_txpl2"]
-animation = &"jump_right"
+animation = &"run_right"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1pxj6"]
-animation = &"jump_left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_733a4"]
-animation = &"jump_sw"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_anhxh"]
-animation = &"jump_se"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6c1u7"]
-animation = &"jump_nw"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c0s34"]
-animation = &"jump_ne"
+animation = &"run_left"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_67qm6"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_3eutw")
@@ -57,14 +45,6 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_txpl2")
 blend_point_2/pos = Vector2(1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_1pxj6")
 blend_point_3/pos = Vector2(-1, 0)
-blend_point_4/node = SubResource("AnimationNodeAnimation_733a4")
-blend_point_4/pos = Vector2(-1, 1)
-blend_point_5/node = SubResource("AnimationNodeAnimation_anhxh")
-blend_point_5/pos = Vector2(1, 1)
-blend_point_6/node = SubResource("AnimationNodeAnimation_6c1u7")
-blend_point_6/pos = Vector2(-1, -1)
-blend_point_7/node = SubResource("AnimationNodeAnimation_c0s34")
-blend_point_7/pos = Vector2(1, -1)
 blend_mode = 2
 sync = true
 

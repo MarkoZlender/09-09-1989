@@ -1,7 +1,7 @@
-[gd_resource type="Theme" load_steps=11 format=3 uid="uid://cuognvkm850tx"]
+[gd_resource type="Theme" load_steps=12 format=3 uid="uid://cuognvkm850tx"]
 
-[ext_resource type="Texture2D" uid="uid://b1as70r2keiku" path="res://assets/sprites/panel_background.png" id="1_rqtvn"]
-[ext_resource type="FontFile" uid="uid://pvresrxt0som" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="2_i4c25"]
+[ext_resource type="Texture2D" uid="uid://whnjj8dy73qd" path="res://assets/sprites/game_ui/Basic2.png" id="1_ftahe"]
+[ext_resource type="FontFile" uid="uid://dusui45dnu2xo" path="res://assets/fonts/ascii_light.png" id="1_yvafq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nxla3"]
 
@@ -14,26 +14,39 @@ content_margin_top = 10.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
 
+[sub_resource type="FontVariation" id="FontVariation_xm2gk"]
+base_font = ExtResource("1_yvafq")
+variation_opentype = {
+2003265652: 400
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ftahe"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.365, 0.365, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_detail = 1
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81n5t"]
 bg_color = Color(0.85098, 0.827451, 0.733333, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tjtyj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mdj7g"]
-texture = ExtResource("1_rqtvn")
-texture_margin_left = 40.0
-texture_margin_top = 40.0
-texture_margin_right = 40.0
-texture_margin_bottom = 40.0
-region_rect = Rect2(0, 0, 96, 96)
+texture = ExtResource("1_ftahe")
+texture_margin_left = 171.0
+texture_margin_top = 137.0
+texture_margin_right = 159.0
+texture_margin_bottom = 167.0
+region_rect = Rect2(0, 0, 256, 256)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d12y4"]
-
-[sub_resource type="FontVariation" id="FontVariation_xm2gk"]
-base_font = ExtResource("2_i4c25")
-variation_opentype = {
-2003265652: 400
-}
 
 [resource]
 default_font = SubResource("FontVariation_xm2gk")
@@ -57,10 +70,29 @@ Label/font_sizes/font_size = 25
 Label/styles/normal = SubResource("StyleBoxEmpty_vijfk")
 MainMenuButton/base_type = &"Button"
 MainMenuButton/colors/font_color = Color(0.901961, 0.901961, 0.87451, 1)
+MainMenuButton/colors/font_disabled_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_focus_color = Color(0, 0, 0, 1)
 MainMenuButton/colors/font_hover_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_outline_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/font_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_disabled_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_focus_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_hover_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_hover_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_normal_color = Color(0, 0, 0, 1)
+MainMenuButton/colors/icon_pressed_color = Color(0, 0, 0, 1)
+MainMenuButton/constants/align_to_largest_stylebox = 0
+MainMenuButton/constants/h_separation = 0
+MainMenuButton/constants/icon_max_width = 0
+MainMenuButton/constants/outline_size = 0
 MainMenuButton/font_sizes/font_size = 30
+MainMenuButton/fonts/font = SubResource("FontVariation_xm2gk")
+MainMenuButton/styles/disabled = SubResource("StyleBoxFlat_ftahe")
+MainMenuButton/styles/focus = SubResource("StyleBoxFlat_ftahe")
 MainMenuButton/styles/hover = SubResource("StyleBoxFlat_81n5t")
 MainMenuButton/styles/normal = SubResource("StyleBoxEmpty_tjtyj")
+MainMenuButton/styles/pressed = SubResource("StyleBoxFlat_ftahe")
 MarginContainer/constants/margin_bottom = 20
 MarginContainer/constants/margin_left = 40
 MarginContainer/constants/margin_right = 20

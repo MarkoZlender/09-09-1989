@@ -5,7 +5,6 @@
 [node name="MenuCursor" type="Label"]
 offset_right = 35.0
 offset_bottom = 52.0
-theme_override_colors/font_color = Color(0.840995, 0.782243, 0.172635, 1)
 text = ">"
 script = ExtResource("2_5gnl7")
 cursor_offset = Vector2(10, 0)
