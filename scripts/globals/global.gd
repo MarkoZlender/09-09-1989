@@ -13,6 +13,7 @@ const GAME_OVER_SCENE: String = "res://scenes/ui/game_over_screen.tscn"
 @onready var game_controller: GameController
 @onready var signal_bus: SignalBus
 @onready var utils: Utils
+@onready var audio_player: AudioStreamPlayer = $AudioPlayer
 @onready var inventory: Inventory = $Inventory
 
 func serialize() -> Dictionary:

@@ -34,7 +34,7 @@ border_width_bottom = 2
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81n5t"]
-bg_color = Color(0.85098, 0.827451, 0.733333, 1)
+bg_color = Color(0.87451, 0.87451, 0.847059, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tjtyj"]
 

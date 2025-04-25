@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://jjjb8m4rx37m"]
+[gd_scene load_steps=7 format=3 uid="uid://jjjb8m4rx37m"]
 
 [ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/ui_theme.tres" id="1_gjayl"]
 [ext_resource type="Script" uid="uid://bf6e1tvdpeoqc" path="res://scripts/ui/save_system/slot_selection.gd" id="2_ds3mf"]
+[ext_resource type="Texture2D" uid="uid://brlknxyheukbb" path="res://assets/sprites/fade.png" id="3_2egsv"]
 [ext_resource type="PackedScene" uid="uid://b4goedwokmaph" path="res://scenes/ui/menu_cursor.tscn" id="4_0i80v"]
 [ext_resource type="PackedScene" uid="uid://b5wsbousnpwq4" path="res://scenes/ui/save_system/warning_dialog.tscn" id="5_xhaur"]
 [ext_resource type="PackedScene" uid="uid://cd62cxexqucln" path="res://scenes/components/basic_ui_nav_component.tscn" id="6_njv8q"]
@@ -16,14 +17,14 @@ grow_vertical = 2
 theme = ExtResource("1_gjayl")
 script = ExtResource("2_ds3mf")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+texture = ExtResource("3_2egsv")
 
 [node name="SlotSelectionPanel" type="Panel" parent="."]
 layout_mode = 1

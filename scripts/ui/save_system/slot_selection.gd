@@ -67,9 +67,11 @@ func _on_slot_button_pressed(slot: int) -> void:
 	if Global.save_manager.get_current_level(slot) == "":
 		# start new game in empty slot
 		Global.game_controller.change_3d_scene(Global.STARTING_LEVEL)
+		Global.audio_player.stop()
 	elif Global.save_manager.get_current_level(slot) != "":
 		# load game
 		Global.game_controller.change_3d_scene(Global.save_manager.get_current_level(slot))
+		Global.audio_player.stop()
 	else:
 		printerr("SlotSelection: _on_slot_button_pressed: invalid save file")
 

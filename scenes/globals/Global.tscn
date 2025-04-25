@@ -33,3 +33,5 @@ _serialized_format = {
 "node_name": "Inventory",
 "protoset": "res://resources/prototree.json"
 }
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
