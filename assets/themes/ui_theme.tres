@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=12 format=3 uid="uid://cuognvkm850tx"]
 
-[ext_resource type="Texture2D" uid="uid://whnjj8dy73qd" path="res://assets/sprites/game_ui/Basic2.png" id="1_ftahe"]
 [ext_resource type="FontFile" uid="uid://dusui45dnu2xo" path="res://assets/fonts/ascii_light.png" id="1_yvafq"]
+[ext_resource type="Texture2D" uid="uid://vc8j6r11l2lq" path="res://assets/sprites/GBP_GUI_BOX1.png" id="2_ftahe"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nxla3"]
 
@@ -39,12 +39,12 @@ bg_color = Color(0.87451, 0.87451, 0.847059, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tjtyj"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mdj7g"]
-texture = ExtResource("1_ftahe")
-texture_margin_left = 171.0
-texture_margin_top = 137.0
-texture_margin_right = 159.0
-texture_margin_bottom = 167.0
-region_rect = Rect2(0, 0, 256, 256)
+texture = ExtResource("2_ftahe")
+texture_margin_left = 83.0
+texture_margin_top = 79.0
+texture_margin_right = 81.0
+texture_margin_bottom = 87.0
+region_rect = Rect2(0, 0, 128, 128)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d12y4"]
 
