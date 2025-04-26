@@ -17,7 +17,6 @@ albedo_texture = ExtResource("1_skixb")
 texture_filter = 0
 
 [sub_resource type="Environment" id="Environment_skixb"]
-adjustment_enabled = true
 adjustment_brightness = 0.76
 adjustment_saturation = 0.01
 
