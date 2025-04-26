@@ -201,7 +201,7 @@ func _on_hurt(area: Area3D) -> void:
 			for collision: Node in get_children():
 				if collision is Area3D:
 					collision.get_child(0).disabled = true
-			animated_sprite.modulate = Color(1, 0, 0)
+			animated_sprite.modulate = Color(0.232, 0.232, 0.232)
 			# play death sound
 			sfx_player.stream = enemy_data.death_sfx
 			sfx_player.play()

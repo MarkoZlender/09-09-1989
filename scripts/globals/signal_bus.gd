@@ -4,6 +4,8 @@ signal player_hurt(health: int)
 signal player_died
 signal enemy_died(enemy: Enemy)
 
+signal item_collected(item: Collectible)
+
 signal level_audio_loaded(level_audio: LevelAudio)
 signal level_changed
 
