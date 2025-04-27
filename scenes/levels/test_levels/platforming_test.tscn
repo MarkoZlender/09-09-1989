@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ctdr8dygo77j1"]
+[gd_scene load_steps=24 format=3 uid="uid://ctdr8dygo77j1"]
 
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="1_0tcst"]
 [ext_resource type="Texture2D" uid="uid://q8qckcltgk44" path="res://assets/sprites/bones/bones6.png" id="1_skixb"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://3mc2spugg3w0" path="res://assets/sounds/bgm/bgm.ogg" id="8_sl2ak"]
 [ext_resource type="PackedScene" uid="uid://47b6ywwy1olr" path="res://scenes/components/load_level_component.tscn" id="9_7pmin"]
 [ext_resource type="PackedScene" uid="uid://muputklnbpx6" path="res://scenes/environment/pickup_items/coin.tscn" id="11_0pi38"]
+[ext_resource type="PackedScene" uid="uid://bmody1xq576q8" path="res://scenes/environment/pickup_items/chest.tscn" id="12_cnmtc"]
 [ext_resource type="PackedScene" uid="uid://luwtg3pa4rwf" path="res://scenes/components/bgm_player.tscn" id="228_avp6s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sl2ak"]
@@ -233,5 +234,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.30811, -3.57628e-07, -1.158
 
 [node name="Coin7" parent="." instance=ExtResource("11_0pi38")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.13291, -3.57628e-07, -1.15804)
+
+[node name="Chest" parent="." instance=ExtResource("12_cnmtc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50671, 0, 0)
+
+[node name="Chest2" parent="." instance=ExtResource("12_cnmtc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07285, 0, 0)
 
 [connection signal="body_entered" from="ResetArea" to="ResetArea" method="_on_body_entered"]

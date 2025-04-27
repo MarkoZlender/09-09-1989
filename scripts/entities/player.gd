@@ -78,7 +78,6 @@ func move(delta: float) -> void:
 	# Normal movement logic
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		print("Jumping")
 		sfx_player.stream = player_data.jump_sfx
 		sfx_player.play()
 
