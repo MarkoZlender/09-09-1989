@@ -12,6 +12,7 @@ func _ready() -> void:
 	level_label.text = "LVL: " + str(player.player_data.level)
 	Global.signal_bus.player_hurt.connect(_on_health_changed)
 	Global.signal_bus.enemy_died.connect(_on_exp_changed)
+	Global.signal_bus.player_healed.connect(_on_health_changed)
 
 func _on_health_changed(health: int) -> void:
 	health_bar.value = float(health) / float(player.player_data.max_health) * 100.0

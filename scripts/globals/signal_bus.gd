@@ -1,6 +1,7 @@
 class_name SignalBus extends Node
 
 signal player_hurt(health: int)
+signal player_healed(health: int)
 signal player_died
 signal enemy_died(enemy: Enemy)
 

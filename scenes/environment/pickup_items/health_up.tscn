@@ -1,0 +1,97 @@
+[gd_scene load_steps=14 format=3 uid="uid://b0che6yn1shpk"]
+
+[ext_resource type="Script" uid="uid://sl3o3x1tsu7c" path="res://scripts/environment/pickup_items/health_up.gd" id="1_g63ah"]
+[ext_resource type="Texture2D" uid="uid://c3arv3olp0im8" path="res://assets/sprites/pickup_items/heart.png" id="1_ih5qq"]
+[ext_resource type="AudioStream" uid="uid://c7tcmqatkw1b0" path="res://assets/sounds/sfx/health.wav" id="3_7uuti"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g63ah"]
+atlas = ExtResource("1_ih5qq")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7uuti"]
+atlas = ExtResource("1_ih5qq")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqdws"]
+atlas = ExtResource("1_ih5qq")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w27jx"]
+atlas = ExtResource("1_ih5qq")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bwvr"]
+atlas = ExtResource("1_ih5qq")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_325tx"]
+atlas = ExtResource("1_ih5qq")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myrmg"]
+atlas = ExtResource("1_ih5qq")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dro3h"]
+atlas = ExtResource("1_ih5qq")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2jeo4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g63ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7uuti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqdws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w27jx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bwvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_325tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myrmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dro3h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ih5qq"]
+size = Vector3(0.2, 0.2, 0.2)
+
+[node name="HealthUp" type="Node3D"]
+script = ExtResource("1_g63ah")
+
+[node name="Animation" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_2jeo4")
+autoplay = "default"
+frame_progress = 0.527536
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_7uuti")
+bus = &"SFX"
+
+[node name="InteractionArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="InteractionCollision" type="CollisionShape3D" parent="InteractionArea"]
+unique_name_in_owner = true
+shape = SubResource("BoxShape3D_ih5qq")
+
+[connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
