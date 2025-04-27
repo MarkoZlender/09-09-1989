@@ -13,6 +13,9 @@ extends Resource
 @export var max_health: int = 100
 @export var hit_strength: int = 10
 
+@export_group("Resources")
+@export var coins: int = 0
+
 @export_group("Audio")
 @export var walk_sfx: AudioStream
 @export var jump_sfx: AudioStream

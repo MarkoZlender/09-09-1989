@@ -46,6 +46,7 @@ func _ready() -> void:
 	$HurtSurfaceArea.connect("area_entered", _on_hurt)
 	$HurtSurfaceArea.connect("area_exited", _on_disengage)
 	Global.signal_bus.enemy_died.connect(_on_enemy_defeated)
+	Global.signal_bus.item_collected.connect(_on_item_collected)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -155,7 +156,6 @@ func load(data: Dictionary) -> void:
 func _play_footsteps() -> void:
 	if is_moving && is_on_floor():
 		if not sfx_player.playing && $Timer.time_left <= 0:
-			print("Playing footsteps")
 			sfx_player.stream = player_data.walk_sfx
 			sfx_player.pitch_scale = 1.0 + randf_range(-0.1, 0.1)
 			sfx_player.play()
@@ -200,5 +200,8 @@ func _on_disengage(area: Area3D) -> void:
 func _on_enemy_defeated(enemy: Enemy) -> void:
 	player_data.experience += enemy.enemy_data.experience
 	_check_level()
-
+func _on_item_collected(item: Collectible) -> void:
+	if item is Coin:
+		player_data.coins += 1
+		print("Coins: ", player_data.coins)
 #endregion

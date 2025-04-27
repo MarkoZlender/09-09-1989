@@ -1,4 +1,4 @@
-extends Collectible
+class_name Coin extends Collectible
 
 var picked_up: bool = false
 
