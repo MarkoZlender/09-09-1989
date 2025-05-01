@@ -41,6 +41,7 @@
 		"name": "Potion",
 		"inherits": "health_collectible",
 		"health": 50,
-		"stack_size": 5
+		"stack_size": 5,
+		"script": "res://resources/test_usable.gd"
 	}
 }

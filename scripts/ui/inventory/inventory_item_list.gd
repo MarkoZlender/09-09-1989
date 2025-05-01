@@ -87,7 +87,12 @@ func _on_list_item_activated(index: int) -> void:
 # 	inventory_item_clicked.emit(_get_inventory_item(index), at_position, mouse_button_index)
 
 func _on_list_item_clicked(index: int) -> void:
+	if inventory.get_items()[index].get_property("stack_size") - 1 <= 0:
+		inventory.remove_item(inventory.get_items()[index])
+		_refresh()
+		return
 	inventory_item_clicked.emit(_get_inventory_item(index))
+	_refresh()
 
 
 
@@ -117,6 +122,7 @@ func _get_inventory_item(index: int) -> InventoryItem:
 	assert(index < inventory.get_item_count())
 	# return items[index].get_item_metadata()
 	print(inventory.get_items()[index].get_property("name") + " " + str(index))
+	load(inventory.get_items()[index].get_property("script")).call("use", inventory.get_items()[index])
 	return inventory.get_items()[index]
 
 
