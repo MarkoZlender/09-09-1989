@@ -47,6 +47,7 @@ func _ready() -> void:
 	$HurtSurfaceArea.connect("area_exited", _on_disengage)
 	Global.signal_bus.enemy_died.connect(_on_enemy_defeated)
 	Global.signal_bus.item_collected.connect(_on_item_collected)
+	Global.signal_bus.player_died.connect(_on_player_died)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -199,8 +200,13 @@ func _on_disengage(area: Area3D) -> void:
 func _on_enemy_defeated(enemy: Enemy) -> void:
 	player_data.experience += enemy.enemy_data.experience
 	_check_level()
+
 func _on_item_collected(item: Collectible) -> void:
 	if item is Coin:
 		player_data.coins += 1
 		print("Coins: ", player_data.coins)
+
+func _on_player_died() -> void:
+	get_tree().paused = true
+
 #endregion

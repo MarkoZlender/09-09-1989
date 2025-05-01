@@ -6,7 +6,6 @@ extends Node
 
 func _ready() -> void:
 	await scene_root.ready
-	Global.signal_bus.player_died.connect(_on_player_died)
 
 	if !debug_mode:
 		get_tree().paused = false
@@ -26,6 +25,3 @@ func _ready() -> void:
 		get_tree().paused = false
 		Global.signal_bus.level_audio_loaded.emit(level_audio)
 		Global.interaction_manager.player = get_tree().get_first_node_in_group("player")
-
-func _on_player_died() -> void:
-	get_tree().paused = true
