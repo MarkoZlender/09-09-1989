@@ -103,6 +103,7 @@ func _process(_delta: float) -> void:
 					set_cursor()
 		else:
 			print("MenuCursor: No items left in the menu!")
+
 func set_cursor() -> void:
 	var menu_item: Control = current_focused_control
 

@@ -1,10 +1,8 @@
-[gd_scene load_steps=66 format=3 uid="uid://ds0d7p7idbuc4"]
+[gd_scene load_steps=63 format=3 uid="uid://ds0d7p7idbuc4"]
 
 [ext_resource type="Script" uid="uid://1uia1xe5nmrj" path="res://scripts/entities/player.gd" id="1_mfpxk"]
+[ext_resource type="Resource" uid="uid://jbibkrhbv4po" path="res://resources/player_data.tres" id="2_5ki56"]
 [ext_resource type="Script" uid="uid://r07fqxyrf5xi" path="res://scripts/utility_scripts/camera_gimbal.gd" id="2_73kkf"]
-[ext_resource type="AudioStream" uid="uid://blufhax7l88cw" path="res://assets/sounds/sfx/jump_sound.wav" id="2_mfvd2"]
-[ext_resource type="Script" uid="uid://c5q20r4wynqst" path="res://scripts/data/player_data.gd" id="2_p4vbq"]
-[ext_resource type="AudioStream" uid="uid://cdvyuif766yk1" path="res://assets/sounds/sfx/retro-footstep.wav" id="3_0beyh"]
 [ext_resource type="PackedScene" uid="uid://f4fj2u87647d" path="res://scenes/components/animation_tree.tscn" id="3_n5sgd"]
 [ext_resource type="Script" uid="uid://bqnr5hyceu623" path="res://addons/godot_state_charts/state_chart.gd" id="4_ss7kx"]
 [ext_resource type="Texture2D" uid="uid://ocafxyc2n38q" path="res://assets/sprites/characters.png" id="5_7bk2d"]
@@ -15,21 +13,6 @@
 [ext_resource type="Script" uid="uid://c7whpml006e7v" path="res://scripts/entities/player_states/moving.gd" id="9_c5rqy"]
 [ext_resource type="PackedScene" uid="uid://hln8ohgt64ft" path="res://scenes/ui/hud.tscn" id="167_efb02"]
 [ext_resource type="Script" uid="uid://cgoijtm7bh3t5" path="res://scenes/entities/player_attack_surface_area.gd" id="227_l6jip"]
-
-[sub_resource type="Resource" id="Resource_0beyh"]
-script = ExtResource("2_p4vbq")
-speed = 1.5
-rotation_controls = true
-level = 1
-level_progression = Array[int]([20, 30, 40, 50])
-experience = 0
-health = 100
-max_health = 100
-hit_strength = 10
-coins = 0
-walk_sfx = ExtResource("3_0beyh")
-jump_sfx = ExtResource("2_mfvd2")
-metadata/_custom_type_script = "uid://c5q20r4wynqst"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_73kkf"]
 radius = 0.05
@@ -450,7 +433,7 @@ collision_layer = 2
 collision_mask = 5
 wall_min_slide_angle = 0.0
 script = ExtResource("1_mfpxk")
-player_data = SubResource("Resource_0beyh")
+player_data = ExtResource("2_5ki56")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_73kkf")

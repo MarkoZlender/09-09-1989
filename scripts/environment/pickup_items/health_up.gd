@@ -3,7 +3,7 @@ class_name HealthUp extends Collectible
 var picked_up: bool = false
 
 @onready var interact_collision: CollisionShape3D = %InteractionCollision
-@onready var audio_player: AudioStreamPlayer3D = $AudioPlayer	
+@onready var audio_player: AudioStreamPlayer3D = $AudioPlayer
 
 func _on_interaction_area_body_entered(body:Node3D) -> void:
 	if body is Player:

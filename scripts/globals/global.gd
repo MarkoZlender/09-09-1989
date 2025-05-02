@@ -15,6 +15,7 @@ const GAME_OVER_SCENE: String = "res://scenes/ui/game_over_screen.tscn"
 @onready var utils: Utils
 @onready var audio_player: AudioStreamPlayer = $AudioPlayer
 @onready var inventory: Inventory = $Inventory
+@onready var player_data: PlayerData = load("res://resources/player_data.tres")
 
 func serialize() -> Dictionary:
 	var save_data: Dictionary = {}

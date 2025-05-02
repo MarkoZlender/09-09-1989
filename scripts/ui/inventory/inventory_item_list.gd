@@ -28,6 +28,7 @@ const _Utils = preload("res://addons/gloot/core/utils.gd")
 
 @onready var items: Array[Node] = %VContainer.get_children()
 @onready var v_container: VBoxContainer = %VContainer
+@onready var use_library: Node = UseLibrary.new()
 
 func _get_configuration_warnings() -> PackedStringArray:
 	if !is_instance_valid(inventory):
@@ -69,8 +70,9 @@ func _ready() -> void:
 		item.item_clicked.connect(_on_list_item_clicked)
 		#item_selected.connect(_on_list_item_selected)
 	inventory = Global.inventory
-	_refresh()
 	finished_loading.emit()
+	add_child(use_library)
+	_refresh()
 	# var loaded = preload("res://scenes/ui/menu_cursor.tscn")
 	# var instance = loaded.instantiate()
 	# add_child(instance)
@@ -91,6 +93,11 @@ func _on_list_item_clicked(index: int) -> void:
 		inventory.remove_item(inventory.get_items()[index])
 		_refresh()
 		return
+	else:
+		inventory.get_items()[index].set_property("stack_size", inventory.get_items()[index].get_property("stack_size") - 1)
+		print(inventory.get_items()[index].get_property("stack_size"))
+		use_library.call("use_" + inventory.get_items()[index].get_property("id"))
+		_refresh()
 	inventory_item_clicked.emit(_get_inventory_item(index))
 	_refresh()
 
@@ -122,7 +129,7 @@ func _get_inventory_item(index: int) -> InventoryItem:
 	assert(index < inventory.get_item_count())
 	# return items[index].get_item_metadata()
 	print(inventory.get_items()[index].get_property("name") + " " + str(index))
-	load(inventory.get_items()[index].get_property("script")).call("use", inventory.get_items()[index])
+	use_library.call("use_" + inventory.get_items()[index].get_property("id"))
 	return inventory.get_items()[index]
 
 
