@@ -445,6 +445,7 @@ sprite_frames = SubResource("SpriteFrames_0kspk")
 animation = &"run_right"
 
 [node name="CameraGimbal" type="Node3D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_73kkf")
 
 [node name="InnerGimbal" type="Node3D" parent="CameraGimbal"]

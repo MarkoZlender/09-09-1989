@@ -8,8 +8,15 @@ const JUMP_VELOCITY: float = 3.5
 #endregion
 
 #region Exports
+enum LevelCameraRotation {
+	FRONT = 0,
+	RIGHT = 90,
+	BACK = 180,
+	LEFT = 270
+}
 
 @export var player_data: PlayerData
+@export var level_camera_rotation: LevelCameraRotation = LevelCameraRotation.FRONT
 
 #endregion
 
@@ -34,7 +41,7 @@ var knockback_timer: float = 0.0
 #region Onready variables
 
 @onready var animation_tree: AnimationTree = $AnimationTree
-@onready var camera_gimbal: Node3D = $CameraGimbal
+@onready var camera_gimbal: Node3D = %CameraGimbal
 @onready var sfx_player: AudioStreamPlayer3D = $SFXPlayer
 @onready var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
 

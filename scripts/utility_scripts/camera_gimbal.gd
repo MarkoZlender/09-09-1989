@@ -1,5 +1,8 @@
 extends Node3D
 
+func _ready() -> void:
+	rotation_degrees.y = owner.level_camera_rotation
+
 func _unhandled_input(event: InputEvent) -> void:
 	if owner.player_data.rotation_controls:
 		if event.is_action_pressed("rotate_cam_left"):
