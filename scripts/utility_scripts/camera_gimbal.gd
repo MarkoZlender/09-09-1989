@@ -1,7 +1,26 @@
 extends Node3D
 
+var hidden_obstacles: Array = []
+
+@onready var camera_raycast: RayCast3D = %CameraRayCast
+
 func _ready() -> void:
 	rotation_degrees.y = owner.level_camera_rotation
+
+func _physics_process(_delta: float) -> void:
+	# Make all previously hidden objects visible
+	for obstacle in hidden_obstacles:
+		if is_instance_valid(obstacle):
+			obstacle.visible = true
+	hidden_obstacles.clear()
+
+	# Hide the currently colliding object
+	if camera_raycast.is_colliding():
+		var obstacle = camera_raycast.get_collider()
+		if obstacle and obstacle.visible:  # Only hide if it's currently visible
+			obstacle.visible = false
+			hidden_obstacles.append(obstacle)
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if owner.player_data.rotation_controls:

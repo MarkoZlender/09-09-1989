@@ -48,6 +48,7 @@ func _ready() -> void:
 	$PatrollTimer.start(randf_range(3.0, 4.0))
 
 func apply_stun_and_knockback(delta: float) -> void:
+	_check_if_on_floor()
 	_apply_gravity(delta)
 	_play_footsteps()
 	time_since_last_rotation += delta
@@ -77,6 +78,7 @@ func apply_stun_and_knockback(delta: float) -> void:
 		animation_tree.set_process_callback(AnimationTree.ANIMATION_PROCESS_IDLE)
 
 func aggroed(delta: float) -> void:
+	_check_if_on_floor()
 	_apply_gravity(delta)
 	_play_footsteps()
 	time_since_last_rotation += delta
@@ -98,6 +100,7 @@ func aggroed(delta: float) -> void:
 	animate_input_animation_tree()
 
 func deaggroed(delta: float) -> void:
+	_check_if_on_floor()
 	_apply_gravity(delta)
 	_play_footsteps()
 	time_since_last_rotation += delta
@@ -158,6 +161,13 @@ func _apply_gravity(delta: float) -> void:
 		velocity.y -= 9.8 * delta
 	else:
 		velocity.y = 0
+
+func _check_if_on_floor() -> void:
+	# if not on floor stop navigation agent and restart it when on floor
+	if !is_on_floor():
+		navigation_agent.process_mode = Node3D.ProcessMode.PROCESS_MODE_DISABLED
+	else:
+		navigation_agent.process_mode = Node3D.ProcessMode.PROCESS_MODE_INHERIT
 
 func _on_hurt(area: Area3D) -> void:
 	if area is PlayerAttackSurfaceArea:

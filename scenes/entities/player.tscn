@@ -454,6 +454,10 @@ transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 2.13833
 [node name="Camera3D" type="Camera3D" parent="CameraGimbal/InnerGimbal"]
 fov = 30.0
 
+[node name="CameraRayCast" type="RayCast3D" parent="CameraGimbal/InnerGimbal/Camera3D"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -3)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_p4vbq")
