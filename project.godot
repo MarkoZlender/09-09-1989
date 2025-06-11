@@ -48,6 +48,7 @@ player=""
 [gui]
 
 theme/custom="res://assets/themes/ui_theme.tres"
+theme/custom_font="uid://bqjh671to566"
 
 [importer_defaults]
 
