@@ -1,13 +1,13 @@
 [gd_scene load_steps=33 format=3 uid="uid://ctdr8dygo77j1"]
 
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="1_0tcst"]
-[ext_resource type="Texture2D" uid="uid://q8qckcltgk44" path="res://assets/sprites/bones/bones6.png" id="1_skixb"]
+[ext_resource type="Texture2D" uid="uid://bg5f1dmg6f2xl" path="res://assets/sprites/bones/bones6.png" id="1_skixb"]
 [ext_resource type="PackedScene" uid="uid://b4yel28q8mccd" path="res://scenes/environment/props/moving_platform.tscn" id="2_dd7au"]
 [ext_resource type="Script" uid="uid://c4l2dq1k63b6s" path="res://scripts/utility_scripts/reset_area.gd" id="2_tf773"]
 [ext_resource type="Script" uid="uid://bt0kgh1bkc2n6" path="res://scripts/data/platform_move_step.gd" id="3_pvcxf"]
-[ext_resource type="Texture2D" uid="uid://bvatenyu83o46" path="res://assets/sprites/tower/tower7.png" id="5_t60y1"]
+[ext_resource type="Texture2D" uid="uid://d2134nhk2iou7" path="res://assets/sprites/tower/tower7.png" id="5_t60y1"]
 [ext_resource type="PackedScene" uid="uid://byv5ix5sf5y4w" path="res://scenes/entities/enemy.tscn" id="7_t60y1"]
-[ext_resource type="AudioStream" uid="uid://3mc2spugg3w0" path="res://assets/sounds/bgm/bgm.ogg" id="8_sl2ak"]
+[ext_resource type="AudioStream" uid="uid://dd7istt7p3i3v" path="res://assets/sounds/bgm/bgm.ogg" id="8_sl2ak"]
 [ext_resource type="PackedScene" uid="uid://47b6ywwy1olr" path="res://scenes/components/load_level_component.tscn" id="9_7pmin"]
 [ext_resource type="PackedScene" uid="uid://muputklnbpx6" path="res://scenes/environment/pickup_items/coin.tscn" id="11_0pi38"]
 [ext_resource type="PackedScene" uid="uid://bmody1xq576q8" path="res://scenes/environment/pickup_items/chest.tscn" id="12_cnmtc"]
@@ -125,7 +125,7 @@ texture_filter = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7pmin"]
 albedo_texture = ExtResource("5_t60y1")
-uv1_scale = Vector3(20, 20, 20)
+uv1_triplanar = true
 texture_filter = 0
 
 [sub_resource type="Resource" id="Resource_skixb"]
@@ -145,7 +145,7 @@ metadata/_custom_type_script = "uid://bt0kgh1bkc2n6"
 [node name="PlatformingTest" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_0tcst")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.32187, 1.42542, -11.3964)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.19457, 1.42542, 2.89954)
 level_camera_rotation = 90
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("7_t60y1")]

@@ -1,7 +1,6 @@
-[gd_resource type="Theme" load_steps=12 format=3 uid="uid://cuognvkm850tx"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://cuognvkm850tx"]
 
-[ext_resource type="FontFile" uid="uid://dusui45dnu2xo" path="res://assets/fonts/ascii_light.png" id="1_yvafq"]
-[ext_resource type="Texture2D" uid="uid://vc8j6r11l2lq" path="res://assets/sprites/GBP_GUI_BOX1.png" id="2_ftahe"]
+[ext_resource type="Texture2D" uid="uid://cgp8ygkgs6aq6" path="res://assets/sprites/GBP_GUI_BOX1.png" id="2_ftahe"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nxla3"]
 
@@ -15,7 +14,6 @@ content_margin_right = 10.0
 content_margin_bottom = 10.0
 
 [sub_resource type="FontVariation" id="FontVariation_xm2gk"]
-base_font = ExtResource("1_yvafq")
 variation_opentype = {
 2003265652: 400
 }

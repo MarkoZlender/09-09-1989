@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c68ay7oilpfxp" path="res://scripts/environment/moving_platform.gd" id="1_cdfv0"]
 [ext_resource type="Script" uid="uid://bt0kgh1bkc2n6" path="res://scripts/data/platform_move_step.gd" id="2_db0vp"]
-[ext_resource type="Texture2D" uid="uid://c6y4gff5k40t6" path="res://assets/sprites/bones/bones5.png" id="4_rirve"]
+[ext_resource type="Texture2D" uid="uid://cgjomhgitbepp" path="res://assets/sprites/bones/bones5.png" id="4_rirve"]
 
 [sub_resource type="Resource" id="Resource_ppqmi"]
 script = ExtResource("2_db0vp")

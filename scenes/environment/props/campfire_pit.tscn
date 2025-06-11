@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://bj0f2fjufm3hk"]
 
-[ext_resource type="Texture2D" uid="uid://dq8q180q535dy" path="res://assets/models/props/Textures/colormap.png" id="1_w6qo2"]
+[ext_resource type="Texture2D" uid="uid://d3xld75b2aw80" path="res://assets/models/props/Textures/colormap.png" id="1_w6qo2"]
 [ext_resource type="PackedScene" uid="uid://jkbxv18ld1sf" path="res://scenes/vfx/fire.tscn" id="2_4yv7f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nh0vg"]

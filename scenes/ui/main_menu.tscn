@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://7ttjcnsru146"]
 
 [ext_resource type="Script" uid="uid://dtjt7hd0gkvd0" path="res://scripts/ui/main_menu.gd" id="1_lnxuf"]
-[ext_resource type="FontFile" uid="uid://dusui45dnu2xo" path="res://assets/fonts/ascii_light.png" id="2_1g8jr"]
-[ext_resource type="Texture2D" uid="uid://dkjpv6og2tsku" path="res://assets/sprites/Fade down 4.png" id="2_m1kxf"]
+[ext_resource type="Texture2D" uid="uid://bqjh671to566" path="res://assets/fonts/ascii_light.png" id="2_1g8jr"]
+[ext_resource type="Texture2D" uid="uid://b4ded4ydy6cny" path="res://assets/sprites/Fade down 4.png" id="2_m1kxf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x10xj"]
 content_margin_top = 300.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://jkbxv18ld1sf"]
 
 [ext_resource type="Script" uid="uid://ridy8q6mg04" path="res://scripts/vfx/fire_light.gd" id="1_n207h"]
-[ext_resource type="AudioStream" uid="uid://bpm3jihvswqxs" path="res://assets/sounds/sfx/fireplace_sfx16.wav" id="2_184s5"]
+[ext_resource type="AudioStream" uid="uid://c7g5ld3dt0t4n" path="res://assets/sounds/sfx/fireplace_sfx16.wav" id="2_184s5"]
 
 [sub_resource type="Gradient" id="Gradient_axped"]
 colors = PackedColorArray(0.870588, 0, 0, 1, 1, 1, 0, 1)

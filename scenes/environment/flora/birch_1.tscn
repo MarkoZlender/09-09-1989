@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://wsm8gpqrtpyt"]
 
-[ext_resource type="PackedScene" uid="uid://ba8dgx2p0rcg0" path="res://assets/models/flora/trees/Birch_1.fbx" id="1_28d56"]
-[ext_resource type="Texture2D" uid="uid://dugnf3fr34ftg" path="res://assets/models/flora/trees/Textures/Tree_Bark.jpg" id="2_lrubl"]
-[ext_resource type="Texture2D" uid="uid://c25ovgvdr28x" path="res://assets/models/flora/trees/Textures/Birch_Leaves_Green.png" id="3_qk5ad"]
+[ext_resource type="PackedScene" uid="uid://co5l5dlclegjk" path="res://assets/models/flora/trees/Birch_1.fbx" id="1_28d56"]
+[ext_resource type="Texture2D" uid="uid://cf38yk2u1fmcp" path="res://assets/models/flora/trees/Textures/Tree_Bark.jpg" id="2_lrubl"]
+[ext_resource type="Texture2D" uid="uid://dwhpe8o7kxjvf" path="res://assets/models/flora/trees/Textures/Birch_Leaves_Green.png" id="3_qk5ad"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gko11"]
 albedo_texture = ExtResource("2_lrubl")

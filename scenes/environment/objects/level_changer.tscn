@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b8rtwryepqr5w" path="res://scenes/components/interact_component.tscn" id="1_60wk5"]
 [ext_resource type="Script" uid="uid://2df44tsdb4gq" path="res://scripts/environment/objects/level_changer.gd" id="1_iud2t"]
-[ext_resource type="AudioStream" uid="uid://ccosypqgyu7ha" path="res://assets/sounds/sfx/door_open.wav" id="3_mlls5"]
+[ext_resource type="AudioStream" uid="uid://bjk7xpjtrmfmc" path="res://assets/sounds/sfx/door_open.wav" id="3_mlls5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u7gy0"]
 size = Vector3(0.2, 0.2, 0.2)

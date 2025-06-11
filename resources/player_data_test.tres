@@ -4,5 +4,12 @@
 
 [resource]
 script = ExtResource("1_qxnkg")
+speed = 1.5
+rotation_controls = true
+level = 1
+level_progression = Array[int]([])
+experience = 10
 health = 100
-mana = 50
+max_health = 100
+hit_strength = 10
+coins = 0

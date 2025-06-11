@@ -165,9 +165,8 @@ func _apply_gravity(delta: float) -> void:
 func _check_if_on_floor() -> void:
 	# if not on floor stop navigation agent and restart it when on floor
 	if !is_on_floor():
-		navigation_agent.process_mode = Node3D.ProcessMode.PROCESS_MODE_DISABLED
-	else:
-		navigation_agent.process_mode = Node3D.ProcessMode.PROCESS_MODE_INHERIT
+		navigation_agent.target_position = global_position
+		
 
 func _on_hurt(area: Area3D) -> void:
 	if area is PlayerAttackSurfaceArea:

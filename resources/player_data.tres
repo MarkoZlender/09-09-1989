@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="PlayerData" load_steps=4 format=3 uid="uid://jbibkrhbv4po"]
 
-[ext_resource type="AudioStream" uid="uid://blufhax7l88cw" path="res://assets/sounds/sfx/jump_sound.wav" id="1_xk00d"]
+[ext_resource type="AudioStream" uid="uid://50nvwb34cn55" path="res://assets/sounds/sfx/jump_sound.wav" id="1_xk00d"]
 [ext_resource type="Script" uid="uid://c5q20r4wynqst" path="res://scripts/data/player_data.gd" id="2_krkpq"]
-[ext_resource type="AudioStream" uid="uid://cdvyuif766yk1" path="res://assets/sounds/sfx/retro-footstep.wav" id="3_7d8sd"]
+[ext_resource type="AudioStream" uid="uid://bo5n6adcq5fcr" path="res://assets/sounds/sfx/retro-footstep.wav" id="3_7d8sd"]
 
 [resource]
 script = ExtResource("2_krkpq")

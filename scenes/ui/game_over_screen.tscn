@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/ui_theme.tres" id="1_dnrai"]
 [ext_resource type="Script" uid="uid://dg1s7a5f7lwje" path="res://scripts/ui/game_over_screen.gd" id="2_sopbp"]
-[ext_resource type="AudioStream" uid="uid://dlvhqdgwevjwx" path="res://assets/sounds/bgm/game_over.wav" id="3_bllgf"]
+[ext_resource type="AudioStream" uid="uid://cybhpf4u0ark" path="res://assets/sounds/bgm/game_over.wav" id="3_bllgf"]
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3

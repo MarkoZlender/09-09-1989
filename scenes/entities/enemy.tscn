@@ -1,19 +1,19 @@
 [gd_scene load_steps=51 format=3 uid="uid://byv5ix5sf5y4w"]
 
 [ext_resource type="Script" uid="uid://dhgpdqod4iift" path="res://scripts/entities/enemy.gd" id="1_d7j71"]
-[ext_resource type="AudioStream" uid="uid://cxvtwkquf2x4l" path="res://assets/sounds/sfx/enemy_damaged.mp3" id="2_1pxj6"]
-[ext_resource type="AudioStream" uid="uid://e3al4myv2wvx" path="res://assets/sounds/sfx/hit-sound.wav" id="2_6c1u7"]
+[ext_resource type="AudioStream" uid="uid://cyn1whwvr3g65" path="res://assets/sounds/sfx/enemy_damaged.mp3" id="2_1pxj6"]
+[ext_resource type="AudioStream" uid="uid://b0c5u2bhql5kc" path="res://assets/sounds/sfx/hit-sound.wav" id="2_6c1u7"]
 [ext_resource type="Script" uid="uid://dy0s2ot576nwh" path="res://scripts/entities/enemy_attack_surface_area.gd" id="2_67neu"]
-[ext_resource type="AudioStream" uid="uid://d3ku5ceumm0sd" path="res://assets/sounds/sfx/enemy_death.wav" id="2_733a4"]
+[ext_resource type="AudioStream" uid="uid://ctv13bm2qhq2v" path="res://assets/sounds/sfx/enemy_death.wav" id="2_733a4"]
 [ext_resource type="Script" uid="uid://0fkyd553m7cg" path="res://scripts/data/enemy_data.gd" id="2_txpl2"]
 [ext_resource type="PackedScene" uid="uid://f4fj2u87647d" path="res://scenes/components/animation_tree.tscn" id="219_rid7h"]
 [ext_resource type="Script" uid="uid://bqnr5hyceu623" path="res://addons/godot_state_charts/state_chart.gd" id="220_0fyhf"]
 [ext_resource type="Script" uid="uid://deb60yher4wfl" path="res://scripts/entities/enemy/deaggro_area.gd" id="220_yoqot"]
-[ext_resource type="AudioStream" uid="uid://cdvyuif766yk1" path="res://assets/sounds/sfx/retro-footstep.wav" id="221_anhxh"]
+[ext_resource type="AudioStream" uid="uid://bo5n6adcq5fcr" path="res://assets/sounds/sfx/retro-footstep.wav" id="221_anhxh"]
 [ext_resource type="Script" uid="uid://bt4iqisaqggy8" path="res://addons/godot_state_charts/compound_state.gd" id="221_qkhq7"]
 [ext_resource type="Script" uid="uid://bm4a5s8vovnwv" path="res://addons/godot_state_charts/atomic_state.gd" id="222_2dase"]
 [ext_resource type="Script" uid="uid://btg0k6scpejn3" path="res://addons/godot_state_charts/transition.gd" id="223_a7qny"]
-[ext_resource type="Texture2D" uid="uid://ocafxyc2n38q" path="res://assets/sprites/characters.png" id="223_c0s34"]
+[ext_resource type="Texture2D" uid="uid://dxhoicgsyc0pd" path="res://assets/sprites/characters.png" id="223_c0s34"]
 [ext_resource type="Script" uid="uid://bf2nikgdhcgty" path="res://scripts/state_machine/enemy_states/aggroed.gd" id="224_2dase"]
 [ext_resource type="Script" uid="uid://dlye65oy0c6c0" path="res://scripts/state_machine/enemy_states/deaggroed.gd" id="225_a7qny"]
 [ext_resource type="Script" uid="uid://b3iyupm8a5he2" path="res://scripts/entities/enemy/aggro_area.gd" id="226_a7qny"]
@@ -379,6 +379,7 @@ avoidance_enabled = true
 height = 0.2
 radius = 0.05
 use_3d_avoidance = true
+debug_enabled = true
 
 [node name="Animation" type="AnimatedSprite3D" parent="."]
 billboard = 2

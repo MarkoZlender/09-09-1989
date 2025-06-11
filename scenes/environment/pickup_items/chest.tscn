@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bmody1xq576q8"]
 
 [ext_resource type="Script" uid="uid://c4ex41gpomuda" path="res://scripts/environment/pickup_items/chest.gd" id="1_hmx5h"]
-[ext_resource type="Texture2D" uid="uid://r0npmbumh72g" path="res://assets/sprites/pickup_items/Chest_1.png" id="1_rmt15"]
+[ext_resource type="Texture2D" uid="uid://d0mlghib2apim" path="res://assets/sprites/pickup_items/Chest_1.png" id="1_rmt15"]
 [ext_resource type="PackedScene" uid="uid://b8rtwryepqr5w" path="res://scenes/components/interact_component.tscn" id="2_vkxtq"]
-[ext_resource type="AudioStream" uid="uid://1yern3gnthhw" path="res://assets/sounds/sfx/chest.wav" id="4_i673u"]
+[ext_resource type="AudioStream" uid="uid://ck6hf5re1vk6b" path="res://assets/sounds/sfx/chest.wav" id="4_i673u"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vkxtq"]
 size = Vector3(0.2, 0.2, 0.2)

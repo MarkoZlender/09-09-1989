@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="2_gcjuh"]
 [ext_resource type="PackedScene" uid="uid://dwat62j4plv3j" path="res://scenes/levels/safe_house/safe_house_interior_marker.tscn" id="3_83v66"]
 [ext_resource type="PackedScene" uid="uid://bm3l5td4ucfyf" path="res://scenes/interaction/interactables/save_point.tscn" id="4_3mqjn"]
-[ext_resource type="PackedScene" uid="uid://dlh4185b0tw7r" path="res://assets/models/props/doorway.glb" id="5_77qn0"]
+[ext_resource type="PackedScene" uid="uid://gpnfn1xvdmy3" path="res://assets/models/props/doorway.glb" id="5_77qn0"]
 [ext_resource type="PackedScene" uid="uid://47b6ywwy1olr" path="res://scenes/components/load_level_component.tscn" id="6_83v66"]
 [ext_resource type="PackedScene" uid="uid://b065twii5uo1m" path="res://scenes/environment/objects/level_changer.tscn" id="7_3mqjn"]
 [ext_resource type="PackedScene" uid="uid://blw8q7m5qvog4" path="res://scenes/levels/main_hub_village/spawn_markers/safe_house_marker.tscn" id="7_77qn0"]

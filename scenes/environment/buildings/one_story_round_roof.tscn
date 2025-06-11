@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=4 uid="uid://db1nto2c7l36v"]
 
-[ext_resource type="Texture2D" uid="uid://c6ndx7n1twown" path="res://assets/models/buildings/Textures/Texture_Signs.png" id="2_c6amv"]
+[ext_resource type="Texture2D" uid="uid://f38kiyspwxqe" path="res://assets/models/buildings/Textures/Texture_Signs.png" id="2_c6amv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dl6ru"]
 resource_name = "Texture"
