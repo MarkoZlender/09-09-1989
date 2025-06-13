@@ -440,6 +440,7 @@ shape = SubResource("CapsuleShape3D_73kkf")
 
 [node name="Animation" type="AnimatedSprite3D" parent="."]
 billboard = 2
+shaded = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_0kspk")
 animation = &"run_right"
@@ -528,6 +529,10 @@ script = ExtResource("227_l6jip")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0546219)
 shape = SubResource("BoxShape3D_l6jip")
 debug_color = Color(0.0864, 0.75616, 0.96, 1)
+
+[node name="Flashlight" type="SpotLight3D" parent="AttackSurfaceArea"]
+light_energy = 2.297
+spot_angle = 29.7006
 
 [node name="HurtSurfaceArea" type="Area3D" parent="."]
 collision_layer = 8
