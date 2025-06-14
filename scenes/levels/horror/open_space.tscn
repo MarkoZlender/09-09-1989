@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=9 format=3 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="2_t3eph"]
-[ext_resource type="Shader" uid="uid://dvqj5decgwjkr" path="res://resources/crt_shader.gdshader" id="3_gdr46"]
+[ext_resource type="PackedScene" uid="uid://brdsm3kei2sjp" path="res://scenes/vfx/crt_shader.tscn" id="4_46gqi"]
 [ext_resource type="Terrain3DMaterial" uid="uid://14xa2u6bomkw" path="res://resources/terrain3d/terrain_3d_material.tres" id="4_whrqo"]
 [ext_resource type="Terrain3DAssets" uid="uid://wpovl8xjxfag" path="res://resources/terrain3d/terrain_3d_assets.tres" id="5_46gqi"]
 [ext_resource type="PackedScene" uid="uid://byv5ix5sf5y4w" path="res://scenes/entities/enemy.tscn" id="5_tmfig"]
@@ -21,34 +21,10 @@ agent_height = 0.2
 agent_radius = 0.05
 agent_max_climb = 0.05
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5un2j"]
-shader = ExtResource("3_gdr46")
-shader_parameter/overlay = true
-shader_parameter/scanlines_opacity = 0.0
-shader_parameter/scanlines_width = 0.0
-shader_parameter/grille_opacity = 0.0
-shader_parameter/resolution = Vector2(320, 180)
-shader_parameter/pixelate = false
-shader_parameter/roll = false
-shader_parameter/roll_speed = 0.0
-shader_parameter/roll_size = 0.0
-shader_parameter/roll_variation = 1.8
-shader_parameter/distort_intensity = 0.05
-shader_parameter/noise_opacity = 0.4
-shader_parameter/noise_speed = 5.0
-shader_parameter/static_noise_intensity = 0.06
-shader_parameter/aberration = 0.015
-shader_parameter/brightness = 1.4
-shader_parameter/discolor = true
-shader_parameter/warp_amount = 1.0
-shader_parameter/clip_warp = false
-shader_parameter/vignette_intensity = 0.3
-shader_parameter/vignette_opacity = 0.391
-
 [node name="OpenSpace" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("2_t3eph")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43232, 1.03613, -53.9312)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.43232, 0.123377, -53.9312)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gdr46")
@@ -64,16 +40,10 @@ collision_mask = 7
 top_level = true
 metadata/_edit_lock_ = true
 
-[node name="CRTShader" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_5un2j")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CRTShader" parent="." instance=ExtResource("4_46gqi")]
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_tmfig")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.05241, 0.992381, -55.6047)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.05241, 0.122833, -55.6047)
 player = NodePath("../Player")
 
 [node name="campfire" parent="." instance=ExtResource("5_whrqo")]
