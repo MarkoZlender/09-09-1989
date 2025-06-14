@@ -383,6 +383,7 @@ debug_enabled = true
 
 [node name="Animation" type="AnimatedSprite3D" parent="."]
 billboard = 2
+shaded = true
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_6c1u7")
 animation = &"run_right"

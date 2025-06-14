@@ -410,6 +410,44 @@ tracks/0/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_d745t"]
+resource_name = "idle_back_left"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"idle_back_left", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_n36er"]
+resource_name = "idle_back_right"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"idle_back_right", 1.0, false],
+"method": &"play"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_p4vbq"]
 resource_name = "idle_forward"
 length = 0.1
@@ -425,6 +463,44 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [&"idle_forward", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xe83n"]
+resource_name = "idle_forward_left"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"idle_forward_left", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qc1tv"]
+resource_name = "idle_forward_right"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"idle_forward_right", 1.0, false],
 "method": &"play"
 }]
 }
@@ -486,6 +562,44 @@ tracks/0/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_2ngu4"]
+resource_name = "run_back_left"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"run_back_left", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_jv5ih"]
+resource_name = "run_back_right"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"run_back_right", 1.0, false],
+"method": &"play"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_hvqb5"]
 resource_name = "run_forward"
 length = 0.1
@@ -501,44 +615,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [&"run_forward", 1.0, false],
-"method": &"play"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_w4p34"]
-resource_name = "run_left"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"run_left", 1.0, false],
-"method": &"play"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_cuvjl"]
-resource_name = "run_right"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"run_right", 1.0, false],
 "method": &"play"
 }]
 }
@@ -581,8 +657,8 @@ tracks/0/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_2ngu4"]
-resource_name = "run_back_left"
+[sub_resource type="Animation" id="Animation_w4p34"]
+resource_name = "run_left"
 length = 0.1
 loop_mode = 1
 tracks/0/type = "method"
@@ -595,13 +671,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [&"run_back_left", 1.0, false],
+"args": [&"run_left", 1.0, false],
 "method": &"play"
 }]
 }
 
-[sub_resource type="Animation" id="Animation_jv5ih"]
-resource_name = "run_back_right"
+[sub_resource type="Animation" id="Animation_cuvjl"]
+resource_name = "run_right"
 length = 0.1
 loop_mode = 1
 tracks/0/type = "method"
@@ -614,83 +690,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [&"run_back_right", 1.0, false],
-"method": &"play"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_n36er"]
-resource_name = "idle_back_right"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"idle_back_right", 1.0, false],
-"method": &"play"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_d745t"]
-resource_name = "idle_back_left"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"idle_back_left", 1.0, false],
-"method": &"play"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_qc1tv"]
-resource_name = "idle_forward_right"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"idle_forward_right", 1.0, false],
-"method": &"play"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_xe83n"]
-resource_name = "idle_forward_left"
-length = 0.1
-loop_mode = 1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"idle_forward_left", 1.0, false],
+"args": [&"run_right", 1.0, false],
 "method": &"play"
 }]
 }
@@ -933,7 +933,7 @@ speed_scale = 0.5
 active = true
 tree_root = SubResource("AnimationNodeStateMachine_ruh63")
 parameters/Idle/blend_position = Vector2(-0.304348, 0.60961)
-parameters/Jump/blend_position = Vector2(0, 0)
+parameters/Jump/blend_position = false
 parameters/Run/blend_position = Vector2(0.0014993, 0.97048)
 
 [node name="StateChart" type="Node" parent="."]
