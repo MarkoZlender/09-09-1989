@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b4ded4ydy6cny" path="res://assets/sprites/Fade down 4.png" id="2_m1kxf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x10xj"]
-content_margin_top = 300.0
+content_margin_top = 50.0
 
 [sub_resource type="Animation" id="Animation_14pl0"]
 length = 0.001
@@ -100,9 +100,15 @@ texture = ExtResource("2_m1kxf")
 [node name="StartButton" type="Button" parent="."]
 unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -165.0
+offset_right = 150.0
+offset_bottom = 165.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
@@ -110,7 +116,7 @@ theme_override_colors/font_hover_color = Color(1, 1, 1, 0.286275)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(1, 1, 1, 0.286275)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 0.286275)
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_x10xj")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_x10xj")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_x10xj")
@@ -137,14 +143,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = -404.0
-offset_right = 960.0
-offset_bottom = 20.0
+offset_left = -320.0
+offset_top = -240.0
+offset_right = 320.0
+offset_bottom = -46.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.901961, 0.901961, 0.87451, 1)
-theme_override_font_sizes/font_size = 140
+theme_override_font_sizes/font_size = 50
 text = "PROJECT NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -156,26 +162,26 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -300.5
-offset_top = -166.0
-offset_right = 300.5
+offset_left = -320.0
+offset_top = -72.0
+offset_right = 320.0
 grow_horizontal = 2
 grow_vertical = 0
 
 [node name="ConfigButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 70)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-size_flags_vertical = 3
 focus_mode = 0
 theme_type_variation = &"MainMenuButton"
+theme_override_font_sizes/font_size = 15
 text = "Configuration"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 70)
+custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-size_flags_vertical = 3
 focus_mode = 0
 theme_type_variation = &"MainMenuButton"
+theme_override_font_sizes/font_size = 15
 text = "Quit"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_new_game_button_pressed"]
