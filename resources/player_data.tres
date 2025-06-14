@@ -17,4 +17,5 @@ hit_strength = 10
 coins = 0
 walk_sfx = ExtResource("3_7d8sd")
 jump_sfx = ExtResource("1_xk00d")
+footstep_timer = 0.39
 metadata/_custom_type_script = "uid://c5q20r4wynqst"

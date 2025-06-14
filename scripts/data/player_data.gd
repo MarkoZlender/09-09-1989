@@ -19,3 +19,4 @@ extends Resource
 @export_group("Audio")
 @export var walk_sfx: AudioStream
 @export var jump_sfx: AudioStream
+@export var footstep_timer: float = 0.2

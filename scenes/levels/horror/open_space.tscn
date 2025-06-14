@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=8 format=3 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="PackedScene" uid="uid://ds0d7p7idbuc4" path="res://scenes/entities/player.tscn" id="2_t3eph"]
 [ext_resource type="Shader" uid="uid://dvqj5decgwjkr" path="res://resources/crt_shader.gdshader" id="3_gdr46"]
 [ext_resource type="Terrain3DMaterial" uid="uid://14xa2u6bomkw" path="res://resources/terrain3d/terrain_3d_material.tres" id="4_whrqo"]
 [ext_resource type="Terrain3DAssets" uid="uid://wpovl8xjxfag" path="res://resources/terrain3d/terrain_3d_assets.tres" id="5_46gqi"]
+[ext_resource type="PackedScene" uid="uid://bj0f2fjufm3hk" path="res://scenes/environment/props/campfire_pit.tscn" id="5_whrqo"]
 
 [sub_resource type="Environment" id="Environment_gdr46"]
 background_mode = 1
@@ -57,3 +58,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="campfire" parent="." instance=ExtResource("5_whrqo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.72667, 0, -55.1835)
