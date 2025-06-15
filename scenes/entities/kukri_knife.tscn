@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdacl4ljek3vr"]
+
+[ext_resource type="PackedScene" uid="uid://bmq1ml25nlom0" path="res://assets/models/props/Knife/Kukri Knife.glb" id="1_ab1ic"]
+
+[node name="KukriKnife" instance=ExtResource("1_ab1ic")]
+
+[node name="Kukri" parent="." index="0"]
+cast_shadow = 0
