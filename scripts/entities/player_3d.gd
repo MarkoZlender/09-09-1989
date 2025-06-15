@@ -20,6 +20,7 @@ var is_moving: bool = false
 var is_jumping: bool = false
 var hurt:bool = false
 var attacking: bool = false
+var is_moving_backwards: bool = false
 
 var direction: Vector3 = Vector3.ZERO
 var last_facing_direction: Vector2 = Vector2(0, -1)
@@ -76,16 +77,27 @@ func move(delta: float) -> void:
 			is_jumping = false
 
 		# Tank controls input
-		var turn_input: float= Input.get_action_strength("right") - Input.get_action_strength("left")
-		var move_input: float= Input.get_action_strength("up") - Input.get_action_strength("down")
+		var turn_input := Input.get_action_strength("right") - Input.get_action_strength("left")
+		var move_input := Input.get_action_strength("up") - Input.get_action_strength("down")
 
 		# Rotate player (Y axis)
 		rotation.y -= turn_input * turn_speed * delta
 
+		# Determine if moving backwards
+		is_moving_backwards = move_input < 0
+
+		# Limit speed if moving backwards
+		var speed := player_data.speed
+		if is_moving_backwards:
+			is_moving_backwards = true
+			speed *= 0.3  # Limit backward speed to 50%
+		else:
+			is_moving_backwards = false
+		print(is_moving_backwards)
 		# Move forward/backward in local space
-		var forward: Vector3 = -transform.basis.z.normalized()
-		velocity.x = forward.x * move_input * player_data.speed
-		velocity.z = forward.z * move_input * player_data.speed
+		var forward := -transform.basis.z.normalized()
+		velocity.x = forward.x * move_input * speed
+		velocity.z = forward.z * move_input * speed
 
 		# Jumping
 		if Input.is_action_just_pressed("jump") and is_on_floor():

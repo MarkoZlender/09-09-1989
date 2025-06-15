@@ -4,6 +4,7 @@ extends Node3D
 @onready var attack_state: bool = false
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var is_moving_backwards: bool = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("attack"):
@@ -16,3 +17,5 @@ func _input(event: InputEvent) -> void:
 
 func _physics_process(_delta: float) -> void:
 	velocity = owner.velocity
+	is_moving_backwards = owner.is_moving_backwards
+	print("Velocity: ", velocity, " Is Moving Backwards: ", is_moving_backwards)
