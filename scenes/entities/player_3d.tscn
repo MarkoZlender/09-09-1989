@@ -1,0 +1,102 @@
+[gd_scene load_steps=14 format=3 uid="uid://fxqb8ljgc2n4"]
+
+[ext_resource type="Script" uid="uid://crx7ia401nqtx" path="res://scripts/entities/player_3d.gd" id="1_vy47h"]
+[ext_resource type="PackedScene" uid="uid://driki73pc7tic" path="res://scenes/player_model.tscn" id="2_60mhm"]
+[ext_resource type="Script" uid="uid://c5q20r4wynqst" path="res://scripts/data/player_data.gd" id="2_twohd"]
+[ext_resource type="Script" uid="uid://bqnr5hyceu623" path="res://addons/godot_state_charts/state_chart.gd" id="13_wsdte"]
+[ext_resource type="Script" uid="uid://bt4iqisaqggy8" path="res://addons/godot_state_charts/compound_state.gd" id="14_p51s7"]
+[ext_resource type="Script" uid="uid://bm4a5s8vovnwv" path="res://addons/godot_state_charts/atomic_state.gd" id="15_8sdl1"]
+[ext_resource type="Script" uid="uid://btg0k6scpejn3" path="res://addons/godot_state_charts/transition.gd" id="16_g0tc1"]
+[ext_resource type="Script" uid="uid://cw43pgy3x2a52" path="res://scripts/entities/player_states/idle.gd" id="17_thr82"]
+[ext_resource type="Script" uid="uid://c7whpml006e7v" path="res://scripts/entities/player_states/moving.gd" id="18_8hn40"]
+[ext_resource type="PackedScene" uid="uid://hln8ohgt64ft" path="res://scenes/ui/hud.tscn" id="20_q5vuf"]
+[ext_resource type="PackedScene" uid="uid://b6xrt3tukrxl8" path="res://scenes/vfx/blood_spawner.tscn" id="21_fxx5w"]
+
+[sub_resource type="Resource" id="Resource_dbkp8"]
+script = ExtResource("2_twohd")
+speed = 3.0
+rotation_controls = true
+level = 1
+level_progression = Array[int]([])
+experience = 10
+health = 100
+max_health = 100
+hit_strength = 10
+coins = 0
+footstep_timer = 0.2
+metadata/_custom_type_script = "uid://c5q20r4wynqst"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_73kkf"]
+radius = 0.05
+height = 0.2
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+collision_layer = 2
+collision_mask = 5
+wall_min_slide_angle = 0.0
+script = ExtResource("1_vy47h")
+player_data = SubResource("Resource_dbkp8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_73kkf")
+
+[node name="PlayerModel" parent="." instance=ExtResource("2_60mhm")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="StateChart" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("13_wsdte")
+metadata/_custom_type_script = "uid://bqnr5hyceu623"
+
+[node name="Root" type="Node" parent="StateChart"]
+script = ExtResource("14_p51s7")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/Root"]
+script = ExtResource("15_8sdl1")
+
+[node name="ToMoving" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("16_g0tc1")
+to = NodePath("../../Moving")
+event = &"player_moved"
+delay_in_seconds = "0.0"
+
+[node name="Moving" type="Node" parent="StateChart/Root"]
+script = ExtResource("15_8sdl1")
+
+[node name="Transition" type="Node" parent="StateChart/Root/Moving"]
+script = ExtResource("16_g0tc1")
+to = NodePath("../../Idle")
+event = &"player_stopped"
+delay_in_seconds = "0.0"
+
+[node name="Interacting" type="Node" parent="StateChart/Root"]
+script = ExtResource("15_8sdl1")
+
+[node name="Fighting" type="Node" parent="StateChart/Root"]
+script = ExtResource("15_8sdl1")
+
+[node name="StatesLogic" type="Node" parent="."]
+
+[node name="Idle" type="Node" parent="StatesLogic"]
+script = ExtResource("17_thr82")
+
+[node name="Moving" type="Node" parent="StatesLogic"]
+script = ExtResource("18_8hn40")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57065, 0)
+current = true
+
+[node name="SFXPlayer" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Hud" parent="." instance=ExtResource("20_q5vuf")]
+
+[node name="BloodSpawner" parent="." instance=ExtResource("21_fxx5w")]
+
+[connection signal="state_physics_processing" from="StateChart/Root/Idle" to="StatesLogic/Idle" method="_on_idle_state_physics_processing"]
+[connection signal="state_physics_processing" from="StateChart/Root/Moving" to="StatesLogic/Moving" method="_on_moving_state_physics_processing"]

@@ -1,4 +1,4 @@
-#class_name Player 
+class_name Player
 extends CharacterBody3D
 
 #region Constants
@@ -8,15 +8,8 @@ const JUMP_VELOCITY: float = 3.5
 #endregion
 
 #region Exports
-enum LevelCameraRotation {
-	FRONT = 0,
-	RIGHT = 90,
-	BACK = 180,
-	LEFT = 270
-}
 
 @export var player_data: PlayerData
-@export var level_camera_rotation: LevelCameraRotation = LevelCameraRotation.FRONT
 
 #endregion
 
@@ -26,6 +19,7 @@ var idle: bool
 var is_moving: bool = false
 var is_jumping: bool = false
 var hurt:bool = false
+var attacking: bool = false
 
 var direction: Vector3 = Vector3.ZERO
 var last_facing_direction: Vector2 = Vector2(0, -1)
@@ -35,26 +29,27 @@ var knockback_direction: Vector3 = Vector3.ZERO
 var knockback_strength: float = 2.0  # Adjust the force as needed
 var knockback_duration: float = 0.2  # How long the knockback lasts
 var knockback_timer: float = 0.0
+var turn_speed: float = 2.0  # Adjust the turning speed as needed
 
 #endregion
 
 #region Onready variables
 
-@onready var animation_tree: AnimationTree = $AnimationTree
-@onready var camera_gimbal: Node3D = %CameraGimbal
 @onready var sfx_player: AudioStreamPlayer3D = $SFXPlayer
 @onready var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
+@onready var player_model: Node3D = $PlayerModel
 
 #endregion
 
 #region Built-in functions
 
 func _ready() -> void:
-	$HurtSurfaceArea.connect("area_entered", _on_hurt)
-	$HurtSurfaceArea.connect("area_exited", _on_disengage)
+	#$HurtSurfaceArea.connect("area_entered", _on_hurt)
+	#$HurtSurfaceArea.connect("area_exited", _on_disengage)
 	Global.signal_bus.enemy_died.connect(_on_enemy_defeated)
 	Global.signal_bus.item_collected.connect(_on_item_collected)
 	Global.signal_bus.player_died.connect(_on_player_died)
+	player_model.get_node("AnimationTree").connect("animation_finished", _on_attack_animation_finished)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -62,82 +57,49 @@ func _input(event: InputEvent) -> void:
 			_add_inventory()
 		else:
 			Global.game_controller.get_node("GUI/InventoryItemList").queue_free()
+	
+	if event.is_action_pressed("attack"):
+		attacking = true
 
 #endregion
 
 #region Public functions
 
 func move(delta: float) -> void:
-	_play_footsteps()
-	# Apply gravity
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-		is_jumping = true
-	else:
-		is_jumping = false
+	if !attacking:
+		_play_footsteps()
 
-	# Handle knockback
-	if knockback_timer > 0:
-		knockback_timer -= delta
-		velocity = knockback_direction * knockback_strength
+		# Apply gravity
+		if not is_on_floor():
+			is_jumping = true
+		else:
+			is_jumping = false
+
+		# Tank controls input
+		var turn_input: float= Input.get_action_strength("right") - Input.get_action_strength("left")
+		var move_input: float= Input.get_action_strength("up") - Input.get_action_strength("down")
+
+		# Rotate player (Y axis)
+		rotation.y -= turn_input * turn_speed * delta
+
+		# Move forward/backward in local space
+		var forward: Vector3 = -transform.basis.z.normalized()
+		velocity.x = forward.x * move_input * player_data.speed
+		velocity.z = forward.z * move_input * player_data.speed
+
+		# Jumping
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
+			sfx_player.stream = player_data.jump_sfx
+			sfx_player.play()
+
+		# Move and animate
 		move_and_slide()
-		return  # Skip normal movement during knockback
+		#animate_input_animation_tree()
 
-	# Normal movement logic
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		sfx_player.stream = player_data.jump_sfx
-		sfx_player.play()
+		if hurt:
+			print("Hurting player")
 
-	input_dir = Input.get_vector("left", "right", "up", "down")
-	var camera_basis: Basis = camera_gimbal.global_transform.basis
-	var adjusted_direction: Vector3 = (camera_basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-
-	direction = (transform.basis * Vector3(adjusted_direction.x, 0, adjusted_direction.z)).normalized()
-
-	if direction:
-		is_moving = true
-		velocity.x = direction.x * player_data.speed
-		velocity.z = direction.z * player_data.speed
-	else:
-		is_moving = false
-		velocity.x = move_toward(velocity.x, 0, player_data.speed)
-		velocity.z = move_toward(velocity.z, 0, player_data.speed)
-
-	camera_velocity = camera_gimbal.global_transform.basis.inverse() * velocity
-
-	if direction.length() > 0.01:  # Avoid rotating when the direction is too small
-		$AttackSurfaceArea.rotation.y = atan2(-direction.x, -direction.z)
-
-	move_and_slide()
-	animate_input_animation_tree()
-	
-
-	if hurt:
-		print("Hurting player")
-
-func animate_input_animation_tree() -> void:
-	# Determine if the player is idle (no movement input)
-	idle = camera_velocity.length() < 0.1  # Threshold to consider the player idle
-
-	# Normalize the camera velocity for blending
-	var blend_position: Vector2 = Vector2(camera_velocity.x, camera_velocity.z).normalized()
-
-	# Update last_facing_direction even when jumping
-	if blend_position.length() > 0.1:  # Only update when there's movement
-		last_facing_direction = blend_position
-
-	if is_jumping:
-		animation_tree.set("parameters/Jump/blend_position", last_facing_direction)
-		animation_tree.set("parameters/State/current", 2)  # Jump state
-
-	# Handle animations based on state
-	elif idle:
-		animation_tree.set("parameters/Idle/blend_position", last_facing_direction)
-		animation_tree.set("parameters/State/current", 0)  # Idle state
-	else:
-		animation_tree.set("parameters/Run/blend_position", blend_position)
-		animation_tree.set("parameters/State/current", 1)  # Run state
 
 func save() -> Dictionary:
 	var save_data: Dictionary = {
@@ -215,5 +177,10 @@ func _on_item_collected(item: Collectible) -> void:
 
 func _on_player_died() -> void:
 	get_tree().paused = true
+
+func _on_attack_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "attack":
+		print("Attack animation finished")
+		attacking = false
 
 #endregion
