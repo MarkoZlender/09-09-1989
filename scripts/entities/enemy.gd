@@ -233,7 +233,6 @@ func _on_tween_completed() -> void:
 
 func _on_disengage(area: Area3D) -> void:
 	if area is PlayerAttackSurfaceArea:
-		print("Disengaging")
 		hurt = false
 
 func _rotate() -> void:

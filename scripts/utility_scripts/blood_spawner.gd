@@ -20,7 +20,6 @@ func _spawn_blood_decal(position: Vector3) -> void:
 	var blood_decal: Decal = Decal.new()
 	blood_decal.cull_mask = 1 << 0
 	var blood_texture: CompressedTexture2D = load("res://assets/sprites/blood_splatter/" + _get_random_blood_texture())
-	print("Blood decal spawned at position: ", position)
 	if blood_texture:
 		blood_decal.texture_albedo = blood_texture
 		blood_decal.size = Vector3(1, 1, 1)
