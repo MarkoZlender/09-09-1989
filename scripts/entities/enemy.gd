@@ -176,6 +176,7 @@ func _on_hurt(area: Area3D) -> void:
 		sfx_player.play()
 		enemy_data.health = clamp(enemy_data.health, 0, enemy_data.health)
 		# pause animation tree when hurt
+		Global.signal_bus.spawn_blood.emit(global_position)
 		animated_sprite.stop()
 		animation_tree.active = false
 		hurt = true

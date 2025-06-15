@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://byv5ix5sf5y4w"]
+[gd_scene load_steps=52 format=3 uid="uid://byv5ix5sf5y4w"]
 
 [ext_resource type="Script" uid="uid://dhgpdqod4iift" path="res://scripts/entities/enemy.gd" id="1_d7j71"]
 [ext_resource type="AudioStream" uid="uid://cyn1whwvr3g65" path="res://assets/sounds/sfx/enemy_damaged.mp3" id="2_1pxj6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dy0s2ot576nwh" path="res://scripts/entities/enemy_attack_surface_area.gd" id="2_67neu"]
 [ext_resource type="AudioStream" uid="uid://ctv13bm2qhq2v" path="res://assets/sounds/sfx/enemy_death.wav" id="2_733a4"]
 [ext_resource type="Script" uid="uid://0fkyd553m7cg" path="res://scripts/data/enemy_data.gd" id="2_txpl2"]
+[ext_resource type="PackedScene" uid="uid://b6xrt3tukrxl8" path="res://scenes/vfx/blood_spawner.tscn" id="20_td7os"]
 [ext_resource type="PackedScene" uid="uid://f4fj2u87647d" path="res://scenes/components/animation_tree.tscn" id="219_rid7h"]
 [ext_resource type="Script" uid="uid://bqnr5hyceu623" path="res://addons/godot_state_charts/state_chart.gd" id="220_0fyhf"]
 [ext_resource type="Script" uid="uid://deb60yher4wfl" path="res://scripts/entities/enemy/deaggro_area.gd" id="220_yoqot"]
@@ -383,6 +384,7 @@ use_3d_avoidance = true
 debug_enabled = true
 
 [node name="Animation" type="AnimatedSprite3D" parent="."]
+layers = 2
 billboard = 2
 shaded = true
 texture_filter = 0
@@ -525,6 +527,8 @@ one_shot = true
 process_callback = 0
 wait_time = 2.0
 one_shot = true
+
+[node name="BloodSpawner" parent="." instance=ExtResource("20_td7os")]
 
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="body_entered" from="AttackSurfaceArea" to="." method="_on_attack_surface_area_body_entered"]

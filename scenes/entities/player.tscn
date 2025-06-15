@@ -1,4 +1,4 @@
-[gd_scene load_steps=118 format=3 uid="uid://ds0d7p7idbuc4"]
+[gd_scene load_steps=119 format=3 uid="uid://ds0d7p7idbuc4"]
 
 [ext_resource type="Script" uid="uid://1uia1xe5nmrj" path="res://scripts/entities/player.gd" id="1_mfpxk"]
 [ext_resource type="Resource" uid="uid://jbibkrhbv4po" path="res://resources/player_data.tres" id="2_5ki56"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://cw43pgy3x2a52" path="res://scripts/entities/player_states/idle.gd" id="8_dnykm"]
 [ext_resource type="Texture2D" uid="uid://cf3jie2g1g0py" path="res://assets/sprites/red_character/Character_UpRight.png" id="8_yr3on"]
 [ext_resource type="Script" uid="uid://c7whpml006e7v" path="res://scripts/entities/player_states/moving.gd" id="9_c5rqy"]
+[ext_resource type="PackedScene" uid="uid://b6xrt3tukrxl8" path="res://scenes/vfx/blood_spawner.tscn" id="21_jv5ih"]
 [ext_resource type="PackedScene" uid="uid://hln8ohgt64ft" path="res://scenes/ui/hud.tscn" id="167_efb02"]
 [ext_resource type="Script" uid="uid://cgoijtm7bh3t5" path="res://scenes/entities/player_attack_surface_area.gd" id="227_l6jip"]
 
@@ -902,6 +903,7 @@ player_data = ExtResource("2_5ki56")
 shape = SubResource("CapsuleShape3D_73kkf")
 
 [node name="Animation" type="AnimatedSprite3D" parent="."]
+layers = 2
 billboard = 2
 shaded = true
 texture_filter = 0
@@ -1008,6 +1010,8 @@ shape = SubResource("CapsuleShape3D_i2i0h")
 one_shot = true
 
 [node name="Hud" parent="." instance=ExtResource("167_efb02")]
+
+[node name="BloodSpawner" parent="." instance=ExtResource("21_jv5ih")]
 
 [connection signal="state_physics_processing" from="StateChart/Root/Idle" to="StatesLogic/Idle" method="_on_idle_state_physics_processing"]
 [connection signal="state_physics_processing" from="StateChart/Root/Moving" to="StatesLogic/Moving" method="_on_moving_state_physics_processing"]

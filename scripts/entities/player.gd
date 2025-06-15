@@ -195,7 +195,7 @@ func _on_hurt(area: Area3D) -> void:
 	if area is EnemyAttackSurfaceArea:
 		hurt = true
 		player_data.health -= area.get_parent().enemy_data.hit_strength
-		print("Player health: ", player_data.health)
+		Global.signal_bus.spawn_blood.emit(global_position)
 		if player_data.health <= 0:
 			Global.signal_bus.player_died.emit()
 		_apply_knockback(area)

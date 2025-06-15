@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6xrt3tukrxl8"]
+
+[ext_resource type="Script" uid="uid://bcrgxpee1op72" path="res://scripts/utility_scripts/blood_spawner.gd" id="1_ahaou"]
+
+[node name="BloodSpawner" type="Node"]
+script = ExtResource("1_ahaou")
