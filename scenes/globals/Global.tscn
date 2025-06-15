@@ -35,3 +35,4 @@ _serialized_format = {
 }
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Global"
