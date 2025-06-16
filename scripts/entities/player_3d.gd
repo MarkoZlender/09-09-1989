@@ -15,12 +15,12 @@ const JUMP_VELOCITY: float = 3.5
 
 #region Variables
 
-var idle: bool
 var is_moving: bool = false
-var is_jumping: bool = false
-var hurt:bool = false
-var attacking: bool = false
+var is_attacking: bool = false
 var is_moving_backwards: bool = false
+var is_hurt:bool = false
+var is_interacting: bool = false
+
 
 var direction: Vector3 = Vector3.ZERO
 var last_facing_direction: Vector2 = Vector2(0, -1)
@@ -50,6 +50,9 @@ func _ready() -> void:
 	Global.signal_bus.enemy_died.connect(_on_enemy_defeated)
 	Global.signal_bus.item_collected.connect(_on_item_collected)
 	Global.signal_bus.player_died.connect(_on_player_died)
+	Global.signal_bus.interaction_started.connect(_on_player_interacted)
+	Global.signal_bus.interaction_ended.connect(_on_player_ended_interaction)
+	
 	player_model.get_node("AnimationTree").connect("animation_finished", _on_attack_animation_finished)
 
 func _input(event: InputEvent) -> void:
@@ -60,58 +63,49 @@ func _input(event: InputEvent) -> void:
 			Global.game_controller.get_node("GUI/InventoryItemList").queue_free()
 	
 	if event.is_action_pressed("attack"):
-		attacking = true
+		is_attacking = true
 
 #endregion
 
 #region Public functions
 
 func move(delta: float) -> void:
-	if !attacking:
-		_play_footsteps()
+	#if !is_attacking:
+	_play_footsteps()
 
-		# Apply gravity
-		if not is_on_floor():
-			is_jumping = true
-		else:
-			is_jumping = false
+	# Tank controls input
+	var turn_input: float= Input.get_action_strength("right") - Input.get_action_strength("left")
+	var move_input: float= Input.get_action_strength("up") - Input.get_action_strength("down")
 
-		# Tank controls input
-		var turn_input := Input.get_action_strength("right") - Input.get_action_strength("left")
-		var move_input := Input.get_action_strength("up") - Input.get_action_strength("down")
+	if move_input != 0:
+		is_moving = true
+	else:
+		is_moving = false
 
-		# Rotate player (Y axis)
-		rotation.y -= turn_input * turn_speed * delta
+	# Rotate player (Y axis)
+	rotation.y -= turn_input * turn_speed * delta
 
-		# Determine if moving backwards
-		is_moving_backwards = move_input < 0
+	# Determine if moving backwards
+	is_moving_backwards = move_input < 0
 
-		# Limit speed if moving backwards
-		var speed := player_data.speed
-		if is_moving_backwards:
-			is_moving_backwards = true
-			speed *= 0.3  # Limit backward speed to 50%
-		else:
-			is_moving_backwards = false
-		print(is_moving_backwards)
-		# Move forward/backward in local space
-		var forward := -transform.basis.z.normalized()
-		velocity.x = forward.x * move_input * speed
-		velocity.z = forward.z * move_input * speed
+	# Limit speed if moving backwards
+	var speed: float= player_data.speed
 
-		# Jumping
-		if Input.is_action_just_pressed("jump") and is_on_floor():
-			velocity.y = JUMP_VELOCITY
-			sfx_player.stream = player_data.jump_sfx
-			sfx_player.play()
+	if is_moving_backwards:
+		is_moving_backwards = true
+		speed *= 0.3  # Limit backward speed to 50%
+	else:
+		is_moving_backwards = false
 
-		# Move and animate
-		move_and_slide()
-		#animate_input_animation_tree()
+	# Move forward/backward in local space
+	var forward: Vector3= -transform.basis.z.normalized()
+	velocity.x = forward.x * move_input * speed
+	velocity.z = forward.z * move_input * speed
 
-		if hurt:
-			print("Hurting player")
+	move_and_slide()
 
+	if is_hurt:
+		print("Hurting player")
 
 func save() -> Dictionary:
 	var save_data: Dictionary = {
@@ -167,7 +161,7 @@ func _check_level() -> void:
 
 func _on_hurt(area: Area3D) -> void:
 	if area is EnemyAttackSurfaceArea:
-		hurt = true
+		is_hurt = true
 		player_data.health -= area.get_parent().enemy_data.hit_strength
 		Global.signal_bus.spawn_blood.emit(global_position)
 		if player_data.health <= 0:
@@ -176,7 +170,7 @@ func _on_hurt(area: Area3D) -> void:
 
 func _on_disengage(area: Area3D) -> void:
 	if area is EnemyAttackSurfaceArea:
-		hurt = false
+		is_hurt = false
 
 func _on_enemy_defeated(enemy: Enemy) -> void:
 	player_data.experience += enemy.enemy_data.experience
@@ -191,8 +185,25 @@ func _on_player_died() -> void:
 	get_tree().paused = true
 
 func _on_attack_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "hurt":
+		is_hurt = false
+
 	if anim_name == "attack":
-		print("Attack animation finished")
-		attacking = false
+		is_attacking = false
+
+func _on_player_interacted() -> void:
+	is_interacting = true
+
+func _on_player_ended_interaction() -> void:
+	is_interacting = false
+
+func _on_player_hurt_box_area_entered(area:Area3D) -> void:
+	pass
+	# if area is EnemyHitBox:
+	# 	if player_data.health <= 0:
+	# 		Global.signal_bus.player_died.emit()
+	# 		return
+	# 	player_data.health -= area.get_parent().enemy_data.hit_strength
+	# 	is_hurt = true
 
 #endregion

@@ -1,0 +1,1 @@
+class_name PlayerHitBox extends Area3D

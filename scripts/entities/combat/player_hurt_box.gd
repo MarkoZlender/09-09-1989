@@ -1,0 +1,1 @@
+class_name PlayerHurtBox extends Area3D

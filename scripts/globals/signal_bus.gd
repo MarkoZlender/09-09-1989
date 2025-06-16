@@ -9,6 +9,9 @@ signal spawn_blood(position: Vector3)
 
 signal item_collected(item: Collectible)
 
+signal interaction_started
+signal interaction_ended
+
 signal level_audio_loaded(level_audio: LevelAudio)
 signal level_changed
 
