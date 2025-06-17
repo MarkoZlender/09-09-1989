@@ -1,12 +1,6 @@
 class_name Player
 extends CharacterBody3D
 
-#region Constants
-
-const JUMP_VELOCITY: float = 3.5
-
-#endregion
-
 #region Exports
 
 @export var player_data: PlayerData
@@ -21,22 +15,13 @@ var is_moving_backwards: bool = false
 var is_hurt:bool = false
 var is_interacting: bool = false
 
-
 var direction: Vector3 = Vector3.ZERO
-var last_facing_direction: Vector2 = Vector2(0, -1)
-var camera_velocity: Vector3 = Vector3.ZERO
-
-var knockback_direction: Vector3 = Vector3.ZERO
-var knockback_strength: float = 2.0  # Adjust the force as needed
-var knockback_duration: float = 0.2  # How long the knockback lasts
-var knockback_timer: float = 0.0
 var turn_speed: float = 2.0  # Adjust the turning speed as needed
 
 #endregion
 
 #region Onready variables
 
-@onready var sfx_player: AudioStreamPlayer3D = $SFXPlayer
 @onready var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
 @onready var player_model: Node3D = $PlayerModel
 
@@ -45,9 +30,6 @@ var turn_speed: float = 2.0  # Adjust the turning speed as needed
 #region Built-in functions
 
 func _ready() -> void:
-	#$HurtSurfaceArea.connect("area_entered", _on_hurt)
-	#$HurtSurfaceArea.connect("area_exited", _on_disengage)
-	Global.signal_bus.enemy_died.connect(_on_enemy_defeated)
 	Global.signal_bus.item_collected.connect(_on_item_collected)
 	Global.signal_bus.player_died.connect(_on_player_died)
 	Global.signal_bus.interaction_started.connect(_on_player_interacted)
@@ -70,9 +52,6 @@ func _input(event: InputEvent) -> void:
 #region Public functions
 
 func move(delta: float) -> void:
-	#if !is_attacking:
-	_play_footsteps()
-
 	# Tank controls input
 	var turn_input: float= Input.get_action_strength("right") - Input.get_action_strength("left")
 	var move_input: float= Input.get_action_strength("up") - Input.get_action_strength("down")
@@ -128,20 +107,8 @@ func load(data: Dictionary) -> void:
 
 #region Private functions 
 
-func _play_footsteps() -> void:
-	if is_moving && is_on_floor():
-		if not sfx_player.playing && $Timer.time_left <= 0:
-			sfx_player.stream = player_data.walk_sfx
-			sfx_player.pitch_scale = 1.0 + randf_range(-0.1, 0.1)
-			sfx_player.play()
-			$Timer.start(player_data.footstep_timer)
-	else:
-		sfx_player.pitch_scale = 1.0
-		sfx_player.volume_db = 0
 
 func _apply_knockback(area: Area3D) -> void:
-	knockback_timer = knockback_duration
-	knockback_direction = (global_position - area.global_position).normalized()
 	Global.signal_bus.player_hurt.emit(player_data.health)
 
 func _add_inventory() -> void:
@@ -158,23 +125,6 @@ func _check_level() -> void:
 #endregion
 
 #region Signal callables
-
-func _on_hurt(area: Area3D) -> void:
-	if area is EnemyAttackSurfaceArea:
-		is_hurt = true
-		player_data.health -= area.get_parent().enemy_data.hit_strength
-		Global.signal_bus.spawn_blood.emit(global_position)
-		if player_data.health <= 0:
-			Global.signal_bus.player_died.emit()
-		_apply_knockback(area)
-
-func _on_disengage(area: Area3D) -> void:
-	if area is EnemyAttackSurfaceArea:
-		is_hurt = false
-
-func _on_enemy_defeated(enemy: Enemy) -> void:
-	player_data.experience += enemy.enemy_data.experience
-	_check_level()
 
 func _on_item_collected(item: Collectible) -> void:
 	if item is Coin:

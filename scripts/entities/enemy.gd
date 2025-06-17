@@ -1,4 +1,5 @@
-class_name Enemy extends CharacterBody3D
+#class_name Enemy 
+extends CharacterBody3D
 
 @export var enemy_data: EnemyData
 @export var player: Player
