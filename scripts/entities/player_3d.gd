@@ -35,7 +35,7 @@ func _ready() -> void:
 	Global.signal_bus.interaction_started.connect(_on_player_interacted)
 	Global.signal_bus.interaction_ended.connect(_on_player_ended_interaction)
 	
-	player_model.get_node("AnimationTree").connect("animation_finished", _on_attack_animation_finished)
+	player_model.get_node("AnimationTree").connect("animation_finished", _on_animation_finished)
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -134,7 +134,7 @@ func _on_item_collected(item: Collectible) -> void:
 func _on_player_died() -> void:
 	get_tree().paused = true
 
-func _on_attack_animation_finished(anim_name: StringName) -> void:
+func _on_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "hurt":
 		is_hurt = false
 

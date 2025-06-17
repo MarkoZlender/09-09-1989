@@ -8,7 +8,8 @@ var is_aggroed: bool = false
 var is_moving: bool = false
 var is_hurt: bool = false
 var is_dead: bool = false
-
+var reached_player: bool = false
+var turn_speed: float = 10.0
 
 var direction: Vector3 = Vector3.ZERO 
 
@@ -17,32 +18,28 @@ var direction: Vector3 = Vector3.ZERO
 
 @onready var navigation_agent: NavigationAgent3D = get_node("NavigationAgent3D")
 @onready var enemy_collision_shape: CollisionShape3D = $EnemyCollisionShape
+@onready var enemy_model: Node3D = $EnemyModel
 
 func _ready() -> void:
 	enemy_data = enemy_data.duplicate()
 	for collision in get_tree().get_nodes_in_group("collisions"):
 		collision.duplicate()
-	Global.signal_bus.player_hurt.connect(_on_player_hurt)
 	$PatrollTimer.start(randf_range(3.0, 4.0))
+	enemy_model.get_node("AnimationTree").connect("animation_finished", _on_animation_finished)
 
 
 func aggroed(delta: float) -> void:
-	_check_if_on_floor()
-	_apply_gravity(delta)
-
 	navigation_agent.target_position = player.global_position
 	direction = (navigation_agent.get_next_path_position() - global_position).normalized()
 
 	velocity = velocity.move_toward(direction * movement_speed, accel * delta)
+	rotate_towards_target(navigation_agent.target_position)
 
 	is_moving = velocity.length() > 0.1
 
 	move_and_slide()
 
 func deaggroed(delta: float) -> void:
-	_check_if_on_floor()
-	_apply_gravity(delta)
-
 	# Handle patrolling with a stop-and-wait behavior
 	if navigation_agent.is_navigation_finished():
 		# If the timer is not running, start it and stop the enemy
@@ -61,6 +58,7 @@ func deaggroed(delta: float) -> void:
 					randf_range(enemy_data.wander_range_z.x, enemy_data.wander_range_z.y)
 				)
 				navigation_agent.target_position = global_position + random_offset
+				rotate_towards_target(navigation_agent.target_position)
 
 	# Move towards the new target if the timer is not running
 	if $PatrollTimer.time_left <= 0:
@@ -73,68 +71,26 @@ func deaggroed(delta: float) -> void:
 
 	move_and_slide()
 
-func _apply_gravity(delta: float) -> void:
-	if not is_on_floor():
-		velocity.y -= 9.8 * delta
-	else:
-		velocity.y = 0
+func rotate_towards_target(target_position: Vector3) -> void:
+	var to_target: Vector3 = target_position - global_position
+	to_target.y = 0  # Ignore vertical difference for horizontal rotation
+	if to_target.length() > 0.01:
+		var target_angle: float = atan2(to_target.x, to_target.z)
+		rotation.y = lerp_angle(rotation.y, target_angle, turn_speed * get_process_delta_time())
 
-func _check_if_on_floor() -> void:
-	# if not on floor stop navigation agent and restart it when on floor
-	if !is_on_floor():
-		navigation_agent.target_position = global_position
-		
+func _on_navigation_agent_3d_target_reached() -> void:
+	reached_player = true
 
-func _on_hurt(area: Area3D) -> void:
-	if area is PlayerAttackSurfaceArea:
-		# decrease enemy health
-		enemy_data.health -= 10
-		enemy_data.health = clamp(enemy_data.health, 0, enemy_data.health)
-		# pause animation tree when hurt
-		Global.signal_bus.spawn_blood.emit(global_position)
-		is_hurt = true
-
-		# Calculate the direction of the knockback based on the attacker's position
-		var relative_position: Vector3 = (area.global_position - global_position).normalized()
-
-		# Define the 4 possible directions
-		var directions: Array[Vector3] = [
-			Vector3(0, 0, -1),  # Forward (-Z)
-			Vector3(0, 0, 1),   # Backward (+Z)
-			Vector3(-1, 0, 0),  # Left (-X)
-			Vector3(1, 0, 0)    # Right (+X)
-		]
-
-		# Find the closest direction
-		var closest_direction: Vector3 = directions[0]
-		var closest_dot: float = -1  # Minimum possible dot product
-		for dir: Vector3 in directions:
-			var dot: float = relative_position.dot(dir)
-			if dot > closest_dot:
-				closest_dot = dot
-				closest_direction = dir
-
-		# death
-		if enemy_data.health <= 0:
-			%StateChart.send_event("dead")
-			# disable collisions
-			for collision: Node in get_children():
-				if collision is Area3D:
-					collision.get_child(0).disabled = true
-			# play death sound
-			# emit signal to notify that the enemy has died
-			Global.signal_bus.enemy_died.emit(self)
-			# animate death
-			for collision: Node in get_children():
-				if collision is CollisionShape3D:
-					collision.disabled = true
-
-func _on_tween_completed() -> void:
-	queue_free()
-
-func _on_disengage(area: Area3D) -> void:
-	if area is PlayerAttackSurfaceArea:
+func _on_animation_finished(anim_name: String) -> void:
+	if anim_name == "hit":
 		is_hurt = false
 
-func _on_player_hurt(_health: int) -> void:
-	pass
+func _on_aggro_area_body_entered(body: Node3D) -> void:
+	if body is Player:
+		is_aggroed = true
+		is_deaggroed = false
+
+func _on_deaggro_area_body_exited(body: Node3D) -> void:
+	if body is Player:
+		is_aggroed = false
+		is_deaggroed = true

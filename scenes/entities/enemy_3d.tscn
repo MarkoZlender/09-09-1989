@@ -14,8 +14,9 @@
 [ext_resource type="Script" uid="uid://doylfv46820k0" path="res://scripts/state_machine/enemy_states/hurt.gd" id="17_cyc3y"]
 [ext_resource type="PackedScene" uid="uid://b6xrt3tukrxl8" path="res://scenes/vfx/blood_spawner.tscn" id="20_5vdc7"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_defa4"]
-size = Vector3(0.1, 0.2, 0.1)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nsewa"]
+radius = 0.14131
+height = 0.6
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2dase"]
 height = 0.2
@@ -32,14 +33,15 @@ wall_min_slide_angle = 0.0
 script = ExtResource("1_jcnff")
 
 [node name="EnemyCollisionShape" type="CollisionShape3D" parent="." groups=["collisions"]]
-shape = SubResource("BoxShape3D_defa4")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+shape = SubResource("CapsuleShape3D_nsewa")
 
 [node name="EnemyModel" parent="." instance=ExtResource("8_8ktbn")]
+transform = Transform3D(0.37, 0, 0, 0, -1.61732e-08, -0.37, 0, 0.37, -1.61732e-08, 0, 0, 0)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.1
-target_desired_distance = 0.5
-path_max_distance = 0.01
+path_max_distance = 0.11
 avoidance_enabled = true
 use_3d_avoidance = true
 debug_enabled = true
@@ -84,7 +86,7 @@ delay_in_seconds = "0.0"
 [node name="ToHurt" type="Node" parent="StateChart/Root/Deaggroed"]
 script = ExtResource("14_udhym")
 to = NodePath("../../Hurt")
-event = &"stunned"
+event = &"hurt"
 delay_in_seconds = "0.0"
 
 [node name="Aggroed" type="Node" parent="StateChart/Root"]
@@ -99,7 +101,7 @@ delay_in_seconds = "0.0"
 [node name="ToHurt" type="Node" parent="StateChart/Root/Aggroed"]
 script = ExtResource("14_udhym")
 to = NodePath("../../Hurt")
-event = &"stunned"
+event = &"hurt"
 delay_in_seconds = "0.0"
 
 [node name="Hurt" type="Node" parent="StateChart/Root"]
@@ -147,9 +149,10 @@ one_shot = true
 
 [node name="BloodSpawner" parent="." instance=ExtResource("20_5vdc7")]
 
+[connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
-[connection signal="body_entered" from="AggroArea" to="AggroArea" method="_on_body_entered"]
-[connection signal="body_exited" from="DeaggroArea" to="DeaggroArea" method="_on_body_exited"]
+[connection signal="body_entered" from="AggroArea" to="." method="_on_aggro_area_body_entered"]
+[connection signal="body_exited" from="DeaggroArea" to="." method="_on_deaggro_area_body_exited"]
 [connection signal="state_physics_processing" from="StateChart/Root/Deaggroed" to="StatesLogic/Deaggroed" method="_on_deaggroed_state_physics_processing"]
 [connection signal="state_physics_processing" from="StateChart/Root/Aggroed" to="StatesLogic/Aggroed" method="_on_aggroed_state_physics_processing"]
 [connection signal="state_physics_processing" from="StateChart/Root/Hurt" to="StatesLogic/Hurt" method="_on_hurt_state_physics_processing"]
