@@ -236,3 +236,4 @@ current = true
 [connection signal="state_physics_processing" from="StateChart/Root/Interacting" to="StatesLogic/Interacting" method="_on_interacting_state_physics_processing"]
 [connection signal="state_physics_processing" from="StateChart/Root/Fighting" to="StatesLogic/Fighting" method="_on_fighting_state_physics_processing"]
 [connection signal="state_physics_processing" from="StateChart/Root/Hurt" to="StatesLogic/Hurt" method="_on_hurt_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/Root/Dead" to="StatesLogic/Dead" method="_on_dead_state_entered"]
