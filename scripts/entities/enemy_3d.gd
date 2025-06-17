@@ -3,11 +3,13 @@ class_name Enemy extends CharacterBody3D
 @export var enemy_data: EnemyData
 @export var player: Player
 
-var idle: bool
+var is_deaggroed: bool = true
+var is_aggroed: bool = false
 var is_moving: bool = false
-var is_jumping: bool = false
+var is_hurt: bool = false
+var is_dead: bool = false
 
-var hurt: bool = false
+
 var direction: Vector3 = Vector3.ZERO 
 
 @onready var movement_speed: float = enemy_data.movement_speed
@@ -34,7 +36,6 @@ func aggroed(delta: float) -> void:
 	velocity = velocity.move_toward(direction * movement_speed, accel * delta)
 
 	is_moving = velocity.length() > 0.1
-	is_jumping = not is_on_floor()
 
 	move_and_slide()
 
@@ -69,7 +70,6 @@ func deaggroed(delta: float) -> void:
 		velocity = velocity.move_toward(direction * movement_speed, accel * delta)
 
 	is_moving = velocity.length() > 0.1
-	is_jumping = not is_on_floor()
 
 	move_and_slide()
 
@@ -92,7 +92,7 @@ func _on_hurt(area: Area3D) -> void:
 		enemy_data.health = clamp(enemy_data.health, 0, enemy_data.health)
 		# pause animation tree when hurt
 		Global.signal_bus.spawn_blood.emit(global_position)
-		hurt = true
+		is_hurt = true
 
 		# Calculate the direction of the knockback based on the attacker's position
 		var relative_position: Vector3 = (area.global_position - global_position).normalized()
@@ -134,7 +134,7 @@ func _on_tween_completed() -> void:
 
 func _on_disengage(area: Area3D) -> void:
 	if area is PlayerAttackSurfaceArea:
-		hurt = false
+		is_hurt = false
 
 func _on_player_hurt(_health: int) -> void:
 	pass

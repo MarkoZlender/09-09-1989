@@ -53,8 +53,8 @@ func _input(event: InputEvent) -> void:
 
 func move(delta: float) -> void:
 	# Tank controls input
-	var turn_input: float= Input.get_action_strength("right") - Input.get_action_strength("left")
-	var move_input: float= Input.get_action_strength("up") - Input.get_action_strength("down")
+	var turn_input: float = Input.get_action_strength("right") - Input.get_action_strength("left")
+	var move_input: float = Input.get_action_strength("up") - Input.get_action_strength("down")
 
 	if move_input != 0:
 		is_moving = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://fxqb8ljgc2n4"]
+[gd_scene load_steps=20 format=3 uid="uid://fxqb8ljgc2n4"]
 
 [ext_resource type="Script" uid="uid://crx7ia401nqtx" path="res://scripts/entities/player_3d.gd" id="1_vy47h"]
 [ext_resource type="PackedScene" uid="uid://driki73pc7tic" path="res://scenes/player_model.tscn" id="2_60mhm"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cs2i1g6ibboqu" path="res://scripts/state_machine/player_states/fighting.gd" id="11_ucpnv"]
 [ext_resource type="Script" uid="uid://7lt1dkobvurh" path="res://scripts/state_machine/player_states/hurt.gd" id="12_abokc"]
 [ext_resource type="Script" uid="uid://bqnr5hyceu623" path="res://addons/godot_state_charts/state_chart.gd" id="13_wsdte"]
+[ext_resource type="Script" uid="uid://c3dujsv5u6sty" path="res://scripts/state_machine/player_states/dead.gd" id="14_4vpuf"]
 [ext_resource type="Script" uid="uid://bt4iqisaqggy8" path="res://addons/godot_state_charts/compound_state.gd" id="14_p51s7"]
 [ext_resource type="Script" uid="uid://bm4a5s8vovnwv" path="res://addons/godot_state_charts/atomic_state.gd" id="15_8sdl1"]
 [ext_resource type="Script" uid="uid://btg0k6scpejn3" path="res://addons/godot_state_charts/transition.gd" id="16_g0tc1"]
@@ -96,6 +97,12 @@ to = NodePath("../../Hurt")
 event = &"player_hurt"
 delay_in_seconds = "0.0"
 
+[node name="ToDead" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("16_g0tc1")
+to = NodePath("../../Dead")
+event = &"player_killed"
+delay_in_seconds = "0.0"
+
 [node name="Moving" type="Node" parent="StateChart/Root"]
 script = ExtResource("15_8sdl1")
 
@@ -121,6 +128,12 @@ delay_in_seconds = "0.0"
 script = ExtResource("16_g0tc1")
 to = NodePath("../../Hurt")
 event = &"player_hurt"
+delay_in_seconds = "0.0"
+
+[node name="ToDead" type="Node" parent="StateChart/Root/Moving"]
+script = ExtResource("16_g0tc1")
+to = NodePath("../../Dead")
+event = &"player_killed"
 delay_in_seconds = "0.0"
 
 [node name="Interacting" type="Node" parent="StateChart/Root"]
@@ -159,6 +172,12 @@ to = NodePath("../../Hurt")
 event = &"player_hurt"
 delay_in_seconds = "0.0"
 
+[node name="ToDead" type="Node" parent="StateChart/Root/Fighting"]
+script = ExtResource("16_g0tc1")
+to = NodePath("../../Dead")
+event = &"player_killed"
+delay_in_seconds = "0.0"
+
 [node name="Hurt" type="Node" parent="StateChart/Root"]
 script = ExtResource("15_8sdl1")
 
@@ -180,6 +199,9 @@ to = NodePath("../../Fighting")
 event = &"player_recovered"
 delay_in_seconds = "0.0"
 
+[node name="Dead" type="Node" parent="StateChart/Root"]
+script = ExtResource("15_8sdl1")
+
 [node name="StatesLogic" type="Node" parent="."]
 
 [node name="Idle" type="Node" parent="StatesLogic"]
@@ -197,12 +219,12 @@ script = ExtResource("11_ucpnv")
 [node name="Hurt" type="Node" parent="StatesLogic"]
 script = ExtResource("12_abokc")
 
+[node name="Dead" type="Node" parent="StatesLogic"]
+script = ExtResource("14_4vpuf")
+
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57065, 0)
 current = true
-
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
 
 [node name="Hud" parent="." instance=ExtResource("20_q5vuf")]
 

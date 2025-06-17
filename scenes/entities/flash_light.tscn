@@ -46,7 +46,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_lq2ug")
 
-[node name="FlashLight_003" instance=ExtResource("1_i1fv3")]
+[node name="FlashlightModel" instance=ExtResource("1_i1fv3")]
 
 [node name="Flashlight003_001" parent="." index="0"]
 mesh = SubResource("ArrayMesh_p37pe")

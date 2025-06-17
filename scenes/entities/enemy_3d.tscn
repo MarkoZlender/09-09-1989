@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b53l8y3nioja0"]
+[gd_scene load_steps=17 format=3 uid="uid://b53l8y3nioja0"]
 
 [ext_resource type="Script" uid="uid://cs8v6tgmgw7w8" path="res://scripts/entities/enemy_3d.gd" id="1_jcnff"]
 [ext_resource type="PackedScene" uid="uid://di8uq4k5dfjtq" path="res://scenes/enemy_model.tscn" id="8_8ktbn"]
@@ -6,11 +6,12 @@
 [ext_resource type="Script" uid="uid://deb60yher4wfl" path="res://scripts/entities/enemy/deaggro_area.gd" id="10_bcfhc"]
 [ext_resource type="Script" uid="uid://bqnr5hyceu623" path="res://addons/godot_state_charts/state_chart.gd" id="11_04jnc"]
 [ext_resource type="Script" uid="uid://bt4iqisaqggy8" path="res://addons/godot_state_charts/compound_state.gd" id="12_jlbm1"]
+[ext_resource type="Script" uid="uid://cmybi67ruvtka" path="res://scripts/state_machine/enemy_states/dead.gd" id="12_nsewa"]
 [ext_resource type="Script" uid="uid://bm4a5s8vovnwv" path="res://addons/godot_state_charts/atomic_state.gd" id="13_ixm0y"]
 [ext_resource type="Script" uid="uid://btg0k6scpejn3" path="res://addons/godot_state_charts/transition.gd" id="14_udhym"]
 [ext_resource type="Script" uid="uid://bf2nikgdhcgty" path="res://scripts/state_machine/enemy_states/aggroed.gd" id="15_281cp"]
 [ext_resource type="Script" uid="uid://dlye65oy0c6c0" path="res://scripts/state_machine/enemy_states/deaggroed.gd" id="16_lpxu5"]
-[ext_resource type="Script" uid="uid://doylfv46820k0" path="res://scripts/state_machine/enemy_states/stunned.gd" id="17_cyc3y"]
+[ext_resource type="Script" uid="uid://doylfv46820k0" path="res://scripts/state_machine/enemy_states/hurt.gd" id="17_cyc3y"]
 [ext_resource type="PackedScene" uid="uid://b6xrt3tukrxl8" path="res://scenes/vfx/blood_spawner.tscn" id="20_5vdc7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_defa4"]
@@ -37,11 +38,9 @@ shape = SubResource("BoxShape3D_defa4")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.1
-target_desired_distance = 0.1
+target_desired_distance = 0.5
 path_max_distance = 0.01
 avoidance_enabled = true
-height = 0.2
-radius = 0.05
 use_3d_avoidance = true
 debug_enabled = true
 
@@ -82,9 +81,9 @@ to = NodePath("../../Aggroed")
 event = &"aggroed"
 delay_in_seconds = "0.0"
 
-[node name="ToStunned" type="Node" parent="StateChart/Root/Deaggroed"]
+[node name="ToHurt" type="Node" parent="StateChart/Root/Deaggroed"]
 script = ExtResource("14_udhym")
-to = NodePath("../../Stunned")
+to = NodePath("../../Hurt")
 event = &"stunned"
 delay_in_seconds = "0.0"
 
@@ -97,28 +96,28 @@ to = NodePath("../../Deaggroed")
 event = &"deaggroed"
 delay_in_seconds = "0.0"
 
-[node name="ToStunned" type="Node" parent="StateChart/Root/Aggroed"]
+[node name="ToHurt" type="Node" parent="StateChart/Root/Aggroed"]
 script = ExtResource("14_udhym")
-to = NodePath("../../Stunned")
+to = NodePath("../../Hurt")
 event = &"stunned"
 delay_in_seconds = "0.0"
 
-[node name="Stunned" type="Node" parent="StateChart/Root"]
+[node name="Hurt" type="Node" parent="StateChart/Root"]
 script = ExtResource("13_ixm0y")
 
-[node name="ToAggroed" type="Node" parent="StateChart/Root/Stunned"]
+[node name="ToAggroed" type="Node" parent="StateChart/Root/Hurt"]
 script = ExtResource("14_udhym")
 to = NodePath("../../Aggroed")
 event = &"recovered"
 delay_in_seconds = "0.0"
 
-[node name="ToDeaggroed" type="Node" parent="StateChart/Root/Stunned"]
+[node name="ToDeaggroed" type="Node" parent="StateChart/Root/Hurt"]
 script = ExtResource("14_udhym")
 to = NodePath("../../Deaggroed")
 event = &"recovered"
 delay_in_seconds = "0.0"
 
-[node name="ToDead" type="Node" parent="StateChart/Root/Stunned"]
+[node name="ToDead" type="Node" parent="StateChart/Root/Hurt"]
 script = ExtResource("14_udhym")
 to = NodePath("../../Dead")
 event = &"dead"
@@ -135,11 +134,11 @@ script = ExtResource("15_281cp")
 [node name="Deaggroed" type="Node" parent="StatesLogic"]
 script = ExtResource("16_lpxu5")
 
-[node name="Stunned" type="Node" parent="StatesLogic"]
+[node name="Hurt" type="Node" parent="StatesLogic"]
 script = ExtResource("17_cyc3y")
 
-[node name="Timer" type="Timer" parent="."]
-one_shot = true
+[node name="Dead" type="Node" parent="StatesLogic"]
+script = ExtResource("12_nsewa")
 
 [node name="PatrollTimer" type="Timer" parent="."]
 process_callback = 0
@@ -153,4 +152,5 @@ one_shot = true
 [connection signal="body_exited" from="DeaggroArea" to="DeaggroArea" method="_on_body_exited"]
 [connection signal="state_physics_processing" from="StateChart/Root/Deaggroed" to="StatesLogic/Deaggroed" method="_on_deaggroed_state_physics_processing"]
 [connection signal="state_physics_processing" from="StateChart/Root/Aggroed" to="StatesLogic/Aggroed" method="_on_aggroed_state_physics_processing"]
-[connection signal="state_physics_processing" from="StateChart/Root/Stunned" to="StatesLogic/Stunned" method="_on_stunned_state_physics_processing"]
+[connection signal="state_physics_processing" from="StateChart/Root/Hurt" to="StatesLogic/Hurt" method="_on_hurt_state_physics_processing"]
+[connection signal="state_entered" from="StateChart/Root/Dead" to="StatesLogic/Dead" method="_on_dead_state_entered"]
