@@ -54,6 +54,7 @@ debug_enabled = true
 [node name="AggroArea" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 2
+monitorable = false
 script = ExtResource("9_o04nf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AggroArea" groups=["collisions"]]
@@ -63,6 +64,7 @@ debug_color = Color(0.999597, 0, 0.107821, 0.42)
 [node name="DeaggroArea" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 2
+monitorable = false
 script = ExtResource("10_bcfhc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeaggroArea" groups=["collisions"]]
@@ -73,6 +75,7 @@ debug_fill = false
 [node name="PlayerDetectorArea" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 2
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectorArea"]
 shape = SubResource("CylinderShape3D_7qbly")

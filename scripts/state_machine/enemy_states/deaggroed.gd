@@ -7,6 +7,5 @@ func _on_deaggroed_state_physics_processing(delta:float) -> void:
 
 	if owner.is_aggroed:
 		%StateChart.send_event("aggroed")
-		print("Transitioning to aggroed state")
 
 	owner.deaggroed(delta)
