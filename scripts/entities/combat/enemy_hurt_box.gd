@@ -1,0 +1,1 @@
+class_name EnemyHurtBox extends Area3D

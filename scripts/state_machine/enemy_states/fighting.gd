@@ -1,8 +1,6 @@
 extends Node
 
-func _on_fighting_state_physics_processing(delta:float) -> void:
-	print("Fighting state processing")
-	#owner.aggroed(delta)
+func _on_fighting_state_physics_processing(_delta:float) -> void:
 	if owner.is_dead:
 		%StateChart.send_event("dead")
 		return

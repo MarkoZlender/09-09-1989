@@ -148,12 +148,12 @@ func _on_player_ended_interaction() -> void:
 	is_interacting = false
 
 func _on_player_hurt_box_area_entered(area:Area3D) -> void:
-	pass
-	# if area is EnemyHitBox:
-	# 	if player_data.health <= 0:
-	# 		Global.signal_bus.player_died.emit()
-	# 		return
-	# 	player_data.health -= area.get_parent().enemy_data.hit_strength
-	# 	is_hurt = true
+	if area is EnemyHitBox:
+		if player_data.health <= 0:
+			Global.signal_bus.player_died.emit()
+			return
+		player_data.health -= area.get_parent().get_parent().get_parent().get_parent().get_parent().enemy_data.hit_strength
+		is_hurt = true
+		
 
 #endregion
