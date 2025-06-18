@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://b53l8y3nioja0"]
+[gd_scene load_steps=19 format=3 uid="uid://b53l8y3nioja0"]
 
 [ext_resource type="Script" uid="uid://cs8v6tgmgw7w8" path="res://scripts/entities/enemy_3d.gd" id="1_jcnff"]
 [ext_resource type="PackedScene" uid="uid://di8uq4k5dfjtq" path="res://scenes/enemy_model.tscn" id="8_8ktbn"]
 [ext_resource type="Script" uid="uid://b3iyupm8a5he2" path="res://scripts/entities/enemy/aggro_area.gd" id="9_o04nf"]
 [ext_resource type="Script" uid="uid://deb60yher4wfl" path="res://scripts/entities/enemy/deaggro_area.gd" id="10_bcfhc"]
 [ext_resource type="Script" uid="uid://bqnr5hyceu623" path="res://addons/godot_state_charts/state_chart.gd" id="11_04jnc"]
+[ext_resource type="Script" uid="uid://2uiluckqn7ba" path="res://scripts/state_machine/enemy_states/fighting.gd" id="11_rcfw5"]
 [ext_resource type="Script" uid="uid://bt4iqisaqggy8" path="res://addons/godot_state_charts/compound_state.gd" id="12_jlbm1"]
 [ext_resource type="Script" uid="uid://cmybi67ruvtka" path="res://scripts/state_machine/enemy_states/dead.gd" id="12_nsewa"]
 [ext_resource type="Script" uid="uid://bm4a5s8vovnwv" path="res://addons/godot_state_charts/atomic_state.gd" id="13_ixm0y"]
@@ -25,6 +26,10 @@ height = 0.2
 height = 0.2
 radius = 4.0
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7qbly"]
+height = 0.2
+radius = 0.25
+
 [node name="Enemy" type="CharacterBody3D"]
 collision_layer = 4
 collision_mask = 3
@@ -40,6 +45,7 @@ transform = Transform3D(0.37, 0, 0, 0, -1.61732e-08, -0.37, 0, 0.37, -1.61732e-0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.1
+target_desired_distance = 0.3
 path_max_distance = 0.11
 avoidance_enabled = true
 use_3d_avoidance = true
@@ -63,6 +69,14 @@ script = ExtResource("10_bcfhc")
 shape = SubResource("CylinderShape3D_a7qny")
 debug_color = Color(0.270519, 0.624619, 0.296623, 0.42)
 debug_fill = false
+
+[node name="PlayerDetectorArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectorArea"]
+shape = SubResource("CylinderShape3D_7qbly")
+debug_color = Color(0.853828, 0.368244, 0.0480085, 0.42)
 
 [node name="StateChart" type="Node" parent="."]
 unique_name_in_owner = true
@@ -91,10 +105,10 @@ delay_in_seconds = "0.0"
 [node name="Aggroed" type="Node" parent="StateChart/Root"]
 script = ExtResource("13_ixm0y")
 
-[node name="ToDeaggroed" type="Node" parent="StateChart/Root/Aggroed"]
+[node name="ToFighting" type="Node" parent="StateChart/Root/Aggroed"]
 script = ExtResource("14_udhym")
-to = NodePath("../../Deaggroed")
-event = &"deaggroed"
+to = NodePath("../../Fighting")
+event = &"player_found"
 delay_in_seconds = "0.0"
 
 [node name="ToHurt" type="Node" parent="StateChart/Root/Aggroed"]
@@ -103,8 +117,26 @@ to = NodePath("../../Hurt")
 event = &"hurt"
 delay_in_seconds = "0.0"
 
+[node name="ToDeaggroed" type="Node" parent="StateChart/Root/Aggroed"]
+script = ExtResource("14_udhym")
+to = NodePath("../../Deaggroed")
+event = &"deaggroed"
+delay_in_seconds = "0.0"
+
 [node name="Fighting" type="Node" parent="StateChart/Root"]
 script = ExtResource("13_ixm0y")
+
+[node name="ToAggroed" type="Node" parent="StateChart/Root/Fighting"]
+script = ExtResource("14_udhym")
+to = NodePath("../../Aggroed")
+event = &"player_undetected"
+delay_in_seconds = "0.0"
+
+[node name="ToDead" type="Node" parent="StateChart/Root/Fighting"]
+script = ExtResource("14_udhym")
+to = NodePath("../../Dead")
+event = &"dead"
+delay_in_seconds = "0.0"
 
 [node name="Hurt" type="Node" parent="StateChart/Root"]
 script = ExtResource("13_ixm0y")
@@ -138,6 +170,9 @@ script = ExtResource("15_281cp")
 [node name="Deaggroed" type="Node" parent="StatesLogic"]
 script = ExtResource("16_lpxu5")
 
+[node name="Fighting" type="Node" parent="StatesLogic"]
+script = ExtResource("11_rcfw5")
+
 [node name="Hurt" type="Node" parent="StatesLogic"]
 script = ExtResource("17_cyc3y")
 
@@ -157,5 +192,6 @@ one_shot = true
 [connection signal="body_exited" from="DeaggroArea" to="." method="_on_deaggro_area_body_exited"]
 [connection signal="state_physics_processing" from="StateChart/Root/Deaggroed" to="StatesLogic/Deaggroed" method="_on_deaggroed_state_physics_processing"]
 [connection signal="state_physics_processing" from="StateChart/Root/Aggroed" to="StatesLogic/Aggroed" method="_on_aggroed_state_physics_processing"]
+[connection signal="state_physics_processing" from="StateChart/Root/Fighting" to="StatesLogic/Fighting" method="_on_fighting_state_physics_processing"]
 [connection signal="state_physics_processing" from="StateChart/Root/Hurt" to="StatesLogic/Hurt" method="_on_hurt_state_physics_processing"]
 [connection signal="state_entered" from="StateChart/Root/Dead" to="StatesLogic/Dead" method="_on_dead_state_entered"]

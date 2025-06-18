@@ -8,7 +8,12 @@ var is_aggroed: bool = false
 var is_moving: bool = false
 var is_hurt: bool = false
 var is_dead: bool = false
-var reached_player: bool = false
+var is_attacking: bool = false
+var target_reached: bool = false
+var player_detected: bool = false
+var player_in_range: bool = false
+var attack_finished: bool = false
+
 var turn_speed: float = 10.0
 
 var direction: Vector3 = Vector3.ZERO 
@@ -19,6 +24,7 @@ var direction: Vector3 = Vector3.ZERO
 @onready var navigation_agent: NavigationAgent3D = get_node("NavigationAgent3D")
 @onready var enemy_collision_shape: CollisionShape3D = $EnemyCollisionShape
 @onready var enemy_model: Node3D = $EnemyModel
+@onready var player_detector_area: Area3D = $PlayerDetectorArea
 
 func _ready() -> void:
 	enemy_data = enemy_data.duplicate()
@@ -26,7 +32,8 @@ func _ready() -> void:
 		collision.duplicate()
 	$PatrollTimer.start(randf_range(3.0, 4.0))
 	enemy_model.get_node("AnimationTree").connect("animation_finished", _on_animation_finished)
-
+	player_detector_area.connect("body_entered", _on_player_detected)
+	player_detector_area.connect("body_exited", _on_player_out_of_range)
 
 func aggroed(delta: float) -> void:
 	navigation_agent.target_position = player.global_position
@@ -78,12 +85,32 @@ func rotate_towards_target(target_position: Vector3) -> void:
 		var target_angle: float = atan2(to_target.x, to_target.z)
 		rotation.y = lerp_angle(rotation.y, target_angle, turn_speed * get_process_delta_time())
 
+func _on_player_detected(body: Node3D) -> void:
+	if body is Player:
+		player_detected = true
+		attack_finished = false
+		is_attacking = true
+		enemy_model.get_node("AnimationPlayer").get_animation("attack").loop_mode = Animation.LOOP_LINEAR
+
+
+func _on_player_out_of_range(body: Node3D) -> void:
+	if body is Player:
+		player_detected = false
+		is_attacking = false
+		enemy_model.get_node("AnimationPlayer").get_animation("attack").loop_mode = Animation.LOOP_NONE
+
 func _on_navigation_agent_3d_target_reached() -> void:
-	reached_player = true
+	target_reached = true
+	if player_detected:
+		is_moving = false
 
 func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == "hit":
 		is_hurt = false
+	
+	if anim_name == "attack":
+		is_attacking = false
+		attack_finished = true
 
 func _on_aggro_area_body_entered(body: Node3D) -> void:
 	if body is Player:
