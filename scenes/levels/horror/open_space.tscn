@@ -30,8 +30,8 @@ level = 1
 experience = 10
 health = 100
 hit_strength = 10
-wander_range_x = Vector2(-1, -1)
-wander_range_z = Vector2(1, 1)
+wander_range_x = Vector2(3, -3)
+wander_range_z = Vector2(3, -3)
 metadata/_custom_type_script = "uid://0fkyd553m7cg"
 
 [node name="OpenSpace" type="Node3D"]

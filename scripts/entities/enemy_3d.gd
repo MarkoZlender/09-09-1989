@@ -14,7 +14,7 @@ var player_detected: bool = false
 var player_in_range: bool = false
 var attack_finished: bool = false
 
-var turn_speed: float = 10.0
+var turn_speed: float = 15.0
 
 var direction: Vector3 = Vector3.ZERO 
 
@@ -28,8 +28,6 @@ var direction: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
 	enemy_data = enemy_data.duplicate()
-	for collision in get_tree().get_nodes_in_group("collisions"):
-		collision.duplicate()
 	$PatrollTimer.start(randf_range(3.0, 4.0))
 	enemy_model.get_node("AnimationTree").connect("animation_finished", _on_animation_finished)
 	player_detector_area.connect("body_entered", _on_player_detected)
@@ -65,7 +63,6 @@ func deaggroed(delta: float) -> void:
 					randf_range(enemy_data.wander_range_z.x, enemy_data.wander_range_z.y)
 				)
 				navigation_agent.target_position = global_position + random_offset
-				rotate_towards_target(navigation_agent.target_position)
 
 	# Move towards the new target if the timer is not running
 	if $PatrollTimer.time_left <= 0:
@@ -75,7 +72,7 @@ func deaggroed(delta: float) -> void:
 		velocity = velocity.move_toward(direction * movement_speed, accel * delta)
 
 	is_moving = velocity.length() > 0.1
-
+	rotate_towards_target(navigation_agent.target_position)
 	move_and_slide()
 
 func rotate_towards_target(target_position: Vector3) -> void:
