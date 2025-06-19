@@ -13,6 +13,7 @@ config_version=5
 config/name="topdown_adventure"
 run/main_scene="uid://b742kfgwr8sh"
 config/features=PackedStringArray("4.4", "Forward Plus")
+run/max_fps=30
 config/icon="res://icon.svg"
 
 [autoload]
