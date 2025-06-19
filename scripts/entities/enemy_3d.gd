@@ -121,6 +121,7 @@ func _on_deaggro_area_body_exited(body: Node3D) -> void:
 
 func _on_enemy_hurt_box_area_entered(area:Area3D) -> void:
 	if area is PlayerHitBox:
+		print("enemy health: ", enemy_data.health)
 		if enemy_data.health <= 0:
 			is_dead = true
 			return
