@@ -11,10 +11,10 @@
 [ext_resource type="Script" uid="uid://c3dujsv5u6sty" path="res://scripts/state_machine/player_states/dead.gd" id="14_4vpuf"]
 [ext_resource type="Script" uid="uid://bt4iqisaqggy8" path="res://addons/godot_state_charts/compound_state.gd" id="14_p51s7"]
 [ext_resource type="Script" uid="uid://bm4a5s8vovnwv" path="res://addons/godot_state_charts/atomic_state.gd" id="15_8sdl1"]
+[ext_resource type="PackedScene" uid="uid://dvu2bp7omagc3" path="res://scenes/ui/hud_3d.tscn" id="16_4vpuf"]
 [ext_resource type="Script" uid="uid://btg0k6scpejn3" path="res://addons/godot_state_charts/transition.gd" id="16_g0tc1"]
 [ext_resource type="Script" uid="uid://cw43pgy3x2a52" path="res://scripts/entities/player_states/idle.gd" id="17_thr82"]
 [ext_resource type="Script" uid="uid://c7whpml006e7v" path="res://scripts/entities/player_states/moving.gd" id="18_8hn40"]
-[ext_resource type="PackedScene" uid="uid://hln8ohgt64ft" path="res://scenes/ui/hud.tscn" id="20_q5vuf"]
 [ext_resource type="PackedScene" uid="uid://b6xrt3tukrxl8" path="res://scenes/vfx/blood_spawner.tscn" id="21_fxx5w"]
 
 [sub_resource type="Resource" id="Resource_dbkp8"]
@@ -226,9 +226,9 @@ script = ExtResource("14_4vpuf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57065, 0)
 current = true
 
-[node name="Hud" parent="." instance=ExtResource("20_q5vuf")]
-
 [node name="BloodSpawner" parent="." instance=ExtResource("21_fxx5w")]
+
+[node name="Hud" parent="." instance=ExtResource("16_4vpuf")]
 
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]
 [connection signal="state_physics_processing" from="StateChart/Root/Idle" to="StatesLogic/Idle" method="_on_idle_state_physics_processing"]

@@ -153,6 +153,7 @@ func _on_player_hurt_box_area_entered(area:Area3D) -> void:
 			Global.signal_bus.player_died.emit()
 			return
 		player_data.health -= area.get_parent().get_parent().get_parent().get_parent().get_parent().enemy_data.hit_strength
+		Global.signal_bus.player_hurt.emit(player_data.health)
 		is_hurt = true
 
 #endregion
