@@ -12,6 +12,10 @@ background_mode = 1
 ambient_light_source = 2
 ambient_light_color = Color(0.103744, 0.103744, 0.103744, 1)
 ambient_light_energy = 5.0
+glow_enabled = true
+glow_intensity = 0.61
+glow_strength = 1.69
+glow_blend_mode = 0
 volumetric_fog_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_46gqi"]
@@ -24,7 +28,7 @@ agent_max_climb = 0.05
 
 [sub_resource type="Resource" id="Resource_tmfig"]
 script = ExtResource("6_46gqi")
-movement_speed = 1.0
+movement_speed = 2.0
 accel = 10.0
 level = 1
 experience = 10
