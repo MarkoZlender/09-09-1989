@@ -202,6 +202,7 @@ one_shot = true
 
 [node name="BloodSpawner" parent="." instance=ExtResource("20_5vdc7")]
 
+[connection signal="area_entered" from="EnemyHurtBox" to="." method="_on_enemy_hurt_box_area_entered"]
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
 [connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="body_entered" from="AggroArea" to="." method="_on_aggro_area_body_entered"]
