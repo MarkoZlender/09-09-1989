@@ -24,6 +24,7 @@ var turn_speed: float = 2.0  # Adjust the turning speed as needed
 
 @onready var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
 @onready var player_model: Node3D = $PlayerModel
+@onready var player_model_anim_player: AnimationPlayer = player_model.get_node("AnimationPlayer")
 
 #endregion
 
