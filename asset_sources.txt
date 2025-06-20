@@ -21,3 +21,9 @@ https://bigbuckbunny.itch.io/game-boy-platform-assets
 https://gungodx.itch.io/free-blood-spatter-hit-effect-128x128 NEEDS CREDIT
 https://crimsongcat.itch.io/ps1-psx-high-school-character NEEDS CREDIT
 https://godotshaders.com/shader/vhs-and-crt-monitor-effect/
+
+https://freesound.org/people/spycrah/sounds/471097/ - knife swing
+https://freesound.org/people/Fission9/sounds/521587/ - player footsteps
+https://freesound.org/people/unfa/sounds/610991/ - player pain grunts
+
+https://freesound.org/people/AudioPapkin/sounds/712066/ - monster footsteps
