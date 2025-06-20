@@ -157,6 +157,8 @@ func _on_player_ended_interaction() -> void:
 
 func _on_player_hurt_box_area_entered(area:Area3D) -> void:
 	if area is EnemyHitBox:
+		# leave this print here, hitbox works better with it for some reason
+		print("Player hurt by enemy hitbox")
 		if player_data.health <= 0:
 			Global.signal_bus.player_died.emit()
 			return
