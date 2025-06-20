@@ -81,6 +81,7 @@ func move(delta: float) -> void:
 	velocity.x = forward.x * move_input * speed
 	velocity.z = forward.z * move_input * speed
 
+	_apply_gravity(delta)
 	move_and_slide()
 
 	if is_hurt:
@@ -110,6 +111,12 @@ func load(data: Dictionary) -> void:
 
 func _apply_knockback(area: Area3D) -> void:
 	Global.signal_bus.player_hurt.emit(player_data.health)
+
+func _apply_gravity(delta: float) -> void:
+	if not is_on_floor():
+		velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
+	else:
+		velocity.y = 0.0
 
 func _add_inventory() -> void:
 	var loaded_resource: Resource = load("res://scenes/ui/inventory/inventory_item_list.tscn")

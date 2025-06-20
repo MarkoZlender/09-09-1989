@@ -42,6 +42,7 @@ func aggroed(delta: float) -> void:
 
 	is_moving = velocity.length() > 0.1
 
+	#_apply_gravity(delta)
 	move_and_slide()
 
 func deaggroed(delta: float) -> void:
@@ -73,6 +74,7 @@ func deaggroed(delta: float) -> void:
 
 	is_moving = velocity.length() > 0.1
 	rotate_towards_target(navigation_agent.target_position)
+	#_apply_gravity(delta)
 	move_and_slide()
 
 func rotate_towards_target(target_position: Vector3) -> void:
@@ -81,6 +83,12 @@ func rotate_towards_target(target_position: Vector3) -> void:
 	if to_target.length() > 0.01:
 		var target_angle: float = atan2(to_target.x, to_target.z)
 		rotation.y = lerp_angle(rotation.y, target_angle, turn_speed * get_process_delta_time())
+
+func _apply_gravity(delta: float) -> void:
+	if not is_on_floor():
+		velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
+	else:
+		velocity.y = 0.0
 
 func _on_player_detected(body: Node3D) -> void:
 	if body is Player:
