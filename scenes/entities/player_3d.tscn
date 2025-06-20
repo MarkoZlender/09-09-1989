@@ -222,10 +222,6 @@ script = ExtResource("12_abokc")
 [node name="Dead" type="Node" parent="StatesLogic"]
 script = ExtResource("14_4vpuf")
 
-[node name="AudioListener3D" type="AudioListener3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57065, 0)
-current = true
-
 [node name="BloodSpawner" parent="." instance=ExtResource("21_fxx5w")]
 
 [node name="Hud" parent="." instance=ExtResource("16_4vpuf")]
