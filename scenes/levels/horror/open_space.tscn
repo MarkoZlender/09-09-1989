@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=13 format=3 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="PackedScene" uid="uid://fxqb8ljgc2n4" path="res://scenes/entities/player_3d.tscn" id="4_5un2j"]
 [ext_resource type="PackedScene" uid="uid://b53l8y3nioja0" path="res://scenes/entities/enemy_3d.tscn" id="4_46gqi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Terrain3DAssets" uid="uid://wpovl8xjxfag" path="res://resources/terrain3d/terrain_3d_assets.tres" id="5_46gqi"]
 [ext_resource type="PackedScene" uid="uid://bj0f2fjufm3hk" path="res://scenes/environment/props/campfire_pit.tscn" id="5_whrqo"]
 [ext_resource type="Script" uid="uid://0fkyd553m7cg" path="res://scripts/data/enemy_data.gd" id="6_46gqi"]
+[ext_resource type="PackedScene" uid="uid://ddy6jt43pjxe1" path="res://scenes/environment/fixed_camera.tscn" id="7_tmfig"]
 
 [sub_resource type="Environment" id="Environment_gdr46"]
 background_mode = 1
@@ -35,6 +36,12 @@ hit_strength = 10
 wander_range_x = Vector2(3, -3)
 wander_range_z = Vector2(3, -3)
 metadata/_custom_type_script = "uid://0fkyd553m7cg"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tmfig"]
+size = Vector3(8.41443, 5.5813, 8.94092)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cqt2m"]
+size = Vector3(8.41443, 5.5813, 8.94092)
 
 [node name="OpenSpace" type="Node3D"]
 
@@ -66,7 +73,19 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.2719, 0, -55.1835)
 enemy_data = SubResource("Resource_tmfig")
 player = NodePath("../Player")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999962, -0.00436319, 0.00755721, 2.7806e-08, 0.866025, 0.5, -0.00872633, -0.499981, 0.865992, 6.03417, 4.44563, -49.1133)
+[node name="FixedCamera" parent="." instance=ExtResource("7_tmfig")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 4.71958, 5.3529, -47.6514)
 
-[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FixedCamera/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0.721863, -1.18497, -4.42805)
+shape = SubResource("BoxShape3D_tmfig")
+
+[node name="FixedCamera2" parent="." instance=ExtResource("7_tmfig")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 10.6768, 5.3529, -47.6514)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FixedCamera2/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 3.46975, -1.18496, -4.42807)
+shape = SubResource("BoxShape3D_cqt2m")
+
+[editable path="FixedCamera"]
+[editable path="FixedCamera2"]
