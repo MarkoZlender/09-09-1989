@@ -43,3 +43,4 @@ _shader_parameters = {
 &"projection_threshold": 0.8,
 &"world_space_normal_blend": true
 }
+world_background = 0
