@@ -222,9 +222,9 @@ script = ExtResource("12_abokc")
 [node name="Dead" type="Node" parent="StatesLogic"]
 script = ExtResource("14_4vpuf")
 
-[node name="BloodSpawner" parent="." instance=ExtResource("21_fxx5w")]
-
 [node name="Hud" parent="." instance=ExtResource("16_4vpuf")]
+
+[node name="BloodSpawner" parent="." instance=ExtResource("21_fxx5w")]
 
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]
 [connection signal="state_physics_processing" from="StateChart/Root/Idle" to="StatesLogic/Idle" method="_on_idle_state_physics_processing"]

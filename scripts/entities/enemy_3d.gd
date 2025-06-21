@@ -135,3 +135,4 @@ func _on_enemy_hurt_box_area_entered(area:Area3D) -> void:
 			return
 		enemy_data.health -= 10
 		is_hurt = true
+		Global.signal_bus.spawn_blood.emit(global_position)
