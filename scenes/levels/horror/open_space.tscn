@@ -87,5 +87,10 @@ transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 
 transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 3.46975, -1.18496, -4.42807)
 shape = SubResource("BoxShape3D_cqt2m")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.13202, 7.71356, -58.1116)
+light_color = Color(0.839216, 0.862745, 0.890196, 1)
+light_energy = 0.07
+
 [editable path="FixedCamera"]
 [editable path="FixedCamera2"]

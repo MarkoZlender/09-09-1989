@@ -22,6 +22,7 @@ func _input(event: InputEvent) -> void:
 		flashlight.visible = !flashlight.visible
 		flashlight_model.get_node("FlashlightEmission").visible = !flashlight_model.get_node("FlashlightEmission").visible
 		flashlight_model.get_node("FlashlightMesh").mesh.surface_get_material(0).emission_enabled = flashlight.visible
+		%FlashlightAudioStreamPlayer.play()
 
 func _physics_process(_delta: float) -> void:
 	velocity = owner.velocity
