@@ -31,9 +31,8 @@ height = 0.55
 height = 0.55
 radius = 4.0
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_7qbly"]
-height = 0.55
-radius = 0.25
+[sub_resource type="BoxShape3D" id="BoxShape3D_7qbly"]
+size = Vector3(0.1, 0.5, 0.2)
 
 [node name="Enemy" type="CharacterBody3D"]
 collision_layer = 4
@@ -59,7 +58,6 @@ transform = Transform3D(0.37, 0, 0, 0, -1.61732e-08, -0.37, 0, 0.37, -1.61732e-0
 path_desired_distance = 0.1
 target_desired_distance = 0.3
 path_max_distance = 0.11
-debug_enabled = true
 
 [node name="AggroArea" type="Area3D" parent="."]
 collision_layer = 0
@@ -90,8 +88,8 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectorArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27, 0.269451)
-shape = SubResource("CylinderShape3D_7qbly")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27, 0.168144)
+shape = SubResource("BoxShape3D_7qbly")
 debug_color = Color(0.853828, 0.368244, 0.0480085, 0.42)
 
 [node name="StateChart" type="Node" parent="."]
