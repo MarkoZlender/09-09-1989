@@ -17,6 +17,8 @@ var is_interacting: bool = false
 
 var direction: Vector3 = Vector3.ZERO
 var turn_speed: float = 2.0  # Adjust the turning speed as needed
+var max_speed: float = 5.0  # Adjust the maximum speed as needed
+var acceleration: float = 10.0
 
 #endregion
 
@@ -45,7 +47,7 @@ func _input(event: InputEvent) -> void:
 		else:
 			Global.game_controller.get_node("GUI/InventoryItemList").queue_free()
 	
-	if event.is_action_pressed("attack"):
+	if event.is_action_pressed("attack") && !is_hurt:
 		is_attacking = true
 
 #endregion
@@ -57,7 +59,7 @@ func move(delta: float) -> void:
 	var turn_input: float = Input.get_action_strength("right") - Input.get_action_strength("left")
 	var move_input: float = Input.get_action_strength("up") - Input.get_action_strength("down")
 
-	if move_input != 0:
+	if move_input != 0 && !is_hurt && !is_attacking:
 		is_moving = true
 	else:
 		is_moving = false
@@ -71,18 +73,26 @@ func move(delta: float) -> void:
 	# Limit speed if moving backwards
 	var speed: float= player_data.speed
 
-	if is_moving_backwards:
+	if is_moving_backwards && !is_hurt && !is_attacking:
 		is_moving_backwards = true
+		#is_moving = false
 		speed *= 0.3  # Limit backward speed to 50%
 	else:
 		is_moving_backwards = false
 
 	# Move forward/backward in local space
 	var forward: Vector3= -transform.basis.z.normalized()
+	#var target_velocity := forward * move_input * max_speed
 	velocity.x = forward.x * move_input * speed
 	velocity.z = forward.z * move_input * speed
-
+	#velocity.x = lerp(velocity.x, forward.x * move_input * speed, acceleration * delta)
+	#velocity.z = lerp(velocity.z, forward.z * move_input * speed, acceleration * delta)
+	#if is_zero_approx(velocity.x) and is_zero_approx(velocity.z):
+		# If not moving, slow down
+		#velocity.x = lerp(velocity.x, 0.0, acceleration * delta)
+		#velocity.z = lerp(velocity.z, 0.0, acceleration * delta)
 	_apply_gravity(delta)
+	print("Velocity: ", velocity)
 	move_and_slide()
 
 	if is_hurt:
@@ -168,6 +178,3 @@ func _on_player_hurt_box_area_entered(area:Area3D) -> void:
 		Global.signal_bus.spawn_blood.emit(global_position)
 
 #endregion
-
-
-

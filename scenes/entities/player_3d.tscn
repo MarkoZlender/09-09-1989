@@ -187,12 +187,6 @@ to = NodePath("../../Idle")
 event = &"player_recovered"
 delay_in_seconds = "0.0"
 
-[node name="ToMoving" type="Node" parent="StateChart/Root/Hurt"]
-script = ExtResource("16_g0tc1")
-to = NodePath("../../Moving")
-event = &"player_recovered"
-delay_in_seconds = "0.0"
-
 [node name="ToFighting" type="Node" parent="StateChart/Root/Hurt"]
 script = ExtResource("16_g0tc1")
 to = NodePath("../../Fighting")
