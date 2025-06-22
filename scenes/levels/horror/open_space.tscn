@@ -30,7 +30,7 @@ agent_max_climb = 1.0
 
 [sub_resource type="Resource" id="Resource_7hute"]
 script = ExtResource("6_46gqi")
-movement_speed = 0.5
+movement_speed = 2.0
 accel = 10.0
 level = 1
 experience = 10

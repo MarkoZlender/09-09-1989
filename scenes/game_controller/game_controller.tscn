@@ -1,9 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://b742kfgwr8sh"]
+[gd_scene load_steps=7 format=3 uid="uid://b742kfgwr8sh"]
 
 [ext_resource type="Script" uid="uid://2dbjk0u75wjo" path="res://scripts/game_controller/game_controller.gd" id="1_ca7gh"]
 [ext_resource type="PackedScene" uid="uid://c62u2p3f0l7wg" path="res://scenes/game_controller/transition_controller.tscn" id="2_bddcm"]
 [ext_resource type="PackedScene" uid="uid://bmcuon78mxwm0" path="res://scenes/levels/horror/open_space.tscn" id="2_c3f1a"]
 [ext_resource type="PackedScene" uid="uid://brdsm3kei2sjp" path="res://scenes/vfx/crt_shader.tscn" id="4_gupwa"]
+[ext_resource type="Shader" uid="uid://dvqj5decgwjkr" path="res://resources/crt_shader.gdshader" id="5_s8vvr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_giy5l"]
+shader = ExtResource("5_s8vvr")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.0
+shader_parameter/scanlines_width = 0.0
+shader_parameter/grille_opacity = 0.293
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = false
+shader_parameter/roll = false
+shader_parameter/roll_speed = 0.0
+shader_parameter/roll_size = 0.0
+shader_parameter/roll_variation = 1.8
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.4
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.01
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.3
+shader_parameter/vignette_opacity = 0.391
 
 [node name="GameController" type="Node" node_paths=PackedStringArray("world_3d", "world_2d", "gui", "transition_controller")]
 script = ExtResource("1_ca7gh")
@@ -36,3 +61,4 @@ visible = false
 layer = 6
 
 [node name="CRTShader" parent="GUI/CRTShader" instance=ExtResource("4_gupwa")]
+material = SubResource("ShaderMaterial_giy5l")
