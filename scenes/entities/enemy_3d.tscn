@@ -45,6 +45,7 @@ shape = SubResource("CapsuleShape3D_rcfw5")
 
 [node name="EnemyHurtBox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+monitorable = false
 script = ExtResource("2_7qbly")
 
 [node name="EnemyHurtBoxShape" type="CollisionShape3D" parent="EnemyHurtBox"]

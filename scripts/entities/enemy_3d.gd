@@ -97,7 +97,6 @@ func _on_player_detected(body: Node3D) -> void:
 		is_attacking = true
 		enemy_model.get_node("AnimationPlayer").get_animation("attack").loop_mode = Animation.LOOP_LINEAR
 
-
 func _on_player_out_of_range(body: Node3D) -> void:
 	if body is Player:
 		player_detected = false
@@ -131,8 +130,16 @@ func _on_enemy_hurt_box_area_entered(area:Area3D) -> void:
 	if area is PlayerHitBox:
 		print("enemy health: ", enemy_data.health)
 		if enemy_data.health <= 0:
-			is_dead = true
+			_dead()
 			return
 		enemy_data.health -= 10
 		is_hurt = true
 		Global.signal_bus.spawn_blood.emit(global_position)
+
+func _dead() -> void:
+		is_dead = true
+		enemy_collision_shape.disabled = true
+		$AggroArea.monitoring = false
+		$DeaggroArea.monitoring = false
+		$PlayerDetectorArea.monitoring = false
+		$EnemyHurtBox.monitoring = false

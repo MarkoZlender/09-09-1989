@@ -30,4 +30,3 @@ func _physics_process(_delta: float) -> void:
 	is_moving_backwards = owner.is_moving_backwards
 	is_hurt = owner.is_hurt
 	turn_input = owner.turn_input
-	print(turn_input)
