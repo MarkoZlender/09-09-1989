@@ -142,4 +142,4 @@ func _dead() -> void:
 		$AggroArea.monitoring = false
 		$DeaggroArea.monitoring = false
 		$PlayerDetectorArea.monitoring = false
-		$EnemyHurtBox.monitoring = false
+		$EnemyHurtBox.set_deferred("monitoring", false)
