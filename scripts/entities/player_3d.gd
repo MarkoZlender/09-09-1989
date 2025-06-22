@@ -17,8 +17,10 @@ var is_interacting: bool = false
 
 var direction: Vector3 = Vector3.ZERO
 var turn_speed: float = 2.0  # Adjust the turning speed as needed
-var max_speed: float = 5.0  # Adjust the maximum speed as needed
-var acceleration: float = 10.0
+var max_speed: float = 10.0  # Adjust the maximum speed as needed
+var acceleration: float = 20.0
+var turn_input: float = 0.0
+var move_input: float = 0.0
 
 #endregion
 
@@ -56,9 +58,9 @@ func _input(event: InputEvent) -> void:
 
 func move(delta: float) -> void:
 	# Tank controls input
-	var turn_input: float = Input.get_action_strength("right") - Input.get_action_strength("left")
-	var move_input: float = Input.get_action_strength("up") - Input.get_action_strength("down")
-
+	turn_input = Input.get_action_strength("right") - Input.get_action_strength("left")
+	move_input = Input.get_action_strength("up") - Input.get_action_strength("down")
+	
 	if move_input != 0 && !is_hurt && !is_attacking:
 		is_moving = true
 	else:
@@ -82,17 +84,10 @@ func move(delta: float) -> void:
 
 	# Move forward/backward in local space
 	var forward: Vector3= -transform.basis.z.normalized()
-	#var target_velocity := forward * move_input * max_speed
 	velocity.x = forward.x * move_input * speed
 	velocity.z = forward.z * move_input * speed
-	#velocity.x = lerp(velocity.x, forward.x * move_input * speed, acceleration * delta)
-	#velocity.z = lerp(velocity.z, forward.z * move_input * speed, acceleration * delta)
-	#if is_zero_approx(velocity.x) and is_zero_approx(velocity.z):
-		# If not moving, slow down
-		#velocity.x = lerp(velocity.x, 0.0, acceleration * delta)
-		#velocity.z = lerp(velocity.z, 0.0, acceleration * delta)
 	_apply_gravity(delta)
-	print("Velocity: ", velocity)
+	#print("Velocity: ", velocity)
 	move_and_slide()
 
 	if is_hurt:
