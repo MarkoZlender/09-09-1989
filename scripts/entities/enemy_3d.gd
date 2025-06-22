@@ -143,3 +143,4 @@ func _dead() -> void:
 		$DeaggroArea.monitoring = false
 		$PlayerDetectorArea.monitoring = false
 		$EnemyHurtBox.set_deferred("monitoring", false)
+		Global.signal_bus.enemy_died.emit(self)

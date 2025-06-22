@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=14 format=3 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="PackedScene" uid="uid://fxqb8ljgc2n4" path="res://scenes/entities/player_3d.tscn" id="4_5un2j"]
 [ext_resource type="PackedScene" uid="uid://b53l8y3nioja0" path="res://scenes/entities/enemy_3d.tscn" id="4_46gqi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Terrain3DAssets" uid="uid://wpovl8xjxfag" path="res://resources/terrain3d/terrain_3d_assets.tres" id="5_46gqi"]
 [ext_resource type="PackedScene" uid="uid://bj0f2fjufm3hk" path="res://scenes/environment/props/campfire_pit.tscn" id="5_whrqo"]
 [ext_resource type="Script" uid="uid://0fkyd553m7cg" path="res://scripts/data/enemy_data.gd" id="6_46gqi"]
+[ext_resource type="PackedScene" uid="uid://muputklnbpx6" path="res://scenes/environment/pickup_items/tooth.tscn" id="6_cqt2m"]
 [ext_resource type="PackedScene" uid="uid://ddy6jt43pjxe1" path="res://scenes/environment/fixed_camera.tscn" id="7_tmfig"]
 
 [sub_resource type="Environment" id="Environment_gdr46"]
@@ -27,16 +28,18 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 cell_height = 0.01
 agent_max_climb = 1.0
 
-[sub_resource type="Resource" id="Resource_tmfig"]
+[sub_resource type="Resource" id="Resource_7hute"]
 script = ExtResource("6_46gqi")
-movement_speed = 2.0
+movement_speed = 0.5
 accel = 10.0
 level = 1
 experience = 10
-health = 100
+health = 10
 hit_strength = 10
-wander_range_x = Vector2(3, -3)
-wander_range_z = Vector2(3, -3)
+wander_range_x = Vector2(-3, -3)
+wander_range_z = Vector2(3, 3)
+collectible_rigid_body = ExtResource("6_cqt2m")
+collectible_rigid_body_number = 5
 metadata/_custom_type_script = "uid://0fkyd553m7cg"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tmfig"]
@@ -77,7 +80,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.44986, 0.957915, -53.2526)
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.2719, 0, -55.1835)
-enemy_data = SubResource("Resource_tmfig")
+enemy_data = SubResource("Resource_7hute")
 player = NodePath("../Player")
 
 [node name="FixedCamera" parent="." instance=ExtResource("7_tmfig")]
@@ -101,7 +104,6 @@ light_energy = 0.07
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0868776, 0.996219, 0, -0.996219, 0.0868776, 5.8929, 4.17786, -49.4145)
-visible = false
 light_energy = 1.402
 editor_only = true
 

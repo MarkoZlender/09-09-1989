@@ -14,7 +14,7 @@ extends Resource
 @export var hit_strength: int = 10
 
 @export_group("Resources")
-@export var coins: int = 0
+@export var teeth: int = 0
 
 @export_group("Audio")
 @export var walk_sfx: AudioStream

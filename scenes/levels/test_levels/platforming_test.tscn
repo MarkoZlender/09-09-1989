@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://byv5ix5sf5y4w" path="res://scenes/entities/enemy.tscn" id="7_t60y1"]
 [ext_resource type="AudioStream" uid="uid://dd7istt7p3i3v" path="res://assets/sounds/bgm/bgm.ogg" id="8_sl2ak"]
 [ext_resource type="PackedScene" uid="uid://47b6ywwy1olr" path="res://scenes/components/load_level_component.tscn" id="9_7pmin"]
-[ext_resource type="PackedScene" uid="uid://muputklnbpx6" path="res://scenes/environment/pickup_items/coin.tscn" id="11_0pi38"]
+[ext_resource type="PackedScene" uid="uid://muputklnbpx6" path="res://scenes/environment/pickup_items/tooth.tscn" id="11_0pi38"]
 [ext_resource type="PackedScene" uid="uid://bmody1xq576q8" path="res://scenes/environment/pickup_items/chest.tscn" id="12_cnmtc"]
 [ext_resource type="PackedScene" uid="uid://luwtg3pa4rwf" path="res://scenes/components/bgm_player.tscn" id="228_avp6s"]
 

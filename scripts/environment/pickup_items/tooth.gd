@@ -1,4 +1,4 @@
-class_name Coin extends Collectible
+class_name Tooth extends CollectibleRigidBody3D
 
 var picked_up: bool = false
 
@@ -7,7 +7,7 @@ var picked_up: bool = false
 
 func _on_interaction_area_body_entered(body:Node3D) -> void:
 	if body is Player:
-		Global.signal_bus.item_collected.emit(self)
+		Global.signal_bus.item_rigid_body_collected.emit(self)
 		audio_player.play()
 		picked_up = true
 		visible = false

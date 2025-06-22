@@ -1,0 +1,1 @@
+class_name CollectibleRigidBody3D extends RigidBody3D

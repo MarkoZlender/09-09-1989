@@ -35,7 +35,7 @@ var move_input: float = 0.0
 #region Built-in functions
 
 func _ready() -> void:
-	Global.signal_bus.item_collected.connect(_on_item_collected)
+	Global.signal_bus.item_rigid_body_collected.connect(_on_item_rigid_body_collected)
 	Global.signal_bus.player_died.connect(_on_player_died)
 	Global.signal_bus.interaction_started.connect(_on_player_interacted)
 	Global.signal_bus.interaction_ended.connect(_on_player_ended_interaction)
@@ -139,10 +139,15 @@ func _check_level() -> void:
 
 #region Signal callables
 
-func _on_item_collected(item: Collectible) -> void:
-	if item is Coin:
-		player_data.coins += 1
-		print("Coins: ", player_data.coins)
+# func _on_item_collected(item: Collectible) -> void:
+# 	if item is Coin:
+# 		player_data.coins += 1
+# 		print("Coins: ", player_data.coins)
+
+func _on_item_rigid_body_collected(item: CollectibleRigidBody3D) -> void:
+	if item is Tooth:
+		player_data.teeth += 1
+		print("Teeth: ", player_data.teeth)
 
 func _on_player_died() -> void:
 	get_tree().paused = true

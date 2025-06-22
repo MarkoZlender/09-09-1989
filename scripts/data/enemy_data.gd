@@ -23,3 +23,7 @@ class_name EnemyData extends Resource
 @export var hurt_sfx: AudioStream
 @export var death_sfx: AudioStream
 
+@export_group("Loot")
+@export var collectible_rigid_body: PackedScene
+@export var collectible_rigid_body_number: int = 5
+

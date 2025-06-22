@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b53l8y3nioja0"]
+[gd_scene load_steps=22 format=3 uid="uid://b53l8y3nioja0"]
 
 [ext_resource type="Script" uid="uid://cs8v6tgmgw7w8" path="res://scripts/entities/enemy_3d.gd" id="1_jcnff"]
 [ext_resource type="Script" uid="uid://doftyixbd3an8" path="res://scripts/entities/combat/enemy_hurt_box.gd" id="2_7qbly"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bm4a5s8vovnwv" path="res://addons/godot_state_charts/atomic_state.gd" id="13_ixm0y"]
 [ext_resource type="Script" uid="uid://btg0k6scpejn3" path="res://addons/godot_state_charts/transition.gd" id="14_udhym"]
 [ext_resource type="Script" uid="uid://bf2nikgdhcgty" path="res://scripts/state_machine/enemy_states/aggroed.gd" id="15_281cp"]
+[ext_resource type="Script" uid="uid://cgrbki6hklb5q" path="res://scripts/utility_scripts/collectible_spawner.gd" id="16_77r1b"]
 [ext_resource type="Script" uid="uid://dlye65oy0c6c0" path="res://scripts/state_machine/enemy_states/deaggroed.gd" id="16_lpxu5"]
 [ext_resource type="Script" uid="uid://doylfv46820k0" path="res://scripts/state_machine/enemy_states/hurt.gd" id="17_cyc3y"]
 [ext_resource type="PackedScene" uid="uid://b6xrt3tukrxl8" path="res://scenes/vfx/blood_spawner.tscn" id="20_5vdc7"]
@@ -43,6 +44,14 @@ script = ExtResource("1_jcnff")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 shape = SubResource("CapsuleShape3D_rcfw5")
 
+[node name="EnemyModel" parent="." instance=ExtResource("8_8ktbn")]
+transform = Transform3D(0.37, 0, 0, 0, -1.61732e-08, -0.37, 0, 0.37, -1.61732e-08, 0, 0, 0)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.1
+target_desired_distance = 0.3
+path_max_distance = 0.11
+
 [node name="EnemyHurtBox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
 monitorable = false
@@ -51,14 +60,6 @@ script = ExtResource("2_7qbly")
 [node name="EnemyHurtBoxShape" type="CollisionShape3D" parent="EnemyHurtBox"]
 shape = SubResource("CapsuleShape3D_nsewa")
 debug_color = Color(0.898355, 0.0965723, 0.727596, 0.42)
-
-[node name="EnemyModel" parent="." instance=ExtResource("8_8ktbn")]
-transform = Transform3D(0.37, 0, 0, 0, -1.61732e-08, -0.37, 0, 0.37, -1.61732e-08, 0, 0, 0)
-
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 0.1
-target_desired_distance = 0.3
-path_max_distance = 0.11
 
 [node name="AggroArea" type="Area3D" parent="."]
 collision_layer = 0
@@ -201,8 +202,11 @@ one_shot = true
 
 [node name="BloodSpawner" parent="." instance=ExtResource("20_5vdc7")]
 
-[connection signal="area_entered" from="EnemyHurtBox" to="." method="_on_enemy_hurt_box_area_entered"]
+[node name="CollectibleSpawner" type="Node" parent="."]
+script = ExtResource("16_77r1b")
+
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
+[connection signal="area_entered" from="EnemyHurtBox" to="." method="_on_enemy_hurt_box_area_entered"]
 [connection signal="body_entered" from="AggroArea" to="." method="_on_aggro_area_body_entered"]
 [connection signal="body_exited" from="DeaggroArea" to="." method="_on_deaggro_area_body_exited"]
 [connection signal="state_physics_processing" from="StateChart/Root/Deaggroed" to="StatesLogic/Deaggroed" method="_on_deaggroed_state_physics_processing"]
