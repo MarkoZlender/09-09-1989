@@ -51,6 +51,7 @@ transform = Transform3D(0.37, 0, 0, 0, -1.61732e-08, -0.37, 0, 0.37, -1.61732e-0
 path_desired_distance = 0.1
 target_desired_distance = 0.3
 path_max_distance = 0.11
+debug_enabled = true
 
 [node name="EnemyHurtBox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
@@ -139,6 +140,12 @@ to = NodePath("../../Deaggroed")
 event = &"deaggroed"
 delay_in_seconds = "0.0"
 
+[node name="ToDead" type="Node" parent="StateChart/Root/Aggroed"]
+script = ExtResource("14_udhym")
+to = NodePath("../../Dead")
+event = &"dead"
+delay_in_seconds = "0.0"
+
 [node name="Fighting" type="Node" parent="StateChart/Root"]
 script = ExtResource("13_ixm0y")
 
@@ -146,6 +153,12 @@ script = ExtResource("13_ixm0y")
 script = ExtResource("14_udhym")
 to = NodePath("../../Aggroed")
 event = &"player_undetected"
+delay_in_seconds = "0.0"
+
+[node name="ToHurt" type="Node" parent="StateChart/Root/Fighting"]
+script = ExtResource("14_udhym")
+to = NodePath("../../Hurt")
+event = &"hurt"
 delay_in_seconds = "0.0"
 
 [node name="ToDead" type="Node" parent="StateChart/Root/Fighting"]

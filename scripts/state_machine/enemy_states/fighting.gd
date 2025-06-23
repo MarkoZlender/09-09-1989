@@ -1,6 +1,7 @@
 extends Node
 
 func _on_fighting_state_physics_processing(_delta:float) -> void:
+	print("Fighting state processing")
 	if owner.is_dead:
 		%StateChart.send_event("dead")
 		return

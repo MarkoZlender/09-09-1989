@@ -1,4 +1,4 @@
 extends Node
 
 func _on_dead_state_entered() -> void:
-	pass # Replace with function body.
+	print("Dead state entered")
