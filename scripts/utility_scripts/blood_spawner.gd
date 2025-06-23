@@ -27,5 +27,5 @@ func _on_spawn_blood_decal(position: Vector3) -> void:
 			blood_decal.texture_albedo = blood_texture
 			blood_decal.size = Vector3(1, 1, 1)
 			blood_decal.position = position
-			blood_decal.rotation = Vector3(0, randf_range(0, 2 * PI), 0)  # random rotation around Y-axis
+			blood_decal.rotation = Vector3(owner.rotation.x, randf_range(0, 2 * PI), owner.rotation.z)  # random rotation around Y-axis
 			get_tree().get_root().add_child(blood_decal)

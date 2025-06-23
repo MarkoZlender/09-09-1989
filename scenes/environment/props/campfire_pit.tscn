@@ -73,8 +73,8 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_rllst")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w6qo2"]
-points = PackedVector3Array(0.0447857, 0.000651812, -0.126387, -0.134336, 0.00379161, -0.0252811, -0.114613, 0.0727571, 0.0131104, 0.0925965, 0.0595273, 0.0483547, -0.0881767, 0.05511, -0.101507, 0.132804, 1.38778e-17, 0.0206192, 0.088149, 0.05511, -0.0971182, -0.0705361, 0, 0.107791, -0.0220165, 0.0595273, 0.105704, -0.0871237, 6.93889e-18, -0.10801, 0.0923062, 0.0331881, 0.0963925, -0.0837568, 0.0727571, -0.0485737, 0.0546246, 0.0541863, -0.122019, 0.0969888, 0.0110251, -0.0971182, 0.127873, 0.0374775, 0.00869485, -0.114613, 0.0286723, 0.0572126, -0.0676947, 0.0458551, 0.105696, 0.0954175, 6.93889e-18, 0.0953234, -0.126487, 0.0711197, -0.0253943, -0.116191, -6.93889e-18, 0.0579713, 0.054625, 0.0121543, -0.13044, 0.0806558, 0.0564, 0.0843895, 0.0211065, 0.0120276, 0.130935, 0.107897, 0, -0.0706578, -0.132804, 0, -0.0374364, 0.0248813, 6.93889e-18, 0.128545, -0.0749446, 0.0727571, -0.000109524, 0.127873, 0.0374775, 0.0219148, -0.0719128, 0.0162377, 0.109897, 0.0210055, 0.0247611, 0.126095, -0.0879186, 0.0122434, -0.108994, -0.130173, 0.0499682, -0.0337069)
+[sub_resource type="BoxShape3D" id="BoxShape3D_4yv7f"]
+size = Vector3(0.27699, 0.497339, 0.27113)
 
 [node name="campfire" type="Node3D"]
 
@@ -88,9 +88,11 @@ mesh = SubResource("ArrayMesh_srrqi")
 skeleton = NodePath("")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="campfire-pit"]
+collision_mask = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="campfire-pit/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_w6qo2")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00103148, 0.251584, 0.00103148)
+shape = SubResource("BoxShape3D_4yv7f")
 
 [node name="Fire" parent="." instance=ExtResource("2_4yv7f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0947508, 0)
