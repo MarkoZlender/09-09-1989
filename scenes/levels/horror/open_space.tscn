@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=15 format=3 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="PackedScene" uid="uid://fxqb8ljgc2n4" path="res://scenes/entities/player_3d.tscn" id="4_5un2j"]
 [ext_resource type="PackedScene" uid="uid://b53l8y3nioja0" path="res://scenes/entities/enemy_3d.tscn" id="4_46gqi"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://0fkyd553m7cg" path="res://scripts/data/enemy_data.gd" id="6_46gqi"]
 [ext_resource type="PackedScene" uid="uid://muputklnbpx6" path="res://scenes/environment/pickup_items/tooth.tscn" id="6_cqt2m"]
 [ext_resource type="PackedScene" uid="uid://ddy6jt43pjxe1" path="res://scenes/environment/fixed_camera.tscn" id="7_tmfig"]
+[ext_resource type="PackedScene" uid="uid://b3vqxtjeytlsk" path="res://scenes/entities/note.tscn" id="9_7hute"]
 
 [sub_resource type="Environment" id="Environment_gdr46"]
 background_mode = 1
@@ -106,6 +107,14 @@ light_energy = 0.07
 transform = Transform3D(1, 0, 0, 0, 0.0868776, 0.996219, 0, -0.996219, 0.0868776, 5.8929, 4.17786, -49.4145)
 light_energy = 1.402
 editor_only = true
+
+[node name="Note" parent="." instance=ExtResource("9_7hute")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.68438, 1.58474, -56.6767)
+note_text = "I can't take this anymore"
+
+[node name="Note2" parent="." instance=ExtResource("9_7hute")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.68438, 1.58474, -58.9969)
+note_text = "Please help me get rid of this burden"
 
 [editable path="FixedCamera"]
 [editable path="FixedCamera2"]
