@@ -169,12 +169,12 @@ func _on_player_hurt_box_area_entered(area:Area3D) -> void:
 	if area is EnemyHitBox:
 		# leave this print here, hitbox works better with it for some reason
 		print("Player hurt by enemy hitbox")
+		player_data.health -= area.get_parent().get_parent().get_parent().get_parent().get_parent().enemy_data.hit_strength
+		Global.signal_bus.player_hurt.emit(player_data.health)
+		Global.signal_bus.spawn_blood.emit(global_position)
 		if player_data.health <= 0:
 			Global.signal_bus.player_died.emit()
 			return
-		player_data.health -= area.get_parent().get_parent().get_parent().get_parent().get_parent().enemy_data.hit_strength
-		Global.signal_bus.player_hurt.emit(player_data.health)
 		is_hurt = true
-		Global.signal_bus.spawn_blood.emit(global_position)
 
 #endregion
