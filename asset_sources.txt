@@ -35,3 +35,5 @@ https://opengameart.org/content/horror-game-note-page-background-old-paper-png
 https://fonts.google.com/specimen/Waiting+for+the+Sunrise?selection.family=Kalam|Vesper+Libre&query=ital&preview.text=I%20can%27t%20take%20this%20anymore%0APlease%20somebody%20take%20this%20burden%20from%20me&categoryFilters=Calligraphy:%2FScript%2FHandwritten
 https://freesound.org/people/j2024w/sounds/718453/ - paper sounds
 https://freesound.org/people/Defaultv/sounds/534357/ - item pickup
+https://opengameart.org/content/medicine-pack-16x16 - health pickup
+https://freesound.org/people/KeshaFilm/sounds/471834/ - health pickup

@@ -1,86 +1,60 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0che6yn1shpk"]
+[gd_scene load_steps=8 format=3 uid="uid://b0che6yn1shpk"]
 
 [ext_resource type="Script" uid="uid://sl3o3x1tsu7c" path="res://scripts/environment/pickup_items/health_up.gd" id="1_g63ah"]
-[ext_resource type="Texture2D" uid="uid://basi18ybxjxgb" path="res://assets/sprites/pickup_items/heart.png" id="1_ih5qq"]
-[ext_resource type="AudioStream" uid="uid://c77vcioaild1l" path="res://assets/sounds/sfx/health.wav" id="3_7uuti"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_g63ah"]
-atlas = ExtResource("1_ih5qq")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7uuti"]
-atlas = ExtResource("1_ih5qq")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eqdws"]
-atlas = ExtResource("1_ih5qq")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w27jx"]
-atlas = ExtResource("1_ih5qq")
-region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3bwvr"]
-atlas = ExtResource("1_ih5qq")
-region = Rect2(16, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_325tx"]
-atlas = ExtResource("1_ih5qq")
-region = Rect2(32, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_myrmg"]
-atlas = ExtResource("1_ih5qq")
-region = Rect2(0, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dro3h"]
-atlas = ExtResource("1_ih5qq")
-region = Rect2(16, 32, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_2jeo4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_g63ah")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7uuti")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eqdws")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w27jx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3bwvr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_325tx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_myrmg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dro3h")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://c1jcpotg52bv5" path="res://assets/sprites/pickup_items/medicine_pack.png" id="2_7uuti"]
+[ext_resource type="AudioStream" uid="uid://io4a3byu1pj7" path="res://assets/sounds/sfx/health_pickup/health_pickup.wav" id="3_7uuti"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ih5qq"]
-size = Vector3(0.2, 0.2, 0.2)
+size = Vector3(0.6, 0.6, 0.6)
+
+[sub_resource type="Animation" id="Animation_7uuti"]
+resource_name = "default"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PillSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.28319, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eqdws"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PillSprite:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w27jx"]
+_data = {
+&"RESET": SubResource("Animation_eqdws"),
+&"default": SubResource("Animation_7uuti")
+}
 
 [node name="HealthUp" type="Node3D"]
 script = ExtResource("1_g63ah")
 
-[node name="Animation" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
-billboard = 2
+[node name="PillSprite" type="Sprite3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shaded = true
 texture_filter = 0
-sprite_frames = SubResource("SpriteFrames_2jeo4")
-autoplay = "default"
-frame_progress = 0.527536
+texture = ExtResource("2_7uuti")
+region_enabled = true
+region_rect = Rect2(17, 1, 14, 14)
 
 [node name="AudioPlayer" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_7uuti")
@@ -93,5 +67,11 @@ collision_mask = 2
 [node name="InteractionCollision" type="CollisionShape3D" parent="InteractionArea"]
 unique_name_in_owner = true
 shape = SubResource("BoxShape3D_ih5qq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_w27jx")
+}
+autoplay = "default"
 
 [connection signal="body_entered" from="InteractionArea" to="." method="_on_interaction_area_body_entered"]
