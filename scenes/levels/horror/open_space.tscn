@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=16 format=3 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="PackedScene" uid="uid://fxqb8ljgc2n4" path="res://scenes/entities/player_3d.tscn" id="4_5un2j"]
 [ext_resource type="PackedScene" uid="uid://b53l8y3nioja0" path="res://scenes/entities/enemy_3d.tscn" id="4_46gqi"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ddy6jt43pjxe1" path="res://scenes/environment/fixed_camera.tscn" id="7_tmfig"]
 [ext_resource type="PackedScene" uid="uid://b3vqxtjeytlsk" path="res://scenes/entities/note.tscn" id="9_7hute"]
 [ext_resource type="PackedScene" uid="uid://b0che6yn1shpk" path="res://scenes/environment/pickup_items/health_up.tscn" id="9_a8uie"]
+[ext_resource type="PackedScene" uid="uid://c7kdgxdhiqqc1" path="res://scenes/entities/wraith.tscn" id="10_a8uie"]
 
 [sub_resource type="Environment" id="Environment_gdr46"]
 background_mode = 1
@@ -36,8 +37,8 @@ level = 1
 experience = 10
 health = 20
 hit_strength = 10
-wander_range_x = Vector2(3, 3)
-wander_range_z = Vector2(-3, -3)
+wander_range_x = Vector2(-5, 5)
+wander_range_z = Vector2(-5, 5)
 collectible_rigid_body = ExtResource("6_cqt2m")
 collectible_rigid_body_number = 5
 metadata/_custom_type_script = "uid://0fkyd553m7cg"
@@ -108,6 +109,9 @@ note_text = "Please help me get rid of this burden"
 
 [node name="HealthUp" parent="." instance=ExtResource("9_a8uie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93651, 0.632984, -58.2992)
+
+[node name="Wraith" parent="." instance=ExtResource("10_a8uie")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 10.7516, 0.983983, -54.3961)
 
 [editable path="FixedCamera"]
 [editable path="FixedCamera2"]
