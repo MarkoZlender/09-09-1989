@@ -135,6 +135,8 @@ func _on_enemy_hurt_box_area_entered(area:Area3D) -> void:
 			_dead()
 			return
 		is_hurt = true
+		#is_attacking = false
+		attack_finished = true
 
 func _dead() -> void:
 		is_dead = true

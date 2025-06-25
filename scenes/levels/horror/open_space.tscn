@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=18 format=3 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="PackedScene" uid="uid://fxqb8ljgc2n4" path="res://scenes/entities/player_3d.tscn" id="4_5un2j"]
 [ext_resource type="PackedScene" uid="uid://b53l8y3nioja0" path="res://scenes/entities/enemy_3d.tscn" id="4_46gqi"]
+[ext_resource type="Script" uid="uid://c5q20r4wynqst" path="res://scripts/data/player_data.gd" id="4_s8svk"]
 [ext_resource type="Terrain3DMaterial" uid="uid://14xa2u6bomkw" path="res://resources/terrain3d/terrain_3d_material.tres" id="4_whrqo"]
 [ext_resource type="Terrain3DAssets" uid="uid://wpovl8xjxfag" path="res://resources/terrain3d/terrain_3d_assets.tres" id="5_46gqi"]
 [ext_resource type="Script" uid="uid://0fkyd553m7cg" path="res://scripts/data/enemy_data.gd" id="6_46gqi"]
@@ -29,13 +30,27 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 cell_height = 0.01
 agent_max_climb = 1.0
 
+[sub_resource type="Resource" id="Resource_8ax1c"]
+script = ExtResource("4_s8svk")
+speed = 3.0
+rotation_controls = true
+level = 1
+level_progression = Array[int]([])
+experience = 10
+health = 500
+max_health = 500
+hit_strength = 10
+teeth = 0
+footstep_timer = 0.2
+metadata/_custom_type_script = "uid://c5q20r4wynqst"
+
 [sub_resource type="Resource" id="Resource_7hute"]
 script = ExtResource("6_46gqi")
 movement_speed = 2.0
 accel = 20.0
 level = 1
 experience = 10
-health = 20
+health = 100
 hit_strength = 10
 wander_range_x = Vector2(-5, 5)
 wander_range_z = Vector2(-5, 5)
@@ -69,6 +84,7 @@ metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("4_5un2j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.44986, 0.957915, -53.2526)
+player_data = SubResource("Resource_8ax1c")
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 2.272, 0, -57.547)
