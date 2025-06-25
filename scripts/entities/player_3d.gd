@@ -37,8 +37,9 @@ var move_input: float = 0.0
 func _ready() -> void:
 	Global.signal_bus.item_rigid_body_collected.connect(_on_item_rigid_body_collected)
 	Global.signal_bus.player_died.connect(_on_player_died)
-	Global.signal_bus.interaction_started.connect(_on_player_interacted)
+	#Global.signal_bus.interaction_started.connect(_on_player_interacted)
 	Global.signal_bus.interaction_ended.connect(_on_player_ended_interaction)
+	Global.signal_bus.player_interacting.connect(_on_player_interacted)
 	
 	player_model.get_node("AnimationTree").connect("animation_finished", _on_animation_finished)
 
@@ -49,7 +50,7 @@ func _input(event: InputEvent) -> void:
 		else:
 			Global.game_controller.get_node("GUI/InventoryItemList").queue_free()
 	
-	if event.is_action_pressed("attack") && !is_hurt:
+	if event.is_action_pressed("attack") && !is_hurt && !is_interacting:
 		is_attacking = true
 
 #endregion
@@ -159,8 +160,8 @@ func _on_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "attack":
 		is_attacking = false
 
-func _on_player_interacted() -> void:
-	is_interacting = true
+func _on_player_interacted(state: bool) -> void:
+	is_interacting = state
 
 func _on_player_ended_interaction() -> void:
 	is_interacting = false
@@ -176,5 +177,6 @@ func _on_player_hurt_box_area_entered(area:Area3D) -> void:
 			Global.signal_bus.player_died.emit()
 			return
 		is_hurt = true
+		#is_attacking = false
 
 #endregion

@@ -9,5 +9,5 @@ func _on_fighting_state_physics_processing(_delta:float) -> void:
 	if owner.is_hurt:
 		%StateChart.send_event("hurt")
 
-	if !owner.is_attacking && owner.attack_finished:
+	if (!owner.is_attacking && owner.attack_finished) && !owner.player_detected:
 		%StateChart.send_event("player_undetected")

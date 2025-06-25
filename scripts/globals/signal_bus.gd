@@ -4,6 +4,7 @@ signal player_hurt(health: int)
 signal player_healed(health: int)
 signal player_died
 signal enemy_died(enemy: Enemy)
+signal player_interacting(state: bool)
 
 signal spawn_blood(position: Vector3)
 

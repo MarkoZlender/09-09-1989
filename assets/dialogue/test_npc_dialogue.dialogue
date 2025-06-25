@@ -1,4 +1,5 @@
 ~ start
+do Global.signal_bus.player_interacting.emit(true)
 Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
 Nathan: Here are some choices.
 - First one
@@ -6,6 +7,9 @@ Nathan: Here are some choices.
 - Second one
 	Nathan: You picked the second one.
 - Start again => start
-- End the conversation => END
+- End the conversation 
+do Global.signal_bus.player_interacting.emit(false)
+=> END
 Nathan: For more information see the online documentation.
+do Global.signal_bus.player_interacting.emit(false)
 => END
