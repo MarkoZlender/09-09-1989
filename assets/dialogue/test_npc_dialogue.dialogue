@@ -1,15 +1,17 @@
 ~ start
 do Global.signal_bus.player_interacting.emit(true)
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
+
+Wraith: [[Hi|Hello|Howdy]], this is some dialogue.
+Wraith: Here are some choices.
 - First one
-	Nathan: You picked the first one.
+	Wraith: You picked the first one. "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 - Second one
-	Nathan: You picked the second one.
+	Wraith: You picked the second one.
 - Start again => start
 - End the conversation 
 do Global.signal_bus.player_interacting.emit(false)
 => END
-Nathan: For more information see the online documentation.
+Wraith: For more information see the online documentation.
+
 do Global.signal_bus.player_interacting.emit(false)
 => END
