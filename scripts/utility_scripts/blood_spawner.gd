@@ -31,8 +31,12 @@ func _get_random_blood_texture() -> String:
 # 			get_tree().get_root().add_child(blood_decal)
 
 func _on_spawn_blood_decal(position: Vector3) -> void:
-	if owner.is_hurt:
-		return
+	if owner is Enemy:
+		if owner.current_state == EnemyState.State.HURT:
+			return
+	if owner is Player:
+		if owner.is_hurt:
+			return
 	
 	var space_state: PhysicsDirectSpaceState3D = owner.get_world_3d().direct_space_state
 
@@ -59,4 +63,3 @@ func _on_spawn_blood_decal(position: Vector3) -> void:
 			blood_decal.basis = random_rotation
 
 			get_tree().get_root().add_child(blood_decal)
-

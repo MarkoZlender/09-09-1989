@@ -3,18 +3,15 @@ class_name Enemy extends CharacterBody3D
 @export var enemy_data: EnemyData
 @export var player: Player
 
-var is_deaggroed: bool = true
-var is_aggroed: bool = false
-var is_moving: bool = false
-var is_hurt: bool = false
-var is_dead: bool = false
-var is_attacking: bool = false
+
+var current_state: EnemyState.State = EnemyState.State.DEAGGROED
+
 var target_reached: bool = false
 var player_detected: bool = false
 var player_in_range: bool = false
-var attack_finished: bool = false
+var attack_finished: bool = true
 
-var turn_speed: float = 15.0
+var turn_speed: float = 10.0
 
 var direction: Vector3 = Vector3.ZERO 
 
@@ -40,8 +37,6 @@ func aggroed(delta: float) -> void:
 	velocity = velocity.move_toward(direction * movement_speed, accel * delta)
 	rotate_towards_target(navigation_agent.target_position)
 
-	is_moving = velocity.length() > 0.1
-
 	#_apply_gravity(delta)
 	move_and_slide()
 
@@ -54,7 +49,6 @@ func deaggroed(delta: float) -> void:
 				# Stop the enemy and start the timer
 				velocity = Vector3.ZERO
 				move_and_slide()
-				is_moving = false
 				$PatrollTimer.start(randf_range(2.0, 3.0))  # Wait for a random duration
 			else:
 				# After waiting, pick a new random patrol target
@@ -72,7 +66,6 @@ func deaggroed(delta: float) -> void:
 
 		velocity = velocity.move_toward(direction * movement_speed, accel * delta)
 
-	is_moving = velocity.length() > 0.1
 	rotate_towards_target(navigation_agent.target_position)
 	#_apply_gravity(delta)
 	move_and_slide()
@@ -84,65 +77,62 @@ func rotate_towards_target(target_position: Vector3) -> void:
 		var target_angle: float = atan2(to_target.x, to_target.z)
 		rotation.y = lerp_angle(rotation.y, target_angle, turn_speed * get_process_delta_time())
 
-func _apply_gravity(delta: float) -> void:
-	if not is_on_floor():
-		velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
-	else:
-		velocity.y = 0.0
-
 func _on_player_detected(body: Node3D) -> void:
 	if body is Player:
 		player_detected = true
 		attack_finished = false
-		is_attacking = true
+		current_state = EnemyState.State.ATTACKING
 		enemy_model.get_node("AnimationPlayer").get_animation("attack").loop_mode = Animation.LOOP_LINEAR
 
 func _on_player_out_of_range(body: Node3D) -> void:
 	if body is Player:
 		player_detected = false
-		is_attacking = false
+		#attack_finished = true
+		#current_state = EnemyState.State.AGGROED
 		enemy_model.get_node("AnimationPlayer").get_animation("attack").loop_mode = Animation.LOOP_NONE
 
 func _on_navigation_agent_3d_target_reached() -> void:
 	target_reached = true
-	if player_detected:
-		is_moving = false
 
 func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == "hit":
-		is_hurt = false
+		current_state = EnemyState.State.AGGROED
+		print("Hit animation finished")
+		player_detector_area.monitoring = true
+		attack_finished = true
 	
 	if anim_name == "attack":
-		is_attacking = false
+		if current_state != EnemyState.State.HURT:
+			current_state = EnemyState.State.AGGROED
 		attack_finished = true
 
 func _on_aggro_area_body_entered(body: Node3D) -> void:
-	if body is Player:
-		is_aggroed = true
-		is_deaggroed = false
+	if body is Player && current_state != EnemyState.State.ATTACKING:
+		current_state = EnemyState.State.AGGROED
 
 func _on_deaggro_area_body_exited(body: Node3D) -> void:
 	if body is Player:
-		is_aggroed = false
-		is_deaggroed = true
+		current_state = EnemyState.State.DEAGGROED
 
 func _on_enemy_hurt_box_area_entered(area:Area3D) -> void:
 	if area is PlayerHitBox:
-		print("enemy health: ", enemy_data.health)
+		player_detector_area.monitoring = false
+		enemy_model.get_node("AnimationPlayer").get_animation("attack").loop_mode = Animation.LOOP_NONE
 		enemy_data.health -= 10
 		Global.signal_bus.spawn_blood.emit(global_position)
 		if enemy_data.health <= 0:
 			_dead()
 			return
-		is_hurt = true
+		current_state = EnemyState.State.HURT
 		#is_attacking = false
 		attack_finished = true
+		
 
 func _dead() -> void:
-		is_dead = true
-		enemy_collision_shape.disabled = true
-		$AggroArea.monitoring = false
-		$DeaggroArea.monitoring = false
-		$PlayerDetectorArea.monitoring = false
-		$EnemyHurtBox.set_deferred("monitoring", false)
-		Global.signal_bus.enemy_died.emit(self)
+	enemy_collision_shape.disabled = true
+	$AggroArea.monitoring = false
+	$DeaggroArea.monitoring = false
+	$PlayerDetectorArea.monitoring = false
+	$EnemyHurtBox.set_deferred("monitoring", false)
+	Global.signal_bus.enemy_died.emit(self)
+	current_state = EnemyState.State.DEAD

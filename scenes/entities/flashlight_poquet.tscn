@@ -1,10 +1,8 @@
 [gd_scene load_steps=6 format=4 uid="uid://crjs2e0khkqfv"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vp2qs"]
-load_path = "res://.godot/imported/Flashlight_Poquet.png-041c04cf23a9cf13f1fc555b8df45bf3.ctex"
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_le2hq"]
-load_path = "res://.godot/imported/Flashlight_Poquet_Emissor.png-97a6019852bb4632dc03195a0652f479.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqde7"]
 resource_name = "Flashlight_Poquet"

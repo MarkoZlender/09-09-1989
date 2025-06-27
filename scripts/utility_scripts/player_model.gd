@@ -14,11 +14,11 @@ extends Node3D
 @onready var turn_input: float = 0.0
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("attack") && !is_interacting && !is_hurt:
+	if Input.is_action_just_pressed("attack") && !is_interacting && !is_hurt:
 		animation_player.get_animation("attack").loop_mode = Animation.LOOP_LINEAR
 		attack_state = true
 
-	elif event.is_action_released("attack") && !is_interacting && !is_hurt:
+	elif Input.is_action_just_released("attack") && !is_interacting && !is_hurt:
 		animation_player.get_animation("attack").loop_mode = Animation.LOOP_NONE
 		attack_state = false
 	

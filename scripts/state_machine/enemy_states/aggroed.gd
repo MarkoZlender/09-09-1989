@@ -1,20 +1,20 @@
 extends Node
 
-func _on_aggroed_state_physics_processing(delta:float) -> void:
-	print("Aggroed state processing")
-	if owner.enemy_data.health <= 0:
+func _on_aggroed_state_physics_processing(delta: float) -> void:
+	if owner.current_state == EnemyState.State.DEAD:
 		%StateChart.send_event("dead")
 		return
 
-	if owner.player_detected:
-		%StateChart.send_event("player_found")
-	
-	owner.aggroed(delta)
-
-	if !owner.player_in_range:
-		%StateChart.send_event("deaggroed")
-
-	if owner.is_hurt:
+	if owner.current_state == EnemyState.State.HURT:
 		%StateChart.send_event("hurt")
 		return
 
+	if owner.current_state == EnemyState.State.ATTACKING:
+		%StateChart.send_event("player_found")
+		return
+
+	owner.aggroed(delta)
+
+	if owner.current_state == EnemyState.State.DEAGGROED:
+		%StateChart.send_event("deaggroed")
+		return

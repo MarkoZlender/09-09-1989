@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b53l8y3nioja0"]
+[gd_scene load_steps=23 format=3 uid="uid://b53l8y3nioja0"]
 
 [ext_resource type="Script" uid="uid://cs8v6tgmgw7w8" path="res://scripts/entities/enemy_3d.gd" id="1_jcnff"]
 [ext_resource type="Script" uid="uid://doftyixbd3an8" path="res://scripts/entities/combat/enemy_hurt_box.gd" id="2_7qbly"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://cgrbki6hklb5q" path="res://scripts/utility_scripts/collectible_spawner.gd" id="16_77r1b"]
 [ext_resource type="Script" uid="uid://dlye65oy0c6c0" path="res://scripts/state_machine/enemy_states/deaggroed.gd" id="16_lpxu5"]
 [ext_resource type="Script" uid="uid://doylfv46820k0" path="res://scripts/state_machine/enemy_states/hurt.gd" id="17_cyc3y"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="17_e1lp3"]
 [ext_resource type="PackedScene" uid="uid://b6xrt3tukrxl8" path="res://scenes/vfx/blood_spawner.tscn" id="20_5vdc7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rcfw5"]
@@ -49,7 +50,6 @@ transform = Transform3D(0.37, 0, 0, 0, -1.61732e-08, -0.37, 0, 0.37, -1.61732e-0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.1
-target_desired_distance = 0.3
 path_max_distance = 0.11
 
 [node name="EnemyHurtBox" type="Area3D" parent="."]
@@ -90,7 +90,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectorArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27, 0.147291)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27, 0.144921)
 shape = SubResource("BoxShape3D_7qbly")
 debug_color = Color(0.853828, 0.368244, 0.0480085, 0.42)
 
@@ -216,6 +216,10 @@ one_shot = true
 
 [node name="CollectibleSpawner" type="Node" parent="."]
 script = ExtResource("16_77r1b")
+
+[node name="StateChartDebugger" parent="." instance=ExtResource("17_e1lp3")]
+scale = Vector2(0.5, 0.5)
+initial_node_to_watch = NodePath("../StateChart")
 
 [connection signal="target_reached" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_target_reached"]
 [connection signal="area_entered" from="EnemyHurtBox" to="." method="_on_enemy_hurt_box_area_entered"]

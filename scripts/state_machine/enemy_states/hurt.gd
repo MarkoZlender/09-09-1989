@@ -1,9 +1,11 @@
 extends Node
 
 func _on_hurt_state_physics_processing(_delta:float) -> void:
-	print("Hurt state processing")
-	if owner.enemy_data.health <= 0:
+	if owner.current_state == EnemyState.State.DEAD:
 		%StateChart.send_event("dead")
 
-	if !owner.is_hurt:
+	if owner.current_state == EnemyState.State.AGGROED:
 		%StateChart.send_event("recovered")
+
+
+
