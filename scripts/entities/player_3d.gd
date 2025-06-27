@@ -8,12 +8,7 @@ extends CharacterBody3D
 #endregion
 
 #region Variables
-
-var is_moving: bool = false
-var is_attacking: bool = false
-var is_moving_backwards: bool = false
-var is_hurt:bool = false
-var is_interacting: bool = false
+var current_state: PlayerState.State = PlayerState.State.IDLE
 
 var direction: Vector3 = Vector3.ZERO
 var turn_speed: float = 2.0  # Adjust the turning speed as needed
@@ -37,8 +32,6 @@ var move_input: float = 0.0
 func _ready() -> void:
 	Global.signal_bus.item_rigid_body_collected.connect(_on_item_rigid_body_collected)
 	Global.signal_bus.player_died.connect(_on_player_died)
-	#Global.signal_bus.interaction_started.connect(_on_player_interacted)
-	Global.signal_bus.interaction_ended.connect(_on_player_ended_interaction)
 	Global.signal_bus.player_interacting.connect(_on_player_interacted)
 	
 	player_model.get_node("AnimationTree").connect("animation_finished", _on_animation_finished)
@@ -50,8 +43,11 @@ func _input(event: InputEvent) -> void:
 		else:
 			Global.game_controller.get_node("GUI/InventoryItemList").queue_free()
 	
-	if event.is_action_pressed("attack") && !is_hurt && !is_interacting:
-		is_attacking = true
+	if Input.is_action_just_pressed("attack") && current_state != PlayerState.State.HURT && current_state != PlayerState.State.INTERACTING:
+		current_state = PlayerState.State.ATTACKING
+	# 	player_model.get_node("AnimationPlayer").get_animation("attack").loop_mode = Animation.LOOP_LINEAR
+	# elif event.is_action_released("attack"):
+	# 	player_model.get_node("AnimationPlayer").get_animation("attack").loop_mode = Animation.LOOP_NONE
 
 #endregion
 
@@ -62,26 +58,29 @@ func move(delta: float) -> void:
 	turn_input = Input.get_action_strength("right") - Input.get_action_strength("left")
 	move_input = Input.get_action_strength("up") - Input.get_action_strength("down")
 	
-	if move_input != 0 && !is_hurt && !is_attacking:
-		is_moving = true
-	else:
-		is_moving = false
+	var speed: float = player_data.speed
+	print("move input: ", move_input)
+
+	if current_state != PlayerState.State.ATTACKING \
+	&& current_state != PlayerState.State.HURT \
+	&& current_state != PlayerState.State.INTERACTING:
+		if move_input < 0:
+			current_state = PlayerState.State.MOVING_BACKWARDS
+			speed *= 0.3
+		elif move_input != 0:
+			current_state = PlayerState.State.MOVING
+		elif move_input == 0:
+			current_state = PlayerState.State.IDLE
 
 	# Rotate player (Y axis)
 	rotation.y -= turn_input * turn_speed * delta
 
-	# Determine if moving backwards
-	is_moving_backwards = move_input < 0
-
 	# Limit speed if moving backwards
-	var speed: float= player_data.speed
+	
 
-	if is_moving_backwards && !is_hurt && !is_attacking:
-		is_moving_backwards = true
-		#is_moving = false
-		speed *= 0.3  # Limit backward speed to 50%
-	else:
-		is_moving_backwards = false
+	# if move_input < 0 && current_state != PlayerState.State.HURT && current_state != PlayerState.State.ATTACKING:
+	# 	current_state = PlayerState.State.MOVING_BACKWARDS
+	# 	speed *= 0.3  # limit backward speed to 50%
 
 	# Move forward/backward in local space
 	var forward: Vector3= -transform.basis.z.normalized()
@@ -90,9 +89,6 @@ func move(delta: float) -> void:
 	_apply_gravity(delta)
 	#print("Velocity: ", velocity)
 	move_and_slide()
-
-	if is_hurt:
-		print("Hurting player")
 
 func save() -> Dictionary:
 	var save_data: Dictionary = {
@@ -155,16 +151,16 @@ func _on_player_died() -> void:
 
 func _on_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "hurt":
-		is_hurt = false
+		current_state = PlayerState.State.IDLE
 
 	if anim_name == "attack":
-		is_attacking = false
+		current_state = PlayerState.State.IDLE
 
 func _on_player_interacted(state: bool) -> void:
-	is_interacting = state
-
-func _on_player_ended_interaction() -> void:
-	is_interacting = false
+	if state == true:
+		current_state = PlayerState.State.INTERACTING
+	else:
+		current_state = PlayerState.State.IDLE
 
 func _on_player_hurt_box_area_entered(area:Area3D) -> void:
 	if area is EnemyHitBox:
@@ -175,8 +171,9 @@ func _on_player_hurt_box_area_entered(area:Area3D) -> void:
 		Global.signal_bus.spawn_blood.emit(global_position)
 		if player_data.health <= 0:
 			Global.signal_bus.player_died.emit()
+			current_state = PlayerState.State.DEAD
 			return
-		is_hurt = true
+		current_state = PlayerState.State.HURT
 		#is_attacking = false
 
 #endregion

@@ -35,7 +35,7 @@ func _on_spawn_blood_decal(position: Vector3) -> void:
 		if owner.current_state == EnemyState.State.HURT:
 			return
 	if owner is Player:
-		if owner.is_hurt:
+		if owner.current_state == PlayerState.State.HURT:
 			return
 	
 	var space_state: PhysicsDirectSpaceState3D = owner.get_world_3d().direct_space_state

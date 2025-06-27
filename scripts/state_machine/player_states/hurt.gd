@@ -1,8 +1,9 @@
 extends Node
 
 func _on_hurt_state_entered() -> void:
-	owner.is_attacking = false
+	#owner.is_attacking = false
+	pass
 
 func _on_hurt_state_physics_processing(_delta:float) -> void:
-	if !owner.is_hurt:
+	if owner.current_state != PlayerState.State.HURT:
 		%StateChart.send_event("player_recovered")

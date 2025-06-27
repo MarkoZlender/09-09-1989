@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://fxqb8ljgc2n4"]
+[gd_scene load_steps=21 format=3 uid="uid://fxqb8ljgc2n4"]
 
 [ext_resource type="Script" uid="uid://crx7ia401nqtx" path="res://scripts/entities/player_3d.gd" id="1_vy47h"]
 [ext_resource type="PackedScene" uid="uid://driki73pc7tic" path="res://scenes/player_model.tscn" id="2_60mhm"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://bm4a5s8vovnwv" path="res://addons/godot_state_charts/atomic_state.gd" id="15_8sdl1"]
 [ext_resource type="PackedScene" uid="uid://dvu2bp7omagc3" path="res://scenes/ui/hud_3d.tscn" id="16_4vpuf"]
 [ext_resource type="Script" uid="uid://btg0k6scpejn3" path="res://addons/godot_state_charts/transition.gd" id="16_g0tc1"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="17_d80la"]
 [ext_resource type="Script" uid="uid://cw43pgy3x2a52" path="res://scripts/entities/player_states/idle.gd" id="17_thr82"]
 [ext_resource type="Script" uid="uid://c7whpml006e7v" path="res://scripts/entities/player_states/moving.gd" id="18_8hn40"]
 [ext_resource type="PackedScene" uid="uid://b6xrt3tukrxl8" path="res://scenes/vfx/blood_spawner.tscn" id="21_fxx5w"]
@@ -219,6 +220,10 @@ script = ExtResource("14_4vpuf")
 [node name="Hud" parent="." instance=ExtResource("16_4vpuf")]
 
 [node name="BloodSpawner" parent="." instance=ExtResource("21_fxx5w")]
+
+[node name="StateChartDebugger" parent="." instance=ExtResource("17_d80la")]
+scale = Vector2(0.5, 0.5)
+initial_node_to_watch = NodePath("../StateChart")
 
 [connection signal="area_entered" from="PlayerHurtBox" to="." method="_on_player_hurt_box_area_entered"]
 [connection signal="state_physics_processing" from="StateChart/Root/Idle" to="StatesLogic/Idle" method="_on_idle_state_physics_processing"]
