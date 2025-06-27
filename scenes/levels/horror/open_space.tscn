@@ -92,7 +92,7 @@ enemy_data = SubResource("Resource_7hute")
 player = NodePath("../Player")
 
 [node name="Wraith" parent="." instance=ExtResource("10_a8uie")]
-transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 10.7516, 0.983983, -54.3961)
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 8.48215, 0.983983, -54.3961)
 
 [node name="FixedCamera" parent="." instance=ExtResource("7_tmfig")]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 4.71958, 5.3529, -47.6514)

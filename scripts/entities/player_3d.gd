@@ -22,7 +22,6 @@ var idle_frame_count: int = 0
 
 #region Onready variables
 
-@onready var input_dir: Vector2 = Input.get_vector("left", "right", "up", "down")
 @onready var player_model: Node3D = $PlayerModel
 @onready var player_model_anim_player: AnimationPlayer = player_model.get_node("AnimationPlayer")
 
@@ -75,7 +74,6 @@ func move(delta: float) -> void:
 		elif move_input != 0:
 			current_state = PlayerState.State.MOVING
 		elif move_input == 0:
-			print("Idle frame count: ", idle_frame_count)
 			current_state = PlayerState.State.IDLE
 
 
