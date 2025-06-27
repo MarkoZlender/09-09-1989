@@ -16,6 +16,7 @@ var max_speed: float = 10.0  # Adjust the maximum speed as needed
 var acceleration: float = 20.0
 var turn_input: float = 0.0
 var move_input: float = 0.0
+var idle_frame_count: int = 0
 
 #endregion
 
@@ -58,8 +59,12 @@ func move(delta: float) -> void:
 	turn_input = Input.get_action_strength("right") - Input.get_action_strength("left")
 	move_input = Input.get_action_strength("up") - Input.get_action_strength("down")
 	
+	if move_input == 0:
+		idle_frame_count += 1
+	else:
+		idle_frame_count = 0
+
 	var speed: float = player_data.speed
-	print("move input: ", move_input)
 
 	if current_state != PlayerState.State.ATTACKING \
 	&& current_state != PlayerState.State.HURT \
@@ -70,7 +75,9 @@ func move(delta: float) -> void:
 		elif move_input != 0:
 			current_state = PlayerState.State.MOVING
 		elif move_input == 0:
+			print("Idle frame count: ", idle_frame_count)
 			current_state = PlayerState.State.IDLE
+
 
 	# Rotate player (Y axis)
 	rotation.y -= turn_input * turn_speed * delta

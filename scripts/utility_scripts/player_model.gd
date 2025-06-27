@@ -10,6 +10,7 @@ var current_state: PlayerState.State = PlayerState.State.IDLE
 @onready var flashlight: Light3D = %Flashlight
 @onready var flashlight_model: Node3D = %FlashlightModel
 @onready var turn_input: float = 0.0
+@onready var idle_frame_count: int = 0
 
 func _input(event: InputEvent) -> void:
 	# if Input.is_action_just_pressed("attack") && current_state != PlayerState.State.INTERACTING && current_state != PlayerState.State.HURT:
@@ -34,3 +35,4 @@ func _physics_process(_delta: float) -> void:
 	current_state = owner.current_state
 	velocity = owner.velocity
 	turn_input = owner.turn_input
+	idle_frame_count = owner.idle_frame_count
