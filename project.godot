@@ -17,7 +17,6 @@ warnings/check_invalid_track_paths=false
 config/name="topdown_adventure"
 run/main_scene="uid://bmcuon78mxwm0"
 config/features=PackedStringArray("4.4", "Forward Plus")
-run/max_fps=30
 config/icon="res://icon.svg"
 
 [autoload]

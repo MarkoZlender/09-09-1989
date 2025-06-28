@@ -1,10 +1,16 @@
-extends PlayerState
+extends Node
 
-@warning_ignore("unused_parameter")
-func enter(previous_state_path: String, data: Dictionary = {}) -> void:
-	print("Entering idle state")
+func _on_idle_state_physics_processing(delta:float) -> void:
+	if owner.current_state == PlayerState.State.HURT:
+		%StateChart.send_event("player_hurt")
 
-func physics_update(delta: float) -> void:
-	player.handle_movement_input()
-	if player.is_moving:
-		finished.emit(WALKING)
+	if owner.current_state == PlayerState.State.MOVING:
+		%StateChart.send_event("player_moved")
+
+	if owner.current_state == PlayerState.State.ATTACKING:
+		%StateChart.send_event("player_fighting")
+
+	if owner.current_state == PlayerState.State.INTERACTING:
+		%StateChart.send_event("player_interacted")
+
+	owner.move(delta)

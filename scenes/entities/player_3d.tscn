@@ -14,8 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://dvu2bp7omagc3" path="res://scenes/ui/hud_3d.tscn" id="16_4vpuf"]
 [ext_resource type="Script" uid="uid://btg0k6scpejn3" path="res://addons/godot_state_charts/transition.gd" id="16_g0tc1"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="17_d80la"]
-[ext_resource type="Script" uid="uid://cw43pgy3x2a52" path="res://scripts/entities/player_states/idle.gd" id="17_thr82"]
-[ext_resource type="Script" uid="uid://c7whpml006e7v" path="res://scripts/entities/player_states/moving.gd" id="18_8hn40"]
+[ext_resource type="Script" uid="uid://cw43pgy3x2a52" path="res://scripts/state_machine/player_states/idle.gd" id="17_thr82"]
+[ext_resource type="Script" uid="uid://c7whpml006e7v" path="res://scripts/state_machine/player_states/moving.gd" id="18_8hn40"]
 [ext_resource type="PackedScene" uid="uid://b6xrt3tukrxl8" path="res://scenes/vfx/blood_spawner.tscn" id="21_fxx5w"]
 
 [sub_resource type="Resource" id="Resource_dbkp8"]
