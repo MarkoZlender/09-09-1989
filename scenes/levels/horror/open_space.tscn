@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=23 format=3 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="PackedScene" uid="uid://fxqb8ljgc2n4" path="res://scenes/entities/player_3d.tscn" id="4_5un2j"]
 [ext_resource type="PackedScene" uid="uid://b53l8y3nioja0" path="res://scenes/entities/enemy_3d.tscn" id="4_46gqi"]
@@ -11,6 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://b3vqxtjeytlsk" path="res://scenes/entities/note.tscn" id="9_7hute"]
 [ext_resource type="PackedScene" uid="uid://b0che6yn1shpk" path="res://scenes/environment/pickup_items/health_up.tscn" id="9_a8uie"]
 [ext_resource type="PackedScene" uid="uid://c7kdgxdhiqqc1" path="res://scenes/entities/wraith.tscn" id="10_a8uie"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ax1c"]
+size = Vector3(14.6937, 15.3973, 91.2288)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dxg7p"]
+size = Vector3(19.4777, 15.3973, 19.5518)
 
 [sub_resource type="Environment" id="Environment_gdr46"]
 background_mode = 1
@@ -32,7 +38,7 @@ agent_max_climb = 1.0
 
 [sub_resource type="Resource" id="Resource_8ax1c"]
 script = ExtResource("4_s8svk")
-speed = 3.0
+speed = 6.0
 rotation_controls = true
 level = 1
 level_progression = Array[int]([])
@@ -97,6 +103,30 @@ metadata/_custom_type_script = "uid://0fkyd553m7cg"
 
 [node name="OpenSpace" type="Node3D"]
 
+[node name="TreeCollision" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.444, 0, 15.2468)
+collision_mask = 38
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TreeCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.98854, 7.19867, -58.8803)
+shape = SubResource("BoxShape3D_8ax1c")
+
+[node name="TreeCollision2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157.483, 0, 15.2468)
+collision_mask = 38
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TreeCollision2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.98854, 7.19867, -58.8803)
+shape = SubResource("BoxShape3D_8ax1c")
+
+[node name="TreeCollision3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 153.633, 0, 15.2468)
+collision_mask = 38
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TreeCollision3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.88513, 7.19867, -94.7188)
+shape = SubResource("BoxShape3D_dxg7p")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gdr46")
 
@@ -107,14 +137,15 @@ navigation_mesh = SubResource("NavigationMesh_46gqi")
 data_directory = "res://resources/terrain3d"
 material = ExtResource("4_whrqo")
 assets = ExtResource("5_46gqi")
+collision_mode = 3
 collision_mask = 7
-mesh_lods = 3
-mesh_size = 44
+vertex_spacing = 0.25
 top_level = true
 metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("4_5un2j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.44986, 0.957915, -53.2526)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 132.939, 1.51979, -5.90781)
+floor_max_angle = 1.0472
 player_data = SubResource("Resource_8ax1c")
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
@@ -133,7 +164,8 @@ transform = Transform3D(1, 0, 0, 0, 0.965927, -0.258819, 0, 0.258819, 0.965927, 
 shape = SubResource("BoxShape3D_tmfig")
 
 [node name="FixedCamera2" parent="." instance=ExtResource("7_tmfig")]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 10.6768, 5.3529, -47.6514)
+transform = Transform3D(0.866025, -0.129409, 0.482963, 0, 0.965926, 0.258819, -0.5, -0.224144, 0.836516, 141.231, 11.2932, -0.0308189)
+current = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FixedCamera2/Area3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.965927, -0.258819, 0, 0.258819, 0.965927, 3.46975, -0.435137, -7.22645)
@@ -148,12 +180,12 @@ shape = SubResource("BoxShape3D_s8svk")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.13202, 7.71356, -58.1116)
-visible = false
 light_color = Color(0.839216, 0.862745, 0.890196, 1)
 light_energy = 0.07
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0868776, 0.996219, 0, -0.996219, 0.0868776, 5.8929, 4.17786, -49.4145)
+visible = false
 light_energy = 1.45
 
 [node name="Note" parent="." instance=ExtResource("9_7hute")]
