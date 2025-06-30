@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=25 format=3 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="PackedScene" uid="uid://fxqb8ljgc2n4" path="res://scenes/entities/player_3d.tscn" id="4_5un2j"]
 [ext_resource type="PackedScene" uid="uid://b53l8y3nioja0" path="res://scenes/entities/enemy_3d.tscn" id="4_46gqi"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ddy6jt43pjxe1" path="res://scenes/environment/fixed_camera.tscn" id="7_tmfig"]
 [ext_resource type="PackedScene" uid="uid://b3vqxtjeytlsk" path="res://scenes/entities/note.tscn" id="9_7hute"]
 [ext_resource type="PackedScene" uid="uid://b0che6yn1shpk" path="res://scenes/environment/pickup_items/health_up.tscn" id="9_a8uie"]
+[ext_resource type="PackedScene" uid="uid://bj0f2fjufm3hk" path="res://scenes/environment/props/campfire_pit.tscn" id="10_8ax1c"]
 [ext_resource type="PackedScene" uid="uid://c7kdgxdhiqqc1" path="res://scenes/entities/wraith.tscn" id="10_a8uie"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ax1c"]
@@ -21,12 +22,12 @@ size = Vector3(19.4777, 15.3973, 19.5518)
 [sub_resource type="Environment" id="Environment_gdr46"]
 background_mode = 1
 ambient_light_source = 2
-ambient_light_color = Color(0.103744, 0.103744, 0.103744, 1)
-ambient_light_energy = 5.0
+ambient_light_energy = 5.49
 glow_enabled = true
 glow_intensity = 0.61
 glow_strength = 1.69
 glow_blend_mode = 0
+volumetric_fog_enabled = true
 volumetric_fog_density = 0.1
 volumetric_fog_emission_energy = 0.5
 
@@ -64,10 +65,13 @@ collectible_rigid_body = ExtResource("6_cqt2m")
 collectible_rigid_body_number = 5
 metadata/_custom_type_script = "uid://0fkyd553m7cg"
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_tmfig"]
-size = Vector3(8.41443, 5.5813, 12.926)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_cqt2m"]
+size = Vector3(8.41443, 5.5813, 14.7351)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cpna0"]
+size = Vector3(8.41443, 5.5813, 14.7351)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_feu7w"]
 size = Vector3(8.41443, 5.5813, 14.7351)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s8svk"]
@@ -156,20 +160,33 @@ player = NodePath("../Player")
 [node name="Wraith" parent="." instance=ExtResource("10_a8uie")]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 8.48215, 0.983983, -54.3961)
 
-[node name="FixedCamera" parent="." instance=ExtResource("7_tmfig")]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 4.71958, 5.3529, -47.6514)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="FixedCamera/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.965927, -0.258819, 0, 0.258819, 0.965927, 0.721863, -0.669258, -6.35271)
-shape = SubResource("BoxShape3D_tmfig")
-
 [node name="FixedCamera2" parent="." instance=ExtResource("7_tmfig")]
-transform = Transform3D(0.866025, -0.129409, 0.482963, 0, 0.965926, 0.258819, -0.5, -0.224144, 0.836516, 141.231, 11.2932, -0.0308189)
+transform = Transform3D(0.866025, -0.129409, 0.482963, 0, 0.965926, 0.258819, -0.5, -0.224144, 0.836516, 141.231, 6.93751, -0.0308189)
 current = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FixedCamera2/Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.965927, -0.258819, 0, 0.258819, 0.965927, 3.46975, -0.435137, -7.22645)
+transform = Transform3D(0.472981, -9.23299e-08, 0.881073, 0.228038, 0.965927, -0.122417, -0.85105, 0.258819, 0.456866, -2.1241, 0.524617, -10.8083)
 shape = SubResource("BoxShape3D_cqt2m")
+
+[node name="FixedCamera4" parent="." instance=ExtResource("7_tmfig")]
+transform = Transform3D(-0.866025, 0.129409, -0.482963, 7.45058e-09, 0.965926, 0.258819, 0.5, 0.224144, -0.836516, 127.285, 6.704, -38.2694)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FixedCamera4/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.965927, -0.258819, 0, 0.258819, 0.965927, 3.46975, -0.435137, -7.22645)
+shape = SubResource("BoxShape3D_cpna0")
+
+[node name="campfire" parent="FixedCamera4" instance=ExtResource("10_8ax1c")]
+transform = Transform3D(4.98544, -0.370221, -0.0912194, 0.334621, 4.8216, -1.28069, 0.182794, 1.27085, 4.83234, 9.19888, -0.953919, -16.7506)
+
+[node name="FixedCamera5" parent="." instance=ExtResource("7_tmfig")]
+transform = Transform3D(1.49012e-07, 0.258819, -0.965926, 1.3903e-08, 0.965926, 0.258819, 1, -5.19963e-08, 1.40336e-07, 124.63, 4.02256, -20.3839)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FixedCamera5/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.965927, -0.258819, 0, 0.258819, 0.965927, 3.46975, -0.435137, -7.22645)
+shape = SubResource("BoxShape3D_feu7w")
+
+[node name="campfire" parent="FixedCamera5" instance=ExtResource("10_8ax1c")]
+transform = Transform3D(4.98544, -0.370221, -0.0912194, 0.334621, 4.8216, -1.28069, 0.182794, 1.27085, 4.83234, 9.19888, -0.953919, -16.7506)
 
 [node name="FixedCamera3" parent="." instance=ExtResource("7_tmfig")]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 20.4898, 5.3529, -47.6514)
@@ -179,7 +196,7 @@ transform = Transform3D(1, 0, 0, 0, 0.965927, -0.258819, 0, 0.258819, 0.965927, 
 shape = SubResource("BoxShape3D_s8svk")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.13202, 7.71356, -58.1116)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 135.688, 24.474, -7.55398)
 light_color = Color(0.839216, 0.862745, 0.890196, 1)
 light_energy = 0.07
 
@@ -187,6 +204,7 @@ light_energy = 0.07
 transform = Transform3D(1, 0, 0, 0, 0.0868776, 0.996219, 0, -0.996219, 0.0868776, 5.8929, 4.17786, -49.4145)
 visible = false
 light_energy = 1.45
+editor_only = true
 
 [node name="Note" parent="." instance=ExtResource("9_7hute")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.68438, 1.58474, -56.6767)
@@ -209,6 +227,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 25.8199, 0, -72.3998)
 enemy_data = SubResource("Resource_dxg7p")
 player = NodePath("../Player")
 
-[editable path="FixedCamera"]
 [editable path="FixedCamera2"]
+[editable path="FixedCamera4"]
+[editable path="FixedCamera5"]
 [editable path="FixedCamera3"]
