@@ -42,8 +42,7 @@ angular_velocity_max = 90.0
 gravity = Vector3(0, 0.4, 0)
 linear_accel_curve = SubResource("CurveTexture_kv17e")
 damping_curve = SubResource("CurveTexture_3pvtt")
-scale_min = 0.2
-scale_max = 0.5
+scale_max = 2.0
 scale_curve = SubResource("CurveTexture_n207h")
 color_ramp = SubResource("GradientTexture1D_n207h")
 
@@ -75,8 +74,8 @@ spread = 0.0
 angular_velocity_min = 50.0
 angular_velocity_max = 90.0
 gravity = Vector3(0, 0.4, 0)
-scale_min = 0.1
-scale_max = 0.25
+scale_min = 0.9
+scale_max = 1.2
 scale_curve = SubResource("CurveTexture_184s5")
 color = Color(0.701961, 0.701961, 0.701961, 0.309804)
 
@@ -105,6 +104,7 @@ domain_warp_enabled = true
 domain_warp_type = 1
 
 [sub_resource type="NoiseTexture3D" id="NoiseTexture3D_3pvtt"]
+resource_local_to_scene = true
 color_ramp = SubResource("Gradient_n207h")
 noise = SubResource("FastNoiseLite_184s5")
 

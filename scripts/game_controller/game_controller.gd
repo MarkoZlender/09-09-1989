@@ -14,6 +14,8 @@ var current_3d_scene: Node3D
 var current_2d_scene: Node2D
 var current_gui_scene: Control
 
+var process_scene_params: Array = []
+
 # spawn point in the next scene
 var next_position_marker: String = ""
 
@@ -24,11 +26,24 @@ func _ready() -> void:
 
 	Global.signal_bus.level_changed.connect(_on_level_changed)
 	Global.signal_bus.player_died.connect(_on_player_died)
+	set_process(false)
 
 	if start_scene.resource_path.find("res://scenes/ui") == -1:
 		change_3d_scene(start_scene.resource_path)
 	else:
 		change_gui_scene(start_scene.resource_path, false, false, false)
+
+func _process(_delta: float) -> void:
+	change_3d_scene(
+		process_scene_params[0],
+		process_scene_params[1],
+		process_scene_params[2],
+		process_scene_params[3],
+		process_scene_params[4],
+		process_scene_params[5],
+		process_scene_params[6]
+	)
+	#print("loading")
 
 func change_gui_scene(
 		new_scene: String,
@@ -78,11 +93,27 @@ func change_3d_scene(
 		seconds: float = 1.0
 	) -> void:
 	
+	if is_processing():
+		return
+	else:
+		process_scene_params = [
+			new_scene,
+			delete,
+			keep_running,
+			transition,
+			transition_in,
+			transition_out,
+			seconds
+		]
+		set_process(true)
 	if new_scene == "":
 		current_3d_scene.queue_free()
 		return
+	change_gui_scene(Global.LOADING_SCREEN, true, false, false)
 
-	change_gui_scene(Global.LOADING_SCREEN, true, false, true)
+	
+	
+	#await get_tree().process_frame
 	if transition:
 		transition_controller.transition(transition_out, seconds)
 		await transition_controller.animation_player.animation_finished
@@ -96,31 +127,43 @@ func change_3d_scene(
 			world_3d.remove_child(current_3d_scene) # Keeps node in memory, does not run
 
 
+	#_load_scene_threaded(new_scene)
+	ResourceLoader.load_threaded_request(new_scene, "PackedScene", true)
 	_load_scene_threaded(new_scene)
-	await scene_loaded
-	var new: Resource = ResourceLoader.load_threaded_get(new_scene)
-	var instance: Node = new.instantiate()
-	world_3d.add_child(instance)
-	current_3d_scene = instance
+	
+	#await scene_loaded
+	#await scene_loaded
+	
+	# var new: Resource = ResourceLoader.load_threaded_get(new_scene)
+	# var instance: Node = new.instantiate()
+	# world_3d.add_child(instance)
+	# current_3d_scene = instance
 	transition_controller.transition(transition_in, seconds)
-	await transition_controller.animation_player.animation_finished
-	change_gui_scene("", true, false, true)
+	#await transition_controller.animation_player.animation_finished
+	#await scene_loaded
+	#change_gui_scene("", true, false, true)
 
 func _load_scene_threaded(scene_path: String) -> void:
 	call_deferred("_deferred_load_scene_threaded", scene_path)
 
 func _deferred_load_scene_threaded(scene_path: String) -> void:
 	var progress: Array = []
-	ResourceLoader.load_threaded_request(scene_path)
-	while true:
-		var status: int = ResourceLoader.load_threaded_get_status(scene_path, progress)
-		print(str(floor(progress[0] * 100)) + "%")
-		load_progress.emit(str(floor(progress[0] * 100)) + "%")
-		if status == ResourceLoader.THREAD_LOAD_LOADED:
-			break
-		await get_tree().create_timer(0.001).timeout
-		#await Engine.get_main_loop().process_frame
-	scene_loaded.emit()
+	
+	#while true:
+	var status: int = ResourceLoader.load_threaded_get_status(scene_path, progress)
+	load_progress.emit(str(floor(progress[0] * 100)) + "%")
+	print(str(floor(progress[0] * 100)) + "%")
+	if status == ResourceLoader.THREAD_LOAD_LOADED:
+		# Resource is loaded, we can use it
+		var new: Resource = ResourceLoader.load_threaded_get(scene_path)
+		var instance: Node = new.instantiate()
+		world_3d.call_deferred("add_child", instance)
+		current_3d_scene = instance
+		scene_loaded.emit()
+		set_process(false)
+		change_gui_scene("", true, false, true)
+	#await get_tree().create_timer(0.001).timeout
+	#await Engine.get_main_loop().process_frame
 
 func change_2d_scene(
 		new_scene: String,

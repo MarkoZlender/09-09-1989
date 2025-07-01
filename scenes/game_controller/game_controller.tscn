@@ -62,3 +62,4 @@ layer = 6
 
 [node name="CRTShader" parent="GUI/CRTShader" instance=ExtResource("4_gupwa")]
 material = SubResource("ShaderMaterial_giy5l")
+metadata/_edit_use_anchors_ = true
