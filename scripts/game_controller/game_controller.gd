@@ -130,7 +130,7 @@ func change_3d_scene(
 
 
 	#_load_scene_threaded(new_scene)
-	ResourceLoader.load_threaded_request(new_scene, "PackedScene", false, ResourceLoader.CacheMode.CACHE_MODE_IGNORE)
+	ResourceLoader.load_threaded_request(new_scene, "PackedScene", false, ResourceLoader.CacheMode.CACHE_MODE_REUSE)
 	_deferred_load_scene_threaded(new_scene)
 
 	
