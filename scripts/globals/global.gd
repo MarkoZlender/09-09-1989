@@ -2,7 +2,7 @@ extends Node
 
 const SLOT_BUTTON_SCENE: String = "res://scenes/ui/save_system/slot_button.tscn"
 const MAIN_MENU_SCENE: String = "res://scenes/ui/main_menu.tscn"
-const STARTING_LEVEL: String = "res://scenes/levels/test_level.tscn"
+const STARTING_LEVEL: String = "res://scenes/levels/horror/open_space.tscn"
 const LOADING_SCREEN: String = "res://scenes/ui/save_system/loading_screen.tscn"
 const GAME_OVER_SCENE: String = "res://scenes/ui/game_over_screen.tscn"
 
@@ -34,3 +34,6 @@ func deserialize(save_data: Dictionary) -> void:
 	for node: Node in savable_globals:
 		if node.name in save_data:
 			node.call("load", save_data[node.name])
+
+func wait(seconds: float) -> void:
+	await get_tree().create_timer(seconds).timeout

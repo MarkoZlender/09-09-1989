@@ -33,7 +33,7 @@ PanelContainer/styles/panel = SubResource("StyleBoxFlat_qkmqt")
 RichTextLabel/font_sizes/normal_font_size = 16
 
 [node name="DialogueBalloon" type="CanvasLayer"]
-layer = 100
+layer = 5
 script = ExtResource("1_36de5")
 
 [node name="Balloon" type="Control" parent="."]

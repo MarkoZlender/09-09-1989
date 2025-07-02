@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=53 format=3 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="Script" uid="uid://cup8rquk0oej5" path="res://scripts/utility_scripts/open_space.gd" id="1_dxg7p"]
 [ext_resource type="PackedScene" uid="uid://bt5qb4kfrjilw" path="res://scenes/environment/collisions/tree_collision.tscn" id="2_cpna0"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://ddy6jt43pjxe1" path="res://scenes/environment/fixed_camera.tscn" id="7_tmfig"]
 [ext_resource type="PackedScene" uid="uid://b3vqxtjeytlsk" path="res://scenes/entities/note.tscn" id="9_7hute"]
 [ext_resource type="PackedScene" uid="uid://b0che6yn1shpk" path="res://scenes/environment/pickup_items/health_up.tscn" id="9_a8uie"]
-[ext_resource type="PackedScene" uid="uid://bj0f2fjufm3hk" path="res://scenes/environment/props/campfire_pit.tscn" id="10_8ax1c"]
 [ext_resource type="PackedScene" uid="uid://c7kdgxdhiqqc1" path="res://scenes/entities/wraith.tscn" id="10_a8uie"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_746rq"]
@@ -427,122 +426,6 @@ collision_mask = 7
 vertex_spacing = 0.25
 top_level = true
 metadata/_edit_lock_ = true
-
-[node name="campfire34" parent="NavigationRegion3D2" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 218.698, 1.51979, -46.8163)
-
-[node name="campfire35" parent="NavigationRegion3D2" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 230.167, 1.51979, -120.885)
-
-[node name="campfire33" parent="NavigationRegion3D2" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 43.6107, 1.51979, -114.328)
-
-[node name="Campfires" type="Node3D" parent="."]
-
-[node name="campfire2" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 110.979, 1.51979, -103.486)
-
-[node name="campfire4" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 106.868, 1.51979, -104.942)
-
-[node name="campfire5" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 114.878, 1.51979, -101.647)
-
-[node name="campfire6" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 118.571, 1.51979, -98.9506)
-
-[node name="campfire7" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 121.878, 1.51979, -97.4373)
-
-[node name="campfire8" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 131.578, 1.51979, -95.8806)
-
-[node name="campfire9" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 134.973, 1.51979, -98.0058)
-
-[node name="campfire10" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 138.055, 1.51979, -100.083)
-
-[node name="campfire11" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 141.153, 1.51979, -101.991)
-
-[node name="campfire37" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 127.944, 1.51979, -113.617)
-
-[node name="campfire38" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 131.426, 1.51979, -115.779)
-
-[node name="campfire39" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 125.116, 1.51979, -115.779)
-
-[node name="campfire36" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 165.711, 1.51979, -218.415)
-
-[node name="campfire12" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 148.037, 1.51979, -113.895)
-
-[node name="campfire13" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 150.591, 1.51979, -121.949)
-
-[node name="campfire14" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 150.296, 1.51979, -124.329)
-
-[node name="campfire16" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 146.72, 1.51979, -129.177)
-
-[node name="campfire17" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 143.279, 1.51979, -129.85)
-
-[node name="campfire18" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 139.74, 1.51979, -130.305)
-
-[node name="campfire19" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 135.78, 1.51979, -130.305)
-
-[node name="campfire20" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 132.831, 1.51979, -130.305)
-
-[node name="campfire21" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 130.52, 1.51979, -131.75)
-
-[node name="campfire22" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 122.519, 1.51979, -132.299)
-
-[node name="campfire23" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 118.13, 1.51979, -129.973)
-
-[node name="campfire24" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 114.242, 1.51979, -129.383)
-
-[node name="campfire25" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 110.64, 1.51979, -128.869)
-
-[node name="campfire26" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 107.721, 1.51979, -128.207)
-
-[node name="campfire27" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 105.271, 1.51979, -126.294)
-
-[node name="campfire28" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 102.728, 1.51979, -123.497)
-
-[node name="campfire29" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 99.1895, 1.51979, -121.357)
-
-[node name="campfire30" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 99.1895, 1.51979, -113.767)
-
-[node name="campfire31" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 101.109, 1.51979, -110.875)
-
-[node name="campfire32" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 103.346, 1.51979, -108.205)
-
-[node name="campfire15" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 148.891, 1.51979, -127.349)
-
-[node name="campfire3" parent="Campfires" instance=ExtResource("10_8ax1c")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 147.47, 1.51979, -111.152)
 
 [node name="Wraith" parent="." instance=ExtResource("10_a8uie")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 127.999, 1.51979, -121.337)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://2dbjk0u75wjo" path="res://scripts/game_controller/game_controller.gd" id="1_ca7gh"]
 [ext_resource type="PackedScene" uid="uid://c62u2p3f0l7wg" path="res://scenes/game_controller/transition_controller.tscn" id="2_bddcm"]
-[ext_resource type="PackedScene" uid="uid://bmcuon78mxwm0" path="res://scenes/levels/horror/open_space.tscn" id="2_c3f1a"]
+[ext_resource type="PackedScene" uid="uid://7ttjcnsru146" path="res://scenes/ui/main_menu.tscn" id="2_s8vvr"]
 [ext_resource type="PackedScene" uid="uid://brdsm3kei2sjp" path="res://scenes/vfx/crt_shader.tscn" id="4_gupwa"]
 [ext_resource type="Shader" uid="uid://dvqj5decgwjkr" path="res://resources/crt_shader.gdshader" id="5_s8vvr"]
 
@@ -36,7 +36,7 @@ world_3d = NodePath("World3D")
 world_2d = NodePath("World2D")
 gui = NodePath("GUI")
 transition_controller = NodePath("GUI/TransitionController/TransitionController")
-start_scene = ExtResource("2_c3f1a")
+start_scene = ExtResource("2_s8vvr")
 
 [node name="World3D" type="Node3D" parent="."]
 

@@ -34,16 +34,19 @@ func _ready() -> void:
 		change_gui_scene(start_scene.resource_path, false, false, false)
 
 func _process(_delta: float) -> void:
-	change_3d_scene(
-		process_scene_params[0],
-		process_scene_params[1],
-		process_scene_params[2],
-		process_scene_params[3],
-		process_scene_params[4],
-		process_scene_params[5],
-		process_scene_params[6]
-	)
-	#print("loading")
+	if process_scene_params.size() == 0:
+		return
+	_deferred_load_scene_threaded(process_scene_params[0])
+	# change_3d_scene(
+	# 	process_scene_params[0],
+	# 	process_scene_params[1],
+	# 	process_scene_params[2],
+	# 	process_scene_params[3],
+	# 	process_scene_params[4],
+	# 	process_scene_params[5],
+	# 	process_scene_params[6]
+	# )
+	print("loading")
 
 func change_gui_scene(
 		new_scene: String,
@@ -66,6 +69,7 @@ func change_gui_scene(
 			current_gui_scene.visible = false # Keeps node in memory and running
 		else:
 			gui.remove_child(current_gui_scene) # Keeps node in memory, does not run
+
 	if new_scene != "":
 		var new: Node = load(new_scene).instantiate()
 		gui.add_child(new)
@@ -111,8 +115,6 @@ func change_3d_scene(
 		return
 	change_gui_scene(Global.LOADING_SCREEN, true, false, false)
 
-	
-	
 	#await get_tree().process_frame
 	if transition:
 		transition_controller.transition(transition_out, seconds)
@@ -128,8 +130,9 @@ func change_3d_scene(
 
 
 	#_load_scene_threaded(new_scene)
-	ResourceLoader.load_threaded_request(new_scene, "PackedScene", true)
-	_load_scene_threaded(new_scene)
+	ResourceLoader.load_threaded_request(new_scene, "PackedScene", false, ResourceLoader.CacheMode.CACHE_MODE_IGNORE)
+	_deferred_load_scene_threaded(new_scene)
+
 	
 	#await scene_loaded
 	#await scene_loaded
@@ -138,13 +141,10 @@ func change_3d_scene(
 	# var instance: Node = new.instantiate()
 	# world_3d.add_child(instance)
 	# current_3d_scene = instance
-	transition_controller.transition(transition_in, seconds)
+	#transition_controller.transition(transition_in, seconds)
 	#await transition_controller.animation_player.animation_finished
 	#await scene_loaded
 	#change_gui_scene("", true, false, true)
-
-func _load_scene_threaded(scene_path: String) -> void:
-	call_deferred("_deferred_load_scene_threaded", scene_path)
 
 func _deferred_load_scene_threaded(scene_path: String) -> void:
 	var progress: Array = []
@@ -152,16 +152,31 @@ func _deferred_load_scene_threaded(scene_path: String) -> void:
 	#while true:
 	var status: int = ResourceLoader.load_threaded_get_status(scene_path, progress)
 	load_progress.emit(str(floor(progress[0] * 100)) + "%")
-	print(str(floor(progress[0] * 100)) + "%")
+	#print(str(floor(progress[0] * 100)) + "%")
+	#print("Status: " + str(status))
+	if status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+		#print(str(floor(progress[0] * 100)) + "%")
+		load_progress.emit(str(floor(progress[0] * 100)) + "%")
 	if status == ResourceLoader.THREAD_LOAD_LOADED:
 		# Resource is loaded, we can use it
 		var new: Resource = ResourceLoader.load_threaded_get(scene_path)
 		var instance: Node = new.instantiate()
-		world_3d.call_deferred("add_child", instance)
-		current_3d_scene = instance
-		scene_loaded.emit()
-		set_process(false)
-		change_gui_scene("", true, false, true)
+
+		#await idle frame
+		#await get_tree().process_frame
+		#await instance.ready # Ensure the instance is ready before adding it to the scene tree
+		#call_deferred("print", "instantiated: " + instance.name)
+		#world_3d.call_deferred("add_child", instance)
+		if is_instance_valid(instance):
+			print("Instance is valid: " + instance.name)
+			world_3d.call_deferred("add_child", instance)
+		#print("added to world_3d: " + instance.name)
+			current_3d_scene = instance
+			scene_loaded.emit()
+			set_process(false)
+			change_gui_scene("", true, false, true)
+		else:
+			printerr("Instance is not valid: " + scene_path)
 	#await get_tree().create_timer(0.001).timeout
 	#await Engine.get_main_loop().process_frame
 
@@ -198,4 +213,3 @@ func _on_level_changed() -> void:
 
 func _on_player_died() -> void:
 	change_gui_scene(Global.GAME_OVER_SCENE, true, false, true)
-
