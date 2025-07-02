@@ -1,7 +1,7 @@
 class_name GameController extends Node
 
 signal scene_loaded
-signal load_progress(percent: String)
+signal load_progress(percent: float)
 
 @export var world_3d: Node3D
 @export var world_2d: Node2D
@@ -151,12 +151,12 @@ func _deferred_load_scene_threaded(scene_path: String) -> void:
 	
 	#while true:
 	var status: int = ResourceLoader.load_threaded_get_status(scene_path, progress)
-	load_progress.emit(str(floor(progress[0] * 100)) + "%")
+	load_progress.emit(floor(progress[0] * 100))
 	#print(str(floor(progress[0] * 100)) + "%")
 	#print("Status: " + str(status))
 	if status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 		#print(str(floor(progress[0] * 100)) + "%")
-		load_progress.emit(str(floor(progress[0] * 100)) + "%")
+		load_progress.emit(floor(progress[0] * 100))
 	if status == ResourceLoader.THREAD_LOAD_LOADED:
 		# Resource is loaded, we can use it
 		var new: Resource = ResourceLoader.load_threaded_get(scene_path)
