@@ -10,4 +10,4 @@ func _process(delta: float) -> void:
 	var sampled_noise: float = noise.noise.get_noise_1d(time_passed)
 	sampled_noise = abs(sampled_noise)
 
-	light_energy = sampled_noise
+	light_energy = sampled_noise * 5
