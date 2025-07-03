@@ -3,7 +3,6 @@ class_name Enemy extends CharacterBody3D
 @export var enemy_data: EnemyData
 @export var player: Player
 
-
 var current_state: EnemyState.State = EnemyState.State.DEAGGROED
 
 var target_reached: bool = false
@@ -32,6 +31,12 @@ func _ready() -> void:
 
 func aggroed(delta: float) -> void:
 	navigation_agent.target_position = player.global_position
+	if !navigation_agent.is_target_reachable():
+		current_state = EnemyState.State.DEAGGROED
+		%StateChart.send_event("deaggroed")
+		navigation_agent.target_position = global_position
+		print("Player out of aggro range, switching to DEAGROED state")
+		return
 	direction = (navigation_agent.get_next_path_position() - global_position).normalized()
 
 	velocity = velocity.move_toward(direction * movement_speed, accel * delta)

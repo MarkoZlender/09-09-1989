@@ -288,6 +288,34 @@ collectible_rigid_body = ExtResource("6_cqt2m")
 collectible_rigid_body_number = 5
 metadata/_custom_type_script = "uid://0fkyd553m7cg"
 
+[sub_resource type="Resource" id="Resource_cpna0"]
+script = ExtResource("6_46gqi")
+movement_speed = 2.0
+accel = 20.0
+level = 1
+experience = 10
+health = 100
+hit_strength = 10
+wander_range_x = Vector2(-5, 5)
+wander_range_z = Vector2(-5, 5)
+collectible_rigid_body = ExtResource("6_cqt2m")
+collectible_rigid_body_number = 5
+metadata/_custom_type_script = "uid://0fkyd553m7cg"
+
+[sub_resource type="Resource" id="Resource_dxg7p"]
+script = ExtResource("6_46gqi")
+movement_speed = 2.0
+accel = 20.0
+level = 1
+experience = 10
+health = 100
+hit_strength = 10
+wander_range_x = Vector2(-5, 5)
+wander_range_z = Vector2(-5, 5)
+collectible_rigid_body = ExtResource("6_cqt2m")
+collectible_rigid_body_number = 5
+metadata/_custom_type_script = "uid://0fkyd553m7cg"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_og8ul"]
 size = Vector3(8.41443, 5.5813, 31.6138)
 
@@ -317,34 +345,6 @@ size = Vector3(25.7423, 5.5813, 14.7351)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_feu7w"]
 size = Vector3(8.41443, 5.5813, 14.7351)
-
-[sub_resource type="Resource" id="Resource_cpna0"]
-script = ExtResource("6_46gqi")
-movement_speed = 2.0
-accel = 20.0
-level = 1
-experience = 10
-health = 100
-hit_strength = 10
-wander_range_x = Vector2(-5, 5)
-wander_range_z = Vector2(-5, 5)
-collectible_rigid_body = ExtResource("6_cqt2m")
-collectible_rigid_body_number = 5
-metadata/_custom_type_script = "uid://0fkyd553m7cg"
-
-[sub_resource type="Resource" id="Resource_dxg7p"]
-script = ExtResource("6_46gqi")
-movement_speed = 2.0
-accel = 20.0
-level = 1
-experience = 10
-health = 100
-hit_strength = 10
-wander_range_x = Vector2(-5, 5)
-wander_range_z = Vector2(-5, 5)
-collectible_rigid_body = ExtResource("6_cqt2m")
-collectible_rigid_body_number = 5
-metadata/_custom_type_script = "uid://0fkyd553m7cg"
 
 [node name="OpenSpace" type="Node3D"]
 script = ExtResource("1_dxg7p")
@@ -686,6 +686,16 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 43.1336, 1.51249, -117.092)
 enemy_data = SubResource("Resource_s8svk")
 player = NodePath("../Player")
 
+[node name="Enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 218.898, 1.51446, -57.3763)
+enemy_data = SubResource("Resource_cpna0")
+player = NodePath("../Player")
+
+[node name="Enemy3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 222.529, 1.51436, -115.935)
+enemy_data = SubResource("Resource_dxg7p")
+player = NodePath("../Player")
+
 [node name="StartingCam" parent="." instance=ExtResource("7_tmfig")]
 transform = Transform3D(0.866025, -0.129409, 0.482963, 0, 0.965926, 0.258819, -0.5, -0.224144, 0.836516, 141.231, 6.93751, -0.0308189)
 
@@ -777,16 +787,6 @@ note_text = "Please help me get rid of this burden"
 
 [node name="HealthUp" parent="." instance=ExtResource("9_a8uie")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93651, 0.632984, -58.2992)
-
-[node name="Enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 218.898, 1.51446, -57.3763)
-enemy_data = SubResource("Resource_cpna0")
-player = NodePath("../Player")
-
-[node name="Enemy3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 222.529, 1.51436, -115.935)
-enemy_data = SubResource("Resource_dxg7p")
-player = NodePath("../Player")
 
 [editable path="TreeCollision"]
 [editable path="StartingCam"]
