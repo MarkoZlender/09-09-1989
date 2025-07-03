@@ -38,3 +38,5 @@ https://freesound.org/people/Defaultv/sounds/534357/ - item pickup
 https://opengameart.org/content/medicine-pack-16x16 - health pickup
 https://freesound.org/people/KeshaFilm/sounds/471834/ - health pickup
 https://elegantcrow.itch.io/psx-retro-style-tree-pack - trees
+https://elbolilloduro.itch.io/survival-psx - camping items
+https://ggbot.itch.io/psx-style-cars - cars

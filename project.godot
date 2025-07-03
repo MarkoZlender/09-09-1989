@@ -8,6 +8,10 @@
 
 config_version=5
 
+[Asset_Placer]
+
+Settings/Library_Save_File_Location=0
+
 [animation]
 
 warnings/check_invalid_track_paths=false
@@ -16,7 +20,7 @@ warnings/check_invalid_track_paths=false
 
 config/name="topdown_adventure"
 run/main_scene="uid://bmcuon78mxwm0"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -34,6 +38,7 @@ gdscript/warnings/inferred_declaration=1
 [dialogue_manager]
 
 runtime/balloon_path="res://scenes/ui/dialogue_baloon/balloon.tscn"
+runtime/advanced/uses_dotnet=true
 
 [display]
 
@@ -48,7 +53,7 @@ project/assembly_name="fixed_cam"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/gloot/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg", "res://addons/mixamo_animation_retargeter/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/assetplacer/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/gloot/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg", "res://addons/mixamo_animation_retargeter/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
 
 [global_group]
 
