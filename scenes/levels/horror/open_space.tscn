@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=76 format=4 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="Script" uid="uid://cup8rquk0oej5" path="res://scripts/utility_scripts/open_space.gd" id="1_dxg7p"]
 [ext_resource type="PackedScene" uid="uid://bt5qb4kfrjilw" path="res://scenes/environment/collisions/tree_collision.tscn" id="2_cpna0"]
@@ -305,6 +305,12 @@ size = Vector3(6.51767, 5.5813, 7.17938)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w7amk"]
 size = Vector3(25.8185, 5.5813, 45.7704)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_da61h"]
+size = Vector3(45.4278, 5.5813, 24.1621)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_poo3i"]
+size = Vector3(31.0256, 5.5813, 45.7704)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cpna0"]
 size = Vector3(25.7423, 5.5813, 14.7351)
@@ -671,12 +677,12 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 134.808, 1.51979, -94.9241)
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 127.999, 1.51979, -121.337)
 
 [node name="Player" parent="." instance=ExtResource("4_5un2j")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 125.485, 1.50001, -99.1979)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 88.0352, 1.50001, -116.897)
 floor_max_angle = 1.0472
 player_data = SubResource("Resource_8ax1c")
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 43.1336, 1.51249, -117.092)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 43.1336, 1.51249, -117.092)
 enemy_data = SubResource("Resource_s8svk")
 player = NodePath("../Player")
 
@@ -720,8 +726,22 @@ shape = SubResource("BoxShape3D_7gb8x")
 transform = Transform3D(0.733006, 0.352759, -0.581604, 0, 0.855021, 0.518594, 0.680222, -0.380133, 0.626735, 105.832, 13.8357, -100.502)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FixedCamera8/Area3D" index="0"]
-transform = Transform3D(0.707106, 2.8871e-08, -0.707107, -0.353553, 0.866027, -0.353554, 0.612372, 0.500001, 0.612373, 2.89243, 6.10783, -30.5697)
+transform = Transform3D(0.707106, 2.8871e-08, -0.707107, -0.353553, 0.866027, -0.353554, 0.612372, 0.500001, 0.612373, 5.10867, 4.8693, -28.5278)
 shape = SubResource("BoxShape3D_w7amk")
+
+[node name="FixedCamera10" parent="." instance=ExtResource("7_tmfig")]
+transform = Transform3D(0.467328, -0.458481, 0.75591, 8.24076e-10, 0.855021, 0.518594, -0.884084, -0.242354, 0.399575, 105.832, 13.8357, -109.969)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FixedCamera10/Area3D" index="0"]
+transform = Transform3D(0.500042, 0.0055919, -0.865983, -0.43597, 0.865645, -0.246153, 0.748255, 0.50063, 0.435298, -7.31729, 4.1924, -27.1438)
+shape = SubResource("BoxShape3D_da61h")
+
+[node name="FixedCamera11" parent="." instance=ExtResource("7_tmfig")]
+transform = Transform3D(0.467328, -0.458481, 0.75591, 8.24076e-10, 0.855021, 0.518594, -0.884084, -0.242354, 0.399575, 57.682, 6.865, -109.969)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FixedCamera11/Area3D" index="0"]
+transform = Transform3D(0.500042, 0.0055919, -0.865983, -0.43597, 0.865645, -0.246153, 0.748255, 0.50063, 0.435298, 6.70831, 7.95964, -21.2476)
+shape = SubResource("BoxShape3D_poo3i")
 
 [node name="FixedCamera4" parent="." instance=ExtResource("7_tmfig")]
 transform = Transform3D(-0.866025, 0.129409, -0.482963, 7.45058e-09, 0.965926, 0.258819, 0.5, 0.224144, -0.836516, 127.285, 6.704, -38.2694)
@@ -759,12 +779,12 @@ note_text = "Please help me get rid of this burden"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.93651, 0.632984, -58.2992)
 
 [node name="Enemy2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 218.898, 1.51446, -57.3763)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 218.898, 1.51446, -57.3763)
 enemy_data = SubResource("Resource_cpna0")
 player = NodePath("../Player")
 
 [node name="Enemy3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 222.529, 1.51436, -115.935)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 222.529, 1.51436, -115.935)
 enemy_data = SubResource("Resource_dxg7p")
 player = NodePath("../Player")
 
@@ -775,5 +795,7 @@ player = NodePath("../Player")
 [editable path="FixedCamera6"]
 [editable path="FixedCamera9"]
 [editable path="FixedCamera8"]
+[editable path="FixedCamera10"]
+[editable path="FixedCamera11"]
 [editable path="FixedCamera4"]
 [editable path="FixedCamera5"]
