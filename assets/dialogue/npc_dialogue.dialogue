@@ -7,6 +7,7 @@ if not NPCGameState.has_been_met
 Wraith: Here are some choices.
 - {{NPCGameState.teeth_counter}} teeth left [if NPCGameState. teeth_counter <= 0]
 	Wraith: Now you are free.
+	do Global.signal_bus.quest_completed.emit()
 - Second one
 	Wraith: You picked the second one.
 - Start again => start

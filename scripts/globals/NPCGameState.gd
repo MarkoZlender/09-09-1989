@@ -1,7 +1,7 @@
 extends Node
 
 var has_been_met: bool = false
-var teeth_counter: int = 5
+var teeth_counter: int = 0
 
 func _ready() -> void:
 	Global.signal_bus.item_rigid_body_collected.connect(_on_item_rigid_body_collected)

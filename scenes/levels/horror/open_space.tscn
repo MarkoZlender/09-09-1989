@@ -29,7 +29,6 @@
 [ext_resource type="Texture2D" uid="uid://cooybxp4hycyi" path="res://assets/models/camping/Textures/Trunk_01.png" id="13_ruex4"]
 [ext_resource type="PackedScene" uid="uid://dmlx1plc5f5hm" path="res://scenes/environment/props/branch.tscn" id="14_akovg"]
 [ext_resource type="Texture2D" uid="uid://dmjt8vkebbk4f" path="res://assets/models/camping/Textures/bonfire.png" id="15_ej3wi"]
-[ext_resource type="Script" uid="uid://bbu06kfpsrvmn" path="res://scripts/interaction/interactables/tent.gd" id="30_ej3wi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_746rq"]
 resource_local_to_scene = true
@@ -90,6 +89,10 @@ size = Vector3(8.59521, 12.7744, 8.04324)
 [sub_resource type="BoxShape3D" id="BoxShape3D_v7tlf"]
 resource_local_to_scene = true
 size = Vector3(5.08777, 12.7744, 36.1642)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_61utb"]
+resource_local_to_scene = true
+size = Vector3(5.08777, 14.2671, 52.5188)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lqbop"]
 resource_local_to_scene = true
@@ -740,6 +743,10 @@ shape = SubResource("BoxShape3D_v7tlf")
 transform = Transform3D(0.557557, 0, 0.830139, 0, 1, 0, -0.830139, 0, 0.557557, 31.5599, 5.74262, -137.727)
 shape = SubResource("BoxShape3D_v7tlf")
 
+[node name="QuestCollisionShape" type="CollisionShape3D" parent="TreeCollision" groups=["removable_objects"]]
+transform = Transform3D(0.067789, 0, 0.9977, 0, 1, 0, -0.9977, 0, 0.067789, 5.89725, 4.99628, -145.453)
+shape = SubResource("BoxShape3D_61utb")
+
 [node name="CollisionShape3D26" type="CollisionShape3D" parent="TreeCollision"]
 transform = Transform3D(0.981353, 0, -0.192213, 0, 1, 0, 0.192213, 0, 0.981353, 20.1114, 5.74262, -162.889)
 shape = SubResource("BoxShape3D_v7tlf")
@@ -1161,7 +1168,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 134.808, 1.51979, -97.801)
 [node name="Entities" type="Node3D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("4_5un2j")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 92.6084, 1.50596, -116.574)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 118.071, 1.50596, -116.574)
 floor_max_angle = 1.0472
 player_data = SubResource("Resource_8ax1c")
 
@@ -1180,7 +1187,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 222.529, 1.51436, -115.935)
 enemy_data = SubResource("Resource_dxg7p")
 player = NodePath("../Player")
 
-[node name="Wraith" parent="Entities" instance=ExtResource("10_a8uie")]
+[node name="Wraith" parent="Entities" groups=["removable_objects"] instance=ExtResource("10_a8uie")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 127.999, 1.51979, -121.337)
 
 [node name="Cameras" type="Node3D" parent="."]
@@ -1322,326 +1329,273 @@ editor_only = true
 
 [node name="Props" type="Node3D" parent="."]
 
-[node name="tent_tscn" type="MeshInstance3D" parent="Props" instance=ExtResource("5_fpkip")]
+[node name="tent_tscn" parent="Props" instance=ExtResource("5_fpkip")]
 transform = Transform3D(4.19304e-05, -319.752, -3.81174e-05, 0, -3.81174e-05, 319.752, -319.752, -4.19304e-05, -4.99849e-12, 134.7, 2.1, -127.3)
 mesh = SubResource("ArrayMesh_v7tlf")
-skeleton = NodePath("")
-script = ExtResource("30_ej3wi")
 
-[node name="tent_tscn2" type="MeshInstance3D" parent="Props" instance=ExtResource("5_fpkip")]
+[node name="tent_tscn2" parent="Props" instance=ExtResource("5_fpkip")]
 transform = Transform3D(120.51, -296.173, -3.53066e-05, -5.41681e-19, -3.81174e-05, 319.752, -296.173, -120.51, -1.4366e-05, 139, 2.1, -127)
 mesh = SubResource("ArrayMesh_v7tlf")
-skeleton = NodePath("")
-script = ExtResource("30_ej3wi")
 
-[node name="tent_tscn3" type="MeshInstance3D" parent="Props" instance=ExtResource("5_fpkip")]
+[node name="tent_tscn3" parent="Props" instance=ExtResource("5_fpkip")]
 transform = Transform3D(215.143, -236.547, -2.81986e-05, -5.41681e-19, -3.81174e-05, 319.752, -236.547, -215.143, -2.56471e-05, 145, 2.1, -125.8)
 mesh = SubResource("ArrayMesh_v7tlf")
-skeleton = NodePath("")
-script = ExtResource("30_ej3wi")
 
-[node name="tent_tscn4" type="MeshInstance3D" parent="Props" instance=ExtResource("5_fpkip")]
+[node name="tent_tscn4" parent="Props" instance=ExtResource("5_fpkip")]
 transform = Transform3D(319.567, 10.886, 1.29771e-06, 3.20946e-12, -3.81174e-05, 319.752, 10.886, -319.567, -3.80953e-05, 148, 2.1, -123)
 mesh = SubResource("ArrayMesh_v7tlf")
-skeleton = NodePath("")
-script = ExtResource("30_ej3wi")
 
-[node name="tent_tscn5" type="MeshInstance3D" parent="Props" instance=ExtResource("5_fpkip")]
+[node name="tent_tscn5" parent="Props" instance=ExtResource("5_fpkip")]
 transform = Transform3D(319.567, 10.886, 1.29771e-06, 3.20946e-12, -3.81174e-05, 319.752, 10.886, -319.567, -3.80953e-05, 143.4, 2.1, -113.2)
 mesh = SubResource("ArrayMesh_v7tlf")
-skeleton = NodePath("")
-script = ExtResource("30_ej3wi")
 
-[node name="tent_tscn6" type="MeshInstance3D" parent="Props" instance=ExtResource("5_fpkip")]
+[node name="tent_tscn6" parent="Props" instance=ExtResource("5_fpkip")]
 transform = Transform3D(146.986, 283.966, 0.00010463, -6.8416e-05, -8.24027e-05, 319.752, 283.966, -146.986, 2.28794e-05, 137, 2.1, -103)
 mesh = SubResource("ArrayMesh_v7tlf")
-skeleton = NodePath("")
-script = ExtResource("30_ej3wi")
 
-[node name="tent_tscn7" type="MeshInstance3D" parent="Props" instance=ExtResource("5_fpkip")]
+[node name="tent_tscn7" parent="Props" instance=ExtResource("5_fpkip")]
 transform = Transform3D(101.982, 303.053, 9.99199e-05, -6.8416e-05, -8.24027e-05, 319.752, 303.053, -101.982, 3.85612e-05, 133.7, 2.1, -101.5)
 mesh = SubResource("ArrayMesh_v7tlf")
-skeleton = NodePath("")
-script = ExtResource("30_ej3wi")
 
-[node name="tent_tscn8" type="MeshInstance3D" parent="Props" instance=ExtResource("5_fpkip")]
+[node name="tent_tscn8" parent="Props" instance=ExtResource("5_fpkip")]
 transform = Transform3D(-125.836, 293.95, 4.88289e-05, -6.8416e-05, -8.24027e-05, 319.752, 293.95, 125.836, 9.53242e-05, 119.6, 2.1, -101.4)
 mesh = SubResource("ArrayMesh_v7tlf")
-skeleton = NodePath("")
-script = ExtResource("30_ej3wi")
 
-[node name="tent_tscn9" type="MeshInstance3D" parent="Props" instance=ExtResource("5_fpkip")]
+[node name="tent_tscn9" parent="Props" instance=ExtResource("5_fpkip")]
 transform = Transform3D(-123.837, 294.798, 4.94749e-05, -6.8416e-05, -8.24027e-05, 319.752, 294.798, 123.837, 9.49904e-05, 115.4, 2.1, -104.3)
 mesh = SubResource("ArrayMesh_v7tlf")
-skeleton = NodePath("")
-script = ExtResource("30_ej3wi")
 
-[node name="tent_tscn10" type="MeshInstance3D" parent="Props" instance=ExtResource("5_fpkip")]
+[node name="tent_tscn10" parent="Props" instance=ExtResource("5_fpkip")]
 transform = Transform3D(-97.513, 304.52, 5.76129e-05, -6.8416e-05, -8.24027e-05, 319.752, 304.52, 97.513, 9.02868e-05, 110.8, 2.1, -106.2)
 mesh = SubResource("ArrayMesh_v7tlf")
-skeleton = NodePath("")
-script = ExtResource("30_ej3wi")
 
-[node name="tent_tscn11" type="MeshInstance3D" parent="Props" instance=ExtResource("5_fpkip")]
+[node name="tent_tscn11" parent="Props" instance=ExtResource("5_fpkip")]
 transform = Transform3D(-97.513, 304.52, 5.76129e-05, -6.8416e-05, -8.24027e-05, 319.752, 304.52, 97.513, 9.02868e-05, 107.5, 2.1, -107.3)
 mesh = SubResource("ArrayMesh_v7tlf")
-skeleton = NodePath("")
-script = ExtResource("30_ej3wi")
 
-[node name="tent_tscn12" type="MeshInstance3D" parent="Props" instance=ExtResource("5_fpkip")]
+[node name="tent_tscn12" parent="Props" instance=ExtResource("5_fpkip")]
 transform = Transform3D(-143.292, 285.848, 4.30057e-05, -6.8416e-05, -8.24027e-05, 319.752, 285.848, 143.292, 9.8089e-05, 104, 2.1, -109.3)
 mesh = SubResource("ArrayMesh_v7tlf")
-skeleton = NodePath("")
-script = ExtResource("30_ej3wi")
 
-[node name="tent_tscn13" type="MeshInstance3D" parent="Props" instance=ExtResource("5_fpkip")]
+[node name="tent_tscn13" parent="Props" instance=ExtResource("5_fpkip")]
 transform = Transform3D(-233.425, -218.527, -0.000106261, -6.8416e-05, -8.24027e-05, 319.752, -218.527, 233.425, 1.33982e-05, 106.3, 2.1, -121.6)
 mesh = SubResource("ArrayMesh_v7tlf")
-skeleton = NodePath("")
-script = ExtResource("30_ej3wi")
 
-[node name="tent_tscn14" type="MeshInstance3D" parent="Props" instance=ExtResource("5_fpkip")]
+[node name="tent_tscn14" parent="Props" instance=ExtResource("5_fpkip")]
 transform = Transform3D(-233.425, -218.527, -0.000106261, -6.8416e-05, -8.24027e-05, 319.752, -218.527, 233.425, 1.33982e-05, 109.8, 2.1, -124.9)
 mesh = SubResource("ArrayMesh_v7tlf")
-skeleton = NodePath("")
-script = ExtResource("30_ej3wi")
 
-[node name="tent_tscn15" type="MeshInstance3D" parent="Props" instance=ExtResource("5_fpkip")]
+[node name="tent_tscn15" parent="Props" instance=ExtResource("5_fpkip")]
 transform = Transform3D(-142.738, -286.125, -0.000104278, -6.8416e-05, -8.24027e-05, 319.752, -286.125, 142.738, -2.44363e-05, 113.3, 2.1, -126.5)
 mesh = SubResource("ArrayMesh_v7tlf")
-skeleton = NodePath("")
-script = ExtResource("30_ej3wi")
 
-[node name="tent_tscn16" type="MeshInstance3D" parent="Props" instance=ExtResource("5_fpkip")]
+[node name="tent_tscn16" parent="Props" instance=ExtResource("5_fpkip")]
 transform = Transform3D(-50.8027, -315.69, -9.22261e-05, -6.8416e-05, -8.24027e-05, 319.752, -315.69, 50.8027, -5.44547e-05, 117.4, 2.1, -126.7)
 mesh = SubResource("ArrayMesh_v7tlf")
-skeleton = NodePath("")
-script = ExtResource("30_ej3wi")
 
-[node name="trunk_tscn" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 115.5, 1.66, -110.4)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn2" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn2" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 117.1, 1.66, -111)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn3" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn3" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 118.6, 1.66, -110.6)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn4" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn4" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 118.9, 1.66, -109.3)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn5" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn5" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 118.2, 1.66, -108.5)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn6" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn6" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 116.7, 1.66, -108.3)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn7" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn7" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 115.6, 1.66, -109.3)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn8" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn8" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 132.9, 1.66, -108.5)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn9" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn9" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 134.4, 1.66, -108.6)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn10" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn10" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 135.6, 1.66, -107.9)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn11" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn11" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 135.1, 1.66, -106.4)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn12" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn12" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 133.9, 1.66, -105.9)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn13" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn13" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 132.7, 1.66, -106.1)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn14" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn14" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 132.5, 1.66, -107.4)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn15" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn15" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 112.6, 1.66, -119.5)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn16" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn16" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 114, 1.66, -120.3)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn17" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn17" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 116, 1.66, -120)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn18" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn18" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 116.2, 1.66, -118.3)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn19" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn19" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 115.4, 1.66, -117.2)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn20" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn20" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 114.5, 1.66, -117.1)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn21" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn21" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 113.2, 1.66, -118.1)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn22" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn22" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 140.7, 1.66, -122.7)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn23" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn23" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 142, 1.66, -121.6)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn24" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn24" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 141.3, 1.66, -120.1)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn25" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn25" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 139.3, 1.66, -119.1)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn26" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn26" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 138.6, 1.66, -119.7)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn27" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn27" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 138.3, 1.66, -121.4)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="trunk_tscn28" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
+[node name="trunk_tscn28" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 139.6, 1.66, -122.8)
 mesh = SubResource("ArrayMesh_jd0ai")
-skeleton = NodePath("")
 
-[node name="branch_tscn" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+[node name="branch_tscn" parent="Props" instance=ExtResource("14_akovg")]
 transform = Transform3D(-0.0129656, -1.26662, -0.0129653, -0.895727, 7.55042e-08, 0.895727, -0.895634, 0.0183358, -0.895633, 110, 1.5, -111)
 mesh = SubResource("ArrayMesh_lqbop")
-skeleton = NodePath("")
 
-[node name="branch_tscn2" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+[node name="branch_tscn2" parent="Props" instance=ExtResource("14_akovg")]
 transform = Transform3D(0.895634, -0.0183357, 0.895633, -0.895727, 7.55042e-08, 0.895727, -0.0129656, -1.26662, -0.0129653, 121, 1.5, -106)
 mesh = SubResource("ArrayMesh_lqbop")
-skeleton = NodePath("")
 
-[node name="branch_tscn3" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+[node name="branch_tscn3" parent="Props" instance=ExtResource("14_akovg")]
 transform = Transform3D(-0.895634, 0.0183356, -0.895633, -0.895727, 7.55042e-08, 0.895727, 0.0129655, 1.26662, 0.0129652, 131, 1.5, -99)
 mesh = SubResource("ArrayMesh_lqbop")
-skeleton = NodePath("")
 
-[node name="branch_tscn4" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+[node name="branch_tscn4" parent="Props" instance=ExtResource("14_akovg")]
 transform = Transform3D(-0.726011, -0.74194, -0.72601, -0.895727, 7.6094e-08, 0.895727, -0.52463, 1.02674, -0.52463, 110, 1.5, -119)
 mesh = SubResource("ArrayMesh_lqbop")
-skeleton = NodePath("")
 
-[node name="branch_tscn5" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+[node name="branch_tscn5" parent="Props" instance=ExtResource("14_akovg")]
 transform = Transform3D(-0.726011, -0.74194, -0.72601, -0.895727, 7.6094e-08, 0.895727, -0.52463, 1.02674, -0.52463, 100, 1.5, -119)
 mesh = SubResource("ArrayMesh_lqbop")
-skeleton = NodePath("")
 
-[node name="branch_tscn6" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+[node name="branch_tscn6" parent="Props" instance=ExtResource("14_akovg")]
 transform = Transform3D(0.52463, -1.02674, 0.52463, -0.895727, 7.6094e-08, 0.895727, -0.726011, -0.74194, -0.72601, 99, 1.5, -120)
 mesh = SubResource("ArrayMesh_lqbop")
-skeleton = NodePath("")
 
-[node name="branch_tscn7" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+[node name="branch_tscn7" parent="Props" instance=ExtResource("14_akovg")]
 transform = Transform3D(0.726011, 0.74194, 0.72601, -0.895727, 7.6094e-08, 0.895727, 0.52463, -1.02674, 0.52463, 99, 1.5, -119)
 mesh = SubResource("ArrayMesh_lqbop")
-skeleton = NodePath("")
 
-[node name="branch_tscn8" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+[node name="branch_tscn8" parent="Props" instance=ExtResource("14_akovg")]
 transform = Transform3D(-0.692503, 0.803455, -0.692502, -0.895727, 5.39825e-08, 0.895727, 0.568127, 0.979348, 0.568126, 100, 1.5, -112)
 mesh = SubResource("ArrayMesh_lqbop")
-skeleton = NodePath("")
 
-[node name="branch_tscn9" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+[node name="branch_tscn9" parent="Props" instance=ExtResource("14_akovg")]
 transform = Transform3D(-0.568127, -0.979348, -0.568126, -0.895727, 5.39825e-08, 0.895727, -0.692503, 0.803455, -0.692502, 101, 1.5, -111)
 mesh = SubResource("ArrayMesh_lqbop")
-skeleton = NodePath("")
 
-[node name="branch_tscn10" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+[node name="branch_tscn10" parent="Props" instance=ExtResource("14_akovg")]
 transform = Transform3D(-0.568127, -0.979348, -0.568126, -0.895727, 5.39825e-08, 0.895727, -0.692503, 0.803455, -0.692502, 123, 1.5, -132)
 mesh = SubResource("ArrayMesh_lqbop")
-skeleton = NodePath("")
 
-[node name="branch_tscn11" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+[node name="branch_tscn11" parent="Props" instance=ExtResource("14_akovg")]
 transform = Transform3D(-0.568127, -0.979348, -0.568126, -0.895727, 5.39825e-08, 0.895727, -0.692503, 0.803455, -0.692502, 129, 1.5, -98)
 mesh = SubResource("ArrayMesh_lqbop")
-skeleton = NodePath("")
 
-[node name="branch_tscn12" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+[node name="branch_tscn12" parent="Props" instance=ExtResource("14_akovg")]
 transform = Transform3D(-0.568127, -0.979348, -0.568126, -0.895727, 5.39825e-08, 0.895727, -0.692503, 0.803455, -0.692502, 121, 1.5, -122)
 mesh = SubResource("ArrayMesh_lqbop")
-skeleton = NodePath("")
 
-[node name="branch_tscn13" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+[node name="branch_tscn13" parent="Props" instance=ExtResource("14_akovg")]
 transform = Transform3D(0.692503, -0.803455, 0.692502, -0.895727, 5.39825e-08, 0.895727, -0.568127, -0.979349, -0.568126, 137, 1.5, -111)
 mesh = SubResource("ArrayMesh_lqbop")
-skeleton = NodePath("")
 
-[node name="branch_tscn14" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+[node name="branch_tscn14" parent="Props" instance=ExtResource("14_akovg")]
 transform = Transform3D(0.568127, 0.979349, 0.568126, -0.895727, 5.39825e-08, 0.895727, 0.692503, -0.803455, 0.692502, 130, 1.5, -133)
 mesh = SubResource("ArrayMesh_lqbop")
-skeleton = NodePath("")
 
-[node name="branch_tscn15" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+[node name="branch_tscn15" parent="Props" instance=ExtResource("14_akovg")]
 transform = Transform3D(-0.692503, 0.803455, -0.692502, -0.895727, 5.39825e-08, 0.895727, 0.568127, 0.979349, 0.568126, 129, 1.5, -133)
 mesh = SubResource("ArrayMesh_lqbop")
-skeleton = NodePath("")
 
-[node name="branch_tscn16" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+[node name="branch_tscn16" parent="Props" instance=ExtResource("14_akovg")]
 transform = Transform3D(-0.692503, 0.803455, -0.692502, -0.895727, 5.39825e-08, 0.895727, 0.568127, 0.979349, 0.568126, 141, 1.5, -103)
 mesh = SubResource("ArrayMesh_lqbop")
-skeleton = NodePath("")
 
-[node name="branch_tscn17" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+[node name="branch_tscn17" parent="Props" instance=ExtResource("14_akovg")]
 transform = Transform3D(-0.568127, -0.979349, -0.568126, -0.895727, 5.39825e-08, 0.895727, -0.692503, 0.803455, -0.692502, 143, 1.5, -104)
 mesh = SubResource("ArrayMesh_lqbop")
-skeleton = NodePath("")
+
+[node name="car_2_tscn" parent="Props" groups=["removable_objects"] instance=ExtResource("8_70eyd")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 126, 1.5, -143)
+
+[node name="car_blue_tscn" parent="Props" groups=["removable_objects"] instance=ExtResource("9_h4e34")]
+transform = Transform3D(0.999633, 0, 0.0270819, -6.1607e-07, 1, 9.23872e-07, -0.0270819, -5.96046e-08, 0.999633, 120, -0.145302, -143)
+
+[node name="car_blue_tscn2" parent="Props" groups=["removable_objects"] instance=ExtResource("9_h4e34")]
+transform = Transform3D(0.999633, 0, 0.0270819, -6.1607e-07, 1, 9.23872e-07, -0.0270819, -5.96046e-08, 0.999633, 120, -0.10498, -143)
+
+[node name="car_2_tscn2" parent="Props" groups=["removable_objects"] instance=ExtResource("8_70eyd")]
+transform = Transform3D(-0.983368, -0.179022, -0.0306338, -0.178954, 0.983845, -0.00494776, 0.0310246, 0.000616571, -0.999518, 123.83, 0.9979, -143.006)
+
+[node name="car_blue_tscn3" parent="Props" groups=["removable_objects"] instance=ExtResource("9_h4e34")]
+transform = Transform3D(0.64111, 0.643406, 0.418339, -0.552627, 0.765275, -0.330086, -0.532524, -0.0195627, 0.846189, 128.659, 0.749565, -140.963)
+
+[node name="car_blue_tscn4" parent="Props" groups=["removable_objects"] instance=ExtResource("9_h4e34")]
+transform = Transform3D(0.493811, 3.35276e-08, -0.869569, -6.78003e-07, 1, 8.49366e-07, 0.869569, 4.54165e-08, 0.493811, 133.9, -0.597029, -141.7)
+
+[node name="car_blue_tscn5" parent="Props" groups=["removable_objects"] instance=ExtResource("9_h4e34")]
+transform = Transform3D(-0.625984, 0.000328958, -0.779835, 0.000205476, 1, 0.000257045, 0.779836, 1.43792e-11, -0.625984, 140.2, -0.0948279, -140.9)
+
+[node name="car_blue_tscn6" parent="Props" groups=["removable_objects"] instance=ExtResource("9_h4e34")]
+transform = Transform3D(-0.625984, 0.000328958, -0.779835, 0.000205476, 1, 0.000257045, 0.779836, 1.43792e-11, -0.625984, 117.2, -0.502138, -139.5)
 
 [editable path="TreeCollision"]
 [editable path="Cameras/StartingCam"]

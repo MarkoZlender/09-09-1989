@@ -61,13 +61,14 @@ visible = false
 layer = 6
 
 [node name="GrayBackground" type="ColorRect" parent="GUI/CRTShader"]
+unique_name_in_owner = true
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.301961, 0.301961, 0.301961, 1)
+color = Color(0.301961, 0.301961, 0.301961, 0)
 
 [node name="CRTShader" parent="GUI/CRTShader" instance=ExtResource("4_gupwa")]
 material = SubResource("ShaderMaterial_giy5l")
