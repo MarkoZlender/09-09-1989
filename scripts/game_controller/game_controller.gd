@@ -47,7 +47,7 @@ func _process(_delta: float) -> void:
 	# 	process_scene_params[5],
 	# 	process_scene_params[6]
 	# )
-	print("loading")
+	#print("loading")
 
 func change_gui_scene(
 		new_scene: String,
