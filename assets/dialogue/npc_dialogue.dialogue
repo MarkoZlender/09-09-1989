@@ -6,7 +6,7 @@ if not NPCGameState.has_been_met
 	set NPCGameState.has_been_met = true
 Wraith: Here are some choices.
 - {{NPCGameState.teeth_counter}} teeth left [if NPCGameState. teeth_counter <= 0]
-	Wraith: You picked the first one. "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	Wraith: Now you are free.
 - Second one
 	Wraith: You picked the second one.
 - Start again => start

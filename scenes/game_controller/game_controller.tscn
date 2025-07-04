@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://2dbjk0u75wjo" path="res://scripts/game_controller/game_controller.gd" id="1_ca7gh"]
 [ext_resource type="PackedScene" uid="uid://c62u2p3f0l7wg" path="res://scenes/game_controller/transition_controller.tscn" id="2_bddcm"]
-[ext_resource type="PackedScene" uid="uid://bmcuon78mxwm0" path="res://scenes/levels/horror/open_space.tscn" id="2_s8vvr"]
+[ext_resource type="PackedScene" uid="uid://7ttjcnsru146" path="res://scenes/ui/main_menu.tscn" id="2_s8vvr"]
 [ext_resource type="PackedScene" uid="uid://brdsm3kei2sjp" path="res://scenes/vfx/crt_shader.tscn" id="4_gupwa"]
 [ext_resource type="Shader" uid="uid://dvqj5decgwjkr" path="res://resources/crt_shader.gdshader" id="5_s8vvr"]
 
@@ -59,6 +59,15 @@ visible = false
 
 [node name="CRTShader" type="CanvasLayer" parent="GUI"]
 layer = 6
+
+[node name="GrayBackground" type="ColorRect" parent="GUI/CRTShader"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.301961, 0.301961, 0.301961, 1)
 
 [node name="CRTShader" parent="GUI/CRTShader" instance=ExtResource("4_gupwa")]
 material = SubResource("ShaderMaterial_giy5l")

@@ -1,6 +1,6 @@
 class_name Note extends Node3D
 
-@export var note_text: String = ""
+@export_multiline var note_text: String = ""
 
 var note_interacted: bool = false
 
