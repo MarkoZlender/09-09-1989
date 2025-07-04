@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=4 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=108 format=4 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="Script" uid="uid://cup8rquk0oej5" path="res://scripts/utility_scripts/open_space.gd" id="1_dxg7p"]
 [ext_resource type="PackedScene" uid="uid://bt5qb4kfrjilw" path="res://scenes/environment/collisions/tree_collision.tscn" id="2_cpna0"]
@@ -593,6 +593,46 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_ho3mx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ej3wi"]
+resource_name = "bonfire"
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("15_ej3wi")
+emission_enabled = true
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_w3tp5"]
+_surfaces = [{
+"aabb": AABB(-0.12414, -0.345329, -0.107714, 0.209645, 0.603268, 0.235829),
+"format": 34359742465,
+"index_count": 90,
+"index_data": PackedByteArray("EgAAABMAAAASABQAFAACAAAAAAACABUAFQACABQAFQATAAAAEwAWABIAEQAUABIAEgAWABEAFAARABUADgAWABMAEQAWAA4AEwANAA4ADQATABUADgAQABEAFQARABAAAQAOAA0AAQAQAA4AFQAPAA0AAQANAA8AEAAPABUAAQAPABAAAwAEAAUAAwAGAAQAAwAFAAcAAwAHAAYACAAJAAoACAALAAkACAAKAAwACAAMAAsA"),
+"lods": [0.0243753, PackedByteArray("DQAOAAAAAQAOAA0ADwANAAAAAQANAA8AAQAQAA4AAQAPABAADgAQABEADwARABAAAAAOABEAAgARAA8AEQACAAAAAAACAA8AAwAEAAUAAwAGAAQAAwAFAAcAAwAHAAYACAAJAAoACAALAAkACAAKAAwACAAMAAsA"), 0.0629795, PackedByteArray("AAABAAIAAQAAAAIAAwAEAAUAAwAGAAQAAwAFAAcAAwAHAAYACAAJAAoACAALAAkACAAKAAwACAAMAAsA")],
+"name": "bonfire",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 23,
+"vertex_data": PackedByteArray("Iz2jvHwQhD7Nne46DSibvAXPsL6D/LK8OvmaO3wQhD7Nne46Tj3+vakZAD0amdy9UsKaOdI1Bj3GAoG83sQZvM1TLj3aRJS7iW/Lu3EBkzyFBQq8VimCvGY94zxhdjc7OB2vPWmW8727MAM+iNcoPJoHSrzrpR68LTMUvNdBq7xx1m683fG/OzNrOrspFbw7wRFdvM0WO7xSoF06rUgjPFEZGb7fZPo8ChYrPIlNFL5N2vY7TykHPRjlHb4sfvY8qBwJPVEZGb6aP+c7//nvO3Gl9Tzmapy8fX3OvOVPXT7xUea8dJaEvHGl9Tw4qJA7pEEQuuVPXT7xUea8ag3oOzOQCD2ku4g7UZuCvHsq2jzBb5q8")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_lqbop"]
+resource_name = "branch"
+_surfaces = [{
+"aabb": AABB(-0.12414, -0.345329, -0.107714, 0.209645, 0.603268, 0.235829),
+"attribute_data": PackedByteArray("vXLEPtDVNj+lqcQ+2mh4P/DOyT7Q1TY/panEPtpoeD+9csQ+0NU2P/DOyT7Q1TY/28qtPkWQYD8n2Mg+KZFWP2a9xj7YWFU/A3S5PppIVj8pDbo+1sBJP+ATvT6epko/28qtPkWQYD90U8U+CI1UPzVuxz5axVU/A3S5PppIVj9tcr8+YbxJP7VrvD6a1kg/Zl7bPiDNXz9BBcs+jTZUP1HQxj4nJVU/kYGyPuDtRj+D0cc+lHBWP3jhyT5ow1Q/Zl7bPiDNXz/K2MU+LB1UP7sNyj6TLlM/kYGyPuDtRj+rvss+NjtUP7euyT5i6FU/EPfHPtIPST+KBcM+RrVJP0ubxj6xdHU/4z26PnQfND9XJbg+ymY0PyaZxD76fUw/8HrAPnocYT83QsU+1TRgP5RN0j68tXQ/T1/KPgCdTz/hDMs+gJ1iP7YO0D7UH2M/NvTPPimiYz9g8so+1B9jP46bvz7WGHE/W3DEPiqzXD8oWb8+onlcPxqpyD5WYTs/50zDPlZhOz8Zfb8+6IlMP7kHwD5OXTg/+ELFPgCdTz/ZUco+qD9PPxqpyD5WYTs/50zDPlZhOz9uUMU+WPpPP9lRyj6oP08/+ELFPgCdTz8Zfb8+6IlMPyaZxD76fUw/KFm/PqJ5XD9bcMQ+KrNcP+EMyz6AnWI/tg7QPtQfYz9PX8o+AJ1PP25QxT5Y+k8/igXDPka1ST8Q98c+0g9JP2Dyyj7UH2M/NvTPPimiYz/wesA+ehxhPzdCxT7VNGA/"),
+"format": 34359742487,
+"index_count": 90,
+"index_data": PackedByteArray("LAAgAC0ALQAuACwALwACAAAAAAAwAC8AMQAiADIAMgAjADEAKwAzADQANAAqACsAJwA1ADYANgA3ACcAOAA5AAQABAAFADgAAQApACgAJQAkADoAOgA7ACUAHwA8AD0APQAeAB8APgA/AEAAQABBAD4AIQBCAEMAAwBEAEUAJgBGAEcABgAHAAgACQAKAAsADAANAA4ADwAQABEAEgATABQAFQAWABcAGAAZABoAGwAcAB0A"),
+"lods": [0.0243753, PackedByteArray("HgAfACAAIQAfAB4AIgAjACQAJAAjACUAJgAkACUAJwACAAAAAAAoACcAKAApACcAAQApACgAKgArAAQAAwArACoABAAFACoABgAHAAgACQAKAAsADAANAA4ADwAQABEAEgATABQAFQAWABcAGAAZABoAGwAcAB0A"), 0.0629795, PackedByteArray("AAABAAIAAwAEAAUABgAHAAgACQAKAAsADAANAA4ADwAQABEAEgATABQAFQAWABcAGAAZABoAGwAcAB0A")],
+"material": SubResource("StandardMaterial3D_ej3wi"),
+"name": "bonfire",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 72,
+"vertex_data": PackedByteArray("Iz2jvHwQhD7Nne46DSibvAXPsL6D/LK8OvmaO3wQhD7Nne46DSibvAXPsL6D/LK8Iz2jvHwQhD7Nne46OvmaO3wQhD7Nne46Tj3+vakZAD0amdy9UsKaOdI1Bj3GAoG83sQZvM1TLj3aRJS7Tj3+vakZAD0amdy93sQZvM1TLj3aRJS7VimCvGY94zxhdjc7Tj3+vakZAD0amdy9VimCvGY94zxhdjc7iW/Lu3EBkzyFBQq8Tj3+vakZAD0amdy9iW/Lu3EBkzyFBQq8UsKaOdI1Bj3GAoG8OB2vPWmW8727MAM+iNcoPJoHSrzrpR68LTMUvNdBq7xx1m68OB2vPWmW8727MAM+LTMUvNdBq7xx1m68wRFdvM0WO7xSoF06OB2vPWmW8727MAM+wRFdvM0WO7xSoF063fG/OzNrOrspFbw7OB2vPWmW8727MAM+3fG/OzNrOrspFbw7iNcoPJoHSrzrpR68rUgjPFEZGb7fZPo8ChYrPIlNFL5N2vY7Iz2jvHwQhD7Nne46DSibvAXPsL6D/LK8OvmaO3wQhD7Nne46//nvO3Gl9Tzmapy8TykHPRjlHb4sfvY8qBwJPVEZGb6aP+c7DSibvAXPsL6D/LK8//nvO3Gl9Tzmapy8ChYrPIlNFL5N2vY7qBwJPVEZGb6aP+c7TykHPRjlHb4sfvY8rUgjPFEZGb7fZPo8fX3OvOVPXT7xUea8dJaEvHGl9Tw4qJA7UZuCvHsq2jzBb5q8pEEQuuVPXT7xUea8fX3OvOVPXT7xUea8ag3oOzOQCD2ku4g7pEEQuuVPXT7xUea8dJaEvHGl9Tw4qJA7ag3oOzOQCD2ku4g7pEEQuuVPXT7xUea8fX3OvOVPXT7xUea8UZuCvHsq2jzBb5q8ag3oOzOQCD2ku4g7dJaEvHGl9Tw4qJA7ag3oOzOQCD2ku4g7//nvO3Gl9Tzmapy8UZuCvHsq2jzBb5q8dJaEvHGl9Tw4qJA7ChYrPIlNFL5N2vY7qBwJPVEZGb6aP+c7//nvO3Gl9Tzmapy8UZuCvHsq2jzBb5q8ChYrPIlNFL5N2vY7rUgjPFEZGb7fZPo8rUgjPFEZGb7fZPo8TykHPRjlHb4sfvY8TykHPRjlHb4sfvY8qBwJPVEZGb6aP+c7l8r//////z/j7wP/3/7/P5fK//////8/wnwIZu/7/7+JgGKB/f+4v4mAYoH9/7i/h71N5k/c11GHvU3mT9zXUYe9TeZP3NdRkVS4qDeHiqKRVLioN4eKopFUuKg3h4qimV8GPtbV66qZXwY+1tXrqplfBj7W1euqC9dGJbKHal8L10YlsodqXwvXRiWyh2pfJtR+IJHO/z8m1H4gkc7/PybUfiCRzv8/UTyRTvhJAxtRPJFO+EkDG1E8kU74SQMbRGDNpnbS/79EYM2mdtL/v0RgzaZ20v+/R9Lhs/dP++dH0uGz90/750fS4bP3T/vnqhApbZV8ejyqECltmHyDPFAQ5HzJjB89FxEbkAOCtDyK/TePHBCHhYr9N4/OEHyF7u3mj1XuUILu7eaPYu5Pggfmy2LUEOeD8AUyAPz/4z/j7wP/3/7/P+PvA//f/v8/KILmj3T/iMEoguaPhv9+wVAQ5HzHjBo9UBDkfLOMzTxQEOR8sYzEPJfK//////8/l8r//////z+K/TePvRB9hYr9N48lEIaFKILmj3b/ir4oguaPi/+TvvAFMgD8/xtA8AUyAPz/G0DwBTIA/P/jP4mAYoH9/0XAiYBigf3/RcDu7eaPB+9Fgu7t5o8W70SCqhApbbh8AD2qEClttXz1PKoQKwJ7/3Y+qhArAmb/aj6qECsCgf9zQaoQKwJp/31BFxEbkAOCtDwXERuQA4K0PMJ8CGbv+/+/wnwIZu/7/78H5sti1BDngwfmy2LUEOeD")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_w3tp5")
 
 [node name="OpenSpace" type="Node3D"]
 script = ExtResource("1_dxg7p")
@@ -1516,6 +1556,91 @@ skeleton = NodePath("")
 [node name="trunk_tscn28" type="MeshInstance3D" parent="Props" instance=ExtResource("7_70eyd")]
 transform = Transform3D(22.7529, 0, 0, 0, -2.71236e-06, 22.7529, 0, -22.7529, -2.71236e-06, 139.6, 1.66, -122.8)
 mesh = SubResource("ArrayMesh_jd0ai")
+skeleton = NodePath("")
+
+[node name="branch_tscn" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+transform = Transform3D(-0.0129656, -1.26662, -0.0129653, -0.895727, 7.55042e-08, 0.895727, -0.895634, 0.0183358, -0.895633, 110, 1.5, -111)
+mesh = SubResource("ArrayMesh_lqbop")
+skeleton = NodePath("")
+
+[node name="branch_tscn2" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+transform = Transform3D(0.895634, -0.0183357, 0.895633, -0.895727, 7.55042e-08, 0.895727, -0.0129656, -1.26662, -0.0129653, 121, 1.5, -106)
+mesh = SubResource("ArrayMesh_lqbop")
+skeleton = NodePath("")
+
+[node name="branch_tscn3" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+transform = Transform3D(-0.895634, 0.0183356, -0.895633, -0.895727, 7.55042e-08, 0.895727, 0.0129655, 1.26662, 0.0129652, 131, 1.5, -99)
+mesh = SubResource("ArrayMesh_lqbop")
+skeleton = NodePath("")
+
+[node name="branch_tscn4" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+transform = Transform3D(-0.726011, -0.74194, -0.72601, -0.895727, 7.6094e-08, 0.895727, -0.52463, 1.02674, -0.52463, 110, 1.5, -119)
+mesh = SubResource("ArrayMesh_lqbop")
+skeleton = NodePath("")
+
+[node name="branch_tscn5" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+transform = Transform3D(-0.726011, -0.74194, -0.72601, -0.895727, 7.6094e-08, 0.895727, -0.52463, 1.02674, -0.52463, 100, 1.5, -119)
+mesh = SubResource("ArrayMesh_lqbop")
+skeleton = NodePath("")
+
+[node name="branch_tscn6" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+transform = Transform3D(0.52463, -1.02674, 0.52463, -0.895727, 7.6094e-08, 0.895727, -0.726011, -0.74194, -0.72601, 99, 1.5, -120)
+mesh = SubResource("ArrayMesh_lqbop")
+skeleton = NodePath("")
+
+[node name="branch_tscn7" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+transform = Transform3D(0.726011, 0.74194, 0.72601, -0.895727, 7.6094e-08, 0.895727, 0.52463, -1.02674, 0.52463, 99, 1.5, -119)
+mesh = SubResource("ArrayMesh_lqbop")
+skeleton = NodePath("")
+
+[node name="branch_tscn8" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+transform = Transform3D(-0.692503, 0.803455, -0.692502, -0.895727, 5.39825e-08, 0.895727, 0.568127, 0.979348, 0.568126, 100, 1.5, -112)
+mesh = SubResource("ArrayMesh_lqbop")
+skeleton = NodePath("")
+
+[node name="branch_tscn9" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+transform = Transform3D(-0.568127, -0.979348, -0.568126, -0.895727, 5.39825e-08, 0.895727, -0.692503, 0.803455, -0.692502, 101, 1.5, -111)
+mesh = SubResource("ArrayMesh_lqbop")
+skeleton = NodePath("")
+
+[node name="branch_tscn10" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+transform = Transform3D(-0.568127, -0.979348, -0.568126, -0.895727, 5.39825e-08, 0.895727, -0.692503, 0.803455, -0.692502, 123, 1.5, -132)
+mesh = SubResource("ArrayMesh_lqbop")
+skeleton = NodePath("")
+
+[node name="branch_tscn11" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+transform = Transform3D(-0.568127, -0.979348, -0.568126, -0.895727, 5.39825e-08, 0.895727, -0.692503, 0.803455, -0.692502, 129, 1.5, -98)
+mesh = SubResource("ArrayMesh_lqbop")
+skeleton = NodePath("")
+
+[node name="branch_tscn12" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+transform = Transform3D(-0.568127, -0.979348, -0.568126, -0.895727, 5.39825e-08, 0.895727, -0.692503, 0.803455, -0.692502, 121, 1.5, -122)
+mesh = SubResource("ArrayMesh_lqbop")
+skeleton = NodePath("")
+
+[node name="branch_tscn13" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+transform = Transform3D(0.692503, -0.803455, 0.692502, -0.895727, 5.39825e-08, 0.895727, -0.568127, -0.979349, -0.568126, 137, 1.5, -111)
+mesh = SubResource("ArrayMesh_lqbop")
+skeleton = NodePath("")
+
+[node name="branch_tscn14" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+transform = Transform3D(0.568127, 0.979349, 0.568126, -0.895727, 5.39825e-08, 0.895727, 0.692503, -0.803455, 0.692502, 130, 1.5, -133)
+mesh = SubResource("ArrayMesh_lqbop")
+skeleton = NodePath("")
+
+[node name="branch_tscn15" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+transform = Transform3D(-0.692503, 0.803455, -0.692502, -0.895727, 5.39825e-08, 0.895727, 0.568127, 0.979349, 0.568126, 129, 1.5, -133)
+mesh = SubResource("ArrayMesh_lqbop")
+skeleton = NodePath("")
+
+[node name="branch_tscn16" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+transform = Transform3D(-0.692503, 0.803455, -0.692502, -0.895727, 5.39825e-08, 0.895727, 0.568127, 0.979349, 0.568126, 141, 1.5, -103)
+mesh = SubResource("ArrayMesh_lqbop")
+skeleton = NodePath("")
+
+[node name="branch_tscn17" type="MeshInstance3D" parent="Props" instance=ExtResource("14_akovg")]
+transform = Transform3D(-0.568127, -0.979349, -0.568126, -0.895727, 5.39825e-08, 0.895727, -0.692503, 0.803455, -0.692502, 143, 1.5, -104)
+mesh = SubResource("ArrayMesh_lqbop")
 skeleton = NodePath("")
 
 [editable path="TreeCollision"]
