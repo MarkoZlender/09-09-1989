@@ -208,8 +208,8 @@ func _on_enemy_defeated(enemy: Enemy) -> void:
 	player_data.experience += enemy.enemy_data.experience
 	_check_level()
 
-func _on_item_collected(item: Collectible) -> void:
-	if item is Coin:
+func _on_item_collected(item: CollectibleRigidBody3D) -> void:
+	if item is Tooth:
 		player_data.coins += 1
 		print("Coins: ", player_data.coins)
 

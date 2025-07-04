@@ -178,6 +178,12 @@ to = NodePath("../../Dead")
 event = &"player_killed"
 delay_in_seconds = "0.0"
 
+[node name="ToInteracting" type="Node" parent="StateChart/Root/Fighting"]
+script = ExtResource("16_g0tc1")
+to = NodePath("../../Interacting")
+event = &"player_interacted"
+delay_in_seconds = "0.0"
+
 [node name="Hurt" type="Node" parent="StateChart/Root"]
 script = ExtResource("15_8sdl1")
 
@@ -191,6 +197,12 @@ delay_in_seconds = "0.0"
 script = ExtResource("16_g0tc1")
 to = NodePath("../../Fighting")
 event = &"player_recovered"
+delay_in_seconds = "0.0"
+
+[node name="ToInteracting" type="Node" parent="StateChart/Root/Hurt"]
+script = ExtResource("16_g0tc1")
+to = NodePath("../../Interacting")
+event = &"player_interacted"
 delay_in_seconds = "0.0"
 
 [node name="Dead" type="Node" parent="StateChart/Root"]

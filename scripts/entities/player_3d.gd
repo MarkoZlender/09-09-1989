@@ -155,16 +155,20 @@ func _on_player_died() -> void:
 	get_tree().paused = true
 
 func _on_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "hurt":
+	if anim_name == "hurt" && current_state == PlayerState.State.INTERACTING:
+		current_state = PlayerState.State.INTERACTING
+	elif anim_name == "hurt":
 		current_state = PlayerState.State.IDLE
 
-	if anim_name == "attack":
+	if anim_name == "attack" && current_state == PlayerState.State.INTERACTING:
+		current_state = PlayerState.State.INTERACTING
+	elif anim_name == "attack":
 		current_state = PlayerState.State.IDLE
 
 func _on_player_interacted(state: bool) -> void:
 	if state == true:
 		current_state = PlayerState.State.INTERACTING
-	else:
+	elif state == false:
 		current_state = PlayerState.State.IDLE
 
 func _on_player_hurt_box_area_entered(area:Area3D) -> void:

@@ -1,0 +1,5 @@
+~ start
+do Global.signal_bus.player_interacting.emit(true)
+The car is locked.
+do Global.signal_bus.player_interacting.emit(false)
+=> END
