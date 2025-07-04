@@ -1,0 +1,5 @@
+~ start
+do Global.signal_bus.player_interacting.emit(true)
+Tent is empty.
+do Global.signal_bus.player_interacting.emit(false)
+=> END
