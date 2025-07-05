@@ -51,7 +51,6 @@ script = ExtResource("1_g63ah")
 
 [node name="PillSprite" type="Sprite3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-shaded = true
 texture_filter = 0
 texture = ExtResource("2_7uuti")
 region_enabled = true
