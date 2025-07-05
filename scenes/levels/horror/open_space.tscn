@@ -1,4 +1,4 @@
-[gd_scene load_steps=108 format=4 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=109 format=4 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="Script" uid="uid://cup8rquk0oej5" path="res://scripts/utility_scripts/open_space.gd" id="1_dxg7p"]
 [ext_resource type="PackedScene" uid="uid://bt5qb4kfrjilw" path="res://scenes/environment/collisions/tree_collision.tscn" id="2_cpna0"]
@@ -447,7 +447,35 @@ teeth = 0
 footstep_timer = 0.2
 metadata/_custom_type_script = "uid://c5q20r4wynqst"
 
-[sub_resource type="Resource" id="Resource_s8svk"]
+[sub_resource type="Resource" id="Resource_0fu0b"]
+script = ExtResource("6_46gqi")
+movement_speed = 3.0
+accel = 10.0
+level = 1
+experience = 10
+health = 10
+hit_strength = 10
+wander_range_x = Vector2(-5, 5)
+wander_range_z = Vector2(-5, 5)
+collectible_rigid_body = ExtResource("6_cqt2m")
+collectible_rigid_body_number = 5
+metadata/_custom_type_script = "uid://0fkyd553m7cg"
+
+[sub_resource type="Resource" id="Resource_akovg"]
+script = ExtResource("6_46gqi")
+movement_speed = 3.0
+accel = 10.0
+level = 1
+experience = 10
+health = 10
+hit_strength = 10
+wander_range_x = Vector2(-5, 5)
+wander_range_z = Vector2(-5, 5)
+collectible_rigid_body = ExtResource("6_cqt2m")
+collectible_rigid_body_number = 5
+metadata/_custom_type_script = "uid://0fkyd553m7cg"
+
+[sub_resource type="Resource" id="Resource_ej3wi"]
 script = ExtResource("6_46gqi")
 movement_speed = 2.0
 accel = 20.0
@@ -461,21 +489,7 @@ collectible_rigid_body = ExtResource("6_cqt2m")
 collectible_rigid_body_number = 5
 metadata/_custom_type_script = "uid://0fkyd553m7cg"
 
-[sub_resource type="Resource" id="Resource_cpna0"]
-script = ExtResource("6_46gqi")
-movement_speed = 2.0
-accel = 20.0
-level = 1
-experience = 10
-health = 100
-hit_strength = 10
-wander_range_x = Vector2(-5, 5)
-wander_range_z = Vector2(-5, 5)
-collectible_rigid_body = ExtResource("6_cqt2m")
-collectible_rigid_body_number = 5
-metadata/_custom_type_script = "uid://0fkyd553m7cg"
-
-[sub_resource type="Resource" id="Resource_dxg7p"]
+[sub_resource type="Resource" id="Resource_w3tp5"]
 script = ExtResource("6_46gqi")
 movement_speed = 2.0
 accel = 20.0
@@ -1168,23 +1182,28 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 134.808, 1.51979, -97.801)
 [node name="Entities" type="Node3D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("4_5un2j")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 118.071, 1.50596, -116.574)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 54.9349, 1.50596, -116.574)
 floor_max_angle = 1.0472
 player_data = SubResource("Resource_8ax1c")
 
-[node name="Enemy" parent="Entities" node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 49.2243, 1.51249, -117.092)
-enemy_data = SubResource("Resource_s8svk")
+[node name="Enemy4" parent="Entities" node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 50.8676, 1.51249, -117.092)
+enemy_data = SubResource("Resource_0fu0b")
+player = NodePath("../Player")
+
+[node name="Enemy5" parent="Entities" node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 46.1508, 1.51249, -117.092)
+enemy_data = SubResource("Resource_akovg")
 player = NodePath("../Player")
 
 [node name="Enemy2" parent="Entities" node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 218.898, 1.51446, -57.3763)
-enemy_data = SubResource("Resource_cpna0")
+enemy_data = SubResource("Resource_ej3wi")
 player = NodePath("../Player")
 
 [node name="Enemy3" parent="Entities" node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 222.529, 1.51436, -115.935)
-enemy_data = SubResource("Resource_dxg7p")
+enemy_data = SubResource("Resource_w3tp5")
 player = NodePath("../Player")
 
 [node name="Wraith" parent="Entities" groups=["removable_objects"] instance=ExtResource("10_a8uie")]
