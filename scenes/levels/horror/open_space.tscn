@@ -458,7 +458,7 @@ hit_strength = 10
 wander_range_x = Vector2(-5, 5)
 wander_range_z = Vector2(-5, 5)
 collectible_rigid_body = ExtResource("6_cqt2m")
-collectible_rigid_body_number = 5
+collectible_rigid_body_number = 3
 metadata/_custom_type_script = "uid://0fkyd553m7cg"
 
 [sub_resource type="Resource" id="Resource_ej3wi"]
@@ -472,7 +472,7 @@ hit_strength = 10
 wander_range_x = Vector2(-5, 5)
 wander_range_z = Vector2(-5, 5)
 collectible_rigid_body = ExtResource("6_cqt2m")
-collectible_rigid_body_number = 5
+collectible_rigid_body_number = 3
 metadata/_custom_type_script = "uid://0fkyd553m7cg"
 
 [sub_resource type="Resource" id="Resource_w3tp5"]
@@ -486,7 +486,7 @@ hit_strength = 10
 wander_range_x = Vector2(-5, 5)
 wander_range_z = Vector2(-5, 5)
 collectible_rigid_body = ExtResource("6_cqt2m")
-collectible_rigid_body_number = 5
+collectible_rigid_body_number = 3
 metadata/_custom_type_script = "uid://0fkyd553m7cg"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_og8ul"]
