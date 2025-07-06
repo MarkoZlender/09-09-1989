@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://62ko1iujlgs1"]
+[gd_scene load_steps=14 format=3 uid="uid://62ko1iujlgs1"]
 
 [ext_resource type="Texture2D" uid="uid://clte6uhdrl688" path="res://assets/textures/grass/Dirt/Dirt_01-128x128.png" id="1_46lqo"]
 [ext_resource type="PackedScene" uid="uid://betbvqys51iem" path="res://scenes/entities/dead_bodies/beggar.tscn" id="2_ams63"]
@@ -7,8 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://bqk3btsfd5k2y" path="res://assets/textures/flashlight_cookies/circle_05.png" id="5_wgnkx"]
 [ext_resource type="PackedScene" uid="uid://cio51w7jgtyfw" path="res://scenes/entities/dead_bodies/villager.tscn" id="6_otid4"]
 [ext_resource type="PackedScene" uid="uid://q8qg5r80l76u" path="res://scenes/entities/dead_bodies/woman.tscn" id="7_dilhq"]
-[ext_resource type="PackedScene" uid="uid://brdsm3kei2sjp" path="res://scenes/vfx/crt_shader.tscn" id="8_wppfx"]
-[ext_resource type="Shader" uid="uid://dvqj5decgwjkr" path="res://resources/crt_shader.gdshader" id="9_mjyn7"]
+
+[sub_resource type="Environment" id="Environment_46lqo"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_energy = 5.49
+glow_intensity = 0.61
+glow_strength = 1.69
+glow_blend_mode = 0
+volumetric_fog_density = 0.0188
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ho3mx"]
 albedo_texture = ExtResource("1_46lqo")
@@ -18,31 +25,326 @@ uv1_triplanar = true
 material = SubResource("StandardMaterial3D_ho3mx")
 size = Vector2(40, 40)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wgnkx"]
-shader = ExtResource("9_mjyn7")
-shader_parameter/overlay = true
-shader_parameter/scanlines_opacity = 0.0
-shader_parameter/scanlines_width = 0.0
-shader_parameter/grille_opacity = 0.103
-shader_parameter/resolution = Vector2(640, 480)
-shader_parameter/pixelate = false
-shader_parameter/roll = false
-shader_parameter/roll_speed = 0.0
-shader_parameter/roll_size = 0.0
-shader_parameter/roll_variation = 1.8
-shader_parameter/distort_intensity = 0.05
-shader_parameter/noise_opacity = 0.4
-shader_parameter/noise_speed = 5.0
-shader_parameter/static_noise_intensity = 0.06
-shader_parameter/aberration = 0.01
-shader_parameter/brightness = 1.4
-shader_parameter/discolor = true
-shader_parameter/warp_amount = 1.0
-shader_parameter/clip_warp = false
-shader_parameter/vignette_intensity = 0.3
-shader_parameter/vignette_opacity = 0.391
+[sub_resource type="Animation" id="Animation_46lqo"]
+resource_name = "news"
+length = 24.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Beggar/BeggarCamera1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Beggar/BeggarCamera1:current")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Beggar/BeggarCamera2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Beggar/BeggarCamera2:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Villager/VillagerCamera1:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(8, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Villager/VillagerCamera1:current")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(8, 12),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Villager/VillagerCamera2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(12, 16),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Villager/VillagerCamera2:current")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(12, 16),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Woman/WomanCamera1:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(16, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Woman/WomanCamera1:current")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(16, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Woman/WomanCamera2:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(20),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Woman/WomanCamera2:current")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(20),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AudioStreamPlayer")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ams63"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Beggar/BeggarCamera1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Beggar/BeggarCamera1:current")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Beggar/BeggarCamera2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Beggar/BeggarCamera2:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Villager/VillagerCamera1:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Villager/VillagerCamera1:current")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Villager/VillagerCamera2:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Villager/VillagerCamera2:current")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Woman/WomanCamera1:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Woman/WomanCamera1:current")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Woman/WomanCamera2:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Woman/WomanCamera2:current")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ams63"]
+_data = {
+&"RESET": SubResource("Animation_ams63"),
+&"news": SubResource("Animation_46lqo")
+}
 
 [node name="NewsCrimeScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_46lqo")
 
 [node name="PlaneMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_jd0ai")
@@ -89,6 +391,7 @@ transform = Transform3D(0.615111, 0.541793, -0.572798, -0.767903, 0.576412, -0.2
 fov = 50.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Beggar/BeggarCamera1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23517e-08, -1.86265e-08, 0.924161)
 light_projector = ExtResource("5_wgnkx")
 shadow_enabled = true
 
@@ -98,6 +401,7 @@ visible = false
 fov = 50.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Beggar/BeggarCamera2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.35276e-08, 0.758801)
 light_projector = ExtResource("5_wgnkx")
 shadow_enabled = true
 
@@ -127,13 +431,15 @@ bones/11/rotation = Quaternion(-0.00153873, -0.0117958, 0.00127674, 0.999928)
 bones/12/rotation = Quaternion(-0.00185123, 0.020408, 0.998219, -0.0560252)
 bones/13/position = Vector3(-5.39197e-08, 0.555045, 4.0369e-08)
 bones/13/rotation = Quaternion(-0.0465677, -0.000121589, 0.0201959, 0.998711)
-bones/14/position = Vector3(0.0117503, 0.766183, -0.012742)
-bones/14/rotation = Quaternion(0.117279, -0.00574884, 0.106894, 0.987313)
+bones/14/position = Vector3(0.0117502, 0.766183, -0.012742)
+bones/14/rotation = Quaternion(0.348835, -0.0683826, 0.105021, 0.928767)
+bones/14/scale = Vector3(1, 1, 1)
 bones/16/rotation = Quaternion(0.00168383, 0.0201936, 0.998349, 0.0537507)
 bones/17/position = Vector3(1.67974e-07, 0.561199, 3.33168e-08)
 bones/17/rotation = Quaternion(-0.0457048, -0.000984392, 0.0399375, 0.998156)
-bones/18/position = Vector3(-0.000904489, 0.774502, -0.00248025)
-bones/18/rotation = Quaternion(0.0673487, 0.920484, 0.130803, 0.362028)
+bones/18/position = Vector3(-0.000904681, 0.774502, -0.00248025)
+bones/18/rotation = Quaternion(0.134626, 0.881756, 0.299833, 0.338352)
+bones/18/scale = Vector3(1, 1, 1)
 
 [node name="Decal" type="Decal" parent="Villager"]
 transform = Transform3D(-0.517638, 1.74846e-07, 1.93185, -1.93185, -8.74228e-08, -0.517638, 3.91906e-08, -2, 1.91515e-07, -0.0848506, 1.92773, 0.843656)
@@ -147,8 +453,10 @@ visible = false
 fov = 50.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Villager/VillagerCamera1"]
+transform = Transform3D(1, 0, 0, 0, 0.929036, -0.36999, 0, 0.36999, 0.929036, -1.42109e-14, -0.826226, 0.406361)
 light_projector = ExtResource("5_wgnkx")
 shadow_enabled = true
+spot_range = 7.54187
 
 [node name="VillagerCamera2" type="Camera3D" parent="Villager"]
 transform = Transform3D(-1.00251e-07, -0.693603, 0.720358, -1, -1.87885e-08, -1.5726e-07, 1.2261e-07, -0.720358, -0.693603, 1.74634, 1.42063, -1.43789)
@@ -156,8 +464,11 @@ visible = false
 fov = 60.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Villager/VillagerCamera2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10543e-15, 7.45058e-09, 1.13074)
 light_projector = ExtResource("5_wgnkx")
 shadow_enabled = true
+spot_range = 8.084
+spot_angle = 63.84
 
 [node name="Woman" parent="." instance=ExtResource("7_dilhq")]
 transform = Transform3D(-0.228147, -4.25586e-08, 0.973627, -0.973627, 9.97262e-09, -0.228147, -4.38164e-16, -1, -4.37114e-08, -8.04959, 0.0844666, -3.60621)
@@ -221,8 +532,10 @@ fov = 50.0
 far = 10.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Woman/WomanCamera1"]
+transform = Transform3D(0.995152, -2.03423e-08, 0.0983471, 1.11759e-08, 1, 0, -0.0983471, 2.98023e-08, 0.995152, 0.129912, 0.0896096, 0.246623)
 light_projector = ExtResource("5_wgnkx")
 shadow_enabled = true
+spot_angle = 50.85
 
 [node name="WomanCamera2" type="Camera3D" parent="Woman"]
 transform = Transform3D(-0.0419747, -0.712092, -0.700831, 0.960745, -0.221302, 0.167316, -0.27424, -0.666296, 0.693427, -1.02876, 1.07184, 1.37223)
@@ -231,25 +544,18 @@ fov = 50.0
 far = 10.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Woman/WomanCamera2"]
+transform = Transform3D(1, 0, -1.49012e-08, 1.49012e-08, 1, 1.86265e-08, -1.49012e-08, 4.09782e-08, 1, 0.0145121, 0.0274117, -0.0470729)
 light_projector = ExtResource("5_wgnkx")
 shadow_enabled = true
+spot_angle = 62.54
 
-[node name="CRTShader" type="CanvasLayer" parent="."]
-layer = 6
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ams63")
+}
+autoplay = "news"
 
-[node name="GrayBackground" type="ColorRect" parent="CRTShader"]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.301961, 0.301961, 0.301961, 0)
-
-[node name="CRTShader" parent="CRTShader" instance=ExtResource("8_wppfx")]
-material = SubResource("ShaderMaterial_wgnkx")
-metadata/_edit_use_anchors_ = true
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 
 [editable path="Beggar"]
 [editable path="Villager"]
