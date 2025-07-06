@@ -600,7 +600,6 @@ spot_angle = 62.54
 libraries = {
 &"": SubResource("AnimationLibrary_ams63")
 }
-autoplay = "news"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_wgnkx")
@@ -665,6 +664,7 @@ text = "3 KILLED IN THE NEARBY CAMPGROUND"
 
 [node name="CRTShader" type="CanvasLayer" parent="."]
 layer = 6
+visible = false
 
 [node name="GrayBackground" type="ColorRect" parent="CRTShader"]
 unique_name_in_owner = true
