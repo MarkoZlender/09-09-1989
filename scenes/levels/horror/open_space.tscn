@@ -1,4 +1,4 @@
-[gd_scene load_steps=120 format=4 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=121 format=4 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="Script" uid="uid://cup8rquk0oej5" path="res://scripts/utility_scripts/open_space.gd" id="1_dxg7p"]
 [ext_resource type="PackedScene" uid="uid://bt5qb4kfrjilw" path="res://scenes/environment/collisions/tree_collision.tscn" id="2_cpna0"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://cooybxp4hycyi" path="res://assets/models/camping/Textures/Trunk_01.png" id="13_ruex4"]
 [ext_resource type="PackedScene" uid="uid://dmlx1plc5f5hm" path="res://scenes/environment/props/branch.tscn" id="14_akovg"]
 [ext_resource type="Texture2D" uid="uid://dmjt8vkebbk4f" path="res://assets/models/camping/Textures/bonfire.png" id="15_ej3wi"]
+[ext_resource type="PackedScene" uid="uid://62ko1iujlgs1" path="res://scenes/levels/horror/news_crime_scene.tscn" id="30_ej3wi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_746rq"]
 resource_local_to_scene = true
@@ -146,7 +147,6 @@ size = Vector3(4.50555, 12.7744, 5.15343)
 background_mode = 1
 ambient_light_source = 2
 ambient_light_energy = 5.49
-glow_enabled = true
 glow_intensity = 0.61
 glow_strength = 1.69
 glow_blend_mode = 0
@@ -1722,6 +1722,9 @@ transform = Transform3D(-0.625984, 0.000328958, -0.779835, 0.000205476, 1, 0.000
 
 [node name="car_blue_tscn6" parent="Props" groups=["removable_objects"] instance=ExtResource("9_h4e34")]
 transform = Transform3D(-0.625984, 0.000328958, -0.779835, 0.000205476, 1, 0.000257045, 0.779836, 1.43792e-11, -0.625984, 117.2, -0.502138, -139.5)
+
+[node name="NewsCrimeScene" parent="." instance=ExtResource("30_ej3wi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 68.532)
 
 [editable path="TreeCollision"]
 [editable path="Cameras/StartingCam"]
