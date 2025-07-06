@@ -1,3 +1,6 @@
 ~ start
+do Global.signal_bus.player_interacting.emit(true)
 Final dialogue.
+do Global.signal_bus.final_dialogue_completed.emit()
+do Global.signal_bus.player_interacting.emit(false)
 => END

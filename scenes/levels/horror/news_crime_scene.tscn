@@ -1,6 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://62ko1iujlgs1"]
+[gd_scene load_steps=22 format=3 uid="uid://62ko1iujlgs1"]
 
 [ext_resource type="Texture2D" uid="uid://clte6uhdrl688" path="res://assets/textures/grass/Dirt/Dirt_01-128x128.png" id="1_46lqo"]
+[ext_resource type="Script" uid="uid://c6wgm3r0wuf0q" path="res://scripts/utility_scripts/news_crime_scene.gd" id="1_otid4"]
 [ext_resource type="PackedScene" uid="uid://betbvqys51iem" path="res://scenes/entities/dead_bodies/beggar.tscn" id="2_ams63"]
 [ext_resource type="Texture2D" uid="uid://d1y3c0de63qbo" path="res://assets/sprites/blood_splatter/tile035.png" id="3_wppfx"]
 [ext_resource type="Texture2D" uid="uid://dnspe1m21601n" path="res://assets/sprites/blood_leak/blood_splatter.png" id="4_mjyn7"]
@@ -191,6 +192,18 @@ tracks/12/keys = {
 "method": &"play"
 }]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("NewsOverlay:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ams63"]
 length = 0.001
@@ -204,7 +217,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -348,7 +361,7 @@ tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ams63"]
@@ -389,6 +402,7 @@ shader_parameter/vignette_intensity = 0.3
 shader_parameter/vignette_opacity = 0.391
 
 [node name="NewsCrimeScene" type="Node3D"]
+script = ExtResource("1_otid4")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_46lqo")
@@ -435,6 +449,7 @@ upper_fade = 1461.3
 
 [node name="BeggarCamera1" type="Camera3D" parent="Beggar"]
 transform = Transform3D(0.615111, 0.541793, -0.572798, -0.767903, 0.576412, -0.279417, 0.178781, 0.611726, 0.770602, -1.4112, 0.444077, 1.3986)
+visible = false
 fov = 50.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Beggar/BeggarCamera1"]
@@ -573,7 +588,7 @@ texture_albedo = ExtResource("4_mjyn7")
 upper_fade = 11292.1
 
 [node name="WomanCamera1" type="Camera3D" parent="Woman"]
-transform = Transform3D(0.7907, -0.520301, -0.322613, -4.41057e-08, -0.526971, 0.849884, -0.612203, -0.672003, -0.416676, -0.518404, 3.07131, -0.805719)
+transform = Transform3D(0.326081, -0.682335, -0.654286, -0.491119, -0.71366, 0.499492, -0.807758, 0.158457, -0.567818, -1.23496, 2.18524, -0.864607)
 visible = false
 fov = 50.0
 far = 10.0
@@ -605,6 +620,7 @@ libraries = {
 stream = ExtResource("8_wgnkx")
 
 [node name="NewsOverlay" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

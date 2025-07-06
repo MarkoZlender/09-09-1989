@@ -27,6 +27,7 @@ func _ready() -> void:
 	Global.signal_bus.level_changed.connect(_on_level_changed)
 	Global.signal_bus.player_died.connect(_on_player_died)
 	Global.signal_bus.quest_completed.connect(_on_quest_completed)
+	Global.signal_bus.final_dialogue_completed.connect(_on_final_dialogue_completed)
 	set_process(false)
 
 	if start_scene.resource_path.find("res://scenes/ui") == -1:
@@ -215,12 +216,26 @@ func _on_level_changed() -> void:
 func _on_player_died() -> void:
 	change_gui_scene(Global.GAME_OVER_SCENE, true, false, true)
 
-func _on_quest_completed() -> void:
+func _play_transition(play_half: bool, stop_half: bool) -> void:
 	%GrayBackground.visible = true
 	var tween: Tween = create_tween()
 	tween.tween_property(%GrayBackground, "color:a", 1.0, 1.0)
 	await tween.finished
-	Global.signal_bus.clear_to_remove.emit()
 	await Global.wait(2.0)
-	tween = create_tween()
-	tween.tween_property(%GrayBackground, "color:a", 0.0, 1.0)
+	if !stop_half:
+		if play_half:
+			%GrayBackground.color.a = 0.0
+		else:
+			Global.signal_bus.clear_to_remove.emit()
+			tween = create_tween()
+			tween.tween_property(%GrayBackground, "color:a", 0.0, 1.0)
+			await tween.finished
+
+func _on_quest_completed() -> void:
+	await _play_transition(false, false)
+
+func _on_final_dialogue_completed() -> void:
+	await _play_transition(true, false)
+	#await Global.wait(0.1)
+	Global.signal_bus.play_news.emit()
+

@@ -7,6 +7,8 @@ signal enemy_died(enemy: Enemy)
 signal player_interacting(state: bool)
 
 signal quest_completed
+signal final_dialogue_completed
+signal play_news
 signal clear_to_remove
 
 signal spawn_blood(position: Vector3)
