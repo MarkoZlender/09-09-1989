@@ -1225,6 +1225,11 @@ player = NodePath("../Player")
 
 [node name="Wraith" parent="Entities" groups=["removable_objects"] instance=ExtResource("10_a8uie")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 127.999, 1.51979, -121.337)
+dialogue_resource = "uid://bdqmluf0jg7xj"
+
+[node name="Wraith2" parent="Entities" instance=ExtResource("10_a8uie")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 165.696, 1.51979, -220.827)
+dialogue_resource = "uid://bms2c6lxhovls"
 
 [node name="Cameras" type="Node3D" parent="."]
 

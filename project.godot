@@ -172,7 +172,7 @@ flashlight={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://assets/dialogue/car_2_interaction.dialogue", "res://assets/dialogue/tent_interaction.dialogue", "res://assets/dialogue/npc_dialogue.dialogue")
+locale/translations_pot_files=PackedStringArray("res://assets/dialogue/car_2_interaction.dialogue", "res://assets/dialogue/tent_interaction.dialogue", "res://assets/dialogue/npc_dialogue.dialogue", "res://assets/dialogue/npc_dialogue_final.dialogue")
 
 [layer_names]
 
