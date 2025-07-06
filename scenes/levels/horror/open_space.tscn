@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=4 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=120 format=4 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="Script" uid="uid://cup8rquk0oej5" path="res://scripts/utility_scripts/open_space.gd" id="1_dxg7p"]
 [ext_resource type="PackedScene" uid="uid://bt5qb4kfrjilw" path="res://scenes/environment/collisions/tree_collision.tscn" id="2_cpna0"]
@@ -512,6 +512,21 @@ size = Vector3(28.951, 5.5813, 10.7509)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ddttu"]
 size = Vector3(28.951, 5.5813, 32.3037)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vcd08"]
+size = Vector3(16.2972, 5.5813, 17.7306)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q1rrl"]
+size = Vector3(16.2972, 6, 20.65)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3p3d0"]
+size = Vector3(43.8966, 6, 38.9069)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fxm35"]
+size = Vector3(42.1613, 7.83594, 30.1272)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4gq5o"]
+size = Vector3(16.854, 6, 11.3664)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j3udr"]
 size = Vector3(28.951, 5.5813, 13.1967)
@@ -1270,6 +1285,41 @@ transform = Transform3D(-0.214838, 0, -0.97665, 0, 1, 0, 0.97665, 0, -0.214838, 
 transform = Transform3D(0.960736, 0.0964305, 0.260215, -0.107554, 0.993783, 0.0288188, -0.255819, -0.055674, 0.965127, 2.48901, -8.4681, -23.442)
 shape = SubResource("BoxShape3D_ddttu")
 
+[node name="FixedCamera19" parent="Cameras" instance=ExtResource("7_tmfig")]
+transform = Transform3D(-0.30227, -0.476611, 0.825515, 0, 0.866025, 0.5, -0.953222, 0.151135, -0.261773, 142.248, 13.3296, -139.407)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera19/Area3D" index="0"]
+transform = Transform3D(0.933507, -0.084831, -0.348413, -0.150115, 0.789936, -0.594536, 0.325662, 0.607296, 0.724671, 1.84072, -3.25721, -21.5602)
+shape = SubResource("BoxShape3D_vcd08")
+
+[node name="FixedCamera20" parent="Cameras" instance=ExtResource("7_tmfig")]
+transform = Transform3D(0.998975, -0.0226293, 0.0391952, 7.62517e-09, 0.866026, 0.5, -0.0452587, -0.499487, 0.865138, 135.518, 13.3296, -139.407)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera20/Area3D" index="0"]
+transform = Transform3D(0.99412, -0.0480441, -0.0971722, -0.0232264, 0.78119, -0.623868, 0.105884, 0.622445, 0.775473, -6.32581, -0.358612, -18.6123)
+shape = SubResource("BoxShape3D_q1rrl")
+
+[node name="FixedCamera21" parent="Cameras" instance=ExtResource("7_tmfig")]
+transform = Transform3D(0.738385, 0.33719, -0.58403, 5.76444e-09, 0.866026, 0.5, 0.674379, -0.369192, 0.63946, 119.455, 13.3296, -167.075)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera21/Area3D" index="0"]
+transform = Transform3D(0.768935, -0.104858, 0.630686, 0.359326, 0.886805, -0.290643, -0.52882, 0.450098, 0.719565, 0.472694, 2.35773, -28.0806)
+shape = SubResource("BoxShape3D_3p3d0")
+
+[node name="FixedCamera22" parent="Cameras" instance=ExtResource("7_tmfig")]
+transform = Transform3D(0.738385, 0.33719, -0.58403, 5.76444e-09, 0.866026, 0.5, 0.67438, -0.369192, 0.63946, 148.072, 13.3296, -198.914)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera22/Area3D" index="0"]
+transform = Transform3D(0.999296, -0.00929361, -0.0367232, -0.00955422, 0.876265, -0.481743, 0.0366566, 0.481746, 0.87555, 2.67756, -1.43526, -20.6467)
+shape = SubResource("BoxShape3D_fxm35")
+
+[node name="FixedCamera23" parent="Cameras" instance=ExtResource("7_tmfig")]
+transform = Transform3D(0.998975, -0.0226293, 0.039195, 7.67195e-09, 0.866026, 0.5, -0.0452585, -0.499487, 0.865138, 165.41, 11.4886, -207.171)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cameras/FixedCamera23/Area3D" index="0"]
+transform = Transform3D(0.809277, -0.115835, -0.575909, -0.264836, 0.803119, -0.53369, 0.524362, 0.584404, 0.619282, 3.90041, -2.26646, -16.5412)
+shape = SubResource("BoxShape3D_4gq5o")
+
 [node name="FixedCamera17" parent="Cameras" instance=ExtResource("7_tmfig")]
 transform = Transform3D(-0.214838, 0, -0.97665, 0, 1, 0, 0.97665, 0, -0.214838, 178.457, 8.98952, -123.741)
 
@@ -1677,6 +1727,11 @@ transform = Transform3D(-0.625984, 0.000328958, -0.779835, 0.000205476, 1, 0.000
 [editable path="Cameras/FixedCamera12"]
 [editable path="Cameras/FixedCamera13"]
 [editable path="Cameras/FixedCamera16"]
+[editable path="Cameras/FixedCamera19"]
+[editable path="Cameras/FixedCamera20"]
+[editable path="Cameras/FixedCamera21"]
+[editable path="Cameras/FixedCamera22"]
+[editable path="Cameras/FixedCamera23"]
 [editable path="Cameras/FixedCamera17"]
 [editable path="Cameras/FixedCamera14"]
 [editable path="Cameras/FixedCamera15"]
