@@ -128,7 +128,7 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_x10xj")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_x10xj")
 theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_x10xj")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_x10xj")
-text = "Start Game"
+text = "Start"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -151,7 +151,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.901961, 0.901961, 0.87451, 1)
 theme_override_font_sizes/font_size = 50
-text = "PROJECT NAME"
+text = "09/09/1989"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -182,7 +182,7 @@ layout_mode = 2
 focus_mode = 0
 theme_type_variation = &"MainMenuButton"
 theme_override_font_sizes/font_size = 15
-text = "Quit"
+text = "Exit"
 
 [connection signal="pressed" from="StartButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
