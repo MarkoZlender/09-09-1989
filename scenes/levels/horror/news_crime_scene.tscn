@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://62ko1iujlgs1"]
+[gd_scene load_steps=22 format=3 uid="uid://62ko1iujlgs1"]
 
 [ext_resource type="Texture2D" uid="uid://clte6uhdrl688" path="res://assets/textures/grass/Dirt/Dirt_01-128x128.png" id="1_46lqo"]
 [ext_resource type="Script" uid="uid://c6wgm3r0wuf0q" path="res://scripts/utility_scripts/news_crime_scene.gd" id="1_otid4"]
@@ -9,8 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://cio51w7jgtyfw" path="res://scenes/entities/dead_bodies/villager.tscn" id="6_otid4"]
 [ext_resource type="PackedScene" uid="uid://q8qg5r80l76u" path="res://scenes/entities/dead_bodies/woman.tscn" id="7_dilhq"]
 [ext_resource type="AudioStream" uid="uid://dcconid3i4day" path="res://assets/sounds/bgm/breaking_news_theme.wav" id="8_wgnkx"]
-[ext_resource type="PackedScene" uid="uid://brdsm3kei2sjp" path="res://scenes/vfx/crt_shader.tscn" id="8_wppfx"]
-[ext_resource type="Shader" uid="uid://dvqj5decgwjkr" path="res://resources/crt_shader.gdshader" id="9_mjyn7"]
 [ext_resource type="FontFile" uid="uid://bnkcmwg8m5qx4" path="res://assets/fonts/Geologica-Bold.ttf" id="10_mjyn7"]
 [ext_resource type="AudioStream" uid="uid://dq7w4fuiuvxwk" path="res://resources/footstep_randomizer_stream.tres" id="10_wgnkx"]
 [ext_resource type="AudioStream" uid="uid://0kufb2nx866a" path="res://assets/sounds/sfx/gunshot/gunshot.wav" id="11_otid4"]
@@ -500,30 +498,6 @@ colors = PackedColorArray(0.00392157, 0.243137, 0.666667, 1, 0, 0.0941176, 0.254
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_wgnkx"]
 gradient = SubResource("Gradient_mjyn7")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvrd5"]
-shader = ExtResource("9_mjyn7")
-shader_parameter/overlay = true
-shader_parameter/scanlines_opacity = 0.0
-shader_parameter/scanlines_width = 0.0
-shader_parameter/grille_opacity = 0.103
-shader_parameter/resolution = Vector2(640, 480)
-shader_parameter/pixelate = false
-shader_parameter/roll = false
-shader_parameter/roll_speed = 0.0
-shader_parameter/roll_size = 0.0
-shader_parameter/roll_variation = 1.8
-shader_parameter/distort_intensity = 0.05
-shader_parameter/noise_opacity = 0.4
-shader_parameter/noise_speed = 5.0
-shader_parameter/static_noise_intensity = 0.06
-shader_parameter/aberration = 0.01
-shader_parameter/brightness = 1.4
-shader_parameter/discolor = true
-shader_parameter/warp_amount = 1.0
-shader_parameter/clip_warp = false
-shader_parameter/vignette_intensity = 0.3
-shader_parameter/vignette_opacity = 0.391
-
 [node name="NewsCrimeScene" type="Node3D"]
 script = ExtResource("1_otid4")
 
@@ -736,7 +710,6 @@ spot_angle = 62.54
 libraries = {
 &"": SubResource("AnimationLibrary_ams63")
 }
-autoplay = "news"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_wgnkx")
@@ -833,23 +806,6 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.57079
 texture = ExtResource("13_dilhq")
-
-[node name="CRTShader" type="CanvasLayer" parent="."]
-layer = 6
-
-[node name="GrayBackground" type="ColorRect" parent="CRTShader"]
-unique_name_in_owner = true
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.301961, 0.301961, 0.301961, 0)
-
-[node name="CRTShader" parent="CRTShader" instance=ExtResource("8_wppfx")]
-material = SubResource("ShaderMaterial_cvrd5")
-metadata/_edit_use_anchors_ = true
 
 [editable path="Beggar"]
 [editable path="Villager"]
