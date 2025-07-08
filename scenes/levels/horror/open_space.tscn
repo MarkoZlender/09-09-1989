@@ -687,6 +687,10 @@ shape = SubResource("BoxShape3D_746rq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8334, 5.88721, -31.8664)
 shape = SubResource("BoxShape3D_1iohq")
 
+[node name="CollisionShape3D49" type="CollisionShape3D" parent="TreeCollision"]
+transform = Transform3D(-0.0385622, 0, -0.999256, 0, 1, 0, 0.999256, 0, -0.0385622, 19.8334, 5.88721, 0.857271)
+shape = SubResource("BoxShape3D_1iohq")
+
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="TreeCollision"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.7897, 5.88721, -65.6627)
 shape = SubResource("BoxShape3D_fpkip")
@@ -1204,7 +1208,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 134.808, 1.51979, -97.801)
 [node name="Entities" type="Node3D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("4_5un2j")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 161.108, 1.50596, -217.813)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 128.3, 1.50596, -4.6065)
 floor_max_angle = 1.0472
 player_data = SubResource("Resource_8ax1c")
 

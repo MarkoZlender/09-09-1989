@@ -50,4 +50,8 @@ grow_vertical = 0
 
 [node name="Credit" type="Label" parent="MarginContainer"]
 layout_mode = 2
-text = "Game created by Marko Zlender"
+text = "Game created by: 
+
+Marko Zlender"
+horizontal_alignment = 1
+vertical_alignment = 1
