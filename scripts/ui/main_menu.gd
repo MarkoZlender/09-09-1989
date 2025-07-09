@@ -10,7 +10,7 @@ func _ready() -> void:
 	Global.audio_player.play()
 
 func _on_new_game_button_pressed() -> void:
-	Global.game_controller.change_gui_scene(slot_selection_scene)
+	Global.game_controller.change_3d_scene(Global.STARTING_LEVEL)
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

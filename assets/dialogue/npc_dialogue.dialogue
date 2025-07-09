@@ -27,8 +27,3 @@ if not NPCGameState.has_been_met
 - End
 do Global.signal_bus.player_interacting.emit(false)
 => END
-
-Wraith: For more information see the online documentation.
-
-do Global.signal_bus.player_interacting.emit(false)
-=> END
