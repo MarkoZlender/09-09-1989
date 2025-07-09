@@ -115,6 +115,7 @@ func change_3d_scene(
 	if new_scene == "":
 		current_3d_scene.queue_free()
 		return
+
 	change_gui_scene(Global.LOADING_SCREEN, true, false, true)
 
 	#await get_tree().process_frame
