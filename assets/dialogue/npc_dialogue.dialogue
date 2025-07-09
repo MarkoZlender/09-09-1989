@@ -21,11 +21,13 @@ if not NPCGameState.has_been_met
 	Wraith: Don't you remember what you saw at your abode tonight? That is the very reason of your presence with us tonight.
 	=> start
 - {{NPCGameState.teeth_counter}} teeth left [if NPCGameState. teeth_counter <= 0]
-	Wraith: Now you are free.
+	Wraith: Thanks to our Saviour's holy cleansing we can rejoice and clean this holy land from sin!
+	Wraith: Now come, Saviour, and accompany us at the ritual spot.
 	do Global.signal_bus.quest_completed.emit()
-- End 
+- End
 do Global.signal_bus.player_interacting.emit(false)
 => END
+
 Wraith: For more information see the online documentation.
 
 do Global.signal_bus.player_interacting.emit(false)

@@ -1,6 +1,10 @@
 ~ start
 do Global.signal_bus.player_interacting.emit(true)
-Final dialogue.
+Wraith: The whole world will see, the whole world will rejoice!
+Wraith: Saviour, you were still a blind man tonight at your abode.
+Wraith: Now those who do not see will see, and those who see will become blind.
+Wraith: Even you, Saviour...
+Wraith: As your kind would say, cheese! 
 do Global.signal_bus.final_dialogue_completed.emit()
 do Global.signal_bus.player_interacting.emit(false)
 => END
