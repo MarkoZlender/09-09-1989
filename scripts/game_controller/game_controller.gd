@@ -221,9 +221,10 @@ func _play_transition(play_half: bool, stop_half: bool) -> void:
 	var tween: Tween = create_tween()
 	tween.tween_property(%GrayBackground, "color:a", 1.0, 1.0)
 	await tween.finished
-	await Global.wait(2.0)
+	await Global.wait(5.0)
 	if !stop_half:
 		if play_half:
+			await Global.wait(2.0)
 			%GrayBackground.color.a = 0.0
 		else:
 			Global.signal_bus.clear_to_remove.emit()

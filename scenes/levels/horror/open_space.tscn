@@ -1208,7 +1208,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 134.808, 1.51979, -97.801)
 [node name="Entities" type="Node3D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("4_5un2j")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 128.3, 1.50596, -4.6065)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 131.789, 1.50596, -117.684)
 floor_max_angle = 1.0472
 player_data = SubResource("Resource_8ax1c")
 

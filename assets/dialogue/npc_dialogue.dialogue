@@ -1,17 +1,29 @@
 ~ start
 do Global.signal_bus.player_interacting.emit(true)
 if not NPCGameState.has_been_met
-	Wraith: [[Hi|Hello|Howdy]], this is some dialogue.
-	Wraith: This is the second line of dialogue.
+	Wraith: On our call he came to us.
+	Wraith: So is the nature of our true Savior.
+	Wraith: WE WEPT AND HE ANSWERED!
+	Wraith: He sensed that the Holy Ground is infested and came to clean it out of the unholy parasites infesting it with their feet.
+	Wraith: He is going to save us ALL tonight!
+	Wraith: Saviour, you have to give us 9 teeth of the infested so that we can cleanse this holy ground from their curse.
 	set NPCGameState.has_been_met = true
-Wraith: Here are some choices.
+
+- What are you talking about?
+	Wraith: You just heard our prophecy. We won't repeat ourselfes.
+	Wraith: You are our Saviour, you know best what should be done here tonight.
+	=> start
+- Where am I?
+	Wraith: You are on the Holy Ground, near your abode.
+	=> start
+- Why am I here?
+	Wraith: Saviour, you are pretty forgetfull. We are not surprised, the prophecy you should fulfill is no easy task.
+	Wraith: Don't you remember what you saw at your abode tonight? That is the very reason of your presence with us tonight.
+	=> start
 - {{NPCGameState.teeth_counter}} teeth left [if NPCGameState. teeth_counter <= 0]
 	Wraith: Now you are free.
 	do Global.signal_bus.quest_completed.emit()
-- Second one
-	Wraith: You picked the second one.
-- Start again => start
-- End the conversation 
+- End 
 do Global.signal_bus.player_interacting.emit(false)
 => END
 Wraith: For more information see the online documentation.
