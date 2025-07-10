@@ -48,7 +48,7 @@ func _process(_delta: float) -> void:
 	# 	process_scene_params[5],
 	# 	process_scene_params[6]
 	# )
-	#print("loading")
+	print("loading")
 
 func change_gui_scene(
 		new_scene: String,
@@ -113,6 +113,7 @@ func change_3d_scene(
 		]
 		set_process(true)
 	if new_scene == "":
+		set_process(false)
 		current_3d_scene.queue_free()
 		return
 
@@ -133,7 +134,7 @@ func change_3d_scene(
 
 
 	#_load_scene_threaded(new_scene)
-	ResourceLoader.load_threaded_request(new_scene, "PackedScene", false, ResourceLoader.CacheMode.CACHE_MODE_REUSE)
+	ResourceLoader.load_threaded_request(new_scene, "PackedScene", false, ResourceLoader.CacheMode.CACHE_MODE_IGNORE_DEEP)
 	_deferred_load_scene_threaded(new_scene)
 
 	
@@ -164,24 +165,11 @@ func _deferred_load_scene_threaded(scene_path: String) -> void:
 		# Resource is loaded, we can use it
 		var new: Resource = ResourceLoader.load_threaded_get(scene_path)
 		var instance: Node = new.instantiate()
-
-		#await idle frame
-		#await get_tree().process_frame
-		#await instance.ready # Ensure the instance is ready before adding it to the scene tree
-		#call_deferred("print", "instantiated: " + instance.name)
-		#world_3d.call_deferred("add_child", instance)
-		if is_instance_valid(instance):
-			print("Instance is valid: " + instance.name)
-			world_3d.call_deferred("add_child", instance)
-		#print("added to world_3d: " + instance.name)
-			current_3d_scene = instance
-			scene_loaded.emit()
-			set_process(false)
-			change_gui_scene("", true, false, true)
-		else:
-			printerr("Instance is not valid: " + scene_path)
-	#await get_tree().create_timer(0.001).timeout
-	#await Engine.get_main_loop().process_frame
+		world_3d.call_deferred("add_child", instance)
+		current_3d_scene = instance
+		scene_loaded.emit()
+		set_process(false)
+		change_gui_scene("", true, false, true)
 
 func change_2d_scene(
 		new_scene: String,
