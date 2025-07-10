@@ -1,0 +1,120 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpd6spmhid1lb"]
+
+[ext_resource type="Script" uid="uid://bij4bcowqcbnf" path="res://scripts/ui/config_screen.gd" id="1_4s4yl"]
+
+[node name="ConfigScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4s4yl")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RootContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.5
+offset_top = -102.0
+offset_right = 216.5
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="ResolutionContainer" type="HBoxContainer" parent="RootContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="ResolutionLabel" type="Label" parent="RootContainer/ResolutionContainer"]
+layout_mode = 2
+text = "Resolution:"
+
+[node name="ResolutionDropdown" type="OptionButton" parent="RootContainer/ResolutionContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+selected = 0
+item_count = 1
+popup/item_0/text = "test"
+popup/item_0/id = 0
+
+[node name="AudioContainer" type="HBoxContainer" parent="RootContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 60
+
+[node name="AudioLabelContainer" type="VBoxContainer" parent="RootContainer/AudioContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 14
+
+[node name="MasterLabel" type="Label" parent="RootContainer/AudioContainer/AudioLabelContainer"]
+layout_mode = 2
+text = "Master:"
+
+[node name="BgmLabel" type="Label" parent="RootContainer/AudioContainer/AudioLabelContainer"]
+layout_mode = 2
+text = "BGM:"
+
+[node name="SfxLabel" type="Label" parent="RootContainer/AudioContainer/AudioLabelContainer"]
+layout_mode = 2
+text = "SFX:"
+
+[node name="SliderContainer" type="VBoxContainer" parent="RootContainer/AudioContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MasterSlider" type="HSlider" parent="RootContainer/AudioContainer/SliderContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+max_value = 2.0
+step = 0.001
+
+[node name="BgmSlider" type="HSlider" parent="RootContainer/AudioContainer/SliderContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+max_value = 2.0
+step = 0.001
+
+[node name="SfxSlider" type="HSlider" parent="RootContainer/AudioContainer/SliderContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+max_value = 2.0
+step = 0.001
+
+[node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -57.0
+offset_right = 25.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"MainMenuButton"
+theme_override_font_sizes/font_size = 15
+text = "Back
+"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

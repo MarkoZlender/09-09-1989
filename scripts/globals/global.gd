@@ -2,6 +2,7 @@ extends Node
 
 const SLOT_BUTTON_SCENE: String = "res://scenes/ui/save_system/slot_button.tscn"
 const MAIN_MENU_SCENE: String = "res://scenes/ui/main_menu.tscn"
+const CONFIG_SCENE: String = "res://scenes/ui/config_screen.tscn"
 const STARTING_LEVEL: String = "res://scenes/levels/horror/open_space.tscn"
 const LOADING_SCREEN: String = "res://scenes/ui/save_system/loading_screen.tscn"
 const GAME_OVER_SCENE: String = "res://scenes/ui/game_over_screen.tscn"

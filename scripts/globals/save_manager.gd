@@ -1,11 +1,14 @@
 class_name SaveManager extends Node
 
 const SAVE_DIR: String = "user://saves/"
+const CONFIG_FILE_PATH: String = "user://config.ini"
 # IMPORTANT: change to .res for release
 const SAVE_FILE_NAMES: Array = ["save_slot_0.json", "save_slot_1.json", "save_slot_2.json"]
 
 var current_save_slot: int = 0
 var fresh_load: bool = true
+
+var config = ConfigFile.new()
 
 func _ready() -> void:
 	Global.save_manager = self
@@ -226,3 +229,23 @@ func get_save_data_field(slot: int, field: String) -> String:
 	else:
 		printerr("%s not found in save data." % field)
 		return ""
+
+func save_audio_config():
+	config.set_value("Audio", "MasterVolume", AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
+	config.set_value("Audio", "BGMVolume", AudioServer.get_bus_volume_db(AudioServer.get_bus_index("BGM")))
+	config.set_value("Audio", "SFXVolume", AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
+	config.save(CONFIG_FILE_PATH)
+
+func load_audio_config():
+	if  !FileAccess.file_exists(CONFIG_FILE_PATH):
+		printerr("Config file does not exist, creating new config file.")
+		save_audio_config()
+		return
+	config.load(CONFIG_FILE_PATH)
+	var audio_settings: Dictionary = {}
+	for key in config.get_section_keys("Audio"):
+		audio_settings[key] = config.get_value("Audio", key, 0.0)
+	if audio_settings.size() > 0:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), audio_settings.get("MasterVolume", 0.0))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("BGM"), audio_settings.get("BGMVolume", 0.0))
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), audio_settings.get("SFXVolume", 0.0))
