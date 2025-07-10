@@ -35,22 +35,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 40
 
-[node name="ResolutionContainer" type="HBoxContainer" parent="RootContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="ResolutionLabel" type="Label" parent="RootContainer/ResolutionContainer"]
-layout_mode = 2
-text = "Resolution:"
-
-[node name="ResolutionDropdown" type="OptionButton" parent="RootContainer/ResolutionContainer"]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-selected = 0
-item_count = 1
-popup/item_0/text = "test"
-popup/item_0/id = 0
-
 [node name="AudioContainer" type="HBoxContainer" parent="RootContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
