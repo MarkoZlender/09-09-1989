@@ -169,16 +169,18 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="ConfigButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(200, 30)
 layout_mode = 2
+size_flags_horizontal = 4
 focus_mode = 0
 theme_type_variation = &"MainMenuButton"
 theme_override_font_sizes/font_size = 15
 text = "Configuration"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 30)
+custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
+size_flags_horizontal = 4
 focus_mode = 0
 theme_type_variation = &"MainMenuButton"
 theme_override_font_sizes/font_size = 15
