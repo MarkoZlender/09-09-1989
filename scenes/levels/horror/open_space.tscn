@@ -1208,7 +1208,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 134.808, 1.51979, -97.801)
 [node name="Entities" type="Node3D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("4_5un2j")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 131.789, 1.50596, -117.684)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 126.214, 1.50596, -102.201)
 floor_max_angle = 1.0472
 player_data = SubResource("Resource_8ax1c")
 
@@ -1395,55 +1395,37 @@ shape = SubResource("BoxShape3D_feu7w")
 
 [node name="Notes" type="Node3D" parent="."]
 
-[node name="note_tscn3" parent="Notes" instance=ExtResource("9_7hute")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65.4003, 3, -114)
-note_text = "But I can't take them anymnore and I'm disgusted by myself, so please, someone, free me of the burden of life..."
-
-[node name="note_tscn2" parent="Notes" instance=ExtResource("9_7hute")]
+[node name="note1" parent="Notes" instance=ExtResource("9_7hute")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.8673, 3, -114.5)
-note_text = "I came here to get some rest from my kids back home..."
+note_text = "They look like us. They walk like us. But they have no face. The Saviour will know them by their odor, by their hollow screams when He takes their teeth."
 
-[node name="note_tscn4" parent="Notes" instance=ExtResource("9_7hute")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.9382, 3, -115.6)
-note_text = "I'm so done..."
+[node name="note2" parent="Notes" instance=ExtResource("9_7hute")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.412, 3, -81.8)
+note_text = "Saviour's hand knows best what to do. His instinct grows stronger with each step."
 
-[node name="note_tscn" parent="Notes" instance=ExtResource("9_7hute")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.6, 3, -97)
-
-[node name="note_tscn5" parent="Notes" instance=ExtResource("9_7hute")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170, 3, -81.8)
-
-[node name="note_tscn6" parent="Notes" instance=ExtResource("9_7hute")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 196.5, 3, -66.4)
-
-[node name="note_tscn7" parent="Notes" instance=ExtResource("9_7hute")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162.2, 3, -116.5)
-
-[node name="note_tscn8" parent="Notes" instance=ExtResource("9_7hute")]
+[node name="note3" parent="Notes" instance=ExtResource("9_7hute")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 179.7, 3, -116.1)
-
-[node name="note_tscn9" parent="Notes" instance=ExtResource("9_7hute")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 199.2, 3, -115.2)
+note_text = "They wear the skins of human flesh. They smile like us, but our Saviour knows, they are not human. The parasites must be cleansed."
 
 [node name="HealthUps" type="Node3D" parent="."]
 
-[node name="health_up_tscn2" parent="HealthUps" instance=ExtResource("9_a8uie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 94, 1, -105)
+[node name="HealthUp" parent="HealthUps" instance=ExtResource("9_a8uie")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 140.342, 3.05399, -105.424)
 
-[node name="health_up_tscn3" parent="HealthUps" instance=ExtResource("9_a8uie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 92.101, 1, -108.107)
+[node name="HealthUp2" parent="HealthUps" instance=ExtResource("9_a8uie")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 142.051, 3.05399, -107.29)
 
-[node name="health_up_tscn4" parent="HealthUps" instance=ExtResource("9_a8uie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 161, 1, -78)
+[node name="HealthUp3" parent="HealthUps" instance=ExtResource("9_a8uie")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 146.428, 3.05399, -120.482)
 
-[node name="health_up_tscn5" parent="HealthUps" instance=ExtResource("9_a8uie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 174, 1, -87)
+[node name="HealthUp4" parent="HealthUps" instance=ExtResource("9_a8uie")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 143.881, 3.05399, -122.246)
 
-[node name="health_up_tscn6" parent="HealthUps" instance=ExtResource("9_a8uie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 162, 1, -122)
+[node name="HealthUp5" parent="HealthUps" instance=ExtResource("9_a8uie")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 121.521, 3.05399, -104.388)
 
-[node name="health_up_tscn7" parent="HealthUps" instance=ExtResource("9_a8uie")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 196, 1, -111)
+[node name="HealthUp6" parent="HealthUps" instance=ExtResource("9_a8uie")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 112.056, 3.05399, -109.144)
 
 [node name="LighSources" type="Node3D" parent="."]
 

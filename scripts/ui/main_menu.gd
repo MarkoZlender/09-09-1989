@@ -10,6 +10,7 @@ func _ready() -> void:
 	Global.audio_player.play()
 
 func _on_new_game_button_pressed() -> void:
+	Global.audio_player.stop()
 	Global.game_controller.change_3d_scene(Global.STARTING_LEVEL)
 
 func _on_quit_button_pressed() -> void:

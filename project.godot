@@ -19,7 +19,7 @@ warnings/check_invalid_track_paths=false
 [application]
 
 config/name="topdown_adventure"
-run/main_scene="uid://bmcuon78mxwm0"
+run/main_scene="uid://b742kfgwr8sh"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 

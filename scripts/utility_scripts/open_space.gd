@@ -10,6 +10,8 @@ func _ready() -> void:
     if not Engine.is_editor_hint():
         world_env.environment.volumetric_fog_enabled = true
         world_env.environment.glow_enabled = true
+    
+    Global.interaction_manager.player = get_tree().get_first_node_in_group("player")
 
     Global.signal_bus.quest_completed.connect(_on_quest_completed)
     for object: Node3D in get_tree().get_nodes_in_group("removable_objects"):
