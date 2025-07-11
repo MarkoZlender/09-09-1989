@@ -13,7 +13,7 @@ func _ready() -> void:
 func _on_new_game_button_pressed() -> void:
 	print("New Game button pressed")
 	Global.audio_player.stop()
-	Global.game_controller.call_deferred("change_3d_scene", Global.STARTING_LEVEL)
+	Global.game_controller.call_deferred("change_gui_scene", Global.INTRO_SCENE)
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()

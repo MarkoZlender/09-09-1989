@@ -228,4 +228,3 @@ func _on_final_dialogue_completed() -> void:
 	await _play_transition(true, false)
 	#await Global.wait(0.1)
 	Global.signal_bus.play_news.emit()
-
