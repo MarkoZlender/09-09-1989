@@ -18,6 +18,5 @@ func _on_new_game_button_pressed() -> void:
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
-
 func _on_config_button_pressed() -> void:
 	Global.game_controller.change_gui_scene(Global.CONFIG_SCENE, true, false, true)
