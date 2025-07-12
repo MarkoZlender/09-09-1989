@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=4 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=122 format=4 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="Script" uid="uid://cup8rquk0oej5" path="res://scripts/utility_scripts/open_space.gd" id="1_dxg7p"]
 [ext_resource type="PackedScene" uid="uid://bt5qb4kfrjilw" path="res://scenes/environment/collisions/tree_collision.tscn" id="2_cpna0"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://dmlx1plc5f5hm" path="res://scenes/environment/props/branch.tscn" id="14_akovg"]
 [ext_resource type="Texture2D" uid="uid://dmjt8vkebbk4f" path="res://assets/models/camping/Textures/bonfire.png" id="15_ej3wi"]
 [ext_resource type="PackedScene" uid="uid://62ko1iujlgs1" path="res://scenes/levels/horror/news_crime_scene.tscn" id="30_ej3wi"]
+[ext_resource type="Script" uid="uid://dj8qsew5du01x" path="res://scripts/ui/pause_ui.gd" id="31_w3tp5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_746rq"]
 resource_local_to_scene = true
@@ -1708,7 +1709,43 @@ transform = Transform3D(-0.625984, 0.000328958, -0.779835, 0.000205476, 1, 0.000
 [node name="NewsCrimeScene" parent="." instance=ExtResource("30_ej3wi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 68.532)
 
+[node name="PauseUi" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("31_w3tp5")
+
+[node name="ColorRect" type="ColorRect" parent="PauseUi"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="Label" type="Label" parent="PauseUi"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -54.0
+offset_top = -21.0352
+offset_right = 54.0
+offset_bottom = 21.0352
+grow_horizontal = 2
+grow_vertical = 2
+text = "PAUSED"
+
 [editable path="TreeCollision"]
+[editable path="Entities/Enemy5"]
 [editable path="Cameras/StartingCam"]
 [editable path="Cameras/FixedCamera3"]
 [editable path="Cameras/FixedCamera7"]

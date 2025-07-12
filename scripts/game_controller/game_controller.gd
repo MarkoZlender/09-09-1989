@@ -152,14 +152,9 @@ func change_3d_scene(
 
 func _deferred_load_scene_threaded(scene_path: String) -> void:
 	var progress: Array = []
-	
-	#while true:
 	var status: int = ResourceLoader.load_threaded_get_status(scene_path, progress)
 	load_progress.emit(floor(progress[0] * 100))
-	#print(str(floor(progress[0] * 100)) + "%")
-	#print("Status: " + str(status))
 	if status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
-		#print(str(floor(progress[0] * 100)) + "%")
 		load_progress.emit(floor(progress[0] * 100))
 	if status == ResourceLoader.THREAD_LOAD_LOADED:
 		# Resource is loaded, we can use it
