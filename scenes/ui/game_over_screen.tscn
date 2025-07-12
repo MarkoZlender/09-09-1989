@@ -2,8 +2,8 @@
 
 [ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/ui_theme.tres" id="1_dnrai"]
 [ext_resource type="Script" uid="uid://dg1s7a5f7lwje" path="res://scripts/ui/game_over_screen.gd" id="2_sopbp"]
-[ext_resource type="AudioStream" uid="uid://cybhpf4u0ark" path="res://assets/sounds/bgm/game_over.wav" id="3_bllgf"]
 [ext_resource type="PackedScene" uid="uid://brdsm3kei2sjp" path="res://scenes/vfx/crt_shader.tscn" id="3_xra47"]
+[ext_resource type="AudioStream" uid="uid://cgl4v3e5xq10f" path="res://assets/sounds/sfx/main_menu/crt_tv.wav" id="4_xra47"]
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -62,7 +62,7 @@ custom_minimum_size = Vector2(100, 70)
 layout_mode = 2
 theme_type_variation = &"MainMenuButton"
 theme_override_font_sizes/font_size = 18
-text = "Restart from last save"
+text = "Try again"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 70)
@@ -73,10 +73,9 @@ text = "Quit to Main Menu"
 
 [node name="CRTShader" parent="." instance=ExtResource("3_xra47")]
 layout_mode = 1
-mouse_filter = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_bllgf")
+stream = ExtResource("4_xra47")
 autoplay = true
 bus = &"BGM"
 
