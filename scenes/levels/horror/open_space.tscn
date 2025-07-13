@@ -448,8 +448,6 @@ metadata/_custom_type_script = "uid://c5q20r4wynqst"
 script = ExtResource("6_46gqi")
 movement_speed = 3.0
 accel = 10.0
-level = 1
-experience = 10
 health = 100
 hit_strength = 10
 wander_range_x = Vector2(-5, 5)
@@ -462,8 +460,6 @@ metadata/_custom_type_script = "uid://0fkyd553m7cg"
 script = ExtResource("6_46gqi")
 movement_speed = 3.0
 accel = 10.0
-level = 1
-experience = 10
 health = 100
 hit_strength = 10
 wander_range_x = Vector2(-5, 5)
@@ -476,8 +472,6 @@ metadata/_custom_type_script = "uid://0fkyd553m7cg"
 script = ExtResource("6_46gqi")
 movement_speed = 3.0
 accel = 10.0
-level = 1
-experience = 10
 health = 100
 hit_strength = 10
 wander_range_x = Vector2(-5, 5)
@@ -671,6 +665,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_w3tp5")
 
 [node name="OpenSpace" type="Node3D"]
+process_mode = 1
 script = ExtResource("1_dxg7p")
 
 [node name="TreeCollision" parent="." instance=ExtResource("2_cpna0")]

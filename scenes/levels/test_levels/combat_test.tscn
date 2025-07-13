@@ -1,0 +1,76 @@
+[gd_scene load_steps=13 format=3 uid="uid://dfxw5clr7j5e2"]
+
+[ext_resource type="Texture2D" uid="uid://bbsdhwcb7momg" path="res://assets/textures/Dark/texture_01.png" id="1_ne31j"]
+[ext_resource type="PackedScene" uid="uid://b53l8y3nioja0" path="res://scenes/entities/enemy_3d.tscn" id="2_jo3ex"]
+[ext_resource type="PackedScene" uid="uid://muputklnbpx6" path="res://scenes/environment/pickup_items/tooth.tscn" id="3_jo3ex"]
+[ext_resource type="Script" uid="uid://0fkyd553m7cg" path="res://scripts/data/enemy_data.gd" id="3_o3p38"]
+[ext_resource type="PackedScene" uid="uid://fxqb8ljgc2n4" path="res://scenes/entities/player_3d.tscn" id="4_mvf26"]
+[ext_resource type="Script" uid="uid://c5q20r4wynqst" path="res://scripts/data/player_data.gd" id="6_o3p38"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="7_mvf26"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_kqem4"]
+vertices = PackedVector3Array(-19.5, 0.12, -19.5, -19.5, 0.12, 19.5, 19.5, 0.12, 19.5, 19.5, 0.12, -19.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+cell_height = 0.01
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tf8hx"]
+albedo_texture = ExtResource("1_ne31j")
+uv1_triplanar = true
+
+[sub_resource type="Resource" id="Resource_o3p38"]
+script = ExtResource("3_o3p38")
+movement_speed = 3.0
+accel = 10.0
+health = 1000
+hit_strength = 10
+wander_range_x = Vector2(-5, 5)
+wander_range_z = Vector2(-5, 5)
+collectible_rigid_body = ExtResource("3_jo3ex")
+collectible_rigid_body_number = 3
+metadata/_custom_type_script = "uid://0fkyd553m7cg"
+
+[sub_resource type="Resource" id="Resource_mvf26"]
+script = ExtResource("6_o3p38")
+speed = 6.0
+health = 1000
+max_health = 100
+hit_strength = 10
+teeth = 0
+footstep_timer = 0.2
+metadata/_custom_type_script = "uid://c5q20r4wynqst"
+
+[sub_resource type="Environment" id="Environment_ne31j"]
+
+[node name="CombatTest" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_kqem4")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D"]
+use_collision = true
+size = Vector3(40, 0.2, 40)
+material = SubResource("StandardMaterial3D_tf8hx")
+
+[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_jo3ex")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.190903, 0)
+enemy_data = SubResource("Resource_o3p38")
+player = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("4_mvf26")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.251332, 6.61294)
+player_data = SubResource("Resource_mvf26")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.859808, 0.510618, 0, -0.510618, 0.859808, 0, 5.99257, 11.6773)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ne31j")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.376418, 0.92645, 0, -0.92645, 0.376418, 0, 6.41473, 0)
+
+[node name="StateChartDebugger" parent="." instance=ExtResource("7_mvf26")]
+scale = Vector2(0.5, 0.5)
+initial_node_to_watch = NodePath("../Enemy/StateChart")
+
+[editable path="Enemy"]

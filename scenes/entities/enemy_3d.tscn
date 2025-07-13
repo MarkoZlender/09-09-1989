@@ -188,6 +188,12 @@ to = NodePath("../../Dead")
 event = &"dead"
 delay_in_seconds = "0.0"
 
+[node name="ToFighting" type="Node" parent="StateChart/Root/Hurt"]
+script = ExtResource("14_udhym")
+to = NodePath("../../Fighting")
+event = &"player_found"
+delay_in_seconds = "0.0"
+
 [node name="Dead" type="Node" parent="StateChart/Root"]
 script = ExtResource("13_ixm0y")
 

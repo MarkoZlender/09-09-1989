@@ -19,6 +19,7 @@ var direction: Vector3 = Vector3.ZERO
 
 @onready var navigation_agent: NavigationAgent3D = get_node("NavigationAgent3D")
 @onready var enemy_collision_shape: CollisionShape3D = $EnemyCollisionShape
+@onready var enemy_hurt_box: Area3D = $EnemyHurtBox
 @onready var enemy_model: Node3D = $EnemyModel
 @onready var player_detector_area: Area3D = $PlayerDetectorArea
 
@@ -102,9 +103,11 @@ func _on_navigation_agent_3d_target_reached() -> void:
 func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == "hit":
 		current_state = EnemyState.State.AGGROED
+		enemy_hurt_box.monitoring = true
 		print("Hit animation finished")
 		player_detector_area.monitoring = true
 		attack_finished = true
+		
 	
 	if anim_name == "attack":
 		if current_state != EnemyState.State.HURT:
@@ -121,7 +124,9 @@ func _on_deaggro_area_body_exited(body: Node3D) -> void:
 
 func _on_enemy_hurt_box_area_entered(area:Area3D) -> void:
 	if area is PlayerHitBox:
+		print("enemy hit by player")
 		player_detector_area.monitoring = false
+		enemy_hurt_box.set_deferred("monitoring", false)
 		enemy_model.get_node("AnimationPlayer").get_animation("attack").loop_mode = Animation.LOOP_NONE
 		enemy_data.health -= 10
 		Global.signal_bus.spawn_blood.emit(global_position)
@@ -129,9 +134,7 @@ func _on_enemy_hurt_box_area_entered(area:Area3D) -> void:
 			_dead()
 			return
 		current_state = EnemyState.State.HURT
-		#is_attacking = false
 		attack_finished = true
-		
 
 func _dead() -> void:
 	enemy_collision_shape.disabled = true
