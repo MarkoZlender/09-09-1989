@@ -123,17 +123,17 @@ func _on_deaggro_area_body_exited(body: Node3D) -> void:
 		current_state = EnemyState.State.DEAGGROED
 
 func _on_enemy_hurt_box_area_entered(area:Area3D) -> void:
-	if area is PlayerHitBox:
+	if area is PlayerHitBox and current_state != EnemyState.State.HURT:
+		current_state = EnemyState.State.HURT
 		print("enemy hit by player")
 		player_detector_area.monitoring = false
-		enemy_hurt_box.set_deferred("monitoring", false)
+		#enemy_hurt_box.set_deferred("monitoring", false)
 		enemy_model.get_node("AnimationPlayer").get_animation("attack").loop_mode = Animation.LOOP_NONE
 		enemy_data.health -= 10
 		Global.signal_bus.spawn_blood.emit(global_position)
 		if enemy_data.health <= 0:
 			_dead()
 			return
-		current_state = EnemyState.State.HURT
 		attack_finished = true
 
 func _dead() -> void:
