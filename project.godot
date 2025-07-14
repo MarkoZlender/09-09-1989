@@ -20,7 +20,7 @@ warnings/check_invalid_track_paths=false
 
 config/name="09/09/1989"
 run/main_scene="uid://b742kfgwr8sh"
-config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -38,7 +38,6 @@ gdscript/warnings/inferred_declaration=1
 [dialogue_manager]
 
 runtime/balloon_path="res://scenes/ui/dialogue_baloon/balloon.tscn"
-runtime/advanced/uses_dotnet=true
 
 [display]
 

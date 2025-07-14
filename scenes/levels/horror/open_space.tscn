@@ -1227,6 +1227,9 @@ dialogue_resource = "uid://bdqmluf0jg7xj"
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 165.696, 1.51979, -220.827)
 dialogue_resource = "uid://bms2c6lxhovls"
 
+[node name="PlayerStartPosition" type="Marker3D" parent="Entities"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 131.497, 1.50596, -4.98805)
+
 [node name="Cameras" type="Node3D" parent="."]
 
 [node name="StartingCam" parent="Cameras" instance=ExtResource("7_tmfig")]
