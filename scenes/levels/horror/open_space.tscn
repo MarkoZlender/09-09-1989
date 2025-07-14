@@ -1404,6 +1404,33 @@ note_text = "They wear the skins of human flesh. They smile like us, but our Sav
 [node name="HealthUp" parent="HealthUps" instance=ExtResource("9_a8uie")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 140.342, 3.05399, -105.424)
 
+[node name="HealthUp7" parent="HealthUps" instance=ExtResource("9_a8uie")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 212.346, 3.05399, -44.6965)
+
+[node name="HealthUp8" parent="HealthUps" instance=ExtResource("9_a8uie")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 212.346, 3.05399, -42.8147)
+
+[node name="HealthUp9" parent="HealthUps" instance=ExtResource("9_a8uie")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 213.726, 3.05399, -43.549)
+
+[node name="HealthUp10" parent="HealthUps" instance=ExtResource("9_a8uie")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 225.322, 3.05399, -111.602)
+
+[node name="HealthUp11" parent="HealthUps" instance=ExtResource("9_a8uie")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 225.322, 3.05399, -109.72)
+
+[node name="HealthUp12" parent="HealthUps" instance=ExtResource("9_a8uie")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 226.702, 3.05399, -110.455)
+
+[node name="HealthUp13" parent="HealthUps" instance=ExtResource("9_a8uie")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 45.7214, 3.05399, -118.533)
+
+[node name="HealthUp14" parent="HealthUps" instance=ExtResource("9_a8uie")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 45.7214, 3.05399, -116.651)
+
+[node name="HealthUp15" parent="HealthUps" instance=ExtResource("9_a8uie")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 47.1011, 3.05399, -117.385)
+
 [node name="HealthUp2" parent="HealthUps" instance=ExtResource("9_a8uie")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 142.051, 3.05399, -107.29)
 
