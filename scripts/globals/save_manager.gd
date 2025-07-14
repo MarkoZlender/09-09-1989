@@ -236,7 +236,7 @@ func save_audio_config():
 	config.set_value("Audio", "SFXVolume", AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
 	config.save(CONFIG_FILE_PATH)
 
-func load_audio_config():
+func load_audio_config() -> void:
 	if  !FileAccess.file_exists(CONFIG_FILE_PATH):
 		printerr("Config file does not exist, creating new config file.")
 		save_audio_config()

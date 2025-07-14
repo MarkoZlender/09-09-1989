@@ -23,8 +23,10 @@ func _on_destroy_area_body_exited(body: Node3D) -> void:
 		_play_and_free()
 
 func _on_sfx_finished() -> void:
-	queue_free()
+	note_texture.visible = false
+	note_interacted = true
+	$SFXPlayer.disconnect("finished", _on_sfx_finished)
 
 func _play_and_free() -> void:
 	$SFXPlayer.play()
-	$SFXPlayer.connect("finished", Callable(self, "_on_sfx_finished"))
+	$SFXPlayer.connect("finished", _on_sfx_finished)
