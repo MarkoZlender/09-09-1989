@@ -13,10 +13,13 @@ func _ready() -> void:
 func _on_new_game_button_pressed() -> void:
 	print("New Game button pressed")
 	Global.audio_player.stop()
-	Global.game_controller.call_deferred("change_gui_scene", Global.INTRO_SCENE)
+	Global.game_controller.change_gui_scene(Global.INTRO_SCENE)
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
 
 func _on_config_button_pressed() -> void:
 	Global.game_controller.change_gui_scene(Global.CONFIG_SCENE, true, false, true)
+
+func _on_controls_button_pressed() -> void:
+	Global.game_controller.change_gui_scene(Global.CONTROLS_SCENE, true, false, true)

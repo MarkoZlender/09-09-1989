@@ -1,0 +1,280 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6dq108fqeops"]
+
+[ext_resource type="Script" uid="uid://c643cj5hdks7t" path="res://scripts/ui/control_scheme.gd" id="1_ym1gt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k8y8i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8y8i"]
+bg_color = Color(0.283003, 0.772997, 0.993993, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n2nai"]
+bg_color = Color(0, 0.828497, 0.380301, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ym1gt"]
+bg_color = Color(0.490652, 0.45152, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3u0ns"]
+bg_color = Color(0.282353, 0.772549, 0.992157, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_206ty"]
+bg_color = Color(0.490196, 0.45098, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dinkw"]
+bg_color = Color(1, 0.331939, 0.264366, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[node name="ControlScheme" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ym1gt")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Root" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -198.0
+offset_right = 132.0
+offset_bottom = 162.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Controls" type="VBoxContainer" parent="Root"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="FirstRow" type="HBoxContainer" parent="Root/Controls"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="EmptyKey" type="Panel" parent="Root/Controls/FirstRow"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_k8y8i")
+
+[node name="W" type="Panel" parent="Root/Controls/FirstRow"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_k8y8i")
+
+[node name="W" type="Label" parent="Root/Controls/FirstRow/W"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "W"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="E" type="Panel" parent="Root/Controls/FirstRow"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_n2nai")
+
+[node name="E" type="Label" parent="Root/Controls/FirstRow/E"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SecondRow" type="HBoxContainer" parent="Root/Controls"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="A" type="Panel" parent="Root/Controls/SecondRow"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ym1gt")
+
+[node name="A" type="Label" parent="Root/Controls/SecondRow/A"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="S" type="Panel" parent="Root/Controls/SecondRow"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3u0ns")
+
+[node name="S" type="Label" parent="Root/Controls/SecondRow/S"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "S"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="D" type="Panel" parent="Root/Controls/SecondRow"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_206ty")
+
+[node name="D" type="Label" parent="Root/Controls/SecondRow/D"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "D"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Space" type="Panel" parent="Root/Controls"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_dinkw")
+
+[node name="Space" type="Label" parent="Root/Controls/Space"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Legend" type="VBoxContainer" parent="Root"]
+layout_mode = 2
+
+[node name="MoveForwardBack" type="HBoxContainer" parent="Root/Legend"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Root/Legend/MoveForwardBack"]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+color = Color(0.282353, 0.772549, 0.992157, 1)
+
+[node name="Label" type="Label" parent="Root/Legend/MoveForwardBack"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Move forward/back"
+
+[node name="RotateLeftRight" type="HBoxContainer" parent="Root/Legend"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Root/Legend/RotateLeftRight"]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+color = Color(0.490196, 0.45098, 1, 1)
+
+[node name="Label" type="Label" parent="Root/Legend/RotateLeftRight"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Rotate left/right"
+
+[node name="Interact" type="HBoxContainer" parent="Root/Legend"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Root/Legend/Interact"]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+color = Color(0, 0.827451, 0.380392, 1)
+
+[node name="Label" type="Label" parent="Root/Legend/Interact"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Interact"
+
+[node name="Interact2" type="HBoxContainer" parent="Root/Legend"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Root/Legend/Interact2"]
+custom_minimum_size = Vector2(40, 30)
+layout_mode = 2
+color = Color(1, 0.333333, 0.262745, 1)
+
+[node name="Label" type="Label" parent="Root/Legend/Interact2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Attack"
+
+[node name="BackButton" type="Button" parent="."]
+custom_minimum_size = Vector2(50, 30)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -25.0
+offset_top = -57.0
+offset_right = 25.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"MainMenuButton"
+theme_override_font_sizes/font_size = 15
+text = "Back
+"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

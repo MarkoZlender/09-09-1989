@@ -8,6 +8,7 @@ const LOADING_SCREEN: String = "res://scenes/ui/save_system/loading_screen.tscn"
 const GAME_OVER_SCENE: String = "res://scenes/ui/game_over_screen.tscn"
 const ENDING_SCENE: String = "res://scenes/ui/ending_scene.tscn"
 const INTRO_SCENE: String = "res://scenes/ui/intro.tscn"
+const CONTROLS_SCENE: String = "res://scenes/ui/control_scheme.tscn"
 
 @export var savable_globals: Array[Node] = []
 
