@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://c6dq108fqeops"]
 
-[ext_resource type="Script" uid="uid://c643cj5hdks7t" path="res://scripts/ui/control_scheme.gd" id="1_ym1gt"]
+[ext_resource type="Script" uid="uid://c643cj5hdks7t" path="res://scripts/ui/menu_ui/control_scheme.gd" id="1_1ontm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k8y8i"]
 
@@ -53,7 +53,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ym1gt")
+script = ExtResource("1_1ontm")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1

@@ -1,1 +1,0 @@
-class_name EnemyAttackRaycast extends RayCast3D

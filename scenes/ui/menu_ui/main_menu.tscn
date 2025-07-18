@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://7ttjcnsru146"]
 
-[ext_resource type="Script" uid="uid://dtjt7hd0gkvd0" path="res://scripts/ui/main_menu.gd" id="1_lnxuf"]
+[ext_resource type="Script" uid="uid://dtjt7hd0gkvd0" path="res://scripts/ui/menu_ui/main_menu.gd" id="1_lnxuf"]
 [ext_resource type="Texture2D" uid="uid://b4ded4ydy6cny" path="res://assets/sprites/main_menu/main_menu_bg.png" id="2_m1kxf"]
 
 [sub_resource type="Animation" id="Animation_14pl0"]

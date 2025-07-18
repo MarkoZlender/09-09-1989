@@ -1,6 +1,6 @@
 [gd_scene load_steps=121 format=4 uid="uid://bmcuon78mxwm0"]
 
-[ext_resource type="Script" uid="uid://cup8rquk0oej5" path="res://scripts/utility_scripts/open_space.gd" id="1_dxg7p"]
+[ext_resource type="Script" uid="uid://cup8rquk0oej5" path="res://scripts/levels/open_space.gd" id="1_dxg7p"]
 [ext_resource type="PackedScene" uid="uid://fxqb8ljgc2n4" path="res://scenes/entities/characters/player_3d.tscn" id="4_5un2j"]
 [ext_resource type="PackedScene" uid="uid://b53l8y3nioja0" path="res://scenes/entities/characters/enemy_3d.tscn" id="4_46gqi"]
 [ext_resource type="Script" uid="uid://c5q20r4wynqst" path="res://scripts/data/player_data.gd" id="4_s8svk"]
@@ -29,7 +29,7 @@
 [ext_resource type="PackedScene" uid="uid://dmlx1plc5f5hm" path="res://scenes/environment/props/branch.tscn" id="14_akovg"]
 [ext_resource type="Texture2D" uid="uid://dmjt8vkebbk4f" path="res://assets/textures/props/camping_props/bonfire.png" id="15_ej3wi"]
 [ext_resource type="PackedScene" uid="uid://62ko1iujlgs1" path="res://scenes/levels/horror/news_crime_scene.tscn" id="30_ej3wi"]
-[ext_resource type="Script" uid="uid://dj8qsew5du01x" path="res://scripts/ui/pause_ui.gd" id="31_w3tp5"]
+[ext_resource type="Script" uid="uid://dj8qsew5du01x" path="res://scripts/ui/in_game_ui/pause_ui.gd" id="31_w3tp5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_746rq"]
 resource_local_to_scene = true
@@ -1791,6 +1791,8 @@ theme_override_constants/separation = 20
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 45)
 layout_mode = 2
+focus_neighbor_top = NodePath("../ExitButton")
+focus_neighbor_bottom = NodePath("../ExitButton")
 theme_type_variation = &"MainMenuButton"
 theme_override_font_sizes/font_size = 20
 text = "Main Menu"
@@ -1798,6 +1800,8 @@ text = "Main Menu"
 [node name="ExitButton" type="Button" parent="PauseUi/CanvasLayer/VBoxContainer"]
 custom_minimum_size = Vector2(200, 45)
 layout_mode = 2
+focus_neighbor_top = NodePath("../MainMenuButton")
+focus_neighbor_bottom = NodePath("../MainMenuButton")
 theme_type_variation = &"MainMenuButton"
 theme_override_font_sizes/font_size = 20
 text = "Exit"

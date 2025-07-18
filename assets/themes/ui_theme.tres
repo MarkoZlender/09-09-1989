@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cuognvkm850tx"]
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://cuognvkm850tx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nxla3"]
 
@@ -33,6 +33,17 @@ corner_detail = 1
 bg_color = Color(0.87451, 0.87451, 0.847059, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tjtyj"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_id6vg"]
+load_path = "res://.godot/imported/GBP_GUI_BOX1.png-aa78b08f5041cca2f81517f124adc3a8.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mdj7g"]
+texture = SubResource("CompressedTexture2D_id6vg")
+texture_margin_left = 83.0
+texture_margin_top = 79.0
+texture_margin_right = 81.0
+texture_margin_bottom = 87.0
+region_rect = Rect2(0, 0, 128, 128)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d12y4"]
 
@@ -85,6 +96,7 @@ MarginContainer/constants/margin_bottom = 20
 MarginContainer/constants/margin_left = 40
 MarginContainer/constants/margin_right = 20
 MarginContainer/constants/margin_top = 20
+Panel/styles/panel = SubResource("StyleBoxTexture_mdj7g")
 VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_d12y4")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_d12y4")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_d12y4")

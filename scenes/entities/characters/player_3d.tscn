@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://c3dujsv5u6sty" path="res://scripts/state_machine/player_states/dead.gd" id="14_4vpuf"]
 [ext_resource type="Script" uid="uid://bt4iqisaqggy8" path="res://addons/godot_state_charts/compound_state.gd" id="14_p51s7"]
 [ext_resource type="Script" uid="uid://bm4a5s8vovnwv" path="res://addons/godot_state_charts/atomic_state.gd" id="15_8sdl1"]
-[ext_resource type="PackedScene" uid="uid://dvu2bp7omagc3" path="res://scenes/ui/hud_3d.tscn" id="16_4vpuf"]
+[ext_resource type="PackedScene" uid="uid://dvu2bp7omagc3" path="res://scenes/ui/in_game_ui/hud_3d.tscn" id="16_4vpuf"]
 [ext_resource type="Script" uid="uid://btg0k6scpejn3" path="res://addons/godot_state_charts/transition.gd" id="16_g0tc1"]
 [ext_resource type="Script" uid="uid://cw43pgy3x2a52" path="res://scripts/state_machine/player_states/idle.gd" id="17_thr82"]
 [ext_resource type="Script" uid="uid://c7whpml006e7v" path="res://scripts/state_machine/player_states/moving.gd" id="18_8hn40"]

@@ -15,7 +15,6 @@ const CONTROLS_SCENE: String = "res://scenes/ui/control_scheme.tscn"
 @onready var interaction_manager: InteractionManager
 @onready var game_controller: GameController
 @onready var signal_bus: SignalBus
-@onready var utils: Utils
 @onready var audio_player: AudioStreamPlayer = $AudioPlayer
 
 func serialize() -> Dictionary:

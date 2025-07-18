@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://fhvorfgjiw4d"]
 
-[ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/ui_theme.tres" id="1_dnrai"]
-[ext_resource type="Script" uid="uid://dg1s7a5f7lwje" path="res://scripts/ui/game_over_screen.gd" id="2_sopbp"]
-[ext_resource type="PackedScene" uid="uid://brdsm3kei2sjp" path="res://scenes/vfx/crt_shader.tscn" id="3_xra47"]
-[ext_resource type="AudioStream" uid="uid://cgl4v3e5xq10f" path="res://assets/sounds/sfx/main_menu/crt_tv.wav" id="4_xra47"]
+[ext_resource type="Theme" uid="uid://cuognvkm850tx" path="res://assets/themes/ui_theme.tres" id="1_idguo"]
+[ext_resource type="Script" uid="uid://dg1s7a5f7lwje" path="res://scripts/ui/in_game_ui/game_over_screen.gd" id="2_of2q1"]
+[ext_resource type="PackedScene" uid="uid://brdsm3kei2sjp" path="res://scenes/vfx/crt_shader.tscn" id="3_q8mjb"]
+[ext_resource type="AudioStream" uid="uid://cgl4v3e5xq10f" path="res://assets/sounds/sfx/main_menu/crt_tv.wav" id="4_o2ekx"]
 
 [node name="GameOverScreen" type="Control"]
 layout_mode = 3
@@ -12,8 +12,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_dnrai")
-script = ExtResource("2_sopbp")
+theme = ExtResource("1_idguo")
+script = ExtResource("2_of2q1")
 
 [node name="Background" type="ColorRect" parent="."]
 visible = false
@@ -75,11 +75,11 @@ theme_type_variation = &"MainMenuButton"
 theme_override_font_sizes/font_size = 18
 text = "Quit to Main Menu"
 
-[node name="CRTShader" parent="." instance=ExtResource("3_xra47")]
+[node name="CRTShader" parent="." instance=ExtResource("3_q8mjb")]
 layout_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_xra47")
+stream = ExtResource("4_o2ekx")
 autoplay = true
 bus = &"BGM"
 
