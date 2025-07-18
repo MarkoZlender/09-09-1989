@@ -1,13 +1,14 @@
 extends Node
 
-const MAIN_MENU_SCENE: String = "res://scenes/ui/main_menu.tscn"
-const CONFIG_SCENE: String = "res://scenes/ui/config_screen.tscn"
+const MAIN_MENU_SCENE: String = "res://scenes/ui/menu_ui/main_menu.tscn"
+const CONTROLS_SCENE: String = "res://scenes/ui/menu_ui/control_scheme.tscn"
+const CONFIG_SCENE: String = "res://scenes/ui/menu_ui/config_screen.tscn"
+
+const INTRO_SCENE: String = "res://scenes/ui/in_game_ui/intro.tscn"
+const LOADING_SCREEN: String = "res://scenes/ui/load_system/loading_screen.tscn"
 const STARTING_LEVEL: String = "res://scenes/levels/horror/open_space.tscn"
-const LOADING_SCREEN: String = "res://scenes/ui/save_system/loading_screen.tscn"
-const GAME_OVER_SCENE: String = "res://scenes/ui/game_over_screen.tscn"
-const ENDING_SCENE: String = "res://scenes/ui/ending_scene.tscn"
-const INTRO_SCENE: String = "res://scenes/ui/intro.tscn"
-const CONTROLS_SCENE: String = "res://scenes/ui/control_scheme.tscn"
+const GAME_OVER_SCENE: String = "res://scenes/ui/in_game_ui/game_over_screen.tscn"
+const ENDING_SCENE: String = "res://scenes/ui/in_game_ui/ending_scene.tscn"
 
 @export var savable_globals: Array[Node] = []
 

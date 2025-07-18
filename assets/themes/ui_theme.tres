@@ -35,7 +35,6 @@ bg_color = Color(0.87451, 0.87451, 0.847059, 1)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tjtyj"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_id6vg"]
-load_path = "res://.godot/imported/GBP_GUI_BOX1.png-aa78b08f5041cca2f81517f124adc3a8.ctex"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mdj7g"]
 texture = SubResource("CompressedTexture2D_id6vg")

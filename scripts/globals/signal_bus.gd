@@ -13,14 +13,12 @@ signal clear_to_remove
 
 signal spawn_blood(position: Vector3)
 
-signal item_collected(item: Collectible)
 signal item_rigid_body_collected(item: CollectibleRigidBody3D)
 
 signal interaction_started
 signal interaction_ended
 
-signal level_audio_loaded(level_audio: LevelAudio)
 signal level_changed
 
 func _ready() -> void:
-    Global.signal_bus = self
+	Global.signal_bus = self
