@@ -60,6 +60,8 @@ grow_vertical = 2
 [node name="RestartButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 70)
 layout_mode = 2
+focus_neighbor_top = NodePath("../QuitButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
 theme_type_variation = &"MainMenuButton"
 theme_override_font_sizes/font_size = 18
 text = "Try again"
@@ -67,6 +69,8 @@ text = "Try again"
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 70)
 layout_mode = 2
+focus_neighbor_top = NodePath("../RestartButton")
+focus_neighbor_bottom = NodePath("../RestartButton")
 theme_type_variation = &"MainMenuButton"
 theme_override_font_sizes/font_size = 18
 text = "Quit to Main Menu"

@@ -1,9 +1,8 @@
-[gd_scene load_steps=122 format=4 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=121 format=4 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="Script" uid="uid://cup8rquk0oej5" path="res://scripts/utility_scripts/open_space.gd" id="1_dxg7p"]
-[ext_resource type="PackedScene" uid="uid://bt5qb4kfrjilw" path="res://scenes/environment/collisions/tree_collision.tscn" id="2_cpna0"]
-[ext_resource type="PackedScene" uid="uid://fxqb8ljgc2n4" path="res://scenes/entities/player_3d.tscn" id="4_5un2j"]
-[ext_resource type="PackedScene" uid="uid://b53l8y3nioja0" path="res://scenes/entities/enemy_3d.tscn" id="4_46gqi"]
+[ext_resource type="PackedScene" uid="uid://fxqb8ljgc2n4" path="res://scenes/entities/characters/player_3d.tscn" id="4_5un2j"]
+[ext_resource type="PackedScene" uid="uid://b53l8y3nioja0" path="res://scenes/entities/characters/enemy_3d.tscn" id="4_46gqi"]
 [ext_resource type="Script" uid="uid://c5q20r4wynqst" path="res://scripts/data/player_data.gd" id="4_s8svk"]
 [ext_resource type="Terrain3DMaterial" uid="uid://14xa2u6bomkw" path="res://resources/terrain3d/terrain_3d_material.tres" id="4_whrqo"]
 [ext_resource type="Terrain3DAssets" uid="uid://wpovl8xjxfag" path="res://resources/terrain3d/terrain_3d_assets.tres" id="5_46gqi"]
@@ -15,16 +14,16 @@
 [ext_resource type="PackedScene" uid="uid://muputklnbpx6" path="res://scenes/environment/pickup_items/tooth.tscn" id="6_cqt2m"]
 [ext_resource type="Material" uid="uid://bm50ji3k825xf" path="res://shaders/fire_particle_process_material.tres" id="7_1iohq"]
 [ext_resource type="PackedScene" uid="uid://covfftelb62r1" path="res://scenes/environment/props/trunk.tscn" id="7_70eyd"]
-[ext_resource type="PackedScene" uid="uid://ddy6jt43pjxe1" path="res://scenes/environment/fixed_camera.tscn" id="7_tmfig"]
+[ext_resource type="PackedScene" uid="uid://ddy6jt43pjxe1" path="res://scenes/components/fixed_camera.tscn" id="7_tmfig"]
 [ext_resource type="PackedScene" uid="uid://57bas2sguxak" path="res://scenes/environment/props/car_2.tscn" id="8_70eyd"]
 [ext_resource type="Material" uid="uid://cwgfm1ex5k2lg" path="res://shaders/smoke_particle_process_material.tres" id="8_fpkip"]
 [ext_resource type="Texture2D" uid="uid://bwdihtutaaixf" path="res://assets/textures/props/camping_props/Trunk.png" id="8_h4e34"]
-[ext_resource type="PackedScene" uid="uid://b3vqxtjeytlsk" path="res://scenes/entities/note.tscn" id="9_7hute"]
+[ext_resource type="PackedScene" uid="uid://b3vqxtjeytlsk" path="res://scenes/environment/props/note.tscn" id="9_7hute"]
 [ext_resource type="PackedScene" uid="uid://b0che6yn1shpk" path="res://scenes/environment/pickup_items/health_up.tscn" id="9_a8uie"]
 [ext_resource type="Script" uid="uid://ridy8q6mg04" path="res://scripts/vfx/fire_light.gd" id="9_blf7f"]
 [ext_resource type="PackedScene" uid="uid://bwm252et61oy5" path="res://scenes/environment/props/car_blue.tscn" id="9_h4e34"]
 [ext_resource type="AudioStream" uid="uid://c7g5ld3dt0t4n" path="res://assets/sounds/sfx/fireplace/fireplace_sfx16.wav" id="10_70eyd"]
-[ext_resource type="PackedScene" uid="uid://c7kdgxdhiqqc1" path="res://scenes/entities/wraith.tscn" id="10_a8uie"]
+[ext_resource type="PackedScene" uid="uid://c7kdgxdhiqqc1" path="res://scenes/entities/characters/wraith.tscn" id="10_a8uie"]
 [ext_resource type="PackedScene" uid="uid://x7bkhte7ljj0" path="res://scenes/environment/props/trunk_01.tscn" id="12_ab4wq"]
 [ext_resource type="Texture2D" uid="uid://cooybxp4hycyi" path="res://assets/textures/props/camping_props/Trunk_01.png" id="13_ruex4"]
 [ext_resource type="PackedScene" uid="uid://dmlx1plc5f5hm" path="res://scenes/environment/props/branch.tscn" id="14_akovg"]
@@ -668,10 +667,11 @@ shadow_mesh = SubResource("ArrayMesh_w3tp5")
 process_mode = 1
 script = ExtResource("1_dxg7p")
 
-[node name="TreeCollision" parent="." instance=ExtResource("2_cpna0")]
+[node name="TreeCollision" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.444, 0.5, -0.692587)
+collision_mask = 38
 
-[node name="CollisionShape3D" parent="TreeCollision" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TreeCollision"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.41122, 5.88721, -41.0296)
 shape = SubResource("BoxShape3D_746rq")
 
@@ -1805,7 +1805,6 @@ text = "Exit"
 [connection signal="pressed" from="PauseUi/CanvasLayer/VBoxContainer/MainMenuButton" to="PauseUi" method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="PauseUi/CanvasLayer/VBoxContainer/ExitButton" to="PauseUi" method="_on_exit_button_pressed"]
 
-[editable path="TreeCollision"]
 [editable path="Entities/Enemy5"]
 [editable path="Cameras/StartingCam"]
 [editable path="Cameras/FixedCamera3"]

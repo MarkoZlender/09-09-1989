@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cs8v6tgmgw7w8" path="res://scripts/entities/enemy_3d.gd" id="1_jcnff"]
 [ext_resource type="Script" uid="uid://doftyixbd3an8" path="res://scripts/entities/combat/enemy_hurt_box.gd" id="2_7qbly"]
-[ext_resource type="PackedScene" uid="uid://di8uq4k5dfjtq" path="res://scenes/enemy_model.tscn" id="8_8ktbn"]
+[ext_resource type="PackedScene" uid="uid://di8uq4k5dfjtq" path="res://scenes/models/enemy_model.tscn" id="8_8ktbn"]
 [ext_resource type="Script" uid="uid://b3iyupm8a5he2" path="res://scripts/entities/enemy/aggro_area.gd" id="9_o04nf"]
 [ext_resource type="Script" uid="uid://deb60yher4wfl" path="res://scripts/entities/enemy/deaggro_area.gd" id="10_bcfhc"]
 [ext_resource type="Script" uid="uid://bqnr5hyceu623" path="res://addons/godot_state_charts/state_chart.gd" id="11_04jnc"]

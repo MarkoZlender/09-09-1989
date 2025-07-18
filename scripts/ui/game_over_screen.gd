@@ -2,6 +2,7 @@ extends Control
 
 func _ready() -> void:
 	get_tree().paused = false
+	$VBoxContainer/RestartButton.grab_focus()
 	Global.game_controller.change_3d_scene("")
 
 func _on_restart_button_pressed() -> void:

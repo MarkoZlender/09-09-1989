@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ddy6jt43pjxe1"]
 
-[ext_resource type="Script" uid="uid://v50hfwxgbw7i" path="res://scenes/environment/fixed_camera.gd" id="1_7q828"]
+[ext_resource type="Script" uid="uid://v50hfwxgbw7i" path="res://scripts/components/fixed_camera.gd" id="1_7q828"]
 
 [node name="FixedCamera" type="Camera3D"]
 far = 200.0

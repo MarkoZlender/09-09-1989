@@ -5,6 +5,7 @@ extends Control
 @onready var sfx_slider: HSlider = %SfxSlider
 
 func _ready() -> void:
+	$BackButton.grab_focus()
 	Global.save_manager.load_audio_config()
 	master_slider.value_changed.connect(_on_master_slider_value_changed)
 	bgm_slider.value_changed.connect(_on_bgm_slider_value_changed)
