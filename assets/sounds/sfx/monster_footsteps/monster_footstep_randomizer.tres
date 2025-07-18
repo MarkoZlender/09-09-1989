@@ -1,0 +1,17 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://bftjwiexwvvv0"]
+
+[ext_resource type="AudioStream" uid="uid://cpudvcoubfqs6" path="res://assets/sounds/sfx/monster_footsteps/monster_footstep-01.wav" id="1_04rwi"]
+[ext_resource type="AudioStream" uid="uid://ciqa1j4lmouq8" path="res://assets/sounds/sfx/monster_footsteps/monster_footstep-02.wav" id="2_fvteh"]
+[ext_resource type="AudioStream" uid="uid://d4m5wiqbt455u" path="res://assets/sounds/sfx/monster_footsteps/monster_footstep-03.wav" id="3_4diwy"]
+[ext_resource type="AudioStream" uid="uid://cyh0c3cou1ojf" path="res://assets/sounds/sfx/monster_footsteps/monster_footstep-04.wav" id="4_yfyve"]
+[ext_resource type="AudioStream" uid="uid://c62l6hjryuisb" path="res://assets/sounds/sfx/monster_footsteps/monster_footstep-05.wav" id="5_wjikt"]
+
+[resource]
+random_pitch = 1.5
+random_volume_offset_db = 1.0
+streams_count = 5
+stream_0/stream = ExtResource("1_04rwi")
+stream_1/stream = ExtResource("2_fvteh")
+stream_2/stream = ExtResource("3_4diwy")
+stream_3/stream = ExtResource("4_yfyve")
+stream_4/stream = ExtResource("5_wjikt")

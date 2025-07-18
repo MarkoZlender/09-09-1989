@@ -1,0 +1,19 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=7 format=3 uid="uid://dq7w4fuiuvxwk"]
+
+[ext_resource type="AudioStream" uid="uid://dpymj54xws2t0" path="res://assets/sounds/sfx/footsteps_grass/boot_footstep-01.wav" id="1_xof5e"]
+[ext_resource type="AudioStream" uid="uid://cc6q5yr6pxdfw" path="res://assets/sounds/sfx/footsteps_grass/boot_footstep-02.wav" id="2_dqu3v"]
+[ext_resource type="AudioStream" uid="uid://4lha64q72y6b" path="res://assets/sounds/sfx/footsteps_grass/boot_footstep-03.wav" id="3_twdlh"]
+[ext_resource type="AudioStream" uid="uid://upv3pcghc7gh" path="res://assets/sounds/sfx/footsteps_grass/boot_footstep-04.wav" id="4_ujapn"]
+[ext_resource type="AudioStream" uid="uid://c6c4lkvhw3pvn" path="res://assets/sounds/sfx/footsteps_grass/boot_footstep-05.wav" id="5_nhdkj"]
+[ext_resource type="AudioStream" uid="uid://cyy05kdw6raq1" path="res://assets/sounds/sfx/footsteps_grass/boot_footstep-06.wav" id="6_1iepw"]
+
+[resource]
+random_pitch = 1.5
+random_volume_offset_db = 0.5
+streams_count = 6
+stream_0/stream = ExtResource("1_xof5e")
+stream_1/stream = ExtResource("2_dqu3v")
+stream_2/stream = ExtResource("3_twdlh")
+stream_3/stream = ExtResource("4_ujapn")
+stream_4/stream = ExtResource("5_nhdkj")
+stream_5/stream = ExtResource("6_1iepw")

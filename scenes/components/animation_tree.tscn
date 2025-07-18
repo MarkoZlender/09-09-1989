@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://f4fj2u87647d"]
 
-[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bg31c0p3ncbjc" path="res://assets/animations/player_run_blend.tres" id="1_ca7hi"]
+[ext_resource type="AnimationNodeBlendSpace2D" uid="uid://bg31c0p3ncbjc" path="res://assets/animations/player_model_anim_resources/player_run_blend.tres" id="1_ca7hi"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_456sy"]
 animation = &"idle_up"

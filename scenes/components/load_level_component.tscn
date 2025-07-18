@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://47b6ywwy1olr"]
-
-[ext_resource type="Script" uid="uid://cdxkn0wtstd1t" path="res://scripts/components/load_level_component.gd" id="1_c8ss6"]
-
-[node name="LoadLevelComponent" type="Node"]
-script = ExtResource("1_c8ss6")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://c15d1chnp6dxi"]
 
-[ext_resource type="Texture2D" uid="uid://c8os6essal5oa" path="res://assets/textures/camping_props/Shelter_tent.png" id="1_nhe6e"]
+[ext_resource type="Texture2D" uid="uid://c8os6essal5oa" path="res://assets/textures/props/camping_props/Shelter_tent.png" id="1_nhe6e"]
 [ext_resource type="PackedScene" uid="uid://b8rtwryepqr5w" path="res://scenes/components/interact_component.tscn" id="2_6feqt"]
 [ext_resource type="Script" uid="uid://bbu06kfpsrvmn" path="res://scripts/interaction/interactables/tent.gd" id="2_qb5f5"]
 

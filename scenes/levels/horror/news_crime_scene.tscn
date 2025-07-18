@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://62ko1iujlgs1"]
 
-[ext_resource type="Texture2D" uid="uid://clte6uhdrl688" path="res://assets/textures/grass/dirt/Dirt_01-128x128.png" id="1_46lqo"]
+[ext_resource type="Texture2D" uid="uid://clte6uhdrl688" path="res://assets/textures/terrain_3d/dirt/Dirt_01-128x128.png" id="1_46lqo"]
 [ext_resource type="Script" uid="uid://c6wgm3r0wuf0q" path="res://scripts/utility_scripts/news_crime_scene.gd" id="1_otid4"]
 [ext_resource type="PackedScene" uid="uid://betbvqys51iem" path="res://scenes/entities/dead_bodies/beggar.tscn" id="2_ams63"]
 [ext_resource type="Texture2D" uid="uid://d1y3c0de63qbo" path="res://assets/sprites/blood_splatter/tile035.png" id="3_wppfx"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://q8qg5r80l76u" path="res://scenes/entities/dead_bodies/woman.tscn" id="7_dilhq"]
 [ext_resource type="AudioStream" uid="uid://dcconid3i4day" path="res://assets/sounds/bgm/breaking_news_theme.wav" id="8_wgnkx"]
 [ext_resource type="FontFile" uid="uid://bnkcmwg8m5qx4" path="res://assets/fonts/Geologica-Bold.ttf" id="10_mjyn7"]
-[ext_resource type="AudioStream" uid="uid://dq7w4fuiuvxwk" path="res://resources/footstep_randomizer_stream.tres" id="10_wgnkx"]
+[ext_resource type="AudioStream" uid="uid://dq7w4fuiuvxwk" path="res://assets/sounds/sfx/background_footsteps/footstep_randomizer_stream.tres" id="10_wgnkx"]
 [ext_resource type="AudioStream" uid="uid://0kufb2nx866a" path="res://assets/sounds/sfx/gunshot/gunshot.wav" id="11_otid4"]
 [ext_resource type="Texture2D" uid="uid://3t4hjtcum3kg" path="res://assets/sprites/blood_splatter/tile032.png" id="13_dilhq"]
 

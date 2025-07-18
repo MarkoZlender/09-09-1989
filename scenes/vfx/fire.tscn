@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://jkbxv18ld1sf"]
 
-[ext_resource type="Material" uid="uid://bm50ji3k825xf" path="res://resources/fire_particle_process_material.tres" id="1_kv17e"]
+[ext_resource type="Material" uid="uid://bm50ji3k825xf" path="res://shaders/fire_particle_process_material.tres" id="1_kv17e"]
 [ext_resource type="Script" uid="uid://ridy8q6mg04" path="res://scripts/vfx/fire_light.gd" id="1_n207h"]
-[ext_resource type="AudioStream" uid="uid://c7g5ld3dt0t4n" path="res://assets/sounds/sfx/fireplace_sfx16.wav" id="2_184s5"]
-[ext_resource type="Material" uid="uid://cwgfm1ex5k2lg" path="res://resources/smoke_particle_process_material.tres" id="2_ykm6b"]
+[ext_resource type="AudioStream" uid="uid://c7g5ld3dt0t4n" path="res://assets/sounds/sfx/fireplace/fireplace_sfx16.wav" id="2_184s5"]
+[ext_resource type="Material" uid="uid://cwgfm1ex5k2lg" path="res://shaders/smoke_particle_process_material.tres" id="2_ykm6b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3pvtt"]
 blend_mode = 1

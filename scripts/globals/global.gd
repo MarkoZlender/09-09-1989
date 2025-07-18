@@ -17,7 +17,6 @@ const CONTROLS_SCENE: String = "res://scenes/ui/control_scheme.tscn"
 @onready var signal_bus: SignalBus
 @onready var utils: Utils
 @onready var audio_player: AudioStreamPlayer = $AudioPlayer
-@onready var player_data: PlayerData = load("res://resources/player_data.tres")
 
 func serialize() -> Dictionary:
 	var save_data: Dictionary = {}

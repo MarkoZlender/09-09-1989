@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://c3bcf0che0dr0"]
 
 [ext_resource type="PackedScene" uid="uid://ugwlaodj7a8g" path="res://assets/models/trees/tree24.fbx" id="1_oe85h"]
-[ext_resource type="Texture2D" uid="uid://6lwooi1ehl85" path="res://assets/models/trees/tree24.png" id="2_8203d"]
+[ext_resource type="Texture2D" uid="uid://6lwooi1ehl85" path="res://assets/textures/props/trees/tree24.png" id="2_8203d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5wyx"]
 resource_name = "tree24"

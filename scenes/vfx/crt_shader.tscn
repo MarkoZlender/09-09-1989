@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://brdsm3kei2sjp"]
 
-[ext_resource type="Shader" uid="uid://dvqj5decgwjkr" path="res://resources/crt_shader.gdshader" id="1_yvngq"]
+[ext_resource type="Shader" uid="uid://dvqj5decgwjkr" path="res://shaders/crt_shader.gdshader" id="1_yvngq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5un2j"]
 shader = ExtResource("1_yvngq")

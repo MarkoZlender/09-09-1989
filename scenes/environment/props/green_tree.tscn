@@ -1,8 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cvi386tljy2oh"]
+[gd_scene load_steps=0 format=3 uid="uid://dlvfohcrn2j61"]
 
-[ext_resource type="PackedScene" uid="uid://dnqooydsph5wp" path="res://assets/models/trees/Green Tree/Green Tree.glb" id="1_oxiub"]
-
-[node name="Green Tree" instance=ExtResource("1_oxiub")]
+[node name="Green Tree"]
 
 [node name="Trunk_002" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

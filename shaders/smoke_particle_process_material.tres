@@ -1,0 +1,20 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://cwgfm1ex5k2lg"]
+
+[sub_resource type="Curve" id="Curve_axped"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.227811, 0.341057), 0.0, 0.0, 0, 0, Vector2(0.482248, 0.138668), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_184s5"]
+curve = SubResource("Curve_axped")
+
+[resource]
+emission_shape = 1
+emission_sphere_radius = 0.1
+spread = 0.0
+angular_velocity_min = 50.0
+angular_velocity_max = 90.0
+gravity = Vector3(0, 0.4, 0)
+scale_min = 0.9
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_184s5")
+color = Color(0.701961, 0.701961, 0.701961, 0.309804)

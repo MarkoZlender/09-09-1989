@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://7ttjcnsru146"]
 
 [ext_resource type="Script" uid="uid://dtjt7hd0gkvd0" path="res://scripts/ui/main_menu.gd" id="1_lnxuf"]
-[ext_resource type="Texture2D" uid="uid://b4ded4ydy6cny" path="res://assets/sprites/Fade down 4.png" id="2_m1kxf"]
+[ext_resource type="Texture2D" uid="uid://b4ded4ydy6cny" path="res://assets/sprites/main_menu/main_menu_bg.png" id="2_m1kxf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x10xj"]
 content_margin_top = 50.0

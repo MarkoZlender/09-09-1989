@@ -1,4 +1,0 @@
-[gd_scene format=3 uid="uid://bb1hhoy3hnir0"]
-
-[node name="test_level_2_west_1" type="Marker3D"]
-transform = Transform3D(1, 0, -3.55271e-15, 0, 1, 0, 3.55271e-15, 0, 1, 0, 0, 0)

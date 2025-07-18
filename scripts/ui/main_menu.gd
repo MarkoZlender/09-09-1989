@@ -1,6 +1,5 @@
 extends Control
 
-@onready var slot_selection_scene: String = "res://scenes/ui/save_system/slot_selection.tscn"
 @onready var main_menu_bgm: String = "res://assets/sounds/sfx/main_menu/crt_tv.wav"
 @onready var _start_button: Button = %StartButton
 

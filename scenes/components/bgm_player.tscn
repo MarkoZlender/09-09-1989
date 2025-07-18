@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://luwtg3pa4rwf"]
-
-[ext_resource type="AudioStream" uid="uid://cf0bdhrxyhsmq" path="res://assets/sounds/bgm/ambient_loop.wav" id="1_hl2fi"]
-
-[node name="BGMPlayer" type="AudioStreamPlayer"]
-stream = ExtResource("1_hl2fi")
-autoplay = true
-bus = &"BGM"
