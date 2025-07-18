@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=4 uid="uid://c7kdgxdhiqqc1"]
 
 [ext_resource type="Script" uid="uid://ddy6jitybqi5i" path="res://scripts/entities/wraith.gd" id="1_1qms0"]
-[ext_resource type="Texture2D" uid="uid://c2rqg8vqlhmrp" path="res://assets/models/characters/wraith/bakedtexture.png" id="1_hijr1"]
+[ext_resource type="Texture2D" uid="uid://c2rqg8vqlhmrp" path="res://assets/textures/characters/wraith/bakedtexture.png" id="1_hijr1"]
 [ext_resource type="PackedScene" uid="uid://b8rtwryepqr5w" path="res://scenes/components/interact_component.tscn" id="3_jhxht"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7d11"]

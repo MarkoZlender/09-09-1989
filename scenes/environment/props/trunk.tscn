@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://covfftelb62r1"]
 
-[ext_resource type="Texture2D" uid="uid://bwdihtutaaixf" path="res://assets/models/camping/Textures/Trunk.png" id="1_tvhgg"]
+[ext_resource type="Texture2D" uid="uid://bwdihtutaaixf" path="res://assets/textures/camping_props/Trunk.png" id="1_tvhgg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dmd8t"]
 resource_name = "Trunk"

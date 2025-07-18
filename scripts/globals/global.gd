@@ -1,6 +1,5 @@
 extends Node
 
-const SLOT_BUTTON_SCENE: String = "res://scenes/ui/save_system/slot_button.tscn"
 const MAIN_MENU_SCENE: String = "res://scenes/ui/main_menu.tscn"
 const CONFIG_SCENE: String = "res://scenes/ui/config_screen.tscn"
 const STARTING_LEVEL: String = "res://scenes/levels/horror/open_space.tscn"
@@ -18,7 +17,6 @@ const CONTROLS_SCENE: String = "res://scenes/ui/control_scheme.tscn"
 @onready var signal_bus: SignalBus
 @onready var utils: Utils
 @onready var audio_player: AudioStreamPlayer = $AudioPlayer
-@onready var inventory: Inventory = $Inventory
 @onready var player_data: PlayerData = load("res://resources/player_data.tres")
 
 func serialize() -> Dictionary:

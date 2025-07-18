@@ -1,6 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://62ko1iujlgs1"]
 
-[ext_resource type="Texture2D" uid="uid://clte6uhdrl688" path="res://assets/textures/grass/Dirt/Dirt_01-128x128.png" id="1_46lqo"]
+[ext_resource type="Texture2D" uid="uid://clte6uhdrl688" path="res://assets/textures/grass/dirt/Dirt_01-128x128.png" id="1_46lqo"]
 [ext_resource type="Script" uid="uid://c6wgm3r0wuf0q" path="res://scripts/utility_scripts/news_crime_scene.gd" id="1_otid4"]
 [ext_resource type="PackedScene" uid="uid://betbvqys51iem" path="res://scenes/entities/dead_bodies/beggar.tscn" id="2_ams63"]
 [ext_resource type="Texture2D" uid="uid://d1y3c0de63qbo" path="res://assets/sprites/blood_splatter/tile035.png" id="3_wppfx"]

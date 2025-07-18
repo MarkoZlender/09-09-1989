@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dfxw5clr7j5e2"]
 
-[ext_resource type="Texture2D" uid="uid://bbsdhwcb7momg" path="res://assets/textures/Dark/texture_01.png" id="1_ne31j"]
+[ext_resource type="Texture2D" uid="uid://bbsdhwcb7momg" path="res://assets/textures/prototype/Dark/texture_01.png" id="1_ne31j"]
 [ext_resource type="PackedScene" uid="uid://b53l8y3nioja0" path="res://scenes/entities/enemy_3d.tscn" id="2_jo3ex"]
 [ext_resource type="PackedScene" uid="uid://muputklnbpx6" path="res://scenes/environment/pickup_items/tooth.tscn" id="3_jo3ex"]
 [ext_resource type="Script" uid="uid://0fkyd553m7cg" path="res://scripts/data/enemy_data.gd" id="3_o3p38"]

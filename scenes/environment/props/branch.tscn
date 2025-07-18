@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://dmlx1plc5f5hm"]
 
-[ext_resource type="Texture2D" uid="uid://dmjt8vkebbk4f" path="res://assets/models/camping/Textures/bonfire.png" id="1_1cpsa"]
+[ext_resource type="Texture2D" uid="uid://dmjt8vkebbk4f" path="res://assets/textures/camping_props/bonfire.png" id="1_1cpsa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3n5o"]
 resource_name = "bonfire"

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://b3vqxtjeytlsk"]
 
 [ext_resource type="Script" uid="uid://bfd4bxfdu5miv" path="res://scripts/entities/note.gd" id="1_i3r6s"]
-[ext_resource type="Texture2D" uid="uid://dlcxj663q1bud" path="res://assets/textures/oldpage.png" id="1_nxo6p"]
+[ext_resource type="Texture2D" uid="uid://dlcxj663q1bud" path="res://assets/textures/paper/oldpage.png" id="1_nxo6p"]
 [ext_resource type="FontFile" uid="uid://cswh6yjdnn5nu" path="res://assets/fonts/WaitingfortheSunrise-Regular.ttf" id="3_nhkfx"]
 [ext_resource type="AudioStream" uid="uid://bcvqah3eut8o2" path="res://assets/sounds/sfx/paper/paper.wav" id="4_3r0to"]
 

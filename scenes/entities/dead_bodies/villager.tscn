@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://cio51w7jgtyfw"]
 
-[ext_resource type="Texture2D" uid="uid://c7uhaijm02662" path="res://assets/models/characters/dead_bodies/MaleVillagerTexture.png" id="1_e24vk"]
+[ext_resource type="Texture2D" uid="uid://c7uhaijm02662" path="res://assets/textures/characters/dead_bodies/MaleVillagerTexture.png" id="1_e24vk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_so864"]
 resource_name = "Material"

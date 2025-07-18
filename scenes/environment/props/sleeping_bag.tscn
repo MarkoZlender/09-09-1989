@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://c0mh588u280w4"]
 
-[ext_resource type="Texture2D" uid="uid://dde7qlwtiwqi8" path="res://assets/models/camping/Textures/sleeping_bag.png" id="1_uptsw"]
+[ext_resource type="Texture2D" uid="uid://dde7qlwtiwqi8" path="res://assets/textures/camping_props/sleeping_bag.png" id="1_uptsw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rp7oc"]
 resource_name = "sleeping_bag"
