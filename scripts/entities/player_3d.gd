@@ -30,7 +30,7 @@ var idle_frame_count: int = 0
 #region Built-in functions
 
 func _ready() -> void:
-	Global.signal_bus.item_rigid_body_collected.connect(_on_item_rigid_body_collected)
+	#Global.signal_bus.item_rigid_body_collected.connect(_on_item_rigid_body_collected)
 	Global.signal_bus.player_died.connect(_on_player_died)
 	Global.signal_bus.player_interacting.connect(_on_player_interacted)
 	
@@ -140,16 +140,6 @@ func _check_level() -> void:
 #endregion
 
 #region Signal callables
-
-# func _on_item_collected(item: Collectible) -> void:
-# 	if item is Coin:
-# 		player_data.coins += 1
-# 		print("Coins: ", player_data.coins)
-
-func _on_item_rigid_body_collected(item: CollectibleRigidBody3D) -> void:
-	if item is Tooth:
-		player_data.teeth += 1
-		print("Teeth: ", player_data.teeth)
 
 func _on_player_died() -> void:
 	get_tree().paused = true
