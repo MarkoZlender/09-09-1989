@@ -17,6 +17,7 @@ func _ready() -> void:
 	Global.interaction_manager.player = get_tree().get_first_node_in_group("player")
 
 	Global.signal_bus.quest_completed.connect(_on_quest_completed)
+	# add objects to remove when quest is completed
 	for object: Node3D in get_tree().get_nodes_in_group("removable_objects"):
 		removable_objects.append(object)
 
