@@ -13,18 +13,6 @@ var current_state: PlayerState.State = PlayerState.State.IDLE
 @onready var idle_frame_count: int = 0
 
 func _input(event: InputEvent) -> void:
-	# if Input.is_action_just_pressed("attack") && current_state != PlayerState.State.INTERACTING && current_state != PlayerState.State.HURT:
-	# 	animation_player.get_animation("attack").loop_mode = Animation.LOOP_LINEAR
-	# 	attack_state = true
-
-	# elif Input.is_action_just_released("attack") && current_state != PlayerState.State.INTERACTING && current_state != PlayerState.State.HURT:
-	# 	animation_player.get_animation("attack").loop_mode = Animation.LOOP_NONE
-	# 	attack_state = false
-
-	# elif current_state == PlayerState.State.HURT:
-	# 	animation_player.get_animation("attack").loop_mode = Animation.LOOP_NONE
-	# 	attack_state = false
-
 	if event.is_action_pressed("flashlight") && current_state != PlayerState.State.INTERACTING:
 		flashlight.visible = !flashlight.visible
 		flashlight_model.get_node("FlashlightEmission").visible = !flashlight_model.get_node("FlashlightEmission").visible

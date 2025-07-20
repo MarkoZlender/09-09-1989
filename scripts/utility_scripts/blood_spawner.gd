@@ -42,9 +42,7 @@ const BLOOD_TEXTURES: Array = [
 	preload("res://assets/sprites/blood_splatter/tile038.png"),
 ]
 
-
 func _ready() -> void:
-	# Connect the spawn_blood signal to the _spawn_blood_decal method
 	Global.signal_bus.connect(Global.signal_bus.spawn_blood.get_name(), _on_spawn_blood_decal)
 
 func _get_random_blood_texture() -> Texture2D:
@@ -68,7 +66,7 @@ func _on_spawn_blood_decal(position: Vector3) -> void:
 	var ray_end: Vector3 = position + Vector3.DOWN * 2.0
 
 	var query: PhysicsRayQueryParameters3D = PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
-	query.collision_mask = 1  # Adjust to match ground
+	query.collision_mask = 1  # adjust to match ground
 
 	var result: Dictionary = space_state.intersect_ray(query)
 
@@ -80,7 +78,7 @@ func _on_spawn_blood_decal(position: Vector3) -> void:
 		if blood_texture:
 			blood_decal.texture_albedo = blood_texture
 			blood_decal.size = Vector3(1, 1, 1)
-			blood_decal.position = result.position + result.normal * 0.01  # slight offset to prevent z-fighting
+			blood_decal.position = result.position + result.normal * 0.01  # prevent z fighting
 
 			var normal: Vector3 = result.normal.normalized()
 			var random_rotation: Basis = Basis(normal, randf_range(0, 2 * PI))
