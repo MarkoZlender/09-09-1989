@@ -30,17 +30,14 @@ shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.3
 shader_parameter/vignette_opacity = 0.391
 
-[node name="GameController" type="Node" node_paths=PackedStringArray("world_3d", "world_2d", "gui", "transition_controller")]
+[node name="GameController" type="Node" node_paths=PackedStringArray("world_3d", "gui", "transition_controller")]
 script = ExtResource("1_ca7gh")
 world_3d = NodePath("World3D")
-world_2d = NodePath("World2D")
 gui = NodePath("GUI")
 transition_controller = NodePath("GUI/TransitionController/TransitionController")
 start_scene = ExtResource("2_s8vvr")
 
 [node name="World3D" type="Node3D" parent="."]
-
-[node name="World2D" type="Node2D" parent="."]
 
 [node name="GUI" type="Control" parent="."]
 process_mode = 3
