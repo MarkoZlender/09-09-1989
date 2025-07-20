@@ -11,7 +11,7 @@ signal load_progress(percent: float)
 var current_3d_scene: Node3D
 var current_gui_scene: Control
 
-var process_scene_params: Array = []
+var new_scene_path: String
 
 var new_3d_scene: Node3D
 
@@ -30,9 +30,9 @@ func _ready() -> void:
 		change_gui_scene(start_scene.resource_path, false, false, false)
 
 func _process(_delta: float) -> void:
-	if process_scene_params.size() == 0:
+	if new_scene_path == "":
 		return
-	_deferred_load_scene_threaded(process_scene_params[0])
+	_load_scene_async(new_scene_path)
 
 func change_gui_scene(
 		new_scene: String,
@@ -85,15 +85,7 @@ func change_3d_scene(
 	if is_processing():
 		return
 	else:
-		process_scene_params = [
-			new_scene,
-			delete,
-			keep_running,
-			transition,
-			transition_in,
-			transition_out,
-			seconds
-		]
+		new_scene_path = new_scene
 		set_process(true)
 	if new_scene == "":
 		set_process(false)
@@ -115,16 +107,15 @@ func change_3d_scene(
 			world_3d.remove_child(current_3d_scene) # Keeps node in memory, does not run
 
 	ResourceLoader.load_threaded_request(new_scene, "PackedScene", false, ResourceLoader.CacheMode.CACHE_MODE_IGNORE_DEEP)
-	_deferred_load_scene_threaded(new_scene)
+	_load_scene_async(new_scene)
 
-func _deferred_load_scene_threaded(scene_path: String) -> void:
+func _load_scene_async(scene_path: String) -> void:
 	var progress: Array = []
 	var status: int = ResourceLoader.load_threaded_get_status(scene_path, progress)
 	load_progress.emit(floor(progress[0] * 100))
 	if status == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 		load_progress.emit(floor(progress[0] * 100))
 	if status == ResourceLoader.THREAD_LOAD_LOADED:
-		# Resource is loaded, we can use it
 		var new: Resource = ResourceLoader.load_threaded_get(scene_path)
 		var instance: Node = new.instantiate()
 		world_3d.call_deferred("add_child", instance)
