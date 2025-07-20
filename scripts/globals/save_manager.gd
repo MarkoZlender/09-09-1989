@@ -230,7 +230,7 @@ func get_save_data_field(slot: int, field: String) -> String:
 		printerr("%s not found in save data." % field)
 		return ""
 
-func save_audio_config():
+func save_audio_config() -> void:
 	config.set_value("Audio", "MasterVolume", AudioServer.get_bus_volume_db(AudioServer.get_bus_index("Master")))
 	config.set_value("Audio", "BGMVolume", AudioServer.get_bus_volume_db(AudioServer.get_bus_index("BGM")))
 	config.set_value("Audio", "SFXVolume", AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
@@ -243,7 +243,7 @@ func load_audio_config() -> void:
 		return
 	config.load(CONFIG_FILE_PATH)
 	var audio_settings: Dictionary = {}
-	for key in config.get_section_keys("Audio"):
+	for key: String in config.get_section_keys("Audio"):
 		audio_settings[key] = config.get_value("Audio", key, 0.0)
 	if audio_settings.size() > 0:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), audio_settings.get("MasterVolume", 0.0))
