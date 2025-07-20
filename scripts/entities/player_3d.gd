@@ -30,24 +30,14 @@ var idle_frame_count: int = 0
 #region Built-in functions
 
 func _ready() -> void:
-	#Global.signal_bus.item_rigid_body_collected.connect(_on_item_rigid_body_collected)
 	Global.signal_bus.player_died.connect(_on_player_died)
 	Global.signal_bus.player_interacting.connect(_on_player_interacted)
 	
 	player_model.get_node("AnimationTree").connect("animation_finished", _on_animation_finished)
 
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("inventory"):
-		if Global.game_controller.get_node_or_null("GUI/InventoryItemList") == null:
-			_add_inventory()
-		else:
-			Global.game_controller.get_node("GUI/InventoryItemList").queue_free()
-	
+func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("attack") && current_state != PlayerState.State.HURT && current_state != PlayerState.State.INTERACTING:
 		current_state = PlayerState.State.ATTACKING
-	# 	player_model.get_node("AnimationPlayer").get_animation("attack").loop_mode = Animation.LOOP_LINEAR
-	# elif event.is_action_released("attack"):
-	# 	player_model.get_node("AnimationPlayer").get_animation("attack").loop_mode = Animation.LOOP_NONE
 
 #endregion
 
@@ -76,66 +66,26 @@ func move(delta: float) -> void:
 		elif move_input == 0:
 			current_state = PlayerState.State.IDLE
 
-
 	# Rotate player (Y axis)
 	rotation.y -= turn_input * turn_speed * delta
-
-	# Limit speed if moving backwards
-	
-
-	# if move_input < 0 && current_state != PlayerState.State.HURT && current_state != PlayerState.State.ATTACKING:
-	# 	current_state = PlayerState.State.MOVING_BACKWARDS
-	# 	speed *= 0.3  # limit backward speed to 50%
 
 	# Move forward/backward in local space
 	var forward: Vector3= -transform.basis.z.normalized()
 	velocity.x = forward.x * move_input * speed
 	velocity.z = forward.z * move_input * speed
+	
 	_apply_gravity(delta)
-	#print("Velocity: ", velocity)
 	move_and_slide()
-
-func save() -> Dictionary:
-	var save_data: Dictionary = {
-		"filename" : get_scene_file_path(),
-		"parent" : get_parent().get_path(),
-		"pos_x" : global_position.x, # Vector2 is not supported by JSON
-		"pos_y" : global_position.y,
-		"pos_z" : global_position.z,
-		"rot_x" : rotation.x,
-		"rot_y" : rotation.y,
-		"rot_z" : rotation.z,
-	}
-	return save_data
-
-func load(data: Dictionary) -> void:
-	global_position = Vector3(data["pos_x"], data["pos_y"], data["pos_z"])
-	rotation = Vector3(data["rot_x"], data["rot_y"], data["rot_z"])
 
 #endregion
 
 #region Private functions 
-
-
-func _apply_knockback(area: Area3D) -> void:
-	Global.signal_bus.player_hurt.emit(player_data.health)
 
 func _apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= ProjectSettings.get_setting("physics/3d/default_gravity") * delta
 	else:
 		velocity.y = 0.0
-
-func _add_inventory() -> void:
-	var loaded_resource: Resource = load("res://scenes/ui/inventory/inventory_item_list.tscn")
-	var instance: Node = loaded_resource.instantiate()
-	Global.game_controller.get_node("GUI").add_child(instance)
-	Global.game_controller.get_node("GUI").move_child(instance, 0)
-
-func _check_level() -> void:
-	if player_data.experience >= player_data.level_progression[player_data.level-1]:
-		player_data.level += 1
-		print("Level up! New level: ", player_data.level)
 
 #endregion
 
