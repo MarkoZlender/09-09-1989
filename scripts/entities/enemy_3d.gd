@@ -41,23 +41,19 @@ func aggroed(delta: float) -> void:
 	direction = (navigation_agent.get_next_path_position() - global_position).normalized()
 
 	velocity = velocity.move_toward(direction * movement_speed, accel * delta)
-	rotate_towards_target(navigation_agent.target_position)
+	_rotate_towards_target(navigation_agent.target_position)
 
-	#_apply_gravity(delta)
 	move_and_slide()
 
 func deaggroed(delta: float) -> void:
-	# Handle patrolling with a stop-and-wait behavior
+	# patrolling
 	if navigation_agent.is_navigation_finished():
-		# If the timer is not running, start it and stop the enemy
 		if $PatrollTimer.time_left <= 0:
 			if velocity.length() > 0.1:
-				# Stop the enemy and start the timer
 				velocity = Vector3.ZERO
 				move_and_slide()
 				$PatrollTimer.start(randf_range(2.0, 3.0))  # Wait for a random duration
 			else:
-				# After waiting, pick a new random patrol target
 				var random_offset: Vector3 = Vector3(
 					randf_range(enemy_data.wander_range_x.x, enemy_data.wander_range_x.y), 
 					0, 
@@ -65,20 +61,18 @@ func deaggroed(delta: float) -> void:
 				)
 				navigation_agent.target_position = global_position + random_offset
 
-	# Move towards the new target if the timer is not running
 	if $PatrollTimer.time_left <= 0:
 		direction = navigation_agent.get_next_path_position() - global_position
 		direction = direction.normalized()
 
 		velocity = velocity.move_toward(direction * movement_speed, accel * delta)
 
-	rotate_towards_target(navigation_agent.target_position)
-	#_apply_gravity(delta)
+	_rotate_towards_target(navigation_agent.target_position)
 	move_and_slide()
 
-func rotate_towards_target(target_position: Vector3) -> void:
+func _rotate_towards_target(target_position: Vector3) -> void:
 	var to_target: Vector3 = target_position - global_position
-	to_target.y = 0  # Ignore vertical difference for horizontal rotation
+	to_target.y = 0
 	if to_target.length() > 0.01:
 		var target_angle: float = atan2(to_target.x, to_target.z)
 		rotation.y = lerp_angle(rotation.y, target_angle, turn_speed * get_process_delta_time())
@@ -93,8 +87,6 @@ func _on_player_detected(body: Node3D) -> void:
 func _on_player_out_of_range(body: Node3D) -> void:
 	if body is Player:
 		player_detected = false
-		#attack_finished = true
-		#current_state = EnemyState.State.AGGROED
 		enemy_model.get_node("AnimationPlayer").get_animation("attack").loop_mode = Animation.LOOP_NONE
 
 func _on_navigation_agent_3d_target_reached() -> void:
@@ -104,11 +96,9 @@ func _on_animation_finished(anim_name: String) -> void:
 	if anim_name == "hit":
 		current_state = EnemyState.State.AGGROED
 		enemy_hurt_box.monitoring = true
-		print("Hit animation finished")
 		player_detector_area.monitoring = true
 		attack_finished = true
-		
-	
+
 	if anim_name == "attack":
 		if current_state != EnemyState.State.HURT:
 			current_state = EnemyState.State.AGGROED
@@ -127,7 +117,6 @@ func _on_enemy_hurt_box_area_entered(area:Area3D) -> void:
 		current_state = EnemyState.State.HURT
 		print("enemy hit by player")
 		player_detector_area.monitoring = false
-		#enemy_hurt_box.set_deferred("monitoring", false)
 		enemy_model.get_node("AnimationPlayer").get_animation("attack").loop_mode = Animation.LOOP_NONE
 		enemy_data.health -= 10
 		Global.signal_bus.spawn_blood.emit(global_position)
