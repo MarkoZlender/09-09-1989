@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=4 uid="uid://bmcuon78mxwm0"]
+[gd_scene load_steps=124 format=4 uid="uid://bmcuon78mxwm0"]
 
 [ext_resource type="Script" uid="uid://cup8rquk0oej5" path="res://scripts/levels/open_space.gd" id="1_dxg7p"]
 [ext_resource type="PackedScene" uid="uid://fxqb8ljgc2n4" path="res://scenes/entities/characters/player_3d.tscn" id="4_5un2j"]
@@ -476,6 +476,15 @@ hit_strength = 10
 collectible_rigid_body = ExtResource("6_cqt2m")
 collectible_rigid_body_number = 3
 metadata/_custom_type_script = "uid://0fkyd553m7cg"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1j06o"]
+size = Vector3(5.96442, 1, 6.39247)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o6pq7"]
+size = Vector3(6.58765, 1.33203, 8.82881)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ynq8m"]
+size = Vector3(7.06653, 1.35498, 6.31705)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_og8ul"]
 size = Vector3(8.41443, 5.5813, 31.6138)
@@ -1202,20 +1211,23 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 131.497, 1.50596, -4.98805)
 floor_max_angle = 1.0472
 player_data = SubResource("Resource_8ax1c")
 
-[node name="Enemy5" parent="Entities" node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
+[node name="Enemy5" parent="Entities" node_paths=PackedStringArray("player", "aggro_reach_area") instance=ExtResource("4_46gqi")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 48.7194, 1.51249, -117.092)
 enemy_data = SubResource("Resource_akovg")
 player = NodePath("../Player")
+aggro_reach_area = NodePath("../PlayerInReachArea")
 
-[node name="Enemy2" parent="Entities" node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
+[node name="Enemy2" parent="Entities" node_paths=PackedStringArray("player", "aggro_reach_area") instance=ExtResource("4_46gqi")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 218.898, 1.51446, -57.3763)
 enemy_data = SubResource("Resource_ej3wi")
 player = NodePath("../Player")
+aggro_reach_area = NodePath("../PlayerInReachArea2")
 
-[node name="Enemy3" parent="Entities" node_paths=PackedStringArray("player") instance=ExtResource("4_46gqi")]
+[node name="Enemy3" parent="Entities" node_paths=PackedStringArray("player", "aggro_reach_area") instance=ExtResource("4_46gqi")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 222.529, 1.51436, -115.935)
 enemy_data = SubResource("Resource_w3tp5")
 player = NodePath("../Player")
+aggro_reach_area = NodePath("../PlayerInReachArea3")
 
 [node name="Wraith" parent="Entities" groups=["removable_objects"] instance=ExtResource("10_a8uie")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 127.999, 1.51979, -121.337)
@@ -1227,6 +1239,36 @@ dialogue_resource = "uid://bms2c6lxhovls"
 
 [node name="PlayerStartPosition" type="Marker3D" parent="Entities"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 131.497, 1.50596, -4.98805)
+
+[node name="PlayerInReachArea" type="Area3D" parent="Entities"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 48.7194, 1.51249, -117.092)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Entities/PlayerInReachArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.811188, 0, -0.338478)
+shape = SubResource("BoxShape3D_1j06o")
+
+[node name="PlayerInReachArea2" type="Area3D" parent="Entities"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 218.898, 1.51446, -57.3763)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Entities/PlayerInReachArea2"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -0.280991, 0.166016, 1.36468)
+shape = SubResource("BoxShape3D_o6pq7")
+
+[node name="PlayerInReachArea3" type="Area3D" parent="Entities"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 222.529, 1.51436, -115.935)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Entities/PlayerInReachArea3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.982483, -0.17749, -0.997696)
+shape = SubResource("BoxShape3D_ynq8m")
 
 [node name="Cameras" type="Node3D" parent="."]
 

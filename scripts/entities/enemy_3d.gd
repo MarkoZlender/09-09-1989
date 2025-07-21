@@ -2,6 +2,7 @@ class_name Enemy extends CharacterBody3D
 
 @export var enemy_data: EnemyData
 @export var player: Player
+@export var aggro_reach_area: Area3D
 
 var current_state: EnemyState.State = EnemyState.State.DEAGGROED
 
@@ -12,7 +13,9 @@ var attack_finished: bool = true
 
 var turn_speed: float = 10.0
 
-var direction: Vector3 = Vector3.ZERO 
+var direction: Vector3 = Vector3.ZERO
+
+var player_in_reach_area: bool = false
 
 @onready var movement_speed: float = enemy_data.movement_speed
 @onready var accel: float = enemy_data.accel
@@ -29,10 +32,18 @@ func _ready() -> void:
 	enemy_model.get_node("AnimationTree").connect("animation_finished", _on_animation_finished)
 	player_detector_area.connect("body_entered", _on_player_detected)
 	player_detector_area.connect("body_exited", _on_player_out_of_range)
+	aggro_reach_area.connect("body_entered", _on_player_in_aggro_area_range)
+	aggro_reach_area.connect("body_exited", _on_player_out_of_aggro_area_range)
 
 func aggroed(delta: float) -> void:
 	navigation_agent.target_position = player.global_position
-	if !navigation_agent.is_target_reachable():
+	# if !navigation_agent.is_target_reachable():
+	# 	current_state = EnemyState.State.DEAGGROED
+	# 	%StateChart.send_event("deaggroed")
+	# 	navigation_agent.target_position = global_position
+	# 	print("Player out of aggro range, switching to DEAGROED state")
+	# 	return
+	if !player_in_reach_area:
 		current_state = EnemyState.State.DEAGGROED
 		%StateChart.send_event("deaggroed")
 		navigation_agent.target_position = global_position
@@ -46,6 +57,12 @@ func aggroed(delta: float) -> void:
 	move_and_slide()
 
 func deaggroed(delta: float) -> void:
+	if $AggroArea.get_overlapping_bodies().has(player) && player_in_reach_area:
+		current_state = EnemyState.State.AGGROED
+		%StateChart.send_event("aggroed")
+		navigation_agent.target_position = player.global_position
+		print("Player detected, switching to AGGROED state")
+		return
 	# patrolling
 	if navigation_agent.is_navigation_finished():
 		if $PatrollTimer.time_left <= 0:
@@ -124,6 +141,14 @@ func _on_enemy_hurt_box_area_entered(area:Area3D) -> void:
 			_dead()
 			return
 		attack_finished = true
+
+func _on_player_in_aggro_area_range(body: Node3D) -> void:
+	if body is Player:
+		player_in_reach_area = true
+
+func _on_player_out_of_aggro_area_range(body: Node3D) -> void:
+	if body is Player:
+		player_in_reach_area = false
 
 func _dead() -> void:
 	enemy_collision_shape.disabled = true
