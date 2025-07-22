@@ -20,6 +20,8 @@ func _ready() -> void:
 	# add objects to remove when quest is completed
 	for object: Node3D in get_tree().get_nodes_in_group("removable_objects"):
 		removable_objects.append(object)
+		print("Added object to removable_objects: ", object.name)
+	
 
 func _on_quest_completed() -> void:
 	await Global.signal_bus.clear_to_remove

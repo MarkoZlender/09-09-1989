@@ -633,40 +633,30 @@ transform = Transform3D(-0.228147, -4.25586e-08, 0.973627, -0.973627, 9.97262e-0
 [node name="Skeleton3D" parent="Woman/Armature" index="0"]
 bones/0/position = Vector3(0, 0.000188779, 0.00800943)
 bones/0/rotation = Quaternion(0.758881, 0.00055651, -0.000653148, 0.651229)
-bones/0/scale = Vector3(1, 1, 1)
 bones/1/position = Vector3(-2.79397e-09, 0.00123873, 8.13398e-09)
 bones/1/rotation = Quaternion(0.295275, -0.00102647, 0.123014, 0.947459)
-bones/1/scale = Vector3(1, 1, 1)
 bones/2/position = Vector3(-1.22091e-15, 0.00209561, 4.75007e-09)
 bones/2/rotation = Quaternion(-0.182237, 0.196216, -0.0264714, 0.963114)
-bones/2/scale = Vector3(1, 1, 1)
 bones/3/position = Vector3(-9.31323e-10, 0.0024885, 2.44512e-09)
 bones/3/rotation = Quaternion(0.242525, 0.00540804, -0.0543864, 0.968604)
-bones/3/scale = Vector3(1, 1, 1)
 bones/4/position = Vector3(-9.31322e-10, 0.000870397, -9.88063e-10)
 bones/4/rotation = Quaternion(-0.0382705, -0.00611119, -0.0801461, 0.996029)
-bones/4/scale = Vector3(1, 1, 1)
 bones/8/position = Vector3(9.69734e-09, 0.00122509, 3.79734e-08)
 bones/8/rotation = Quaternion(-0.13848, -0.180936, 0.883653, -0.408953)
-bones/8/scale = Vector3(1, 1, 1)
 bones/9/position = Vector3(-3.16611e-08, 0.0022697, 7.63201e-08)
 bones/9/rotation = Quaternion(0.106761, 0.114738, -0.0495767, 0.986397)
-bones/9/scale = Vector3(1, 1, 1)
 bones/10/position = Vector3(-3.73623e-08, 0.00262185, 6.16004e-08)
 bones/10/rotation = Quaternion(-0.139603, -0.741504, 0.151301, 0.638585)
 bones/10/scale = Vector3(1, 0.999999, 0.999998)
 bones/15/position = Vector3(5.68913e-09, 0.00122508, 6.22417e-08)
 bones/15/rotation = Quaternion(0.326299, -0.235957, 0.679512, 0.613284)
-bones/15/scale = Vector3(1, 1, 1)
 bones/16/position = Vector3(-9.09223e-05, 0.00233552, 5.46113e-05)
 bones/16/rotation = Quaternion(0.507543, 0.0898342, -0.0841722, 0.852787)
 bones/16/scale = Vector3(1, 1, 0.999999)
 bones/17/position = Vector3(-1.92922e-09, 0.00262189, 1.10239e-08)
 bones/17/rotation = Quaternion(0.0105659, 0.447831, -0.158008, 0.879983)
-bones/17/scale = Vector3(1, 1, 1)
 bones/21/position = Vector3(0.000903229, 0.000338429, 3.24879e-05)
 bones/21/rotation = Quaternion(0.997897, -0.00928344, 0.000463027, 0.064152)
-bones/21/scale = Vector3(1, 1, 1)
 bones/22/position = Vector3(-2.6779e-09, 0.0037005, -6.66521e-10)
 bones/22/rotation = Quaternion(0.384027, -0.0182443, -0.0657035, 0.9208)
 bones/22/scale = Vector3(1, 0.999998, 1)
@@ -713,6 +703,7 @@ libraries = {
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_wgnkx")
+bus = &"NewsTheme"
 
 [node name="NewsOverlay" type="Control" parent="."]
 visible = false

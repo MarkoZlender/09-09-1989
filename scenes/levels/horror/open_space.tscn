@@ -478,13 +478,13 @@ collectible_rigid_body_number = 3
 metadata/_custom_type_script = "uid://0fkyd553m7cg"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1j06o"]
-size = Vector3(5.96442, 1, 6.39247)
+size = Vector3(5.65299, 1, 6.25385)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o6pq7"]
-size = Vector3(6.58765, 1.33203, 8.82881)
+size = Vector3(5.70563, 1.64258, 6.27819)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ynq8m"]
-size = Vector3(7.06653, 1.35498, 6.31705)
+size = Vector3(6.34671, 1.4563, 5.13308)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_og8ul"]
 size = Vector3(8.41443, 5.5813, 31.6138)
@@ -1247,7 +1247,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Entities/PlayerInReachArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.811188, 0, -0.338478)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.966905, 0, -0.407784)
 shape = SubResource("BoxShape3D_1j06o")
 
 [node name="PlayerInReachArea2" type="Area3D" parent="Entities"]
@@ -1257,7 +1257,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Entities/PlayerInReachArea2"]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -0.280991, 0.166016, 1.36468)
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -0.234566, 0.0107422, 1.31023)
 shape = SubResource("BoxShape3D_o6pq7")
 
 [node name="PlayerInReachArea3" type="Area3D" parent="Entities"]
@@ -1267,7 +1267,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Entities/PlayerInReachArea3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.982483, -0.17749, -0.997696)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34239, -0.228149, -1.48135)
 shape = SubResource("BoxShape3D_ynq8m")
 
 [node name="Cameras" type="Node3D" parent="."]
@@ -1435,7 +1435,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.8673, 3, -114.5)
 note_text = "They look like us. They walk like us. But they have no face. The Saviour will know them by their odor, by their hollow screams when He takes their teeth."
 
 [node name="note2" parent="Notes" instance=ExtResource("9_7hute")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 180.412, 3, -81.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 172.833, 3, -81.7261)
 note_text = "Saviour's hand knows best what to do. His instinct grows stronger with each step."
 
 [node name="note3" parent="Notes" instance=ExtResource("9_7hute")]
