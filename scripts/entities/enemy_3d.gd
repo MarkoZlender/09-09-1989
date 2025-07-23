@@ -17,6 +17,10 @@ var direction: Vector3 = Vector3.ZERO
 
 var player_in_reach_area: bool = false
 
+var idle_timer: Timer
+var last_position: Vector3
+var idle_time_threshold: float = 3.0 # seconds
+
 @onready var movement_speed: float = enemy_data.movement_speed
 @onready var accel: float = enemy_data.accel
 
@@ -29,6 +33,12 @@ var player_in_reach_area: bool = false
 func _ready() -> void:
 	enemy_data = enemy_data.duplicate()
 	$PatrollTimer.start(randf_range(3.0, 4.0))
+	idle_timer = Timer.new()
+	idle_timer.wait_time = idle_time_threshold
+	idle_timer.one_shot = true
+	idle_timer.connect("timeout", Callable(self, "_on_idle_timeout"))
+	add_child(idle_timer)
+	last_position = global_position
 	enemy_model.get_node("AnimationTree").connect("animation_finished", _on_animation_finished)
 	player_detector_area.connect("body_entered", _on_player_detected)
 	player_detector_area.connect("body_exited", _on_player_out_of_range)
@@ -57,11 +67,21 @@ func aggroed(delta: float) -> void:
 	move_and_slide()
 
 func deaggroed(delta: float) -> void:
+	if !idle_timer.is_stopped():
+		if global_position.distance_to(last_position) > 0.1:
+			idle_timer.stop()
+			idle_timer.start()
+			last_position = global_position
+	else:
+		idle_timer.start()
+		last_position = global_position
+
 	if $AggroArea.get_overlapping_bodies().has(player) && player_in_reach_area:
 		current_state = EnemyState.State.AGGROED
 		%StateChart.send_event("aggroed")
 		navigation_agent.target_position = player.global_position
 		print("Player detected, switching to AGGROED state")
+		idle_timer.stop()
 		return
 	# patrolling
 	if navigation_agent.is_navigation_finished():
@@ -149,6 +169,16 @@ func _on_player_in_aggro_area_range(body: Node3D) -> void:
 func _on_player_out_of_aggro_area_range(body: Node3D) -> void:
 	if body is Player:
 		player_in_reach_area = false
+
+func _on_idle_timeout() -> void:
+	print("Enemy idle for too long, searching for new target.")
+	# Find a new target or patrol location
+	var random_offset: Vector3 = Vector3(
+		randf_range(enemy_data.wander_range_x.x, enemy_data.wander_range_x.y), 
+		0, 
+		randf_range(enemy_data.wander_range_z.x, enemy_data.wander_range_z.y)
+	)
+	navigation_agent.target_position = global_position + random_offset
 
 func _dead() -> void:
 	enemy_collision_shape.disabled = true
