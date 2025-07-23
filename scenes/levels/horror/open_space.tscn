@@ -447,7 +447,7 @@ movement_speed = 3.0
 accel = 10.0
 wander_range_x = Vector2(-5, 5)
 wander_range_z = Vector2(-5, 5)
-health = 100
+health = 10
 hit_strength = 10
 collectible_rigid_body = ExtResource("6_cqt2m")
 collectible_rigid_body_number = 3
@@ -459,7 +459,7 @@ movement_speed = 3.0
 accel = 10.0
 wander_range_x = Vector2(-5, 5)
 wander_range_z = Vector2(-5, 5)
-health = 100
+health = 10
 hit_strength = 10
 collectible_rigid_body = ExtResource("6_cqt2m")
 collectible_rigid_body_number = 3
@@ -471,7 +471,7 @@ movement_speed = 3.0
 accel = 10.0
 wander_range_x = Vector2(-5, 5)
 wander_range_z = Vector2(-5, 5)
-health = 100
+health = 10
 hit_strength = 10
 collectible_rigid_body = ExtResource("6_cqt2m")
 collectible_rigid_body_number = 3
@@ -1207,7 +1207,7 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 134.808, 1.51979, -97.801)
 [node name="Entities" type="Node3D" parent="."]
 
 [node name="Player" parent="Entities" instance=ExtResource("4_5un2j")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 131.497, 1.50596, -4.98805)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 124.201, 1.50596, -112.759)
 floor_max_angle = 1.0472
 player_data = SubResource("Resource_8ax1c")
 
@@ -1845,6 +1845,33 @@ focus_neighbor_bottom = NodePath("../MainMenuButton")
 theme_type_variation = &"MainMenuButton"
 theme_override_font_sizes/font_size = 20
 text = "Exit"
+
+[node name="Tooth" parent="." instance=ExtResource("6_cqt2m")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 115.171, 2.36753, -116.364)
+
+[node name="Tooth2" parent="." instance=ExtResource("6_cqt2m")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 115.171, 2.36753, -113.873)
+
+[node name="Tooth3" parent="." instance=ExtResource("6_cqt2m")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 112.892, 2.36753, -113.873)
+
+[node name="Tooth4" parent="." instance=ExtResource("6_cqt2m")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 112.892, 2.36753, -116.746)
+
+[node name="Tooth5" parent="." instance=ExtResource("6_cqt2m")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 116.801, 2.36753, -116.746)
+
+[node name="Tooth6" parent="." instance=ExtResource("6_cqt2m")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 116.801, 2.36753, -114.161)
+
+[node name="Tooth7" parent="." instance=ExtResource("6_cqt2m")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 111.185, 2.36753, -114.161)
+
+[node name="Tooth8" parent="." instance=ExtResource("6_cqt2m")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 111.185, 2.36753, -117.173)
+
+[node name="Tooth9" parent="." instance=ExtResource("6_cqt2m")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 109.508, 2.36753, -114.302)
 
 [connection signal="pressed" from="PauseUi/CanvasLayer/VBoxContainer/MainMenuButton" to="PauseUi" method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="PauseUi/CanvasLayer/VBoxContainer/ExitButton" to="PauseUi" method="_on_exit_button_pressed"]

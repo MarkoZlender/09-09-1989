@@ -11,4 +11,4 @@ func _on_item_rigid_body_collected(item: CollectibleRigidBody3D) -> void:
 		teeth_counter -= 1
 		if teeth_counter <= 0:
 			print("All teeth collected!")
-			Global.signal_bus.item_rigid_body_collected.disconnect(_on_item_rigid_body_collected)
+			#Global.signal_bus.item_rigid_body_collected.disconnect(_on_item_rigid_body_collected)
