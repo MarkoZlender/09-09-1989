@@ -47,12 +47,6 @@ func _ready() -> void:
 
 func aggroed(delta: float) -> void:
 	navigation_agent.target_position = player.global_position
-	# if !navigation_agent.is_target_reachable():
-	# 	current_state = EnemyState.State.DEAGGROED
-	# 	%StateChart.send_event("deaggroed")
-	# 	navigation_agent.target_position = global_position
-	# 	print("Player out of aggro range, switching to DEAGROED state")
-	# 	return
 	if !player_in_reach_area:
 		current_state = EnemyState.State.DEAGGROED
 		%StateChart.send_event("deaggroed")

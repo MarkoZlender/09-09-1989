@@ -1,23 +1,4 @@
-https://opengameart.org/content/rpg-ui-icons
-https://opengameart.org/content/hand-cursor
-https://gx310.itch.io/pxiel-art-ui-borders
-https://kenney.nl/assets/fantasy-ui-borders
-https://fonts.google.com/specimen/Hahmlet?preview.text=Tower%20of%20the%20Past&categoryFilters=Serif:%2FSerif%2F*,%2FSlab%2F*;Appearance:%2FSeasonal%2FLunar+New+Year
-https://opengameart.org/content/lowpoly-buildings-pack
-https://opengameart.org/content/lowpoly-textured-trees
-https://opengameart.org/content/lowpoly-crops-pack
-https://kenney.nl/assets/fantasy-town-kit
-https://kenney.nl/assets/furniture-kit
 
-https://itch.io/queue/c/4830356/gb-assets?game_id=1333206
-https://mommui.itch.io/gb-studio-ui-pack-2 NEEDS CREDIT
-https://2bitcrook.itch.io/gameboy-pattern-pack NEEDS CREDIT
-https://itch.io/queue/c/4830356/gb-assets?game_id=545651
-https://mommui.itch.io/gb-studio-ui-pack-2
-https://mikiz.itch.io/pixel-mouse-pointer
-https://opengameart.org/content/arcade-title-8-bit-chiptune NEEDS CREDIIT/MAIN MENU THEME
-https://ateliermayo.itch.io/jrpg-ui NEEDS CREDIT
-https://bigbuckbunny.itch.io/game-boy-platform-assets
 https://gungodx.itch.io/free-blood-spatter-hit-effect-128x128 NEEDS CREDIT
 https://crimsongcat.itch.io/ps1-psx-high-school-character NEEDS CREDIT
 https://godotshaders.com/shader/vhs-and-crt-monitor-effect/
@@ -25,25 +6,36 @@ https://godotshaders.com/shader/vhs-and-crt-monitor-effect/
 https://freesound.org/people/spycrah/sounds/471097/ - knife swing
 https://freesound.org/people/Fission9/sounds/521587/ - player footsteps
 https://freesound.org/people/unfa/sounds/610991/ - player pain grunts
+https://freesound.org/people/j2024w/sounds/718453/ - note pickup sfx
+https://freesound.org/people/KeshaFilm/sounds/471834/ - health pickup sfx
+https://pixabay.com/sound-effects/analog-crt-tv-electronic-static-noise-60428/ - crt tv sfx
+https://pixabay.com/music/main-title-classic-breaking-news-177828/ - news bgm
 
 https://freesound.org/people/AudioPapkin/sounds/712066/ - monster footsteps
 https://freesound.org/people/LucasDuff/sounds/673811/ - monster hurt sounds
 https://freesound.org/people/Duisterwho/sounds/644563/ - other monster noises
 https://freesound.org/people/deleted_user_7146007/sounds/383659/ - flashlight sound
-https://www.dafont.com/font-comment.php?file=vcr_osd_mono
+https://freesound.org/people/erkanozan/sounds/51749/ - gunshot
+
 https://opengameart.org/content/horror-game-note-page-background-old-paper-png
-https://fonts.google.com/specimen/Waiting+for+the+Sunrise?selection.family=Kalam|Vesper+Libre&query=ital&preview.text=I%20can%27t%20take%20this%20anymore%0APlease%20somebody%20take%20this%20burden%20from%20me&categoryFilters=Calligraphy:%2FScript%2FHandwritten
-https://freesound.org/people/j2024w/sounds/718453/ - paper sounds
-https://freesound.org/people/Defaultv/sounds/534357/ - item pickup
-https://opengameart.org/content/medicine-pack-16x16 - health pickup
-https://freesound.org/people/KeshaFilm/sounds/471834/ - health pickup
+
+
+
+https://opengameart.org/content/medicine-pack-16x16 - health pickup sprite
+
 https://elegantcrow.itch.io/psx-retro-style-tree-pack - trees
 https://elbolilloduro.itch.io/survival-psx - camping items
 https://ggbot.itch.io/psx-style-cars - cars
 https://katcho.itch.io/free-characters - dead bodies
-https://fonts.google.com/specimen/Geologica?preview.text=BREAKING%20NEWS&query=hel - news font
+
 https://mcsteeg.itch.io/psx-villager-man-character - dead bodies
 https://owlcaponexd.itch.io/lindagolden-psx-character - dead bodies
-https://pixabay.com/music/main-title-classic-breaking-news-177828/ - news bgm
-https://freesound.org/people/erkanozan/sounds/51749/ - gunshot
-https://pixabay.com/sound-effects/analog-crt-tv-electronic-static-noise-60428/ - crt tv sfx
+
+FONTS
+https://www.dafont.com/font-comment.php?file=vcr_osd_mono
+
+https://fonts.google.com/specimen/Waiting+for+the+Sunrise?selection.family=Kalam|Vesper+Libre&query=ital&preview.text=I%20can%27t%20take%20this%20anymore%0APlease%20somebody%20take%20this%20burden%20from%20me&categoryFilters=Calligraphy:%2FScript%2FHandwritten - notes font
+
+https://fonts.google.com/specimen/Geologica?preview.text=BREAKING%20NEWS&query=hel - news font
+
+

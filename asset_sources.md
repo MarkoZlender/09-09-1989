@@ -1,0 +1,124 @@
+
+
+#### **ITCH.IO**
+
+
+
+https://elegantcrow.itch.io/psx-retro-style-tree-pack - trees
+
+https://elbolilloduro.itch.io/survival-psx - camping items
+
+https://ggbot.itch.io/psx-style-cars - cars
+
+https://katcho.itch.io/free-characters - dead bodies
+
+https://mcsteeg.itch.io/psx-villager-man-character - dead bodies
+
+https://owlcaponexd.itch.io/lindagolden-psx-character - dead bodies
+
+https://gungodx.itch.io/free-blood-spatter-hit-effect-128x128 NEEDS CREDIT
+
+https://crimsongcat.itch.io/ps1-psx-high-school-character NEEDS CREDIT
+
+
+
+#### **Open Game Art**
+
+
+
+https://opengameart.org/content/horror-game-note-page-background-old-paper-png
+
+https://opengameart.org/content/medicine-pack-16x16 - health pickup sprite
+
+
+
+
+
+#### **freesound**
+
+
+
+https://freesound.org/people/spycrah/sounds/471097/ - knife swing
+
+https://freesound.org/people/Fission9/sounds/521587/ - player footsteps
+
+https://freesound.org/people/unfa/sounds/610991/ - player pain grunts
+
+https://freesound.org/people/j2024w/sounds/718453/ - note pickup sfx
+
+https://freesound.org/people/KeshaFilm/sounds/471834/ - health pickup sfx
+
+https://freesound.org/people/AudioPapkin/sounds/712066/ - monster footsteps
+
+https://freesound.org/people/LucasDuff/sounds/673811/ - monster hurt sounds
+
+https://freesound.org/people/Duisterwho/sounds/644563/ - other monster noises
+
+https://freesound.org/people/deleted\_user\_7146007/sounds/383659/ - flashlight sound
+
+https://freesound.org/people/erkanozan/sounds/51749/ - gunshot
+
+
+
+#### **Pixabay**
+
+
+
+https://pixabay.com/sound-effects/analog-crt-tv-electronic-static-noise-60428/ - crt tv sfx
+
+https://pixabay.com/music/main-title-classic-breaking-news-177828/ - news bgm
+
+
+
+https://pixabay.com/service/license-summary/
+
+
+
+Use Content without having to attribute the author (although giving credit is always appreciated by our community!)
+
+
+
+
+
+#### **GODOT SHADERS**
+
+https://godotshaders.com/shader/vhs-and-crt-monitor-effect/
+
+
+
+#### **FONTS**
+
+
+
+https://www.dafont.com/font-comment.php?file=vcr\_osd\_mono
+
+
+
+https://fonts.google.com/specimen/Waiting+for+the+Sunrise?selection.family=Kalam|Vesper+Libre\&query=ital\&preview.text=I%20can%27t%20take%20this%20anymore%0APlease%20somebody%20take%20this%20burden%20from%20me\&categoryFilters=Calligraphy:%2FScript%2FHandwritten - notes font
+
+
+
+https://fonts.google.com/specimen/Geologica?preview.text=BREAKING%20NEWS\&query=hel - news font
+
+
+
+##### **Mixamo**
+
+
+
+**https://community.adobe.com/t5/mixamo-discussions/mixamo-faq-licensing-royalties-ownership-eula-and-tos/td-p/13234775**
+
+
+
+**Do I have to give Adobe, Mixamo, or Fuse credit in my project?**
+
+
+
+**No. That is up to you, and you're certainly welcome to, but are not required to give credit to Adobe, Mixamo, or Fuse in any way.**
+
+
+
+
+
+
+

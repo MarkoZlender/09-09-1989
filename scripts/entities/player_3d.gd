@@ -11,8 +11,8 @@ extends CharacterBody3D
 var current_state: PlayerState.State = PlayerState.State.IDLE
 
 var direction: Vector3 = Vector3.ZERO
-var turn_speed: float = 2.0  # Adjust the turning speed as needed
-var max_speed: float = 10.0  # Adjust the maximum speed as needed
+var turn_speed: float = 2.0
+var max_speed: float = 10.0
 var acceleration: float = 20.0
 var turn_input: float = 0.0
 var move_input: float = 0.0
@@ -36,7 +36,8 @@ func _ready() -> void:
 	player_model.get_node("AnimationTree").connect("animation_finished", _on_animation_finished)
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("attack") && current_state != PlayerState.State.HURT && current_state != PlayerState.State.INTERACTING:
+	if Input.is_action_just_pressed("attack") && current_state != PlayerState.State.HURT \
+	&& current_state != PlayerState.State.INTERACTING:
 		current_state = PlayerState.State.ATTACKING
 
 #endregion

@@ -237,7 +237,7 @@ func save_audio_config() -> void:
 	config.save(CONFIG_FILE_PATH)
 
 func load_audio_config() -> void:
-	if  !FileAccess.file_exists(CONFIG_FILE_PATH):
+	if !FileAccess.file_exists(CONFIG_FILE_PATH):
 		printerr("Config file does not exist, creating new config file.")
 		save_audio_config()
 		return
