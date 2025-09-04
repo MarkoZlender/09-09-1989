@@ -1,0 +1,433 @@
+# 📂 Global Scripts
+
+# 📂 Other Scripts
+
+**NPCGameState.gd**
+
+  Private:
+	- _ready
+  Signal Callables:
+	- _on_item_rigid_body_collected
+
+
+**aggro_area.gd**
+
+  Signal Callables:
+	- _on_body_entered
+
+
+**aggroed.gd**
+
+  Signal Callables:
+	- _on_aggroed_state_physics_processing
+
+
+**blood_spawner.gd**
+
+  Private:
+	- _get_random_blood_texture
+	- _ready
+  Signal Callables:
+	- _on_spawn_blood_decal
+
+
+**car_2.gd**
+
+  Private:
+	- _ready
+  Signal Callables:
+	- _on_interact
+
+
+**collectible.gd**
+
+
+
+**collectible_rigid_body_3d.gd**
+
+
+
+**collectible_spawner.gd**
+
+  Private:
+	- _ready
+  Signal Callables:
+	- _on_enemy_died
+
+
+**config_screen.gd**
+
+  Private:
+	- _ready
+  Signal Callables:
+	- _on_back_button_pressed
+	- _on_bgm_slider_value_changed
+	- _on_master_slider_value_changed
+	- _on_sfx_slider_value_changed
+
+
+**control_scheme.gd**
+
+  Private:
+	- _ready
+  Signal Callables:
+	- _on_back_button_pressed
+
+
+**dead.gd**
+
+  Signal Callables:
+	- _on_dead_state_entered
+
+
+**deaggro_area.gd**
+
+  Signal Callables:
+	- _on_body_exited
+
+
+**deaggroed.gd**
+
+  Signal Callables:
+	- _on_deaggroed_state_physics_processing
+
+
+**ending_scene.gd**
+
+  Private:
+	- _ready
+
+
+**enemy_3d.gd**
+
+  Public:
+	- aggroed
+	- deaggroed
+  Private:
+	- _dead
+	- _ready
+	- _rotate_towards_target
+  Signal Callables:
+	- _on_aggro_area_body_entered
+	- _on_animation_finished
+	- _on_deaggro_area_body_exited
+	- _on_enemy_hurt_box_area_entered
+	- _on_idle_timeout
+	- _on_navigation_agent_3d_target_reached
+	- _on_player_detected
+	- _on_player_in_aggro_area_range
+	- _on_player_out_of_aggro_area_range
+	- _on_player_out_of_range
+
+
+**enemy_attack_surface_area.gd**
+
+
+
+**enemy_data.gd**
+
+
+
+**enemy_hit_box.gd**
+
+
+
+**enemy_hurt_box.gd**
+
+
+
+**enemy_model.gd**
+
+  Private:
+	- _physics_process
+
+
+**enemy_state.gd**
+
+
+
+**extract_methods.gd**
+
+  Public:
+	- format_output
+	- format_section
+	- get_scripts_and_methods
+	- save_to_file
+  Private:
+	- _ready
+
+
+**fighting.gd**
+
+  Signal Callables:
+	- _on_fighting_state_physics_processing
+
+
+**fire_light.gd**
+
+  Private:
+	- _process
+
+
+**fixed_camera.gd**
+
+  Private:
+	- _ready
+	- _set_camera_current
+  Signal Callables:
+	- _on_body_entered
+	- _on_body_exited
+
+
+**game_controller.gd**
+
+  Public:
+	- change_3d_scene
+	- change_gui_scene
+  Private:
+	- _load_scene_async
+	- _play_transition
+	- _process
+	- _ready
+  Signal Callables:
+	- _on_final_dialogue_completed
+	- _on_level_changed
+	- _on_player_died
+	- _on_quest_completed
+
+
+**game_over_screen.gd**
+
+  Private:
+	- _ready
+  Signal Callables:
+	- _on_quit_button_pressed
+	- _on_restart_button_pressed
+
+
+**global.gd**
+
+  Public:
+	- deserialize
+	- serialize
+	- wait
+
+
+**health_up.gd**
+
+  Signal Callables:
+	- _on_interaction_area_body_entered
+
+
+**hud_3d.gd**
+
+  Private:
+	- _ready
+  Signal Callables:
+	- _on_health_changed
+
+
+**hurt.gd**
+
+  Signal Callables:
+	- _on_hurt_state_physics_processing
+
+
+**idle.gd**
+
+  Signal Callables:
+	- _on_idle_state_physics_processing
+
+
+**interact_component.gd**
+
+  Signal Callables:
+	- _on_body_entered
+	- _on_body_exited
+
+
+**interacting.gd**
+
+  Signal Callables:
+	- _on_interacting_state_physics_processing
+
+
+**interaction_manager.gd**
+
+  Public:
+	- register_area
+	- unregister_area
+  Private:
+	- _input
+	- _physics_process
+	- _ready
+	- _sort_by_distance_to_player
+
+
+**intro.gd**
+
+  Private:
+	- _ready
+
+
+**loading_screen.gd**
+
+  Private:
+	- _ready
+  Signal Callables:
+	- _on_scene_load_update
+
+
+**main_menu.gd**
+
+  Private:
+	- _ready
+  Signal Callables:
+	- _on_config_button_pressed
+	- _on_controls_button_pressed
+	- _on_new_game_button_pressed
+	- _on_quit_button_pressed
+
+
+**moving.gd**
+
+  Signal Callables:
+	- _on_moving_state_physics_processing
+
+
+**news_crime_scene.gd**
+
+  Private:
+	- _ready
+  Signal Callables:
+	- _on_animation_finished
+	- _on_play_news
+
+
+**note.gd**
+
+  Private:
+	- _play_and_free
+	- _ready
+  Signal Callables:
+	- _on_destroy_area_body_exited
+	- _on_interact_area_body_entered
+	- _on_sfx_finished
+
+
+**open_space.gd**
+
+  Private:
+	- _ready
+  Signal Callables:
+	- _on_quest_completed
+
+
+**pause_ui.gd**
+
+  Private:
+	- _input
+	- _ready
+  Signal Callables:
+	- _on_exit_button_pressed
+	- _on_main_menu_button_pressed
+
+
+**player_3d.gd**
+
+  Public:
+	- move
+  Private:
+	- _apply_gravity
+	- _input
+	- _ready
+  Signal Callables:
+	- _on_animation_finished
+	- _on_player_died
+	- _on_player_hurt_box_area_entered
+	- _on_player_interacted
+
+
+**player_attack_surface_area.gd**
+
+
+
+**player_data.gd**
+
+
+
+**player_hit_box.gd**
+
+
+
+**player_hurt_box.gd**
+
+
+
+**player_model.gd**
+
+  Private:
+	- _input
+	- _physics_process
+
+
+**player_state.gd**
+
+
+
+**save_manager.gd**
+
+  Public:
+	- delete_save_file
+	- get_current_level
+	- get_current_level_name
+	- get_save_data_field
+	- get_save_file_path
+	- get_save_files
+	- load_audio_config
+	- load_existing_save_data
+	- load_game
+	- parse_json_safe
+	- read_existing_file
+	- read_file_as_text
+	- revert_and_reload_savable_nodes
+	- save_audio_config
+	- save_game
+	- save_savable_nodes
+  Private:
+	- _ready
+	- _verify_save_directory
+
+
+**signal_bus.gd**
+
+  Private:
+	- _ready
+
+
+**tent.gd**
+
+  Private:
+	- _ready
+  Signal Callables:
+	- _on_interact
+
+
+**tooth.gd**
+
+  Signal Callables:
+	- _on_interaction_area_body_entered
+
+
+**transition_controller.gd**
+
+  Public:
+	- transition
+
+
+**wraith.gd**
+
+  Private:
+	- _ready
+  Signal Callables:
+	- _on_interact

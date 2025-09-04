@@ -91,9 +91,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -150.0
-offset_top = -104.0
+offset_top = -82.5
 offset_right = 150.0
-offset_bottom = 104.0
+offset_bottom = 82.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
@@ -196,6 +196,24 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 12
 text = "A game by Marko Zlender"
 horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Credit2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -631.0
+offset_top = -166.0
+offset_right = -386.0
+offset_bottom = -121.813
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 12
+text = "Godot licenses: 
+https://godotengine.org/license/"
 vertical_alignment = 2
 
 [connection signal="pressed" from="StartButton" to="." method="_on_new_game_button_pressed"]

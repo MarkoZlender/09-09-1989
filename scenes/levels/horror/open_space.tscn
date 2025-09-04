@@ -1211,7 +1211,7 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 131.497, 1.50596, -4.98805)
 floor_max_angle = 1.0472
 player_data = SubResource("Resource_8ax1c")
 
-[node name="Enemy5" parent="Entities" node_paths=PackedStringArray("player", "aggro_reach_area") instance=ExtResource("4_46gqi")]
+[node name="Enemy1" parent="Entities" node_paths=PackedStringArray("player", "aggro_reach_area") instance=ExtResource("4_46gqi")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 48.7194, 1.51249, -117.092)
 enemy_data = SubResource("Resource_akovg")
 player = NodePath("../Player")
@@ -1851,7 +1851,7 @@ text = "Exit"
 [connection signal="pressed" from="PauseUi/CanvasLayer/VBoxContainer/MainMenuButton" to="PauseUi" method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="PauseUi/CanvasLayer/VBoxContainer/ExitButton" to="PauseUi" method="_on_exit_button_pressed"]
 
-[editable path="Entities/Enemy5"]
+[editable path="Entities/Enemy1"]
 [editable path="Cameras/StartingCam"]
 [editable path="Cameras/FixedCamera3"]
 [editable path="Cameras/FixedCamera7"]

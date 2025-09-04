@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b27iksu5b0ic2"]
+
+[ext_resource type="Script" uid="uid://b2in8q0lr3wxd" path="res://scripts/extract_methods.gd" id="1_06t3a"]
+
+[node name="ExtractMethods" type="Node"]
+script = ExtResource("1_06t3a")
