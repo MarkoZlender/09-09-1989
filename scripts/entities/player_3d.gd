@@ -67,7 +67,7 @@ func move(delta: float) -> void:
 		elif move_input == 0:
 			current_state = PlayerState.State.IDLE
 
-	# Rotate player (Y axis)
+	# Rotate player on Y axis
 	rotation.y -= turn_input * turn_speed * delta
 
 	# Move forward/backward in local space

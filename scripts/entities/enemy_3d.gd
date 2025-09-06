@@ -61,6 +61,7 @@ func aggroed(delta: float) -> void:
 	move_and_slide()
 
 func deaggroed(delta: float) -> void:
+	# Check if enemy is stuck every 3 seconds and on timer timeout find a new position
 	if !idle_timer.is_stopped():
 		if global_position.distance_to(last_position) > 0.1:
 			idle_timer.stop()
@@ -166,7 +167,6 @@ func _on_player_out_of_aggro_area_range(body: Node3D) -> void:
 
 func _on_idle_timeout() -> void:
 	print("Enemy idle for too long, searching for new target.")
-	# Find a new target or patrol location
 	var random_offset: Vector3 = Vector3(
 		randf_range(enemy_data.wander_range_x.x, enemy_data.wander_range_x.y), 
 		0, 
